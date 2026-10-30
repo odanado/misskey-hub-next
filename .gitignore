@@ -44,5 +44,6 @@ public/_redirects
 test-results/
 playwright-report/
 
-# Generate 30-page VRT references locally/in CI; keep images out of the PR.
+# Generate VRT images locally/in CI; keep all screenshots out of the PR.
+tests/vrt/snapshots/**/*.png
 tests/vrt/snapshots/30/

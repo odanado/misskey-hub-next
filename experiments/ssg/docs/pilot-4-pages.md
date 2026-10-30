@@ -51,7 +51,7 @@ Astro版は `.astro` の `getStaticPaths()` で4ルートを生成し、`PortApp
 pnpm install --frozen-lockfile
 pnpm exec playwright install chromium
 
-# 元サイトの基準がない場合のみ作成
+# 基準画像はGit管理外。初回は同じ環境の元Nuxtから作成
 pnpm pilot:build baseline
 HUB_CONTENT_PILOT=baseline pnpm pilot:vrt --update-snapshots
 

@@ -1,0 +1,154 @@
+{
+  "ssgRunsPerMode": 1,
+  "vrtViewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "theme": "light",
+  "fullUrlCount": 1991,
+  "referenceUnavailable": 43,
+  "buildFingerprint": "f48e89e6e33633da6b0796fda6934550525ee3a96df71cf98fb86f1d6254f6c6",
+  "captureScriptSha256": "9f0f02a066e087d2cbdd0e5a809621588c8fea4654813ae6eab3f5ca92be0b22",
+  "rows": [
+    {
+      "mode": "baseline",
+      "ssgSeconds": 210.902045125,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1948,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 97.84028126569562,
+      "comparable": 1948,
+      "comparablePassRatePercent": 100,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "passed": 1948
+      }
+    },
+    {
+      "mode": "baseline-vize",
+      "ssgSeconds": 216.51743083300002,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1903,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 95.58011049723757,
+      "comparable": 1948,
+      "comparablePassRatePercent": 97.68993839835728,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "passed": 1903,
+        "runtime-error": 14,
+        "different": 30,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "ssgSeconds": 33.73060666599998,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1202,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 60.371672526368656,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.70431211498973,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1202,
+        "different": 667,
+        "unstable": 1
+      }
+    },
+    {
+      "mode": "ox-ported-vize",
+      "ssgSeconds": 31.987687040999997,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1207,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 60.62280261175289,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.960985626283374,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1207,
+        "different": 663
+      }
+    },
+    {
+      "mode": "astro",
+      "ssgSeconds": 49.935466750000025,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1348,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 67.70467101958815,
+      "comparable": 1948,
+      "comparablePassRatePercent": 69.19917864476386,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1348,
+        "different": 521,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-vize",
+      "ssgSeconds": 48.98763879099989,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1345,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 67.55399296835762,
+      "comparable": 1948,
+      "comparablePassRatePercent": 69.04517453798768,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1345,
+        "different": 524,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "ssgSeconds": 46.14260641700006,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1203,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 60.42189854344551,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.755646817248454,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1203,
+        "different": 666,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-ox-vize",
+      "ssgSeconds": 44.432724207999996,
+      "ssgStatus": "success",
+      "publicHtml": 1991,
+      "vrtPassed": 1203,
+      "vrtTotal": 1991,
+      "vrtPassRatePercent": 60.42189854344551,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.755646817248454,
+      "vrtCounts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1203,
+        "different": 665,
+        "capture-error": 2
+      }
+    }
+  ]
+}

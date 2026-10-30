@@ -1,6 +1,6 @@
 # 30ページVRTの互換修正
 
-初期4ページを含む日英30 Markdownページで、Nuxt基準・Ox単独・Astro＋MDC・Astro＋Oxの通常Vue/Vizeを比較した。8構成とも**120/120テスト成功、144/144画像がRGBA完全一致**した。合計960テスト・1,152画像。対象は[ページ一覧](shared/pages-30.mjs)と[初期4ページ](shared/pilot-pages.mjs)を参照。
+初期4ページを含む日英30 Markdownページで、Nuxt基準・Ox単独・Astro＋MDC・Astro＋Oxの通常Vue/Vizeを比較した。ローカルのdarwin-arm64環境では、8構成とも**120/120テスト成功、144/144画像がRGBA完全一致**した。合計960テスト・1,152画像。対象は[ページ一覧](shared/pages-30.mjs)と[初期4ページ](shared/pilot-pages.mjs)を参照。
 
 | 構成 | テスト | 画像の完全一致 | 合格率 |
 | --- | ---: | ---: | ---: |
@@ -24,6 +24,12 @@ PC 1440×900 / モバイル390×844 × 明暗4条件。全文、5ページのdet
 基準は元Nuxtから作り直して固定した。中断前の144画像・120意味情報ファイルのハッシュから**変更なし**（[保存確認](results/30/baseline-preservation.json)）。候補の表示に合わせた基準画像の更新はしていない。
 
 全Markdown1,434件のOx解析スモークチェックも成功した。ただし、この確認は全件の表示一致や全件SSG完走の代用ではない。
+
+## Linux CIに残る差分
+
+Ubuntu 24.04ではNuxt・Nuxt＋Vizeは各120/120成功したが、通常Oxの日本語embed/OAuthページのPC明暗4ケースで、コードブロック末尾の水平1pxに差分が残る。CIは通常Oxで停止するため、後続5構成のLinux上での成功は未確認。上表の100%はdarwin-arm64の結果である。
+
+[診断CI](https://github.com/odanado/misskey-hub-next/actions/runs/41040912480)では、pre/codeのcomputed CSS（カスタムプロパティを除く）、寸法、スクロール幅が一致した。embedページは同じ1440×4537画像のうち、2本の水平1px行・計1,396画素に差があった。原因は未確定。マスクや許容差による除外は行っていない。
 
 ## 再現・証拠
 

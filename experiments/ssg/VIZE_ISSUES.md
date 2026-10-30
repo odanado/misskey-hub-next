@@ -4,6 +4,8 @@
 
 対象は **Vize 0.607.0 / Vue 3.5.25 / Nuxt 3.20.2 / Vite 7.3.1 / Astro 6.4.8 / @astrojs/vue 6.0.1 / UnoCSS 66.5.12**。Node 22.22.2、macOS arm64（Apple M1 Pro）。新しいVizeや他の依存バージョンでの再現・上流での修正状況は未確認。
 
+本文前半は初期4ページ時点の記録。末尾に全件SSR・全件VRTでの追加観測を追記した。過去の所要時間や「未検証」は当時の範囲を示し、最新の集計は[全件SSG](FULL_SSG_REPORT.md)と[全件VRT](FULL_VRT_REPORT.md)を参照する。
+
 ## 一覧
 
 「不具合候補」は、この環境で出力差・失敗を確認したもの。上流の判断・修正済みIssueを確認したという意味ではない。
@@ -245,3 +247,49 @@ Ox単独＋Vizeの事前試行ではこの回避後に1,991 URLの生成が完�
 全件Nuxt＋Vizeだけ、`vue-router`のaliasと、自動importされる`onBeforeRouteLeave` / `onBeforeRouteUpdate` / `useLink`の参照先を、同じインストール済みVue Routerの`dist/vue-router.mjs`へ明示した。ルーターフックを省略したり、空の関数へ置き換えたりはしない。通常Vueと移植3案には適用しない。
 
 対応箇所：[実験用Nuxtモジュール](./nuxt-pilot/module.ts)。この修正後にNuxtだけ全件を再計測し、219.90秒で1,991 URLが完走した。移植3案はこのNuxtモジュールを読み込まないため、先に成功した計測値を保持する。Vize本体の最小再現や上流修正は今回の範囲に含めない。
+
+
+## 全件VRTで追加観測したVize有効構成の差分
+
+30ページのローカルdarwin-arm64では8構成すべてが成功した。その後、全公開1,991 URLをPC・ライトの1条件で測定したところ、通常Vueで合格しVize有効時に不合格になるURLも見つかった。以下はコンパイラ切替を含む構成の比較で、Vize本体の不具合と断定したものではない。
+
+| 構成 | 通常Vue合格→Vize不合格 | 通常Vue不合格→Vize合格 |
+| --- | ---: | ---: |
+| Nuxt | 45 | 0 |
+| Ox単独 | 2 | 7 |
+| Astro＋MDC | 7 | 4 |
+| Astro＋Ox | 6 | 6 |
+
+不合格には画素差分、実行エラー、撮影失敗・不安定を含む。後者の有無は測定時の描画・負荷にも影響されるため、この件数だけでVizeの互換性が改善/悪化したとは結論しない。
+
+### VZ-10：Nuxt＋Vizeの全件クライアントhydration
+
+追加実行エラーは14 URL。以下は先頭8件（全URLは結果JSONLを参照）。
+
+- `/ja/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/cn/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/de/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/en/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/es/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/fr/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/id/tools/share-link-generator/`: Hydration completed but contains mismatches.
+- `/it/tools/share-link-generator/`: Hydration completed but contains mismatches.
+
+通常Vueの同じURLでは安定画像の取得と実行エラーなしを確認した。いずれも既存のVize互換回避策を有効にした生成物である。SSR生成成功はクライアントhydrationの一致を保証しない。原因を狭める最小再現は未作成で、この結果のための追加回避策は導入していない。
+
+### VZ-11：Nuxt＋Vizeの画素差分（サイドバーの例）
+
+追加表示差分は30 URL。以下は先頭8件。
+
+- `/id/docs/for-admin/install/resources/cdn/`: 22画素
+- `/id/docs/for-admin/install/resources/nginx/`: 22画素
+- `/id/docs/for-admin/install/resources/push-docker-hub/`: 22画素
+- `/it/docs/for-admin/install/resources/cdn/`: 22画素
+- `/th/docs/for-admin/install/resources/scale-out/`: 22画素
+- `/cn/share/`: 372344画素
+- `/cn/tools/hub-servers-preview/`: 44画素
+- `/de/share/`: 67435画素
+
+代表画像の`/id/docs/for-admin/install/resources/cdn/`では、22画素の差がサイドバーの文字「守」の折返し部分（x164〜168 / y280〜289）に限られた。原稿および生成HTMLの該当ラベルは同じだった。DOM・フォント・描画のどの経路が原因かは未特定で、Vizeの文字列欠落とは断定しない。許容差・マスクで合格へ変更していない。
+
+[全件VRTの条件・内訳](FULL_VRT_REPORT.md) / [URLごとの結果](results/full/2026-10-30/vrt-rows.jsonl) / [最新SSG再計測](FULL_SSG_REPORT.md)。画像はPRから除外した。
