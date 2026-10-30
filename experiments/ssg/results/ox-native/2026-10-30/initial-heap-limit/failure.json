@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "completedPublicPages": 0,
+  "elapsedSeconds": 83.93124316699999,
+  "reason": "FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory",
+  "observedHeapMB": 3991.6,
+  "observation": "GC diagnostic read from .pilot/full/ox-native/build.log before the next attempt replaced that mutable log. Benchmark row is retained in timings.json.",
+  "note": "Not a successful full SSG time; retained before changing Markdown module data representation."
+}

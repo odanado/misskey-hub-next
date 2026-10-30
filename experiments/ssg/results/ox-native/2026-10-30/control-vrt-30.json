@@ -1,0 +1,17 @@
+{
+  "mode": "ox-ported",
+  "sourceFingerprint": "2c68dd016a3013d74d9806683ba849a33fcfca0a22366a323ebe441a5e3b7ca1",
+  "tests": 120,
+  "exactRgbaImages": 144,
+  "stats": {
+    "startTime": "2026-10-30T14:40:47.972Z",
+    "duration": 101757.866,
+    "expected": 120,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "baselineUnchanged": true,
+  "baselineReference": "vrt-30.json",
+  "playwrightReportSha256": "07152aadc3b1cd6e110655133910b17fb49bbc75d2c44961f57fffd0c7a1880f"
+}

@@ -1,23 +1,25 @@
 # SSG高速化の比較実験
 
-Misskey HubのSSGを高速化するため、既存のNuxt版を基準に3方針を比較する。本番移行は後続で行う。実験モジュールは環境変数で有効にし、既存の原稿・本番ページ・デプロイフローを保つ。
+Misskey HubのSSGを高速化するため、既存のNuxt版を基準に、従来の3方針と追加のOx nativeを比較する。本番移行は後続で行う。実験モジュールは環境変数で有効にし、既存の原稿・本番ページ・デプロイフローを保つ。
 
 まず[全件ベンチマーク](FULL_SSG_REPORT.md)と[profiling](PROFILING_REPORT.md)を読み、各方針の入口から実装を辿れる。過去の計測JSONを保持し、最新の再計測と全件VRTは下表に分けて示す。
 
-## 3方針とコードの境界
+## 方針とコードの境界
 
 | 方針 | 入口 | 原稿処理 | HTML描画・生成 |
 | --- | --- | --- | --- |
 | Ox単独SSG＋Vue | [ox-standalone/](ox-standalone/README.md) | Ox N-API＋MDC互換 | 自前のVue SSR → Ox Built-in SSGの独自テーマ |
 | Astro＋既存MDC | [astro-mdc/](astro-mdc/README.md) | 既存MDC / Shiki | Astro公式Vue integration＋Astro SSG |
 | Astro＋Ox | [astro-ox/](astro-ox/README.md) | Ox N-API＋MDC互換 | Astro公式Vue integration＋Astro SSG |
+| Ox native（追加） | [ox-native/](ox-native/README.md) | 公式Ox Vueプラグイン＋MDC互換 | Vue SSR＋Custom HostによるVite SSG |
 
 ```text
 experiments/ssg/
 ├── ox-standalone/   # Ox固有: Viteクライアント、Vue SSR、HTML外枠、Ox SSG
 ├── astro-mdc/       # MDCを選ぶAstro設定・ページ入口
 ├── astro-ox/        # Oxを選ぶAstro設定・ページ入口
-├── nuxt-compat/     # 3案共通: Nuxt API・ページ・レイアウト・CSSの互換ラッパー
+├── ox-native/       # 公式Ox Vueプラグイン＋Custom Host、既存表示の互換処理
+├── nuxt-compat/     # 共通: Nuxt API・ページ・レイアウト・CSSの互換ラッパー
 ├── shared/          # 原稿処理、対象URL、ナビ生成、Astro共通設定/Document
 ├── tooling/         # build起動、計測、VRT補助、profiling、問題再現
 ├── nuxt-pilot/      # Nuxt基準＋初期query/native案・標準テーマ案
@@ -29,11 +31,22 @@ experiments/ssg/
 
 ### Nuxt互換レイヤー
 
-[nuxt-compat/](nuxt-compat/README.md)に3方針で共有するNuxtのラッパーを集約した。Nuxtフレームワークは起動せず、元のVueコンポーネントから呼ばれるcomposable、auto-import、i18n、ルート、ContentRenderer等を提供する。Nuxt公式Layersの`extends`設定を利用したものではない。
+[nuxt-compat/](nuxt-compat/README.md)に各方針で共有するNuxtのラッパーを集約した。Nuxtフレームワークは起動せず、元のVueコンポーネントから呼ばれるcomposable、auto-import、i18n、ルート、ContentRenderer等を提供する。Nuxt公式Layersの`extends`設定を利用したものではない。
 
 原稿のパーサーは[shared/content/](shared/content/README.md)、Astro共通設定・HTML文書は[shared/astro/](shared/astro/)へ置く。Oxの描画後のHTML保存処理は`ox-standalone/`、Astro側のルート列挙は各Astroディレクトリが所有する。方針間で同じVueページをコピーして管理しない。
 
+## 追加：Ox nativeの互換検証と同条件比較（Ox 3.4.3）
+
+| 構成 | 1回目 | 2回目 | 3回目 | 中央値 | 30ページVRT |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Ox native（公式Vueプラグイン＋Custom Host） | 55.65秒 | 54.48秒 | 56.00秒 | **55.65秒** | 120/120・144画像一致 |
+| 既存Ox単独（N-API＋Vue SSR＋Ox SSG） | 34.31秒 | 35.52秒 | 35.63秒 | **35.52秒** | 120/120・144画像一致 |
+
+全1,991 URLのSSGが両案とも各3回成功。Node22.22.2 / M1 Pro、通常Vue、同じOx 3.4.3で順次計測した。Ox nativeは今回の互換実装では約56.7%長くかかった。30ページは両案とも120テスト・144画像が元Nuxtと一致。新しい全件VRTは実行していない。条件・限界・PR #2との差は[Ox nativeレポート](OX_NATIVE_REPORT.md)を参照。
+
 ## 現時点の結果と限界
+
+追加の[Ox native検証](OX_NATIVE_REPORT.md)は、PR #2方式の公式プラグイン構成へ表示互換を接続したもの。Ox 3.4.3で30ページの120テスト・144画像の合格後、全件SSGを計測済み。従来の8構成の表はOx 3.4.0時点の記録として保持し、条件の違う数値を混ぜない。
 
 全公開URL一覧は**1,991件**（docs 1,365 / blog 106 / static 287 / language entry 233）。Markdown1,434件＋YAML156件を読む。
 
@@ -112,6 +125,7 @@ VRT画像の更新は`HUB_CONTENT_PILOT=baseline`だけ許可する。30ペー�
 
 ## 調査資料
 
+- [Ox nativeの30ページVRT・全件SSG・PR #2との関係](OX_NATIVE_REPORT.md)
 - [全件SSG・Vize比較・SSR判定の訂正](FULL_SSG_REPORT.md)
 - [全公開1,991 URLのVRT・合格率・不合格内訳](FULL_VRT_REPORT.md)
 - [30ページVRTの互換修正と合格率](VRT_30_REPORT.md)

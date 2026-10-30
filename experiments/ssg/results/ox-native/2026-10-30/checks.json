@@ -1,0 +1,18 @@
+{
+  "node": "v22.22.2",
+  "packages": {
+    "@ox-content/napi": "3.4.3",
+    "@ox-content/vite-plugin": "3.4.3",
+    "@ox-content/vite-plugin-vue": "3.4.3",
+    "vue": "3.5.25",
+    "vite": "7.3.1"
+  },
+  "heapLimitBytes": 4345298944,
+  "nativeClientMarkdownModules": 1247,
+  "fullOutputVerification": {
+    "renderedPages": 1991,
+    "stylesheets": 2
+  },
+  "nativeTypecheck": "passed",
+  "fullVrt": "not run, per request"
+}

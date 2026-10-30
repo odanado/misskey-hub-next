@@ -14,7 +14,8 @@ const selectedModes = process.argv
 	.find((arg) => arg.startsWith('--modes='))
 	?.slice(8)
 	.split(',');
-if (selectedModes?.some((mode) => !allModes.includes(mode))) throw new Error('Invalid --modes');
+if (selectedModes?.some((mode) => ![...allModes, 'ox-native'].includes(mode)))
+	throw new Error('Invalid --modes');
 const modes = selectedModes ?? allModes;
 const vizeOnly = process.argv.includes('--vize-only');
 const compilers = vizeOnly
@@ -29,6 +30,19 @@ const resultFile = vizeOnly
 	: compilers.length === 2
 		? 'compiler-timings.json'
 		: 'timings.json';
+if (modes.includes('ox-native')) {
+	if (compilers.some((compiler) => compiler !== 'vue'))
+		throw new Error('ox-native Vize is outside this pilot');
+	const { fingerprint, resultsDirectory } = await import('../ox-native/evidence.mjs');
+	const vrt = JSON.parse(await readFile(resultsDirectory + '/vrt-30.json', 'utf8'));
+	if (
+		vrt.tests !== 120 ||
+		vrt.exactRgbaImages !== 144 ||
+		!vrt.baselineUnchanged ||
+		vrt.sourceFingerprint !== (await fingerprint())
+	)
+		throw new Error('Pass the 30-page ox-native VRT on the current source before timing full SSG');
+}
 const runs = Number(process.argv.find((a) => a.startsWith('--runs='))?.slice(7) ?? 1);
 if (![1, 3].includes(runs)) throw new Error('Expected --runs=1 or --runs=3');
 await mkdir(outputDirectory, { recursive: true });

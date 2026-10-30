@@ -18,9 +18,9 @@ await rm(`.pilot/${artifact}/public`, { recursive: true, force: true });
 await rm(`.pilot/${artifact}/cache`, { recursive: true, force: true });
 await rm(`experiments/ssg/${strategy.directory}/.astro`, { recursive: true, force: true });
 profileStages.cleanupMs = performance.now() - phaseStarted;
-const command = mode === 'ox-ported' ? process.execPath : 'pnpm';
+const command = strategy.entry ? process.execPath : 'pnpm';
 const args =
-	mode === 'ox-ported' ? [strategy.entry] : ['exec', 'astro', 'build', '--config', strategy.config];
+	strategy.entry ? [strategy.entry] : ['exec', strategy.framework === 'vite' ? 'vite' : 'astro', 'build', '--config', strategy.config];
 if (process.env.HUB_SSG_CPU_PROFILE === '1' && mode === 'ox-ported') {
 	const cpuDir = process.env.HUB_SSG_CPU_DIR ?? `.pilot/${artifact}/cpu-profile`;
 	await mkdir(cpuDir, { recursive: true });

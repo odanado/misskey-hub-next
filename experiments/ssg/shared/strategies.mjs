@@ -1,5 +1,6 @@
 // Historical mode IDs stay stable so recorded results and .pilot paths match.
 export const strategies = {
+	'ox-native': { directory: 'ox-native', engine: 'ox', entry: 'experiments/ssg/ox-native/build.mjs' },
 	'ox-ported': {
 		directory: 'ox-standalone',
 		engine: 'ox',

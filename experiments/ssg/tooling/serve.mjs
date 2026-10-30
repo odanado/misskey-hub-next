@@ -10,6 +10,7 @@ if (
 		...modes,
 		'standalone',
 		'ox-ported',
+		'ox-native',
 		'astro',
 		'astro-ox',
 		'baseline-vize',

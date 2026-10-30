@@ -5,14 +5,12 @@ import { transform } from '@ox-content/napi';
 import { fromHtml } from 'hast-util-from-html';
 import { isRelative } from 'ufo';
 
-// Pilot-only compatibility bridge. Unsupported MDC must fail, never disappear.
-// Keep the existing Shiki/AiScript output for fenced code; Rust parses the rest.
-export async function nativeDocument(
+// Shared preprocessing for the direct N-API path and the official Vue plugin.
+// Extract component/code islands before Rust parses the remaining Markdown.
+export function prepareNativeMarkdown(
 	entry,
-	compileCode,
-	{ compileHast, generateToc, generatePath, mdcIslands = false, allowUnclosedContainers = false },
+	{ mdcIslands = false, allowUnclosedContainers = false } = {},
 ) {
-	const preprocessStart = tick();
 	const snippets = [];
 	const extracted = mdcIslands
 		? extractMdcIslands(entry.body, snippets, { allowUnclosed: allowUnclosedContainers })
@@ -41,16 +39,41 @@ export async function nativeDocument(
 	if (/^:{2,}[^\n]*(?:\{|#)|^:{2}[^:\n]/m.test(markdown)) {
 		throw new Error(`MDC syntax outside this pilot's supported subset: ${entry.source}`);
 	}
+	return { markdown, snippets, componentSnippets, extracted, codeIslands };
+}
+
+// Pilot-only compatibility bridge. Unsupported MDC must fail, never disappear.
+// Keep the existing Shiki/AiScript output for fenced code; Rust parses the rest.
+export async function nativeDocument(
+	entry,
+	compileCode,
+	{
+		compileHast,
+		generateToc,
+		generatePath,
+		mdcIslands = false,
+		allowUnclosedContainers = false,
+		prepared,
+		renderedHtml,
+		normalizeTree,
+	},
+) {
+	const preprocessStart = tick();
+	const { markdown, snippets, extracted, codeIslands } =
+		prepared ?? prepareNativeMarkdown(entry, { mdcIslands, allowUnclosedContainers });
 	elapsed('native.preprocess', preprocessStart);
 	const rustStart = tick();
-	const rendered = transform(markdown, {
-		gfm: true,
-		...(mdcIslands ? { semanticFootnotes: true } : {}),
-		containers: { enabled: true },
-		toc: true,
-		linkTargetBlank: false,
-		autolinkTargetBlank: false,
-	});
+	const rendered =
+		renderedHtml === undefined
+			? transform(markdown, {
+					gfm: true,
+					...(mdcIslands ? { semanticFootnotes: true } : {}),
+					containers: { enabled: true },
+					toc: true,
+					linkTargetBlank: false,
+					autolinkTargetBlank: false,
+				})
+			: { html: renderedHtml, errors: [] };
 	elapsed('native.rustTransform', rustStart);
 	if (rendered.errors.length) throw new Error(JSON.stringify(rendered.errors));
 	const mdcStart = tick();
@@ -58,6 +81,7 @@ export async function nativeDocument(
 	elapsed('native.mdcIslands', mdcStart);
 	const bridgeStart = tick();
 	const tree = fromHtml(rendered.html, { fragment: true });
+	normalizeTree?.(tree);
 	function adapt(node, parent) {
 		if (
 			node.type === 'text' &&
