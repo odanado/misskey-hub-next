@@ -65,6 +65,17 @@ VRTは既存の基準画像を更新せず、許容差・マスクなしで実�
 
 整理時には過去22 JSONの[バイト単位の保存](results/refactor/history-preservation.json)を確認した。その後、30ページのVRTを再開し、基準画像のハッシュを保って互換修正を完了した。
 
+## Ox Content + Vue reference
+
+[ox-native/](ox-native/README.md) is a TypeScript/Vue example using Ox Content 3.4.3's Vite plugins.
+It imports Markdown as Vue components and renders them through a small SSR host and layout.
+YAML and application-only routes are outside this minimal example; it does not claim full Nuxt/MDC or VRT parity.
+
+```sh
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
+```
+
 ## 実行方法
 
 コマンドはリポジトリのルートで実行する。通常のコード整理確認は既定の4ページ、全件は`HUB_PILOT_PAGES=all`を指定する。

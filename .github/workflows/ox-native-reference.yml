@@ -1,0 +1,52 @@
+name: Ox Vue SSG reference
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'experiments/ssg/ox-native/**'
+      - 'experiments/ssg/shared/**'
+      - 'experiments/ssg/results/public-url-count.json'
+      - 'content/**'
+      - 'pages/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/ox-native-reference.yml'
+  pull_request:
+    paths:
+      - 'experiments/ssg/ox-native/**'
+      - 'experiments/ssg/shared/**'
+      - 'experiments/ssg/results/public-url-count.json'
+      - 'content/**'
+      - 'pages/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/ox-native-reference.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-ssg:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      # The sample uses published native binaries and an independent tsconfig.
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm pilot:ox-native:check
+      - run: pnpm pilot:ox-native:build
+      - run: pnpm pilot:ox-native:verify
+      - run: HUB_PILOT_PAGES=30 pnpm pilot:ox-native:build
+      - run: HUB_PILOT_PAGES=30 pnpm pilot:ox-native:verify
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
