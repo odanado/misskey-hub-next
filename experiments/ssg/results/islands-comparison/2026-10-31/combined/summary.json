@@ -1,0 +1,46 @@
+{
+  "case": "combined",
+  "ref": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "sourceFingerprint": "50961df6038c68f6b3b2f06e0ddf0e0507b4c04b5aa0858ee6457ccde09757c8",
+  "sourceUnchanged": true,
+  "startedAt": "2026-10-30T22:24:55.508651+00:00",
+  "finishedAt": "2026-10-30T22:25:05.561533+00:00",
+  "runs": [
+    {
+      "run": 1,
+      "processSeconds": 3.008927624905482,
+      "buildSeconds": 2.5432901660000002,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "originalVerifierExitCode": null,
+      "peakRssBytes": 227885056,
+      "profileSha256": "30448fa20f32dd04a7a3587007c001193c82c8b7dbf36367909c1b2844cdd286",
+      "logSha256": "7ec2f0a3c730b6c93861fda258768fe49b996e8882a44fd364e9eea480ebd4c5"
+    },
+    {
+      "run": 2,
+      "processSeconds": 2.638294291915372,
+      "buildSeconds": 2.197292542,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "originalVerifierExitCode": null,
+      "peakRssBytes": 227737600,
+      "profileSha256": "661c9bfb9aeb765dc937d84c7d0fc4e141871893ccf205634760dd84a749d477",
+      "logSha256": "b294f7e4d1a8cdba3949982eea44316927b9cc5b7784ad82f759acc80b4e6c71"
+    },
+    {
+      "run": 3,
+      "processSeconds": 2.6557420829776675,
+      "buildSeconds": 2.2401061249999996,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "originalVerifierExitCode": null,
+      "peakRssBytes": 228474880,
+      "profileSha256": "f8145e28440f4e33440521a9da29dc1fd14955388b82060af967040f9ec3a020",
+      "logSha256": "b84589d9cca5616021c961c1bc0b30aabbcfdcfa380da92be373b8e875f8dcbe"
+    }
+  ],
+  "medianBuildSeconds": 2.2401061249999996,
+  "medianProcessSeconds": 2.6557420829776675,
+  "policy": "Instrumented isolated archive. buildSeconds: before Vite import to awaited build completion; excludes PNPM/Node startup, output enumeration and verification. All cases sequential, OS caches retained. Ablations intentionally remove visual/functionality work, not migration candidates. Inclusive hook/async totals overlap and are not additive."
+}

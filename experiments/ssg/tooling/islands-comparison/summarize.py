@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import Counter,defaultdict
 import json,statistics,hashlib
 root=Path('experiments/ssg/results/islands-comparison/2026-10-31');out={}
-for case in ['full','pr2','md-only','no-client','no-theme','no-shiki','static-links','cpu','full-end']:
+for case in ['full','pr2','md-only','no-client','no-theme','no-shiki','static-links','cpu','full-end','combined']:
  p=root/case/'summary.json'
  if not p.exists():continue
  s=json.loads(p.read_text());rows=[]

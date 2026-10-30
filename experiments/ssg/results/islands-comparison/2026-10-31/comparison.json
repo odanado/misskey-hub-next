@@ -9791,6 +9791,235 @@
       }
     ]
   },
+  "combined": {
+    "medianSeconds": 2.2401061249999996,
+    "representativeRun": {
+      "run": 3,
+      "seconds": 2.2401061249999996,
+      "stageSeconds": {
+        "viteStartupClient": 1.069284292,
+        "serverModuleLoad": 0.07739175,
+        "prepareData": 0.8894899579999999,
+        "renderPages": 0.0348890829999998,
+        "writeAndTail": 0.16905104200000004
+      },
+      "hostTotals": {
+        "parser.rawOxMarkdown": {
+          "calls": 1434,
+          "seconds": 0.26780832699999907
+        },
+        "host.prepareData": {
+          "calls": 1,
+          "seconds": 0.889469084
+        }
+      },
+      "vue": {},
+      "byKind": {
+        "docs": {
+          "urls": 1365,
+          "renderSeconds": 0.0037832620000103753
+        },
+        "blog": {
+          "urls": 106,
+          "renderSeconds": 0.00012453899999582057
+        },
+        "static": {
+          "urls": 287,
+          "renderSeconds": 0.0003322960000027705
+        },
+        "languageEntry": {
+          "urls": 233,
+          "renderSeconds": 0.00023966500000369652
+        }
+      },
+      "bundle": {
+        "js": {
+          "files": 1,
+          "bytes": 1
+        },
+        "other": {
+          "files": 1,
+          "bytes": 243
+        }
+      },
+      "output": {
+        "htmlFiles": 1991,
+        "htmlBytes": 9411266
+      },
+      "legacy": null,
+      "fetches": []
+    },
+    "runs": [
+      {
+        "run": 1,
+        "seconds": 2.5432901660000002,
+        "stageSeconds": {
+          "viteStartupClient": 1.315014625,
+          "serverModuleLoad": 0.09103562499999998,
+          "prepareData": 0.905048583,
+          "renderPages": 0.03412166700000034,
+          "writeAndTail": 0.19806966599999987
+        },
+        "hostTotals": {
+          "parser.rawOxMarkdown": {
+            "calls": 1434,
+            "seconds": 0.2723730819999887
+          },
+          "host.prepareData": {
+            "calls": 1,
+            "seconds": 0.9050266250000002
+          }
+        },
+        "vue": {},
+        "byKind": {
+          "docs": {
+            "urls": 1365,
+            "renderSeconds": 0.0023501969999924735
+          },
+          "blog": {
+            "urls": 106,
+            "renderSeconds": 0.00013041200000543524
+          },
+          "static": {
+            "urls": 287,
+            "renderSeconds": 0.00029253499999686017
+          },
+          "languageEntry": {
+            "urls": 233,
+            "renderSeconds": 0.00024324900000010475
+          }
+        },
+        "bundle": {
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 243
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 9411266
+        },
+        "legacy": null,
+        "fetches": []
+      },
+      {
+        "run": 2,
+        "seconds": 2.197292542,
+        "stageSeconds": {
+          "viteStartupClient": 1.0360927919999998,
+          "serverModuleLoad": 0.07353925000000004,
+          "prepareData": 0.892093208,
+          "renderPages": 0.03461225000000013,
+          "writeAndTail": 0.16095504200000005
+        },
+        "hostTotals": {
+          "parser.rawOxMarkdown": {
+            "calls": 1434,
+            "seconds": 0.2586442979999938
+          },
+          "host.prepareData": {
+            "calls": 1,
+            "seconds": 0.892072042
+          }
+        },
+        "vue": {},
+        "byKind": {
+          "docs": {
+            "urls": 1365,
+            "renderSeconds": 0.0022313720000058726
+          },
+          "blog": {
+            "urls": 106,
+            "renderSeconds": 0.00016479799999842722
+          },
+          "static": {
+            "urls": 287,
+            "renderSeconds": 0.000325178999997661
+          },
+          "languageEntry": {
+            "urls": 233,
+            "renderSeconds": 0.00023411300000316203
+          }
+        },
+        "bundle": {
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 243
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 9411266
+        },
+        "legacy": null,
+        "fetches": []
+      },
+      {
+        "run": 3,
+        "seconds": 2.2401061249999996,
+        "stageSeconds": {
+          "viteStartupClient": 1.069284292,
+          "serverModuleLoad": 0.07739175,
+          "prepareData": 0.8894899579999999,
+          "renderPages": 0.0348890829999998,
+          "writeAndTail": 0.16905104200000004
+        },
+        "hostTotals": {
+          "parser.rawOxMarkdown": {
+            "calls": 1434,
+            "seconds": 0.26780832699999907
+          },
+          "host.prepareData": {
+            "calls": 1,
+            "seconds": 0.889469084
+          }
+        },
+        "vue": {},
+        "byKind": {
+          "docs": {
+            "urls": 1365,
+            "renderSeconds": 0.0037832620000103753
+          },
+          "blog": {
+            "urls": 106,
+            "renderSeconds": 0.00012453899999582057
+          },
+          "static": {
+            "urls": 287,
+            "renderSeconds": 0.0003322960000027705
+          },
+          "languageEntry": {
+            "urls": 233,
+            "renderSeconds": 0.00023966500000369652
+          }
+        },
+        "bundle": {
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 243
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 9411266
+        },
+        "legacy": null,
+        "fetches": []
+      }
+    ]
+  },
   "stageDeltaSeconds": {
     "viteStartupClient": 6.070932876,
     "serverModuleLoad": 2.193357416000001,

@@ -1,0 +1,34 @@
+{
+  "startedAt": "2026-10-30T22:24:07.658847+00:00",
+  "sourceFingerprint": "50961df6038c68f6b3b2f06e0ddf0e0507b4c04b5aa0858ee6457ccde09757c8",
+  "policy": "Three sequential fresh PNPM/Node builds; timer from PNPM invocation to awaited process exit. Same command boundary as earlier 25.07 seconds. Verification outside timer; full public copy; all 1434 Markdown/156 YAML read, all 1991 URLs output. Diagnostic removes visual/functionality work and unused supporting dependencies.",
+  "runs": [
+    {
+      "run": 1,
+      "seconds": 2.749242875026539,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "peakRssBytes": 201785344,
+      "logSha256": "4cfcfe8cec2d542c3b1c79f397d5bc44e6571c315883a41a7345221e3cbdc52e"
+    },
+    {
+      "run": 2,
+      "seconds": 2.9165175419766456,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "peakRssBytes": 203866112,
+      "logSha256": "de4ea80e2dc4df58cafbcf745726e4d6080b0b94789e1b5dc56a341f14ce604e"
+    },
+    {
+      "run": 3,
+      "seconds": 2.85493570799008,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "peakRssBytes": 200671232,
+      "logSha256": "06dd52613f7129885e30186bd5b302bbaf9ad5c2e54f16bb7a8d7617b30cdbfd"
+    }
+  ],
+  "medianSeconds": 2.85493570799008,
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-30T22:24:18.460681+00:00"
+}

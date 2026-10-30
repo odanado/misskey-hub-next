@@ -2,8 +2,8 @@
 from pathlib import Path
 import subprocess,sys,os,json,time,hashlib,re,statistics,datetime
 repo=Path.cwd();case=sys.argv[1];count=int(sys.argv[2])if len(sys.argv)>2 else 3
-assert case in ['full','md-only','no-client','no-theme','static-links','no-shiki','pr2','cpu','full-end']
-checkout=repo/'.pilot/islands-comparison'/('pr2'if case=='pr2'else'islands')
+assert case in ['full','md-only','no-client','no-theme','static-links','no-shiki','pr2','cpu','full-end','combined']
+checkout=repo/'.pilot/islands-comparison'/('pr2'if case=='pr2'else'combined'if case=='combined'else'islands')
 evidence=json.loads((checkout/'diagnostic-source.json').read_text());output=repo/'experiments/ssg/results/islands-comparison/2026-10-31'/case;output.mkdir(parents=True,exist_ok=True)
 (output/'source.json').write_text(json.dumps({k:v for k,v in evidence.items()if k!='files'},indent=2)+'\n')
 def fingerprint():
@@ -27,7 +27,7 @@ for index in range(1,count+1):
  for row in data['pages']:
   html=(public/row['path'].lstrip('/')/'index.html').read_text();assert re.search(r'<!DOCTYPE html>',html,re.I)and '<title>'in html,row['path']
  verify=None
- if case!='no-theme':
+ if case not in ['no-theme','combined']:
   command=['pnpm','pilot:ox-native:verify'if case=='pr2'else'pilot:ox-islands:verify'];v=subprocess.run(command,cwd=checkout,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
   (output/f'verify-{index}.log').write_text(v.stdout);assert v.returncode==0,v.stdout;verify=v.returncode
  rss=re.search(r'^\s*(\d+)\s+maximum resident set size\s*$',text,re.M)

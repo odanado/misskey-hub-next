@@ -37,3 +37,16 @@ python3 experiments/ssg/tooling/islands-comparison/summarize.py
 `buildSeconds`はVite import前からawaitしたbuildの完了まで。同じrunner・通常Vueで揃える。PNPM/Node起動・計測後の出力列挙・検証は除外する。過去の5.37秒/25.07秒とは計測境界が違う。OSキャッシュは保持、外部contributors APIは実取得。CPUは自プロセスのみで子プロセスを含まない。
 
 工程表は総時間が中央値だった**実際の1回**の、重ならない区間を使う。非同期transformフックとMDC各snippetの時間は並行処理・親子の重なりがあるため足さない。各処理を外した差も相互作用があり、合計しない。
+
+## 全追加処理の一括無効化
+
+`combined`は専用コピーへ最小host/configを入れ、クライアント・UI・MDC/Shiki・HAST互換処理と未使用依存をまとめて外す。全1,991 URLと全Markdown/YAML処理・publicコピーを残す。固定UIは省略、YAMLは原文表示。
+
+```sh
+python3 experiments/ssg/tooling/islands-comparison/prepare-combined.py
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py combined 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark-combined-startup.py
+python3 experiments/ssg/tooling/islands-comparison/verify-combined.py
+```
+
+[同時無効化の条件と結果](../../ISLANDS_COMBINED_REPORT.md)。通常版と個別診断の出力は保持し、combined専用の出力先を使う。通常verifierは意図的なUI省略のため適用せず、専用の構造・アセット検査を使う。

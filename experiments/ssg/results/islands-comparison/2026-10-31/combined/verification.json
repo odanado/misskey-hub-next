@@ -1,0 +1,16 @@
+{
+  "publicHtmlFiles": 1991,
+  "sourceMarkdown": 1434,
+  "sourceYaml": 156,
+  "rawOxMarkdownCallsPerRun": 1434,
+  "publicAssetsCopiedExactly": 750,
+  "publicAssetBytes": 65141521,
+  "vueTransformHooks": 0,
+  "mdcCalls": 0,
+  "clientCssFiles": 0,
+  "clientEntryBytes": 1,
+  "clientEntryReferencedInHtml": false,
+  "normalFullBuildStillPresent": true,
+  "normalClientManifestMatchesSavedBenchmark": true,
+  "policy": "Checks outside timer; raw Ox HTML, raw YAML text and explicit placeholders for omitted fixed/language UI. Not VRT or functional parity."
+}
