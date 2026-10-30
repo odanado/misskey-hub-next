@@ -1,5 +1,7 @@
 # 全公開URLのSSG完走・速度検証（通常Vue／Vize）
 
+続報：[既存Vue固定ページも復帰](ISLANDS_VUE_PAGES_REPORT.md)。全1,991 URLの起動込み中央値は**11.52秒**、今回の最小Vue＋CSS対照4.85秒から約6.67秒増。元のVueページ287 URLを含む。Markdown／YAMLは直接HTML・原文表示のままで、VRT互換版ではない。
+
 続報：[CSS生成も追加](ISLANDS_CSS_REPORT.md)。全1,991 URL・起動込み中央値は、今回のCSSなし2.66秒、CSSあり4.71秒（約2.05秒増）。生成CSS148.6 KB、UIは最小Vue SSRの診断条件。
 
 続報：[最小構成へVueだけを追加](ISLANDS_VUE_REPORT.md)。今回の起動込み中央値は、Vueなし2.39秒、クライアントVueのみ2.58秒、最小部品を全1,991 URLでVue SSRすると2.79秒。元サイトのUIは省略した診断条件。

@@ -1,0 +1,22 @@
+import {defineAsyncComponent,defineComponent,h} from 'vue';
+import * as original from 'virtual:port-full-components';
+import {ClientOnly,NuxtLink,I18nT,ContentNavigation} from './runtime-bridge.mjs';
+import RawContent from './RawContent.vue';
+import MkMfm from '../../../components/mk/Mfm';
+import Default from '../../../layouts/default.vue';
+import Landing from '../../../layouts/landing.vue';
+import Tools from '../../../layouts/tools.vue';
+import Slim from '../../../layouts/slim.vue';
+import Blank from '../../../layouts/blank.vue';
+export const components={...original,MkMfm,ClientOnly,NuxtLink,I18nT,ContentNavigation,ContentRenderer:RawContent,...Object.fromEntries(['Tip','Warning','Danger','Fukidashi','GDetails','MfmPreview','MiWebEmbed','MkIndex','ApiPermissions'].map(name=>[name,(original as any)['Content'+name]]))};
+export const layouts={default:Default,landing:Landing,tools:Tools,slim:Slim,blank:Blank};
+const files=import.meta.glob(['../../../pages/**/*.vue','!../../../pages/docs/*slug*.vue','!../../../pages/blog/*slug*.vue']);
+const cache=new Map<string,any>();
+export async function resolvePage(file:string){
+ if(!cache.has(file)){
+  const load=files['../../../'+file];if(!load)throw Error('Unmapped Vue page: '+file);
+  if(file.endsWith('.client.vue')){const Page=defineAsyncComponent(async()=>(await load()as any).default);cache.set(file,defineComponent({setup:()=>()=>h(ClientOnly,null,{default:()=>h(Page)})}));}
+  else cache.set(file,(await load()as any).default);
+ }
+ return cache.get(file);
+}

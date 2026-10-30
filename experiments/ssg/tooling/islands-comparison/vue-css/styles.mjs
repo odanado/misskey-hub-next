@@ -9,7 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 const require=createRequire(import.meta.url);
 export const cssOptions={postcss:{plugins:[autoprefixer(),cssnano({preset:'default'})]}};
-export function cssPlugins(root) {
+export function cssPlugins(root, {includeUno=true}={}) {
  const files=['components','pages','layouts'].flatMap(dir=>readdirSync(resolve(root,dir),{recursive:true}).filter(f=>f.endsWith('.vue')).map(f=>resolve(root,dir,f)));
  const content=dirname(require.resolve('@nuxt/content'));
  for(const name of ['ProsePre','ProseCode','ProseCodeInline'])files.push(resolve(content,'runtime/components/Prose/'+name+'.vue'));
@@ -24,7 +24,7 @@ export function cssPlugins(root) {
    requests.push(file+'?vue&type=style&index='+index+(style.scoped?'&scoped='+hash:'')+(style.module?'&module=true':'')+'&lang.'+(style.module?'module.':'')+(style.lang??'css'));
   }
  }
- return [unocss({configFile:resolve(root,'uno.config.ts'),content:{filesystem:['components/**/*.vue','layouts/**/*.vue','pages/**/*.vue','experiments/ssg/**/*.vue'].map(glob=>resolve(root,glob))}}),{
+ return [...(includeUno?[unocss({configFile:resolve(root,'uno.config.ts'),content:{filesystem:['components/**/*.vue','layouts/**/*.vue','pages/**/*.vue','experiments/ssg/**/*.vue'].map(glob=>resolve(root,glob))}})]:[]),{
   name:'diagnostic-all-site-css',
   resolveId(id){if(id==='virtual:diagnostic-site-styles')return '\0'+id;},
   load(id){if(id==='\0virtual:diagnostic-site-styles')return{code:requests.map(id=>'import '+JSON.stringify(id)+';').join('\n'),moduleSideEffects:'no-treeshake'};},

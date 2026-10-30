@@ -58,3 +58,9 @@ python3 experiments/ssg/tooling/islands-comparison/verify-combined.py
 ## CSS生成を追加
 
 `prepare-vue.py vue-island-css`は最小SSR版に既存共通CSS、UnoCSS、Sass、PostCSS、既存SFC style/CSS modulesを追加する。`benchmark-vue.py --css`でCSSなし/ありを交互に各3回計測し、`verify-vue.mjs --css`でCSS取得・computed style・Vueのクリックを確認する。既存UIのscript/templateを取り込まずstyle queryだけを生成する。[CSS追加レポート](../../ISLANDS_CSS_REPORT.md)。
+
+## 既存Vue固定ページを復帰
+
+`prepare-pages.py`で6cbe059から独立コピーを作り、`vue-pages/`のテンプレートと専用Nuxt互換パッチを適用する。287 URLで元の23 Vueページとレイアウト・クライアント処理を再利用し、233言語エントリーには転送を追加する。通常の移行コードは変更しない。Markdownはraw Ox、YAMLは原文表示のまま。
+
+`benchmark-pages.py`は準備済み`vue-island-css`と`vue-pages`を交互に各3回計測し、1,991 HTMLと分類・JS/CSSを検査する。`verify-pages.mjs`はビルド後の代表13条件をChromiumで確認する。外部APIのCORS警告も保存し、VRTと区別する。[条件・再現手順・数値](../../ISLANDS_VUE_PAGES_REPORT.md)。

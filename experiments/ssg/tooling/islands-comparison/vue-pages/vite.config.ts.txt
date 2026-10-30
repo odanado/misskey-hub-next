@@ -1,0 +1,9 @@
+import{resolve}from'node:path';
+import{defineConfig}from'vite';
+import vue from'@vitejs/plugin-vue';
+import{createOxContentCustomHostPlugin}from'@ox-content/vite-plugin';
+import{common}from'./vite-bridge.mjs';
+import{root,outDir}from'./routes.ts';
+import{cssPlugins}from'../tooling/islands-comparison/vue-css/styles.mjs';
+const base=common();
+export default defineConfig({...base,root,publicDir:resolve(root,'public'),plugins:[...base.plugins,...cssPlugins(root,{includeUno:false}),vue({template:{compilerOptions:{isCustomElement:(tag)=>tag==='model-viewer'}}}),createOxContentCustomHostPlugin({host:resolve(import.meta.dirname,'host.ts'),oxContent:{srcDir:resolve(root,'content'),outDir,docs:false,search:false,embeds:false,highlight:false,containers:true,ssg:{generateOgImage:false,lastUpdated:false,readerChrome:false}},build:{transformHtml:false}})],build:{outDir,emptyOutDir:true,manifest:true,rollupOptions:{input:resolve(import.meta.dirname,'pages-client.ts')}}});
