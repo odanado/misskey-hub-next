@@ -22,7 +22,7 @@ experiments/ssg/
 ├── tooling/         # build起動、計測、VRT補助、profiling、問題再現
 ├── nuxt-pilot/      # Nuxt基準＋初期query/native案・標準テーマ案
 ├── docs/            # 初期4ページの詳しい再現手順
-└── results/         # 計測時点の記録（書き換えず保持）
+└── results/         # 計測・検証記録（過去ベンチマークを保持）
 ```
 
 [shared/strategies.mjs](shared/strategies.mjs)で方針・ディレクトリ・原稿エンジンを一覧化している。記録との対応のため、内部mode名は`ox-ported` / `astro` / `astro-ox`を維持した。
@@ -51,7 +51,7 @@ experiments/ssg/
 | 対象 | 状態 |
 | --- | --- |
 | 初期4ページのVRT | 整理後も通常Vue/Vize 8構成・128テストが成功、160画像がRGBA一致（[再検証記録](results/refactor/vrt.json)） |
-| 30ページのVRT | 途中で中断。未完了の画像約91MBはローカル保持し、このPRには含めない |
+| 30ページのVRT | [8構成・960テスト成功、1,152画像がRGBA一致](VRT_30_REPORT.md)。画像はPRに含めない |
 | 全1,991 URL | 全件HTML生成の試作・速度計測。全件VRTは未実施 |
 | Ox通常Vueのprofiling | 33.29秒。Vue SSR 10.57秒、client build 6.38秒、Rust本文変換API 0.118秒 |
 
@@ -61,7 +61,7 @@ experiments/ssg/
 
 VRTは既存の基準画像を更新せず、許容差・マスクなしで実行した。外部通信を止めた環境でも全構成が同じ条件になるよう、絵文字プロバイダーには共通の空キャッシュを与える。Playwrightのテスト探索が全件ビルド用の非同期処理を読み込まないよう、4/30ページの定義を`shared/pilot-pages.mjs`へ分離した。
 
-過去の数値記録22 JSONは[バイト単位で変更なし](results/refactor/history-preservation.json)。30ページのVRTは再開していない。
+整理時には過去22 JSONの[バイト単位の保存](results/refactor/history-preservation.json)を確認した。その後、30ページのVRTを再開し、基準画像のハッシュを保って互換修正を完了した。
 
 ## 実行方法
 
@@ -98,13 +98,14 @@ HUB_SSG_CPU_PROFILE=1 pnpm pilot:full:profile:ox
 HUB_CONTENT_PILOT=ox-ported pnpm pilot:vrt
 ```
 
-VRT画像の更新は`HUB_CONTENT_PILOT=baseline`だけ許可する。30ページのVRTを再開する際は、元Nuxtで基準画像を再生成してから行う。中断中の基準や古いfingerprintで最新ソースの一致を主張しない。
+VRT画像の更新は`HUB_CONTENT_PILOT=baseline`だけ許可する。30ページは`pnpm pilot:30:baseline` → `pnpm pilot:30:build` → `pnpm pilot:30:verify`の順に実行する。基準のハッシュと実装fingerprintを結果に保存する。
 
 生成HTML・ビルドログ・CPU生データは`.pilot/`へ出力する。過去の結果JSONに含まれる旧ソースパス、timestamp、fingerprint、ログパスは計測時点の情報として保持する。rawログや中断中の画像にはローカルのみのものがあり、公開する証拠は各レポートとJSONを参照する。
 
 ## 調査資料
 
 - [全件SSG・Vize比較・SSR判定の訂正](FULL_SSG_REPORT.md)
+- [30ページVRTの互換修正と合格率](VRT_30_REPORT.md)
 - [Ox単独SSGのprofiling](PROFILING_REPORT.md)
 - [Vize連携の問題と回避策](VIZE_ISSUES.md)
 - [公開URL数の根拠](PUBLIC_URL_COUNT.md)

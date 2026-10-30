@@ -42,7 +42,7 @@ async function fingerprint() {
 		'pnpm-lock.yaml',
 		'nuxt.config.ts',
 		'uno.config.ts',
-		'i18n.config.ts',
+		'i18n/i18n.config.ts',
 		'app.vue',
 		'playwright.config.ts',
 		'tests/vrt/docs.spec.ts',
@@ -113,7 +113,7 @@ if (action === 'baseline') {
 	await freeze();
 } else if (action === 'build') {
 	for (const mode of modes) for (const compiler of ['vue', 'vize']) await build(mode, compiler);
-} else if (action === 'verify') {
+} else if (action === 'verify' || action === 'collect') {
 	await unchanged();
 	const summaries = [];
 	const selected = process.argv.slice(3);
@@ -122,9 +122,11 @@ if (action === 'baseline') {
 			const name = compiler === 'vize' ? mode + '-vize' : mode;
 			if (selected.length && !selected.includes(name)) continue;
 			const artifact = artifactPath(name);
-			await rm(`.pilot/${artifact}/vrt/captures`, { recursive: true, force: true });
-			console.log('[30 VRT] ' + name);
-			await run('pnpm', ['pilot:vrt'], { HUB_CONTENT_PILOT: name });
+			if (action === 'verify') {
+				await rm(`.pilot/${artifact}/vrt/captures`, { recursive: true, force: true });
+				console.log('[30 VRT] ' + name);
+				await run('pnpm', ['pilot:vrt'], { HUB_CONTENT_PILOT: name });
+			}
 			await run(process.execPath, ['experiments/ssg/tooling/vrt-summary.mjs', name]);
 			const summary = JSON.parse(await readFile(`.pilot/${artifact}/vrt/summary.json`, 'utf8'));
 			const count = (await readdir(`.pilot/${artifact}/vrt/captures`, { recursive: true })).filter(
@@ -222,4 +224,4 @@ if (action === 'baseline') {
 			changePercent: s.changePercent,
 		})),
 	);
-} else throw new Error('Expected baseline, freeze, build, verify, or measure');
+} else throw new Error('Expected baseline, freeze, build, verify, collect, or measure');

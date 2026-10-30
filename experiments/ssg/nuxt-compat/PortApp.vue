@@ -68,6 +68,7 @@ watch(
 	},
 );
 onMounted(async () => {
+	document.documentElement.dataset.pilotMounted = 'true';
 	window.addEventListener(
 		'scroll',
 		() => {

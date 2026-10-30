@@ -25,7 +25,8 @@
     "pilot:full:profile:ox": "HUB_PILOT_PAGES=all HUB_VUE_COMPILER=vue HUB_SSG_PROFILE=1 node experiments/ssg/tooling/build.mjs ox-ported",
     "pilot:ox:build": "node experiments/ssg/tooling/build.mjs ox-ported",
     "pilot:astro-mdc:build": "node experiments/ssg/tooling/build.mjs astro",
-    "pilot:astro-ox:build": "node experiments/ssg/tooling/build.mjs astro-ox"
+    "pilot:astro-ox:build": "node experiments/ssg/tooling/build.mjs astro-ox",
+    "pilot:full:vrt": "node experiments/ssg/tooling/full-vrt.mjs"
   },
   "devDependencies": {
     "@astrojs/vue": "6.0.1",

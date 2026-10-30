@@ -7,6 +7,8 @@ import { createHash } from 'node:crypto';
 import { pages } from '../shared/pages.mjs';
 import { fullSite, resultDirectory } from '../shared/scope.mjs';
 if (!fullSite) throw new Error('Set HUB_PILOT_PAGES=all');
+const outputDirectory =
+	process.argv.find((arg) => arg.startsWith('--output-dir='))?.slice(13) ?? resultDirectory;
 const allModes = ['baseline', 'ox-ported', 'astro', 'astro-ox'];
 const selectedModes = process.argv
 	.find((arg) => arg.startsWith('--modes='))
@@ -29,13 +31,17 @@ const resultFile = vizeOnly
 		: 'timings.json';
 const runs = Number(process.argv.find((a) => a.startsWith('--runs='))?.slice(7) ?? 1);
 if (![1, 3].includes(runs)) throw new Error('Expected --runs=1 or --runs=3');
-await mkdir(resultDirectory, { recursive: true });
+await mkdir(outputDirectory, { recursive: true });
 const startedAt = new Date().toISOString(),
 	results = [];
 const files = [
 	'package.json',
 	'pnpm-lock.yaml',
 	'nuxt.config.ts',
+	'app.vue',
+	'app.config.ts',
+	'uno.config.ts',
+	'i18n/i18n.config.ts',
 	'experiments/ssg/shared/full-pages.mjs',
 	'experiments/ssg/shared/full-data.mjs',
 	'experiments/ssg/nuxt-compat/FullSurface.vue',
@@ -69,6 +75,7 @@ async function fingerprint() {
 				(/\.(mjs|ts|vue|astro|css|scss|json|ya?ml)$/.test(file) ||
 					(dir === 'content' && file.endsWith('.md'))) &&
 				!file.split('/').includes('results') &&
+				!file.startsWith('tooling/full-vrt') &&
 				!file.split('/').some((x) => x.startsWith('.'))
 			)
 				all.push(dir + '/' + file);
@@ -78,9 +85,9 @@ async function fingerprint() {
 const sourceHash = await fingerprint();
 const referenceVue = vizeOnly
 	? {
-			path: resultDirectory + '/timings.json',
+			path: outputDirectory + '/timings.json',
 			sha256: createHash('sha256')
-				.update(await readFile(resultDirectory + '/timings.json'))
+				.update(await readFile(outputDirectory + '/timings.json'))
 				.digest('hex'),
 		}
 	: undefined;
@@ -101,11 +108,11 @@ const output = {
 	cpu: cpus()[0]?.model,
 	implementationFingerprint: sourceHash,
 	policy:
-		'Sequential fresh builds; no VRT; all 1991 public HTML files required. Elapsed includes worker startup and route inventory. No blank fallback for failed SSR.',
+		'Sequential fresh builds; no VRT; all 1991 public HTML files required. Elapsed includes worker startup and route inventory. SSR exceptions are log-detected; Ox also uses an explicit Vue error handler.',
 	results,
 };
 async function save() {
-	await writeFile(resultDirectory + '/' + resultFile, JSON.stringify(output, null, 2) + '\n');
+	await writeFile(outputDirectory + '/' + resultFile, JSON.stringify(output, null, 2) + '\n');
 }
 for (let round = 0; round < runs; round++)
 	for (const mode of modes)
@@ -116,7 +123,7 @@ for (let round = 0; round < runs; round++)
 				artifact = 'full/' + name;
 			console.log('[full-benchmark] ' + (round + 1) + '/' + runs + ' ' + name);
 			const logPath =
-					resultDirectory +
+					outputDirectory +
 					'/' +
 					name +
 					(selectedModes ? '-retry' : '') +

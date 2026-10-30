@@ -46,12 +46,19 @@ for (const [index, entry] of pages.entries()) {
 				// Chromium settles MFM's full-page layout on the first capture.
 				// Capture without toHaveScreenshot's animation/layout reset, then
 				// require two consecutive frames to match before comparing Nuxt.
-				await page.screenshot({ fullPage, animations });
-				bytes = await page.screenshot({ fullPage, animations });
-				const repeat = PNG.sync.read(await page.screenshot({ fullPage, animations }));
-				const current = PNG.sync.read(bytes);
-				expect([repeat.width, repeat.height]).toEqual([current.width, current.height]);
-				expect(current.data.equals(repeat.data), 'Stable MFM frames').toBe(true);
+				let previous = PNG.sync.read(await page.screenshot({ fullPage, animations }));
+				const deadline = Date.now() + 5000;
+				let stable = false;
+				do {
+					bytes = await page.screenshot({ fullPage, animations });
+					const current = PNG.sync.read(bytes);
+					stable =
+						current.width === previous.width &&
+						current.height === previous.height &&
+						current.data.equals(previous.data);
+					previous = current;
+				} while (!stable && Date.now() < deadline);
+				expect(stable, 'Two consecutive identical MFM frames within 5 seconds').toBe(true);
 				await writeFile(file, bytes);
 				expect(bytes).toMatchSnapshot(name, { maxDiffPixels: 0, threshold: 0 });
 			} else {
