@@ -1,5 +1,14 @@
 import { PNG } from 'pngjs';
 
+// Identical PNG bytes necessarily contain identical pixels. Decode only when
+// encoded bytes differ; metadata/compression differences still use strict RGBA.
+export function compareCaptures(reference, candidate) {
+	if (reference.bytes.equals(candidate.bytes)) return { equal: true, differentPixels: 0 };
+	reference.png ??= PNG.sync.read(reference.bytes);
+	candidate.png ??= PNG.sync.read(candidate.bytes);
+	return comparePixels(reference.png, candidate.png);
+}
+
 export function comparePixels(reference, candidate) {
 	if (reference.width !== candidate.width || reference.height !== candidate.height)
 		return {
@@ -27,9 +36,15 @@ export function comparePixels(reference, candidate) {
 	};
 }
 
-export async function capturePage(page, url) {
+export async function capturePage(page, url, { clockTime } = {}) {
 	const clock = /\/features\/mfm\//.test(url) || !/\/(docs|blog)\//.test(url);
 	const errors = [];
+	const pendingLocalRequests = new Set();
+	page.on('request', (request) => {
+		if (new URL(request.url()).hostname === '127.0.0.1') pendingLocalRequests.add(request);
+	});
+	page.on('requestfinished', (request) => pendingLocalRequests.delete(request));
+	page.on('requestfailed', (request) => pendingLocalRequests.delete(request));
 	const report = (message) => {
 		if (errors.length < 20) errors.push(String(message).slice(0, 1000));
 	};
@@ -42,13 +57,16 @@ export async function capturePage(page, url) {
 			report(`${response.status()} ${response.url()}`);
 	});
 	try {
-		if (clock) await page.clock.install({ time: new Date('2026-10-30T00:00:00Z') });
+		if (clock) await page.clock.install({ time: new Date(clockTime ?? Date.now()) });
 		const response = await page.goto(url, { waitUntil: 'load', timeout: 20_000 });
 		if (response?.status() !== 200) throw new Error('HTTP ' + response?.status());
 		await page.waitForSelector('html[data-pilot-mounted="true"], html[data-pilot-ready="true"]', {
 			state: 'attached',
 			timeout: 8000,
 		});
+		// A client-only tool can request its chunk after the root mounts.
+		const requestDeadline = Date.now() + 5000;
+		while (pendingLocalRequests.size && Date.now() < requestDeadline) await page.waitForTimeout(50);
 		await page.evaluate(async () => {
 			document.querySelectorAll('img').forEach((img) => {
 				img.loading = 'eager';
@@ -95,20 +113,16 @@ export async function capturePage(page, url) {
 		if (errors.length)
 			return { status: 'runtime-error', errors, finalPath: new URL(page.url()).pathname };
 		const started = Date.now();
-		let previous = PNG.sync.read(
-			await page.screenshot({ fullPage: true, animations: 'allow', timeout: 10_000 }),
-		);
+		let previous = {
+			bytes: await page.screenshot({ fullPage: true, animations: 'allow', timeout: 10_000 }),
+		};
 		let bytes,
-			png,
 			stable = false;
 		do {
 			bytes = await page.screenshot({ fullPage: true, animations: 'allow', timeout: 10_000 });
-			png = PNG.sync.read(bytes);
-			stable =
-				png.width === previous.width &&
-				png.height === previous.height &&
-				png.data.equals(previous.data);
-			previous = png;
+			const current = { bytes };
+			stable = compareCaptures(previous, current).equal;
+			previous = current;
 		} while (!stable && Date.now() - started < 5000);
 		if (!stable)
 			return {
@@ -119,7 +133,6 @@ export async function capturePage(page, url) {
 			status: errors.length ? 'runtime-error' : 'captured',
 			errors,
 			bytes,
-			png,
 			finalPath: new URL(page.url()).pathname,
 		};
 	} catch (error) {

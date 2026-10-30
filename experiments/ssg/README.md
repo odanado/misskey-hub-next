@@ -37,14 +37,14 @@ experiments/ssg/
 
 全公開URL一覧は**1,991件**（docs 1,365 / blog 106 / static 287 / language entry 233）。Markdown1,434件＋YAML156件を読む。
 
-| 方針 | 通常Vue | Vize 0.607.0 |
-| --- | ---: | ---: |
-| Nuxt基準 | 236.77秒 | 219.90秒 |
-| Ox単独＋Vue | 36.22秒 | 31.85秒 |
-| Astro＋MDC | 49.71秒 | 51.43秒 |
-| Astro＋Ox | 50.70秒 | 46.45秒 |
+| 構成 | 通常Vue SSG | 通常Vue VRT | Vize SSG | Vize VRT |
+| --- | ---: | ---: | ---: | ---: |
+| Nuxt基準 | 210.90秒 | 集計中 | 216.52秒 | 集計中 |
+| Ox単独＋Vue | 33.73秒 | 集計中 | 31.99秒 | 集計中 |
+| Astro＋MDC | 49.94秒 | 集計中 | 48.99秒 | 集計中 |
+| Astro＋Ox | 46.14秒 | 集計中 | 44.43秒 | 集計中 |
 
-各1回・別ランの目安。Nuxt＋Vizeは互換修正後の再計測で、通常Vueにはディスク整理のI/Oも含む。全件の表示・操作は未完成で、HTML1,991件の出力だけで本番移行可能とは判定しない。
+互換修正後に8構成を各1回・同じコードで順次再計測した値。VRTは全公開1,991 URLのPC・ライト1条件（合格率の分母も1,991）。全件の表示・操作は移植途中で、本番移行の完了判定ではない。
 
 **SSR判定の訂正:** 過去の「SSR例外0」はログに出た例外の集計だった。非同期setupの失敗がVue内部で吸収されるケースを後で確認した。Ox通常VueのSSR入口に明示的な捕捉を追加し、profilingではAPIのHTTP 200と1,991ページのSSR完走、失敗注入時の検出を確認した。他7構成はその検出方式で再検証していない。
 
@@ -52,7 +52,7 @@ experiments/ssg/
 | --- | --- |
 | 初期4ページのVRT | 整理後も通常Vue/Vize 8構成・128テストが成功、160画像がRGBA一致（[再検証記録](results/refactor/vrt.json)） |
 | 30ページのVRT | [8構成・960テスト成功、1,152画像がRGBA一致](VRT_30_REPORT.md)。画像はPRに含めない |
-| 全1,991 URL | 全件HTML生成の試作・速度計測。全件VRTは未実施 |
+| 全1,991 URL | SSG再計測完了。PC・ライトVRTを実行中 |
 | Ox通常Vueのprofiling | 33.29秒。Vue SSR 10.57秒、client build 6.38秒、Rust本文変換API 0.118秒 |
 
 ### ディレクトリ整理後の確認
@@ -89,6 +89,12 @@ pnpm pilot:build native
 # 全件計測（通常Vue / Vize別に保存）
 pnpm pilot:full:measure --runs=1
 pnpm pilot:full:measure --vize-only --runs=1
+
+# 互換修正後の8構成再計測 → 同じ生成物で全URLのPC・ライトVRT
+pnpm pilot:full:measure --with-vize --runs=1 --output-dir=experiments/ssg/results/full/2026-10-30
+pnpm pilot:full:vrt --output-dir=experiments/ssg/results/full/2026-10-30
+# 中断時は同じコード・生成物・URL集合でのみ再開可能
+pnpm pilot:full:vrt --output-dir=experiments/ssg/results/full/2026-10-30 --resume
 
 # Ox通常Vueの工程計測 / Node CPUサンプル
 pnpm pilot:full:profile:ox

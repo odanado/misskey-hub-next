@@ -4,7 +4,7 @@ import { resolve, extname, sep } from 'node:path';
 import { createHash } from 'node:crypto';
 import { chromium } from '@playwright/test';
 import { fullPages } from '../shared/full-pages.mjs';
-import { capturePage, comparePixels, createFixtureContext } from './full-vrt-capture.mjs';
+import { capturePage, compareCaptures, createFixtureContext } from './full-vrt-capture.mjs';
 
 const option = (name, fallback) =>
 	process.argv.find((arg) => arg.startsWith(`--${name}=`))?.slice(name.length + 3) ?? fallback;
@@ -31,6 +31,23 @@ let pages =
 		: await fullPages();
 const only = option('only', '').split(',').filter(Boolean);
 if (only.length) pages = pages.filter((page) => only.includes(page.path));
+// Exercise each kind of surface early without reducing the full URL scope.
+const priorityPaths = [
+	'/ja/docs/for-users/features/note/',
+	'/ja/docs/for-users/features/mfm/',
+	'/ja/docs/for-users/stepped-guides/how-to-enable-2fa/',
+	'/ja/blog/2021-09-11-hello-to-misskey-hub/',
+	'/ja/',
+	'/ja/about-us/team/',
+	'/ja/tools/share-link-generator/',
+	'/',
+	'/about-us/',
+];
+const rank = (page) => {
+	const index = priorityPaths.indexOf(page.path);
+	return index < 0 ? priorityPaths.length : index;
+};
+pages.sort((a, b) => rank(a) - rank(b));
 const limit = Number(option('limit', String(pages.length)));
 pages = pages.slice(0, limit);
 await mkdir(outputDirectory, { recursive: true });
@@ -57,6 +74,7 @@ const manifest = {
 	workers,
 	scriptHash,
 	buildFingerprint: benchmark?.implementationFingerprint,
+	clockTime: benchmark?.finishedAt ?? startedAt,
 	benchmarkFile: benchmark ? benchmarkFile : undefined,
 	benchmarkSha256: benchmark
 		? createHash('sha256')
@@ -65,6 +83,9 @@ const manifest = {
 		: undefined,
 	viewport: { width: 1440, height: 900 },
 	colorScheme: 'light',
+	renderer: 'Chromium with SwiftShader WebGL fallback',
+	isolation:
+		'Fresh browser context per URL and compiler variant; no cookies, clock or storage carry over',
 	locale: 'ja-JP',
 	timezone: 'Asia/Tokyo',
 	policy:
@@ -115,7 +136,7 @@ const servers = [],
 let browser;
 let cursor = 0;
 const sampleCounts = {},
-	maxSamplesPerMode = 2;
+	maxSamplesPerKind = 1;
 let summaryWrite = Promise.resolve();
 async function saveSummary(finished = false) {
 	const summary = modes.map((mode) => {
@@ -156,9 +177,9 @@ async function saveSummary(finished = false) {
 	await summaryWrite;
 }
 async function saveSamples(mode, entry, reference, candidate) {
-	if ((sampleCounts[mode] ?? 0) >= maxSamplesPerMode || !reference.bytes || !candidate.bytes)
-		return;
-	sampleCounts[mode] = (sampleCounts[mode] ?? 0) + 1;
+	const key = mode + '/' + entry.kind;
+	if ((sampleCounts[key] ?? 0) >= maxSamplesPerKind || !reference.bytes || !candidate.bytes) return;
+	sampleCounts[key] = (sampleCounts[key] ?? 0) + 1;
 	const dir = resolve(
 		'.pilot/full-vrt/samples',
 		mode,
@@ -196,73 +217,83 @@ try {
 		servers.push(server);
 		origins[mode] = `http://127.0.0.1:${server.address().port}`;
 	}
-	browser = await chromium.launch();
+	browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader'] });
+	manifest.browserVersion = browser.version();
+	await writeFile(manifestFile, JSON.stringify(manifest, null, 2) + '\n');
 	console.log(
 		`[full-vrt] ${pages.length} URLs, ${modes.length} modes, ${workers} workers; ${remaining.length} URLs remaining`,
 	);
 	await Promise.all(
 		Array.from({ length: workers }, async (_, worker) => {
-			const contexts = Object.fromEntries(
-				await Promise.all(modes.map(async (mode) => [mode, await createFixtureContext(browser)])),
-			);
-			try {
-				while (cursor < remaining.length) {
-					const entry = remaining[cursor++];
-					const capture = async (mode) => {
-						const page = await contexts[mode].newPage();
-						try {
-							return await capturePage(page, origins[mode] + entry.path);
-						} finally {
-							await page.close();
-						}
-					};
-					const reference = await capture('baseline');
-					const results = {
-						baseline: {
-							status: reference.status === 'captured' ? 'passed' : 'reference-unavailable',
-							errors: reference.errors,
-						},
-					};
-					for (const mode of modes.slice(1)) {
-						if (reference.status !== 'captured') {
-							results[mode] = { status: 'reference-unavailable' };
-							continue;
-						}
-						const candidate = await capture(mode);
-						if (candidate.status !== 'captured') {
-							results[mode] = { status: candidate.status, errors: candidate.errors };
-							continue;
-						}
-						const pixels = comparePixels(reference.png, candidate.png);
-						results[mode] = {
-							status: pixels.equal ? 'passed' : 'different',
-							...pixels,
-							finalPath: candidate.finalPath,
-						};
-						if (!pixels.equal)
-							results[mode].sampleDirectory = await saveSamples(mode, entry, reference, candidate);
+			while (cursor < remaining.length) {
+				const entry = remaining[cursor++];
+				const capture = async (mode) => {
+					const context = await createFixtureContext(browser);
+					const page = await context.newPage();
+					let timer;
+					try {
+						return await Promise.race([
+							capturePage(page, origins[mode] + entry.path, { clockTime: manifest.clockTime }),
+							new Promise((accept) => {
+								timer = setTimeout(
+									() =>
+										accept({
+											status: 'capture-error',
+											errors: ['Overall capture timeout: 30 seconds'],
+										}),
+									30_000,
+								);
+							}),
+						]);
+					} finally {
+						clearTimeout(timer);
+						await context.close();
 					}
-					const row = {
-						path: entry.path,
-						kind: entry.kind,
-						reference: {
-							status: reference.status,
-							errors: reference.errors,
-							finalPath: reference.finalPath,
-						},
-						results,
-					};
-					rows.push(row);
-					await appendFile(rowFile, JSON.stringify(row) + '\n');
-					if (rows.length % 10 === 0 || rows.length === pages.length) {
-						await saveSummary();
-						console.log(
-							`[full-vrt] ${rows.length}/${pages.length} URLs complete; baseline unavailable ${rows.filter((row) => row.reference.status !== 'captured').length}; worker ${worker}`,
-						);
+				};
+				const reference = await capture('baseline');
+				const results = {
+					baseline: {
+						status: reference.status === 'captured' ? 'passed' : 'reference-unavailable',
+						errors: reference.errors,
+					},
+				};
+				for (const mode of modes.slice(1)) {
+					if (reference.status !== 'captured') {
+						results[mode] = { status: 'reference-unavailable' };
+						continue;
 					}
+					const candidate = await capture(mode);
+					if (candidate.status !== 'captured') {
+						results[mode] = { status: candidate.status, errors: candidate.errors };
+						continue;
+					}
+					const pixels = compareCaptures(reference, candidate);
+					results[mode] = {
+						status: pixels.equal ? 'passed' : 'different',
+						...pixels,
+						finalPath: candidate.finalPath,
+					};
+					if (!pixels.equal)
+						results[mode].sampleDirectory = await saveSamples(mode, entry, reference, candidate);
 				}
-			} finally {
-				await Promise.all(Object.values(contexts).map((context) => context.close()));
+				const row = {
+					path: entry.path,
+					kind: entry.kind,
+					reference: {
+						status: reference.status,
+						errors: reference.errors,
+						finalPath: reference.finalPath,
+					},
+					results,
+				};
+				rows.push(row);
+				await appendFile(rowFile, JSON.stringify(row) + '\n');
+				if (rows.length % 10 === 0 || rows.length === pages.length) {
+					await saveSummary();
+					console.log(
+						`[full-vrt] ${rows.length}/${pages.length} URLs complete; baseline unavailable ${rows.filter((row) => row.reference.status !== 'captured').length}; worker ${worker}`,
+					);
+				}
 			}
 		}),
 	);

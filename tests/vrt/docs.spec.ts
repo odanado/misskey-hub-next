@@ -29,6 +29,63 @@ test.beforeEach(async ({ page }, testInfo) => {
 	);
 });
 
+test.afterEach(async ({ page }, testInfo) => {
+	if (
+		!process.env.CI ||
+		!expanded ||
+		!/^(10|18):/.test(testInfo.title) ||
+		!testInfo.project.name.startsWith('desktop')
+	)
+		return;
+	const file = `.pilot/${artifactPath(process.env.HUB_CONTENT_PILOT!)}/vrt/diagnostics/${testInfo.project.name}-${testInfo.title.split(':')[0]}.json`;
+	try {
+		const diagnostics = await page.evaluate(() => {
+			const inspect = (element: Element) => {
+				const style = getComputedStyle(element);
+				return {
+					tag: element.tagName,
+					class: element.getAttribute('class'),
+					style: element.getAttribute('style'),
+					bounds: element.getBoundingClientRect().toJSON(),
+					css: Object.fromEntries(
+						[
+							'fontFamily',
+							'fontSize',
+							'fontWeight',
+							'lineHeight',
+							'backgroundColor',
+							'padding',
+							'boxSizing',
+							'display',
+							'height',
+							'overflowX',
+							'overflowY',
+							'scrollbarColor',
+							'scrollbarWidth',
+							'opacity',
+							'transform',
+						].map((key) => [key, (style as any)[key]]),
+					),
+				};
+			};
+			return {
+				devicePixelRatio,
+				userAgent: navigator.userAgent,
+				pre: [...document.querySelectorAll('.markdown-body pre')].map((pre) => ({
+					...inspect(pre),
+					htmlStart: pre.innerHTML.slice(0, 2000),
+					htmlEnd: pre.innerHTML.slice(-1000),
+					children: [...pre.querySelectorAll('code, .line')].map(inspect),
+				})),
+			};
+		});
+		await mkdir(dirname(file), { recursive: true });
+		await writeFile(file, JSON.stringify(diagnostics, null, 2) + '\n');
+	} catch {
+		/* Diagnostics must not replace the original test result. */
+	}
+});
+
 for (const [index, entry] of pages.entries()) {
 	test(`${index + 1}: ${entry.path}`, async ({ page, request }, testInfo) => {
 		const animated = expanded && entry.path.includes('/features/mfm/');
