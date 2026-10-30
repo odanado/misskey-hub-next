@@ -48,6 +48,9 @@ importers:
       '@ox-content/vite-plugin':
         specifier: 3.4.3
         version: 3.4.3(@vue/compiler-sfc@3.5.25)(katex@0.16.47)(vite@7.3.1(@types/node@24.10.7)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))
+      '@ox-content/vite-plugin-vue':
+        specifier: 3.4.3
+        version: 3.4.3(@vue/compiler-sfc@3.5.44)(katex@0.16.47)(vite@7.3.1(@types/node@24.10.7)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))
       '@playwright/test':
         specifier: 1.58.2
         version: 1.58.2
@@ -144,6 +147,9 @@ importers:
       three:
         specifier: 0.182.0
         version: 0.182.0
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
       ua-parser-js:
         specifier: ^2.0.7
         version: 2.0.8
@@ -8659,6 +8665,16 @@ packages:
         optional: true
       vue:
         optional: true
+
+  "@ox-content/islands@3.4.3":
+    resolution:
+      integrity: sha512-CxXv3u570kCpjzi4DSGyhgTyAfFZ8Rtv/yUbsExFtSa9dnPBxH/BGdvhT4w1KSDIAIbQu+rZC4+hDJHgzkBcPA==
+  "@ox-content/vite-plugin-vue@3.4.3":
+    resolution:
+      integrity: sha512-Fc10P0KB8S1F0eB40GpdfNjQEC1e9kR9QfG/4iOg+f6pEbKowOuuHBtUJi2pfCxkXWf987VW76CF+3yaUoOl0w==
+    peerDependencies:
+      vite: ^0.2.8 || ^8.0.0
+      vue: ^3.5.43
 
 snapshots:
 
@@ -19264,3 +19280,22 @@ snapshots:
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
       vue: 3.5.25(typescript@5.9.2)
+
+  "@ox-content/islands@3.4.3": {}
+  "@ox-content/vite-plugin-vue@3.4.3(@vue/compiler-sfc@3.5.44)(katex@0.16.47)(vite@7.3.1(@types/node@24.10.7)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))":
+    dependencies:
+      "@ox-content/islands": 3.4.3
+      "@ox-content/vite-plugin": 3.4.3(@vue/compiler-sfc@3.5.44)(katex@0.16.47)(vite@7.3.1(@types/node@24.10.7)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))
+      vite: 7.3.1(@types/node@24.10.7)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1)
+      vue: 3.5.25(typescript@5.9.2)
+    transitivePeerDependencies:
+      - "@vue/compiler-sfc"
+      - budoux
+      - bufferutil
+      - katex
+      - proxy-agent
+      - react
+      - react-dom
+      - svelte
+      - utf-8-validate
+      - yauzl

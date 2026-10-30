@@ -1,0 +1,125 @@
+:root {
+	color-scheme: light dark;
+	font-family: system-ui, sans-serif;
+	color: light-dark(#18202a, #e3eaf1);
+	background: light-dark(#f7f9fb, #131a22);
+}
+body {
+	margin: 0;
+}
+header,
+footer {
+	padding: 1.25rem 2rem;
+	border-bottom: 1px solid #8294a633;
+}
+header {
+	display: flex;
+	gap: 1rem;
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+header > a {
+	font-size: 1.3rem;
+	font-weight: 750;
+	text-decoration: none;
+}
+header > span,
+footer {
+	font-size: 0.85rem;
+	color: light-dark(#526477, #a4b5c6);
+}
+a {
+	color: light-dark(#176144, #9bdcaa);
+	text-underline-offset: 0.2em;
+}
+.layout {
+	display: grid;
+	grid-template-columns: 18rem minmax(0, 1fr);
+	max-width: 90rem;
+	margin: auto;
+}
+aside {
+	padding: 1.5rem;
+	border-right: 1px solid #8294a633;
+}
+aside p {
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.75rem;
+}
+nav {
+	display: grid;
+	gap: 0.65rem;
+	font-size: 0.9rem;
+}
+main {
+	min-width: 0;
+	padding: 2rem clamp(1rem, 4vw, 5rem);
+	max-width: 75ch;
+	font-size: var(--reading-scale, 100%);
+	line-height: 1.8;
+}
+main h1 {
+	font-size: clamp(1.6rem, 3vw, 2.4rem);
+	line-height: 1.3;
+}
+main h2 {
+	margin-top: 2em;
+	line-height: 1.4;
+}
+pre {
+	overflow-x: auto;
+	border: 1px solid #8294a633;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+table {
+	display: block;
+	overflow-x: auto;
+	border-collapse: collapse;
+}
+th,
+td {
+	padding: 0.5rem;
+	border: 1px solid #8294a633;
+}
+.reading-tools {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+.ox-container {
+	border-inline-start: 4px solid #58b87b;
+	padding: 0.25rem 1rem;
+	background: #58b87b12;
+	margin-block: 1rem;
+}
+button {
+	font: inherit;
+	padding: 0.4rem 0.8rem;
+	cursor: pointer;
+}
+:focus-visible {
+	outline: 3px solid #58b87b;
+	outline-offset: 4px;
+}
+@media (max-width: 760px) {
+	.layout {
+		display: block;
+	}
+	aside {
+		border-right: 0;
+		border-bottom: 1px solid #8294a633;
+	}
+	nav {
+		max-height: 10rem;
+		overflow-y: auto;
+	}
+	main {
+		padding: 1.5rem;
+	}
+}

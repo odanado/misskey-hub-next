@@ -65,14 +65,15 @@ VRTは既存の基準画像を更新せず、許容差・マスクなしで実�
 
 整理時には過去22 JSONの[バイト単位の保存](results/refactor/history-preservation.json)を確認した。その後、30ページのVRTを再開し、基準画像のハッシュを保って互換修正を完了した。
 
-## Native SSG reference
+## Ox Content + Vue reference
 
-[ox-native/](ox-native/README.md) is a standalone example of Ox Content 3.4.3's default native theme.
-It prepares its own sources, builds and validates 4/30/all public URLs, and records repeated measurements.
-Vue/YAML routes are explicit scaffolds; this example does not claim MDC/Vue compatibility or VRT parity.
+[ox-native/](ox-native/README.md) is a TypeScript/Vue example using Ox Content 3.4.3's Vite plugins.
+It renders native Markdown, YAML guides, and directory indexes in a Vue layout with selectively hydrated controls.
+Application-only routes are explicitly excluded; this example does not claim full Nuxt/MDC or VRT parity.
 
 ```sh
-HUB_PILOT_PAGES=all pnpm pilot:ox-native:measure --runs=5
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
 ```
 
 ## 実行方法

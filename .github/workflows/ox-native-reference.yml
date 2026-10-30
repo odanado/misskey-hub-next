@@ -1,4 +1,4 @@
-name: Ox native SSG reference
+name: Ox Vue SSG reference
 
 on:
   workflow_dispatch:
@@ -41,14 +41,16 @@ jobs:
         with:
           node-version: '22'
           cache: pnpm
-      # This sample uses published native binaries. Nuxt prepare, browser
-      # downloads, and native dependency install scripts are unnecessary.
+      # The sample uses published native binaries and an independent tsconfig.
       - run: pnpm install --frozen-lockfile --ignore-scripts
-      - run: node --test experiments/ssg/ox-native/sources.test.mjs
+      - run: pnpm pilot:ox-native:check
       - run: pnpm pilot:ox-native:build
+      - run: pnpm pilot:ox-native:verify
       - run: HUB_PILOT_PAGES=30 pnpm pilot:ox-native:build
-      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:measure --runs=3
-      - name: Upload native SSG measurements and build logs
+      - run: HUB_PILOT_PAGES=30 pnpm pilot:ox-native:verify
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
+      - name: Upload route coverage and output verification
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -56,6 +58,5 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           path: |
-            .pilot/**/ox-native-theme/build.json
-            .pilot/**/ox-native-theme/timings.json
-            .pilot/**/ox-native-theme/run-*.log
+            .pilot/**/ox-native-theme/public/coverage.json
+            .pilot/**/ox-native-theme/verification.json

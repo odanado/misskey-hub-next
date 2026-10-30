@@ -1,109 +1,91 @@
-# Ox native SSG reference
+# Ox Content + Vue SSG reference
 
-A standalone example of Ox's default native theme using the published
-`@ox-content/vite-plugin@3.4.3` and `@ox-content/napi@3.4.3` packages.
-It uses the [existing public URL inventory](../results/public-url-count.json)
-and prepares its own sources before building and validating every expected URL.
-There is no prerequisite Vue build or linked Ox source checkout.
+A TypeScript/Vue reference using published Ox Content 3.4.3 packages and the
+normal Vite lifecycle. Start with [vite.config.ts](vite.config.ts):
+
+```ts
+plugins: [
+	vue(),
+	oxContentVue({ srcDir: contentDir, embeds: false }),
+	createOxContentCustomHostPlugin({
+		host: './host.ts',
+		oxContent: { srcDir: contentDir, outDir, search: false, embeds: false },
+	}),
+];
+```
+
+`oxContentVue()` compiles the Markdown overview into a Vue component.
+`createOxContentCustomHostPlugin()` owns route rendering, manifest assets,
+development serving, and static HTML output. The low-level host plugin is used
+instead of the `oxContentCustomHost()` convenience wrapper because the Vue
+integration already owns Markdown module transformation.
+
+Article bodies use `ctx.markdown.render()` and are placed inside the Vue layout.
+This keeps large collections in the native Markdown pipeline without compiling
+one Vue module per article. Aliased sources are rendered once per build through
+`ctx.memo()`. Reading controls are server-rendered Vue and hydrated individually;
+the static article does not need a hydration payload.
 
 ## Run
 
-Use Node.js 22.6 or newer and the pnpm version specified in `package.json`.
-Run these commands from the repository root:
+Use Node.js 22.6+ and the pnpm version in the root `package.json`.
+Run from the repository root:
 
 ```sh
 pnpm install --frozen-lockfile --ignore-scripts
+pnpm pilot:ox-native:check
 
-# The first 4 pages, 30 pages, or all 1,991 public URLs
+# Four articles plus the reference home page
 pnpm pilot:ox-native:build
+pnpm pilot:ox-native:verify
+
+# Thirty articles, or the full source-backed catalogue
 HUB_PILOT_PAGES=30 pnpm pilot:ox-native:build
+HUB_PILOT_PAGES=30 pnpm pilot:ox-native:verify
 HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
 
-# Repeat source preparation, clean SSG, and output validation in five processes
-HUB_PILOT_PAGES=all pnpm pilot:ox-native:measure --runs=5
-node --test experiments/ssg/ox-native/sources.test.mjs
+# Development: the same host and Vue components
+pnpm pilot:ox-native:dev
 ```
 
-Install scripts are unnecessary for this example. For regular Nuxt development,
-use the existing `pnpm install --frozen-lockfile` command instead.
+No Nuxt prepare step or prebuilt Vue pilot output is required. Use the repository's
+normal install command with scripts enabled when developing the original Nuxt app.
+Vite 7 may warn about the parent Nuxt tsconfig during config bundling; the sample
+has its own strict [tsconfig.json](tsconfig.json).
 
-Artifacts go to `.pilot/ox-native-theme/` for 4 pages,
-`.pilot/30/ox-native-theme/` for 30 pages, or `.pilot/full/ox-native-theme/`
-for all URLs. Serve the generated `public/` directory with a static server to
-inspect the default theme. Both `source/` and `public/` are regenerated on each
-run, in a separate directory from the existing Vue pilot.
+Build output is `.pilot/ox-native-theme/public/`, prefixed with `30/` or `full/`
+under `.pilot/` for those scopes. Static files are copied from the existing
+`public/` directory. Vite's manifest supplies the emitted CSS and JavaScript URLs.
 
-## Implementation
+## Files
 
-- [build.mjs](build.mjs): enumerate routes, prepare sources, invoke the `oxContent`
-  SSG hooks, and validate HTML at every expected URL.
-- [sources.mjs](sources.mjs): map the route inventory to generated `index.md` files.
-- [measure.mjs](measure.mjs): run independent Node processes and save every sample
-  together with the medians.
-- [Actions](../../../.github/workflows/ox-native-reference.yml): validate the
-  frozen install, source preparation, and 4/30/full-site builds on Linux.
+- [vite.config.ts](vite.config.ts): Vue, Ox Vue, and the custom-host plugin.
+- [host.ts](host.ts): native Markdown, cached source rendering, Vue SSR, assets,
+  and propagation of SSR errors.
+- [routes.ts](routes.ts): reuse the existing URL mapping, read source titles,
+  and adapt YAML guides to Markdown.
+- [App.vue](App.vue): the real server-rendered layout and section indexes.
+- [overview.md](overview.md): a Markdown component imported via `oxContentVue()`.
+- [ReadingTools.vue](ReadingTools.vue) / [client.ts](client.ts): selective Vue hydration.
+- [verify.ts](verify.ts): check each rendered URL, article/index content,
+  server-rendered controls, and emitted CSS/JS files.
 
-The configuration uses the default native renderer and automatic navigation
-for large sites in 3.4.3. It does not provide a custom `ssg.render` callback:
+## Coverage
 
-```js
-const ssg = oxContent({
-	srcDir,
-	outDir,
-	docs: false,
-	search: false,
-	embeds: false,
-	highlight: false,
-	ssg: {
-		clean: true,
-		generateOgImage: false,
-		lastUpdated: false,
-		readerChrome: false,
-	},
-}).find((plugin) => plugin.name === 'ox-content:ssg');
+`coverage.json` records every rendered and excluded route. Markdown retains its
+original source. `_dir.yml` becomes a titled index of its articles; stepped YAML
+guides render their body, groups, step descriptions, and images. Application-only
+Vue pages and locale redirects remain listed as excluded routes. They do not
+produce placeholder HTML.
 
-ssg.config({}, { command: 'build', mode: 'production' });
-await ssg.closeBundle();
-```
+The layout is a small reference design, not a port of Misskey Hub's Nuxt theme.
+Raw MDC is processed by Ox and does not reproduce all Nuxt/MDC components.
+Guide content is rendered, but the original guide selector/layout behavior is
+not ported. Existing [ox-standalone](../ox-standalone/README.md) remains the example
+that reuses the Nuxt compatibility layer and existing Vue pages.
 
-Calling Vite plugin hooks directly is an experimental script entry point;
-the dependencies are pinned to 3.4.3. The example does not start Nuxt, a Vite
-server, or a browser, and does not fetch external APIs.
-
-## Rendering coverage
-
-Markdown is passed unchanged to the native renderer, including frontmatter and
-raw MDC. Aliases such as `ja-ks` use the same source mappings as the existing
-route inventory. Vue/YAML routes produce explicit **Native SSG route scaffold**
-pages. The JSON output distinguishes `markdownRoutes`, `scaffoldRoutes`, and
-`markdownSources`.
-
-This example demonstrates the default theme and native SSG performance; it is
-not a complete Misskey Hub migration. It does not implement the existing Vue
-layouts, MDC components, AiScript/Shiki output, hydration, search, embeds, full
-public-asset copying, or language-entry redirects. Raw MDC does not have the
-same rendering semantics as Nuxt/MDC, and scaffolds do not implement the original
-Vue/YAML pages. HTML validation checks for complete documents at every expected
-URL, not visual or functional parity. For the implementation that reuses the
-existing Vue pages, see [ox-standalone](../ox-standalone/README.md).
-
-## Measurements
-
-`build.json` and `timings.json` are saved alongside the generated output.
-Existing historical comparison results are kept intact.
-
-| Field                | Scope                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------- |
-| `preparationSeconds` | Route enumeration, source reads, and rebuilding `source/`                               |
-| `buildSeconds`       | SSG configuration, native Markdown/theme rendering, asset extraction, and output writes |
-| `validationSeconds`  | Reading and validating every expected HTML document, counting output files and bytes    |
-| `seconds`            | The sum of those three phases                                                           |
-| `wallSeconds`        | Child process startup, module imports, all phases, and process exit                     |
-
-Every run is recorded and included in the median, including the first run.
-The OS filesystem cache is not cleared. Inspect the individual samples to
-understand first-run versus subsequent-run behavior.
-
-The previous approximately 34–40 second Vue pilot also includes Vue SSR and a
-client build. Its scope differs from this example, so these native SSG numbers
-cannot be interpreted as the speedup of a functionally equivalent migration.
+[Actions](../../../.github/workflows/ox-native-reference.yml) runs strict TypeScript
+checking and 4/30/full builds with output verification. Coverage and verification
+JSON are uploaded as artifacts. Historical performance and VRT reports are untouched;
+the previous 1.8s default-native-theme measurement has a different rendering scope.
