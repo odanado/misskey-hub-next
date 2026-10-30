@@ -50,3 +50,7 @@ python3 experiments/ssg/tooling/islands-comparison/verify-combined.py
 ```
 
 [同時無効化の条件と結果](../../ISLANDS_COMBINED_REPORT.md)。通常版と個別診断の出力は保持し、combined専用の出力先を使う。通常verifierは意図的なUI省略のため適用せず、専用の構造・アセット検査を使う。
+
+## Vueだけを足す比較
+
+`prepare-vue.py vue-client` / `prepare-vue.py vue-island`で専用コピーを作る。原稿はOxの静的HTMLのまま、公式VueコンパイラとカウンターSFC1個を足し、クライアントのみと全URLでのSSR/hydrationを分ける。`benchmark-vue.py`はVueなしも含め各3回を順番を交替して計測、`verify-vue.mjs`は計測後にブラウザーでクリック動作を検証する。詳細は[Vue追加のレポート](../../ISLANDS_VUE_REPORT.md)。

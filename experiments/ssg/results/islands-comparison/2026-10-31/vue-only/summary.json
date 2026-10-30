@@ -1,0 +1,118 @@
+{
+  "startedAt": "2026-10-30T22:46:06.183846+00:00",
+  "sourceFingerprints": {
+    "combined": "50961df6038c68f6b3b2f06e0ddf0e0507b4c04b5aa0858ee6457ccde09757c8",
+    "vue-client": "a81740994489c7a5a18e925c48ac099305aab59c7ac35b13410b7c50620ff2ee",
+    "vue-island": "d3e30d1cfda0634e9d37857d854ef35f840143bfc75d6575e03f80f0d4aa8bae"
+  },
+  "originalInputsIdentical": true,
+  "policy": "Three fresh-process PNPM-startup-inclusive builds per case; rotated order each round. Timer includes Vite/client build, all 1434 raw Ox Markdown and 156 YAML reads, all 1991 HTML and public copy. Verification outside timer. UI/MDC/Shiki/HAST compatibility remains off. OS caches retained.",
+  "runs": [
+    {
+      "case": "combined",
+      "round": 1,
+      "seconds": 2.653166208183393,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 1,
+      "clientJsFiles": 1,
+      "peakRssBytes": 202260480,
+      "logSha256": "f6c467445728747c6d76b55cff917cfafea14de80778ef4404f1e29e84e58783"
+    },
+    {
+      "case": "vue-client",
+      "round": 1,
+      "seconds": 2.1893547500949353,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 58682,
+      "clientJsFiles": 1,
+      "peakRssBytes": 259145728,
+      "logSha256": "09a403e11a7ab6e922361b188b725ec6ea904e3aa395744a236cf60b7ed37067"
+    },
+    {
+      "case": "vue-island",
+      "round": 1,
+      "seconds": 2.3739680831786245,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "peakRssBytes": 268615680,
+      "logSha256": "38d276a2c814633b6d07883dc9d75befd368fc09313d23bfe93e591c7dabf72b"
+    },
+    {
+      "case": "vue-client",
+      "round": 2,
+      "seconds": 2.600870457943529,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 58682,
+      "clientJsFiles": 1,
+      "peakRssBytes": 262471680,
+      "logSha256": "72fc81ce9cfb08fc1e6fcd41e49f687162a9fb4ac7e1224197b84686d4438200"
+    },
+    {
+      "case": "vue-island",
+      "round": 2,
+      "seconds": 2.7899319170974195,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "peakRssBytes": 268926976,
+      "logSha256": "8ae763f6b948f425c1cc134d5227a514c7ec70a85c373ea759d34c711163529c"
+    },
+    {
+      "case": "combined",
+      "round": 2,
+      "seconds": 2.387530333129689,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 1,
+      "clientJsFiles": 1,
+      "peakRssBytes": 203325440,
+      "logSha256": "c7bfc72bca53886a7f4fb07a72871b39c1af4b147c3afdbddff9022814d5dd4c"
+    },
+    {
+      "case": "vue-island",
+      "round": 3,
+      "seconds": 2.8659676669631153,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "peakRssBytes": 267812864,
+      "logSha256": "28cf7ba035e350faf73a5bee5076055ab8934a50462250fc78c96fe3d2aff7c7"
+    },
+    {
+      "case": "combined",
+      "round": 3,
+      "seconds": 2.3920869170688093,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 1,
+      "clientJsFiles": 1,
+      "peakRssBytes": 203030528,
+      "logSha256": "d55af69a78be23a2026167a8600c032b22fc98a799543ec072573d7af808fb24"
+    },
+    {
+      "case": "vue-client",
+      "round": 3,
+      "seconds": 2.5775367920286953,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 58682,
+      "clientJsFiles": 1,
+      "peakRssBytes": 262651904,
+      "logSha256": "07133b9887d00f14c16902e48e94078bdc3b986e8376581692911d9c22a4763e"
+    }
+  ],
+  "medians": {
+    "vue-client": 2.5775367920286953,
+    "vue-island": 2.7899319170974195,
+    "combined": 2.3920869170688093
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-30T22:46:35.671304+00:00"
+}

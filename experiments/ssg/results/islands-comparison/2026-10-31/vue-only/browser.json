@@ -1,0 +1,22 @@
+{
+  "node": "v22.22.2",
+  "cpu": "Apple M1 Pro",
+  "platform": "darwin-arm64",
+  "checks": [
+    {
+      "case": "vue-client",
+      "httpStatus": 200,
+      "before": "Vue: 0",
+      "after": "Vue: 1",
+      "errors": []
+    },
+    {
+      "case": "vue-island",
+      "httpStatus": 200,
+      "before": "Vue: 0",
+      "after": "Vue: 1",
+      "errors": []
+    }
+  ],
+  "policy": "After SSG timing: actual Chromium load and counter click, no JS/hydration errors. Minimal Vue button only, not site VRT."
+}

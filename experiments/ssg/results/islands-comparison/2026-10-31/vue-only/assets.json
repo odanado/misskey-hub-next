@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "case": "combined",
+      "htmlFiles": 1991,
+      "publicAssetsCopiedExactly": 750,
+      "publicAssetBytes": 65141521
+    },
+    {
+      "case": "vue-client",
+      "htmlFiles": 1991,
+      "publicAssetsCopiedExactly": 750,
+      "publicAssetBytes": 65141521
+    },
+    {
+      "case": "vue-island",
+      "htmlFiles": 1991,
+      "publicAssetsCopiedExactly": 750,
+      "publicAssetBytes": 65141521
+    }
+  ],
+  "policy": "Asset byte comparisons outside timing. Vue/no-Vue original input hashes checked by benchmark; normal source and VRT baseline hash comparison verified separately."
+}
