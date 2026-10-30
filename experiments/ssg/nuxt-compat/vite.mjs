@@ -4,12 +4,19 @@ import { readdirSync } from 'node:fs';
 import { createUnimport } from 'unimport';
 import unocss from 'unocss/vite';
 import svgLoader from 'vite-svg-loader';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import { compiler } from '../shared/compiler.mjs';
 import { expanded, fullSite } from '../shared/scope.mjs';
 import { prepareTimeComponent } from './extended-components.mjs';
 import { prepareVizeComponents, repairVizeCssModuleReferences } from './vize-compat.mjs';
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, '../../..');
+// Match Nuxt's production PostCSS pipeline, including SVG data-URI precision.
+// A different SVG optimizer changes antialias pixels in ScrollHint's icons.
+export const cssOptions = () => ({
+	postcss: { plugins: [autoprefixer(), cssnano({ preset: 'default' })] },
+});
 const contentDist = dirname(require.resolve('@nuxt/content'));
 const mdcDist = dirname(require.resolve('@nuxtjs/mdc'));
 const runtime = resolve(root, 'experiments/ssg/nuxt-compat/runtime.ts');
@@ -205,6 +212,7 @@ export const aliases = {
 export const common = () => ({
 	root,
 	configFile: false,
+	css: cssOptions(),
 	resolve: {
 		alias: aliases,
 		dedupe: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/reactivity'],

@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import uno from 'unocss/astro';
 import { resolve } from 'node:path';
-import { root, aliases, plugins, unoOptions } from '../../nuxt-compat/vite.mjs';
+import { root, aliases, plugins, unoOptions, cssOptions } from '../../nuxt-compat/vite.mjs';
 import { compiler, artifactMode, vueCompiler } from '../compiler.mjs';
 export function createAstroConfig({ mode, srcDir }) {
 	if (!['astro', 'astro-ox'].includes(mode)) throw new Error('Unknown Astro strategy: ' + mode);
@@ -39,6 +39,7 @@ export function createAstroConfig({ mode, srcDir }) {
 			compilerIntegration,
 		],
 		vite: {
+			css: cssOptions(),
 			define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true' },
 			resolve: {
 				alias: aliases,

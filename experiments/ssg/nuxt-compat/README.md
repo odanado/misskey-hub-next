@@ -5,7 +5,7 @@
 | ファイル | 役割 |
 | --- | --- |
 | runtime.ts | route、i18n、state、queryContent等の互換API |
-| vite.mjs | auto-import、Nuxt固有importの解決、SVG・UnoCSS連携 |
+| vite.mjs | auto-import、Nuxt固有importの解決、SVG・UnoCSS連携、Nuxt同等のPostCSS処理 |
 | PortApp.vue | payload/contextを渡す共有Vueアプリ |
 | FullSurface.vue | 全件用に元のpage/layoutを選択する |
 | registry.ts | 既存コンポーネントとProse部品の登録 |

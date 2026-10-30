@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { pilotPages as pages } from '../../experiments/ssg/shared/pilot-pages.mjs';
 import { expanded, artifactPath } from '../../experiments/ssg/shared/scope.mjs';
-import { readFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { PNG } from 'pngjs';
 
@@ -38,28 +38,27 @@ for (const [index, entry] of pages.entries()) {
 				await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
 				await page.waitForTimeout(450);
 			}
-			if (expanded)
-				await page.evaluate(() => {
-					for (const animation of document.getAnimations()) {
-						if (animation.effect?.getTiming().iterations === Infinity) {
-							animation.pause();
-							animation.currentTime = 0;
-						} else
-							try {
-								animation.finish();
-							} catch {}
-						try {
-							animation.commitStyles();
-							animation.cancel();
-						} catch {}
-					}
-				});
-			await expect(page).toHaveScreenshot(name, { fullPage, animations: 'disabled' });
+			const animations = animated ? 'allow' : 'disabled';
 			const file = `.pilot/${artifactPath(process.env.HUB_CONTENT_PILOT!)}/vrt/captures/${testInfo.project.name}/${name}`;
 			await mkdir(dirname(file), { recursive: true });
-			const actual = PNG.sync.read(
-				await page.screenshot({ path: file, fullPage, animations: 'disabled' }),
-			);
+			let bytes: Buffer;
+			if (animated) {
+				// Chromium settles MFM's full-page layout on the first capture.
+				// Capture without toHaveScreenshot's animation/layout reset, then
+				// require two consecutive frames to match before comparing Nuxt.
+				await page.screenshot({ fullPage, animations });
+				bytes = await page.screenshot({ fullPage, animations });
+				const repeat = PNG.sync.read(await page.screenshot({ fullPage, animations }));
+				const current = PNG.sync.read(bytes);
+				expect([repeat.width, repeat.height]).toEqual([current.width, current.height]);
+				expect(current.data.equals(repeat.data), 'Stable MFM frames').toBe(true);
+				await writeFile(file, bytes);
+				expect(bytes).toMatchSnapshot(name, { maxDiffPixels: 0, threshold: 0 });
+			} else {
+				await expect(page).toHaveScreenshot(name, { fullPage, animations });
+				bytes = await page.screenshot({ path: file, fullPage, animations });
+			}
+			const actual = PNG.sync.read(bytes);
 			const expected = PNG.sync.read(await readFile(testInfo.snapshotPath(name)));
 			// Also compare raw RGBA, including antialias pixels, after Playwright's
 			// stable-frame capture. This does not rely on a perceptual tolerance.
@@ -106,6 +105,33 @@ for (const [index, entry] of pages.entries()) {
 		if (animated) {
 			const now = await page.evaluate(() => Date.now());
 			await page.clock.pauseAt(now + 1000);
+		}
+		if (expanded) {
+			// Commit the first frame before disabling motion. MFM sparkle uses
+			// scale: 0 in its first keyframe; simply removing animation would show
+			// randomly placed particles and change the screenshot/overflow height.
+			await page.evaluate(() => {
+				const animations = document.getAnimations();
+				for (const animation of animations) {
+					if (animation.effect?.getTiming().iterations === Infinity) {
+						animation.pause();
+						animation.currentTime = 0;
+					} else {
+						try {
+							animation.finish();
+						} catch {}
+					}
+				}
+				for (const animation of animations) {
+					try {
+						animation.commitStyles();
+					} catch {}
+				}
+			});
+			await page.addStyleTag({
+				content:
+					'*, *::before, *::after { animation: none !important; transition: none !important; }',
+			});
 		}
 		expect(errors).toEqual([]);
 		if (!standalone) {

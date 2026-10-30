@@ -1,0 +1,48 @@
+name: SSG 30-page VRT
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'experiments/ssg/**'
+      - 'tests/vrt/**'
+      - 'playwright.config.ts'
+      - 'nuxt.config.ts'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/ssg-30-vrt.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  vrt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: HUB_PILOT_PAGES=30 node experiments/ssg/tooling/repros/markdown-compat.mjs
+      # Generate the original Nuxt reference on the same OS/browser. Images
+      # remain CI artifacts and are never committed or updated by candidates.
+      - run: pnpm pilot:30:baseline
+      - run: pnpm pilot:30:build
+      - run: pnpm pilot:30:verify
+      - name: Upload VRT evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssg-30-page-vrt
+          include-hidden-files: true
+          retention-days: 7
+          path: |
+            .pilot/30/*/build.log
+            .pilot/30/*/vrt/
+            experiments/ssg/results/30/
+            tests/vrt/snapshots/30/

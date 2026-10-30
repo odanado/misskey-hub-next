@@ -17,7 +17,8 @@ permissions:
 
 jobs:
   pilot:
-    runs-on: ubuntu-latest
+    # Playwright 1.58.2 does not support Ubuntu 26.04 dependencies yet.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +29,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
+      - run: HUB_PILOT_PAGES=30 node experiments/ssg/tooling/repros/markdown-compat.mjs
       # Baseline uses the original Nuxt Content query and renderer. Generate it
       # on the same OS/browser as candidates; macOS font rasterization differs.
       - run: pnpm pilot:build baseline

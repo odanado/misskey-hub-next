@@ -14,9 +14,13 @@ export async function nativeDocument(
 ) {
 	const preprocessStart = tick();
 	const snippets = [];
+	const extracted = mdcIslands
+		? extractMdcIslands(entry.body, snippets, { allowUnclosed: allowUnclosedContainers })
+		: null;
+	const componentSnippets = snippets.length;
 	// Respect the opening fence length: a four-backtick example may contain a
 	// literal triple-backtick AiScript fence, which must remain code text.
-	const lines = entry.body.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+	const lines = (extracted?.markdown ?? entry.body).match(/[^\n]*\n|[^\n]+$/g) ?? [];
 	let markdown = '';
 	for (let i = 0; i < lines.length; i++) {
 		const opening = /^ {0,3}(`{3,}|~{3,})[^\n]*\r?\n?$/.exec(lines[i]);
@@ -33,11 +37,7 @@ export async function nativeDocument(
 		const slot = snippets.push(code) - 1;
 		markdown += `<div data-pilot-code="${slot}"></div>\n`;
 	}
-	const codeIslands = snippets.length;
-	const extracted = mdcIslands
-		? extractMdcIslands(markdown, snippets, { allowUnclosed: allowUnclosedContainers })
-		: null;
-	if (extracted) markdown = extracted.markdown;
+	const codeIslands = snippets.length - componentSnippets;
 	if (/^:{2,}[^\n]*(?:\{|#)|^:{2}[^:\n]/m.test(markdown)) {
 		throw new Error(`MDC syntax outside this pilot's supported subset: ${entry.source}`);
 	}

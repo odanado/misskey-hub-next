@@ -44,5 +44,5 @@ public/_redirects
 test-results/
 playwright-report/
 
-# Paused, unvalidated 30-page VRT baselines stay local until resumed.
+# Generate 30-page VRT references locally/in CI; keep images out of the PR.
 tests/vrt/snapshots/30/
