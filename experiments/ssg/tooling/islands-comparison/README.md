@@ -54,3 +54,7 @@ python3 experiments/ssg/tooling/islands-comparison/verify-combined.py
 ## Vueだけを足す比較
 
 `prepare-vue.py vue-client` / `prepare-vue.py vue-island`で専用コピーを作る。原稿はOxの静的HTMLのまま、公式VueコンパイラとカウンターSFC1個を足し、クライアントのみと全URLでのSSR/hydrationを分ける。`benchmark-vue.py`はVueなしも含め各3回を順番を交替して計測、`verify-vue.mjs`は計測後にブラウザーでクリック動作を検証する。詳細は[Vue追加のレポート](../../ISLANDS_VUE_REPORT.md)。
+
+## CSS生成を追加
+
+`prepare-vue.py vue-island-css`は最小SSR版に既存共通CSS、UnoCSS、Sass、PostCSS、既存SFC style/CSS modulesを追加する。`benchmark-vue.py --css`でCSSなし/ありを交互に各3回計測し、`verify-vue.mjs --css`でCSS取得・computed style・Vueのクリックを確認する。既存UIのscript/templateを取り込まずstyle queryだけを生成する。[CSS追加レポート](../../ISLANDS_CSS_REPORT.md)。

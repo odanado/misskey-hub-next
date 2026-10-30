@@ -1,0 +1,123 @@
+{
+  "startedAt": "2026-10-30T22:58:24.890928+00:00",
+  "cssComparison": true,
+  "sourceFingerprints": {
+    "vue-island": "d3e30d1cfda0634e9d37857d854ef35f840143bfc75d6575e03f80f0d4aa8bae",
+    "vue-island-css": "9d7eac7332d3c244fbc2f8999c376a343ef22216708dbc5350553a3feb7bbe7d"
+  },
+  "originalInputsIdentical": true,
+  "policy": "Three fresh-process PNPM-startup-inclusive builds per case; rotated order each round. CSS case restores global CSS, UnoCSS, Sass, autoprefixer/cssnano and existing SFC style blocks without site UI scripts. Timer includes Vite/client build, all 1434 raw Ox Markdown and 156 YAML reads, all 1991 HTML and public copy. Verification outside timer. UI/MDC/Shiki/HAST compatibility remains off. OS caches retained.",
+  "runs": [
+    {
+      "case": "vue-island",
+      "round": 1,
+      "seconds": 2.6631947909481823,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "clientCssBytes": 0,
+      "clientCssFiles": 0,
+      "cssSources": null,
+      "peakRssBytes": 269844480,
+      "logSha256": "35ea9a82993237e4852accde370d6f9899bd7e3d6eae6a58c0c01c92d75b21e4"
+    },
+    {
+      "case": "vue-island-css",
+      "round": 1,
+      "seconds": 4.913429290987551,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63314,
+      "clientJsFiles": 1,
+      "clientCssBytes": 148552,
+      "clientCssFiles": 1,
+      "cssSources": {
+        "sfcFiles": 97,
+        "styledFiles": 52,
+        "styleBlocks": 56,
+        "cssModules": 40,
+        "scopedBlocks": 13,
+        "scssBlocks": 5
+      },
+      "peakRssBytes": 486244352,
+      "logSha256": "21bebfb3b2410b27176735f757e3b15e00be2dcc94129e6606442bc59d6ee898"
+    },
+    {
+      "case": "vue-island-css",
+      "round": 2,
+      "seconds": 4.553350125206634,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63314,
+      "clientJsFiles": 1,
+      "clientCssBytes": 148552,
+      "clientCssFiles": 1,
+      "cssSources": {
+        "sfcFiles": 97,
+        "styledFiles": 52,
+        "styleBlocks": 56,
+        "cssModules": 40,
+        "scopedBlocks": 13,
+        "scssBlocks": 5
+      },
+      "peakRssBytes": 486752256,
+      "logSha256": "3f194dace8fc7bd5848e3fe0d8cd2be769530816e0d519c936808606b3e0e28a"
+    },
+    {
+      "case": "vue-island",
+      "round": 2,
+      "seconds": 2.74188583297655,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "clientCssBytes": 0,
+      "clientCssFiles": 0,
+      "cssSources": null,
+      "peakRssBytes": 266993664,
+      "logSha256": "b91445f8a099a1f4a75c82c70126c09ec42e1f521c534f136a3f2b44bf10bbbf"
+    },
+    {
+      "case": "vue-island",
+      "round": 3,
+      "seconds": 2.6632969579659402,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63132,
+      "clientJsFiles": 1,
+      "clientCssBytes": 0,
+      "clientCssFiles": 0,
+      "cssSources": null,
+      "peakRssBytes": 268861440,
+      "logSha256": "2324c1864bd0ef0f1aaf029e90f9d25d720f4b6f6d99619a5a71666f6e43b7d0"
+    },
+    {
+      "case": "vue-island-css",
+      "round": 3,
+      "seconds": 4.713245042134076,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "clientJsBytes": 63314,
+      "clientJsFiles": 1,
+      "clientCssBytes": 148552,
+      "clientCssFiles": 1,
+      "cssSources": {
+        "sfcFiles": 97,
+        "styledFiles": 52,
+        "styleBlocks": 56,
+        "cssModules": 40,
+        "scopedBlocks": 13,
+        "scssBlocks": 5
+      },
+      "peakRssBytes": 484704256,
+      "logSha256": "b967f87fac62c36700e91a689005a8682ff12a2a84935fd3dad073819a99f3cb"
+    }
+  ],
+  "medians": {
+    "vue-island": 2.6632969579659402,
+    "vue-island-css": 4.713245042134076
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-30T22:58:51.036809+00:00"
+}
