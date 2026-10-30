@@ -1,0 +1,750 @@
+{
+  "startedAt": "2026-10-29T21:37:18.817Z",
+  "nuxtRemeasuredAt": "2026-10-29T21:50:37.054Z",
+  "preservedPortsFrom": "2026-10-29T21:37:18.817Z",
+  "finishedAt": "2026-10-29T21:55:08.767Z",
+  "vizeVersion": "0.607.0",
+  "scope": "same four pilot pages and full SSG worker time as previous experiment; both compiler variants remeasured",
+  "order": [
+    {
+      "round": 1,
+      "mode": "ox-ported",
+      "compiler": "vue"
+    },
+    {
+      "round": 1,
+      "mode": "ox-ported",
+      "compiler": "vize"
+    },
+    {
+      "round": 1,
+      "mode": "astro",
+      "compiler": "vue"
+    },
+    {
+      "round": 1,
+      "mode": "astro",
+      "compiler": "vize"
+    },
+    {
+      "round": 1,
+      "mode": "astro-ox",
+      "compiler": "vue"
+    },
+    {
+      "round": 1,
+      "mode": "astro-ox",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "ox-ported",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "ox-ported",
+      "compiler": "vue"
+    },
+    {
+      "round": 2,
+      "mode": "astro",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "astro",
+      "compiler": "vue"
+    },
+    {
+      "round": 2,
+      "mode": "astro-ox",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "astro-ox",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "astro",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "astro",
+      "compiler": "vize"
+    },
+    {
+      "round": 3,
+      "mode": "astro-ox",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "astro-ox",
+      "compiler": "vize"
+    },
+    {
+      "round": 3,
+      "mode": "ox-ported",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "ox-ported",
+      "compiler": "vize"
+    },
+    {
+      "round": 1,
+      "mode": "baseline",
+      "compiler": "vue"
+    },
+    {
+      "round": 1,
+      "mode": "baseline",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "baseline",
+      "compiler": "vize"
+    },
+    {
+      "round": 2,
+      "mode": "baseline",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "baseline",
+      "compiler": "vue"
+    },
+    {
+      "round": 3,
+      "mode": "baseline",
+      "compiler": "vize"
+    }
+  ],
+  "summary": [
+    {
+      "mode": "baseline",
+      "vue": {
+        "runs": 3,
+        "medianSeconds": 41.933460417,
+        "minSeconds": 41.880586209,
+        "maxSeconds": 42.164736291000004
+      },
+      "vize": {
+        "runs": 3,
+        "medianSeconds": 46.715868416999996,
+        "minSeconds": 46.695955792,
+        "maxSeconds": 50.279758667
+      },
+      "changePercent": 11.404753989873884
+    },
+    {
+      "mode": "ox-ported",
+      "vue": {
+        "runs": 3,
+        "medianSeconds": 4.211888333,
+        "minSeconds": 3.7543399170000002,
+        "maxSeconds": 4.279470542
+      },
+      "vize": {
+        "runs": 3,
+        "medianSeconds": 3.4432050000000003,
+        "minSeconds": 3.364682917,
+        "maxSeconds": 3.4720455
+      },
+      "changePercent": -18.25032556009124
+    },
+    {
+      "mode": "astro",
+      "vue": {
+        "runs": 3,
+        "medianSeconds": 5.020127583000001,
+        "minSeconds": 4.538461042,
+        "maxSeconds": 5.085525875
+      },
+      "vize": {
+        "runs": 3,
+        "medianSeconds": 4.422015249999999,
+        "minSeconds": 4.341940416000001,
+        "maxSeconds": 4.551069458
+      },
+      "changePercent": -11.914285505918809
+    },
+    {
+      "mode": "astro-ox",
+      "vue": {
+        "runs": 3,
+        "medianSeconds": 4.585781584,
+        "minSeconds": 4.549838542000001,
+        "maxSeconds": 4.612699917
+      },
+      "vize": {
+        "runs": 3,
+        "medianSeconds": 4.341615583,
+        "minSeconds": 4.2571682090000005,
+        "maxSeconds": 4.422345125
+      },
+      "changePercent": -5.3244140944677
+    }
+  ],
+  "samples": [
+    {
+      "mode": "ox-ported",
+      "compiler": "vue",
+      "artifact": "ox-ported",
+      "seconds": 4.279470542,
+      "timestamp": "2026-10-29T21:38:52.805Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.2538511659999999,
+        "bodyAndNavigationSeconds": 0.06901991700000008,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vize",
+      "artifact": "ox-ported-vize",
+      "seconds": 3.4432050000000003,
+      "timestamp": "2026-10-29T21:38:56.284Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.185563334,
+        "bodyAndNavigationSeconds": 0.062259165999999935,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vue",
+      "artifact": "astro",
+      "seconds": 5.085525875,
+      "timestamp": "2026-10-29T21:39:01.407Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.2514130829999995,
+        "bodyAndNavigationSeconds": 0.08498016700000062,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vize",
+      "artifact": "astro-vize",
+      "seconds": 4.422015249999999,
+      "timestamp": "2026-10-29T21:39:05.865Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.25625100000000023,
+        "bodyAndNavigationSeconds": 0.07785529099999985,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vue",
+      "artifact": "astro-ox",
+      "seconds": 4.585781584,
+      "timestamp": "2026-10-29T21:39:10.487Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.21665074999999978,
+        "bodyAndNavigationSeconds": 0.0625263329999998,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vize",
+      "artifact": "astro-ox-vize",
+      "seconds": 4.422345125,
+      "timestamp": "2026-10-29T21:39:14.947Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.21447495800000024,
+        "bodyAndNavigationSeconds": 0.06617425000000003,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vize",
+      "artifact": "ox-ported-vize",
+      "seconds": 3.4720455,
+      "timestamp": "2026-10-29T21:39:18.457Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.18609770799999995,
+        "bodyAndNavigationSeconds": 0.05872941700000001,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vue",
+      "artifact": "ox-ported",
+      "seconds": 3.7543399170000002,
+      "timestamp": "2026-10-29T21:39:22.249Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.177546917,
+        "bodyAndNavigationSeconds": 0.06027954199999999,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vize",
+      "artifact": "astro-vize",
+      "seconds": 4.341940416000001,
+      "timestamp": "2026-10-29T21:39:26.625Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.2479191249999999,
+        "bodyAndNavigationSeconds": 0.07632237499999973,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vue",
+      "artifact": "astro",
+      "seconds": 4.538461042,
+      "timestamp": "2026-10-29T21:39:31.200Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.24833633299999974,
+        "bodyAndNavigationSeconds": 0.07992791700000043,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vize",
+      "artifact": "astro-ox-vize",
+      "seconds": 4.2571682090000005,
+      "timestamp": "2026-10-29T21:39:35.494Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.21216479200000005,
+        "bodyAndNavigationSeconds": 0.06415587499999992,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vue",
+      "artifact": "astro-ox",
+      "seconds": 4.549838542000001,
+      "timestamp": "2026-10-29T21:39:40.081Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.21652762500000017,
+        "bodyAndNavigationSeconds": 0.06387412499999982,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vue",
+      "artifact": "astro",
+      "seconds": 5.020127583000001,
+      "timestamp": "2026-10-29T21:41:14.849Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.27919708399999943,
+        "bodyAndNavigationSeconds": 0.08491283300000031,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro",
+      "compiler": "vize",
+      "artifact": "astro-vize",
+      "seconds": 4.551069458,
+      "timestamp": "2026-10-29T21:41:19.436Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro",
+        "metadataSeconds": 0.25219545800000015,
+        "bodyAndNavigationSeconds": 0.07730537499999991,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "MDC unified"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vue",
+      "artifact": "astro-ox",
+      "seconds": 4.612699917,
+      "timestamp": "2026-10-29T21:41:24.085Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.22969600000000037,
+        "bodyAndNavigationSeconds": 0.06763112499999989,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vize",
+      "artifact": "astro-ox-vize",
+      "seconds": 4.341615583,
+      "timestamp": "2026-10-29T21:41:28.462Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "astro-ox",
+        "metadataSeconds": 0.20578704100000003,
+        "bodyAndNavigationSeconds": 0.061190875000000235,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vue",
+      "artifact": "ox-ported",
+      "seconds": 4.211888333,
+      "timestamp": "2026-10-29T21:43:02.348Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.23220737499999997,
+        "bodyAndNavigationSeconds": 0.06850683300000003,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vize",
+      "artifact": "ox-ported-vize",
+      "seconds": 3.364682917,
+      "timestamp": "2026-10-29T21:43:05.748Z",
+      "node": "v22.22.2",
+      "cpu": "Apple M1 Pro",
+      "scope": "fresh metadata and Markdown, Vue theme compilation, CSS, hydration bundle, static HTML, complete public assets; child startup included",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "dataPhases": {
+        "mode": "ox-ported",
+        "metadataSeconds": 0.18294270900000004,
+        "bodyAndNavigationSeconds": 0.058160957999999936,
+        "sourceCount": 1590,
+        "renderedPages": 4,
+        "markdownEngine": "ox + MDC code highlighting"
+      }
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vue",
+      "artifact": "baseline",
+      "seconds": 42.164736291000004,
+      "prerenderSeconds": 23.863,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 17.834,
+      "timestamp": "2026-10-29T21:51:19.593Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vize",
+      "artifact": "baseline-vize",
+      "seconds": 46.695955792,
+      "prerenderSeconds": 27.019,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 17.509,
+      "timestamp": "2026-10-29T21:52:06.685Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vize",
+      "artifact": "baseline-vize",
+      "seconds": 46.715868416999996,
+      "prerenderSeconds": 27.063,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 17.375,
+      "timestamp": "2026-10-29T21:52:53.701Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vue",
+      "artifact": "baseline",
+      "seconds": 41.933460417,
+      "prerenderSeconds": 23.54,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 17.8,
+      "timestamp": "2026-10-29T21:53:35.948Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vue",
+      "artifact": "baseline",
+      "seconds": 41.880586209,
+      "prerenderSeconds": 23.973,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.249,
+      "timestamp": "2026-10-29T21:54:18.132Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "compiler": "vize",
+      "artifact": "baseline-vize",
+      "seconds": 50.279758667,
+      "prerenderSeconds": 29.335,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 19.054,
+      "timestamp": "2026-10-29T21:55:08.760Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    }
+  ]
+}

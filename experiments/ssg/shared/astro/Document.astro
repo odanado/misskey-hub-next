@@ -1,0 +1,12 @@
+---
+import '../../nuxt-compat/styles';
+import PortApp from '../../nuxt-compat/PortApp.vue';
+import {head} from '../../nuxt-compat/head.mjs';
+const {payload}=Astro.props;
+const lang=payload.locales.find(locale=>locale.code===(payload.locale??payload.path.split('/')[1]))?.language??'ja-JP';
+---
+<!doctype html>
+<html lang={lang} class="scroll-pt-32 lg:scroll-pt-20">
+  <head><Fragment set:html={head(payload)} /></head>
+  <body><div id="__nuxt"><PortApp payload={payload} client:load /></div></body>
+</html>

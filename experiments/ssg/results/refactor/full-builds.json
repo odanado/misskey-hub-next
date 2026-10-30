@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-10-30T04:14:05.860Z",
+  "purpose": "Post-reorganization route/output verification, not new benchmark results",
+  "rows": [
+    {
+      "mode": "ox-ported",
+      "compiler": "vue",
+      "scope": 1991,
+      "passed": true,
+      "complete": 1991,
+      "exitCode": 0,
+      "seconds": 32.505
+    },
+    {
+      "mode": "astro",
+      "compiler": "vue",
+      "scope": 1991,
+      "passed": true,
+      "complete": 1991,
+      "exitCode": 0,
+      "seconds": 43.558
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vue",
+      "scope": 1991,
+      "passed": true,
+      "complete": 1991,
+      "exitCode": 0,
+      "seconds": 39.901
+    }
+  ]
+}

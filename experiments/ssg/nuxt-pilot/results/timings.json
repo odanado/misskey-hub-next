@@ -1,0 +1,201 @@
+{
+  "startedAt": "2026-10-29T15:39:07.023Z",
+  "order": [
+    "baseline",
+    "query",
+    "native",
+    "query",
+    "native",
+    "baseline",
+    "native",
+    "baseline",
+    "query"
+  ],
+  "summary": [
+    {
+      "mode": "baseline",
+      "runs": 3,
+      "medianSeconds": 43.752304792,
+      "medianPrerenderSeconds": 24.681,
+      "medianContentCacheSeconds": 18.351
+    },
+    {
+      "mode": "query",
+      "runs": 3,
+      "medianSeconds": 44.001034790999995,
+      "medianPrerenderSeconds": 24.609,
+      "medianContentCacheSeconds": 18.407
+    },
+    {
+      "mode": "native",
+      "runs": 3,
+      "medianSeconds": 43.743476417,
+      "medianPrerenderSeconds": 24.615,
+      "medianContentCacheSeconds": 18.407
+    }
+  ],
+  "samples": [
+    {
+      "mode": "baseline",
+      "seconds": 43.752304792,
+      "prerenderSeconds": 24.485,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.351,
+      "timestamp": "2026-10-29T15:39:50.957Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "query",
+      "seconds": 44.67490562500001,
+      "prerenderSeconds": 24.609,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.445,
+      "timestamp": "2026-10-29T15:40:35.958Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "native",
+      "seconds": 44.975359959,
+      "prerenderSeconds": 25.538,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 19.493,
+      "timestamp": "2026-10-29T15:41:21.255Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "query",
+      "seconds": 44.001034790999995,
+      "prerenderSeconds": 24.703,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.407,
+      "timestamp": "2026-10-29T15:42:05.632Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "native",
+      "seconds": 42.315756666,
+      "prerenderSeconds": 23.696,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 17.872,
+      "timestamp": "2026-10-29T15:42:48.246Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "seconds": 42.964386792,
+      "prerenderSeconds": 24.681,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.583,
+      "timestamp": "2026-10-29T15:43:31.620Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "native",
+      "seconds": 43.743476417,
+      "prerenderSeconds": 24.615,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.407,
+      "timestamp": "2026-10-29T15:44:15.683Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "baseline",
+      "seconds": 43.85871325,
+      "prerenderSeconds": 24.714,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.349,
+      "timestamp": "2026-10-29T15:44:59.885Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    },
+    {
+      "mode": "query",
+      "seconds": 43.719819333,
+      "prerenderSeconds": 24.365,
+      "generatedRouteCount": 33,
+      "contentCacheSeconds": 18.378,
+      "timestamp": "2026-10-29T15:45:44.123Z",
+      "node": "v22.22.2",
+      "platform": "darwin-arm64",
+      "cpu": "Apple M1 Pro",
+      "pages": [
+        "/ja/docs/for-users/features/note/",
+        "/ja/docs/for-users/features/hashtag/",
+        "/ja/docs/for-developers/plugin/create-plugin/",
+        "/en/docs/for-users/features/note/"
+      ],
+      "cache": "removed .nuxt before build"
+    }
+  ]
+}

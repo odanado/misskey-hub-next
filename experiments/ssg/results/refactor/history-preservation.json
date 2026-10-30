@@ -1,0 +1,5 @@
+{
+  "checkedHistoricalJsonFiles": 22,
+  "changed": [],
+  "notes": "Numeric evidence preserved byte-for-byte. AppleDouble metadata in tar is excluded."
+}

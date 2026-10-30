@@ -1,1 +1,6 @@
 public/fonts/** linguist-documentation
+
+# Keep machine-generated evidence out of the default PR source diff.
+experiments/ssg/results/** linguist-generated=true
+experiments/ssg/nuxt-pilot/results/** linguist-generated=true
+tests/vrt/snapshots/** linguist-generated=true

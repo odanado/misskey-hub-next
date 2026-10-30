@@ -1,0 +1,10 @@
+---
+import Document from '../../../shared/astro/Document.astro';
+import {prepareData} from '../../../shared/data.mjs';
+export async function getStaticPaths() {
+  const payloads=await prepareData('astro-ox');
+  return payloads.map(payload=>({params:{path:payload.path==='/'?undefined:payload.path.slice(1,-1)},props:{payload}}));
+}
+const {payload}=Astro.props;
+---
+<Document payload={payload} />

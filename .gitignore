@@ -1,6 +1,7 @@
 # Nuxt dev/build outputs
 .output
 .nuxt
+.astro/
 .nitro
 .cache
 .vercel
@@ -8,6 +9,7 @@ dist
 
 # Node dependencies
 node_modules
+.pnpm-store/
 
 # Logs
 logs
@@ -36,3 +38,11 @@ app/spa-loading-template.html
 # CF Pages Redirect
 public/_redirects
 .favorites.json
+
+# Isolated Ox Content pilot builds and visual reports
+.pilot/
+test-results/
+playwright-report/
+
+# Paused, unvalidated 30-page VRT baselines stay local until resumed.
+tests/vrt/snapshots/30/

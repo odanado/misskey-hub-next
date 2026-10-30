@@ -1,0 +1,969 @@
+{
+  "title": "プラグインの作成 | Misskey",
+  "lang": "ja-JP",
+  "canonical": "https://misskey-hub.net/ja/docs/for-developers/plugin/create-plugin/",
+  "description": "Misskey Webクライアントのプラグイン機能を使うと、クライアントを拡張し、様々な機能を追加できます。\nこのドキュメントではプラグインの作成方法について説明します。",
+  "headings": [
+    {
+      "id": "プラグインの作成",
+      "text": "プラグインの作成"
+    },
+    {
+      "id": "プラグインの例",
+      "text": "プラグインの例"
+    },
+    {
+      "id": "aiscript",
+      "text": "AiScript"
+    },
+    {
+      "id": "メタデータ",
+      "text": "メタデータ"
+    },
+    {
+      "id": "name",
+      "text": "name"
+    },
+    {
+      "id": "author",
+      "text": "author"
+    },
+    {
+      "id": "version",
+      "text": "version"
+    },
+    {
+      "id": "description",
+      "text": "description"
+    },
+    {
+      "id": "permissions",
+      "text": "permissions"
+    },
+    {
+      "id": "config",
+      "text": "config"
+    },
+    {
+      "id": "api",
+      "text": "API"
+    },
+    {
+      "id": "プラグインを配布する",
+      "text": "プラグインを配布する"
+    }
+  ],
+  "links": [
+    {
+      "text": "Misskeyについて",
+      "href": "/ja/docs/about-misskey/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyユーザー向け",
+      "href": "/ja/docs/for-users/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyをはじめよう",
+      "href": "/ja/docs/for-users/onboarding/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "基本的な注意事項",
+      "href": "/ja/docs/for-users/onboarding/warning/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyサーバーをさがす",
+      "href": "/ja/docs/for-users/onboarding/get-started/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "サーバーに登録する",
+      "href": "/ja/docs/for-users/onboarding/join-server/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyの基礎知識",
+      "href": "/ja/docs/for-users/onboarding/things-to-know/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "さまざまな機能",
+      "href": "/ja/docs/for-users/features/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "広告",
+      "href": "/ja/docs/for-users/features/ads/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アンテナ",
+      "href": "/ja/docs/for-users/features/antenna/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "チャート",
+      "href": "/ja/docs/for-users/features/charts/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "クリップ",
+      "href": "/ja/docs/for-users/features/clip/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "カスタム絵文字",
+      "href": "/ja/docs/for-users/features/custom-emoji/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "デッキ",
+      "href": "/ja/docs/for-users/features/deck/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "開発者モード",
+      "href": "/ja/docs/for-users/features/dev-mode/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ドライブ",
+      "href": "/ja/docs/for-users/features/drive/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ウェブサイトへの埋め込み",
+      "href": "/ja/docs/for-users/features/embed/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "お気に入り",
+      "href": "/ja/docs/for-users/features/favorite/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "フォロー",
+      "href": "/ja/docs/for-users/features/follow/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ハッシュタグ",
+      "href": "/ja/docs/for-users/features/hashtag/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "メンション",
+      "href": "/ja/docs/for-users/features/mention/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "MFM",
+      "href": "/ja/docs/for-users/features/mfm/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ミュートとブロック",
+      "href": "/ja/docs/for-users/features/mute-and-block/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ノート",
+      "href": "/ja/docs/for-users/features/note/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "オンラインステータス",
+      "href": "/ja/docs/for-users/features/online-status/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ページ",
+      "href": "/ja/docs/for-users/features/pages/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグイン",
+      "href": "/ja/docs/for-users/features/plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アンケート",
+      "href": "/ja/docs/for-users/features/poll/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "リアクション",
+      "href": "/ja/docs/for-users/features/reaction/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "セーフモード",
+      "href": "/ja/docs/for-users/features/safemode/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "共有フォーム",
+      "href": "/ja/docs/for-users/features/share-form/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "サイレンス",
+      "href": "/ja/docs/for-users/features/silence/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "テーマ",
+      "href": "/ja/docs/for-users/features/theme/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "スレッドミュート",
+      "href": "/ja/docs/for-users/features/thread-mute/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "タイムライン",
+      "href": "/ja/docs/for-users/features/timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Webhook",
+      "href": "/ja/docs/for-users/features/webhook/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ウィジェット",
+      "href": "/ja/docs/for-users/features/widgets/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ワードミュート",
+      "href": "/ja/docs/for-users/features/word-mute/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "その他のリソース",
+      "href": "/ja/docs/for-users/resources/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "トラブルシューティング",
+      "href": "/ja/docs/for-users/resources/troubleshooting/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アプリ",
+      "href": "/ja/docs/for-users/resources/apps/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "よくある質問",
+      "href": "/ja/docs/for-users/resources/faq/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "用語集",
+      "href": "/ja/docs/for-users/resources/glossary/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Hubについて",
+      "href": "/ja/docs/for-users/resources/misskey-hub/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Self-XSS攻撃について",
+      "href": "/ja/docs/for-users/resources/self-xss/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ステップバイステップガイド",
+      "href": "/ja/docs/for-users/stepped-guides/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アカウントを削除する方法",
+      "href": "/ja/docs/for-users/stepped-guides/how-to-delete-account/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "2段階認証を設定する方法（ワンタイムパスワード）",
+      "href": "/ja/docs/for-users/stepped-guides/how-to-enable-2fa/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Webをアプリ化して使う方法",
+      "href": "/ja/docs/for-users/stepped-guides/how-to-use-pwa/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "サーバー運営者向け",
+      "href": "/ja/docs/for-admin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "サーバーの機能",
+      "href": "/ja/docs/for-admin/features/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "通報",
+      "href": "/ja/docs/for-admin/features/abuse-report/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "お知らせ",
+      "href": "/ja/docs/for-admin/features/announcement/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "管理コマンド",
+      "href": "/ja/docs/for-admin/features/cli/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "連合モード",
+      "href": "/ja/docs/for-admin/features/federation/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Fan-out Timeline Technology (FTT)",
+      "href": "/ja/docs/for-admin/features/ftt/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "カスタム絵文字の管理",
+      "href": "/ja/docs/for-admin/features/managing-emojis/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ロール",
+      "href": "/ja/docs/for-admin/features/role/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ノート検索",
+      "href": "/ja/docs/for-admin/features/search/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyのインストールと保守",
+      "href": "/ja/docs/for-admin/install/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyサーバーの作成",
+      "href": "/ja/docs/for-admin/install/guides/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "サービスを利用する",
+      "href": "/ja/docs/for-admin/install/guides/service/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey install shell script v3.0.0",
+      "href": "/ja/docs/for-admin/install/guides/bash/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Docker Composeを使ったMisskey構築",
+      "href": "/ja/docs/for-admin/install/guides/docker/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Kubernetes/TrueNASを使ったMisskey構築",
+      "href": "/ja/docs/for-admin/install/guides/kubernetes/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyを手動で構築する",
+      "href": "/ja/docs/for-admin/install/guides/manual/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Ubuntu版Misskeyインストール方法詳説",
+      "href": "/ja/docs/for-admin/install/guides/ubuntu-manual/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyの保守・トラブルシューティング",
+      "href": "/ja/docs/for-admin/install/resources/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "CDNの設定",
+      "href": "/ja/docs/for-admin/install/resources/cdn/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyをフォーク・カスタマイズする際の注意点",
+      "href": "/ja/docs/for-admin/install/resources/forking/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Nginxの設定",
+      "href": "/ja/docs/for-admin/install/resources/nginx/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "GitHub Actionsを使用してDocker Hubへpushする方法",
+      "href": "/ja/docs/for-admin/install/resources/push-docker-hub/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskeyサーバーのスケールアウト",
+      "href": "/ja/docs/for-admin/install/resources/scale-out/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "マニュアルインストール時のトラブルシューティング",
+      "href": "/ja/docs/for-admin/install/resources/troubleshooting/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "モデレーション上のお役立ち情報",
+      "href": "/ja/docs/for-admin/moderation-tips/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "LTL/STL/GTLの無効化",
+      "href": "/ja/docs/for-admin/moderation-tips/disable-timelines/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "開発者向け",
+      "href": "/ja/docs/for-developers/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript",
+      "href": "/ja/docs/for-developers/aiscript/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey API",
+      "href": "/ja/docs/for-developers/api/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "エンドポイント一覧",
+      "href": "/ja/docs/for-developers/api/endpoints/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ライブラリの一覧",
+      "href": "/ja/docs/for-developers/api/libraries/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "権限の一覧",
+      "href": "/ja/docs/for-developers/api/permission/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ストリーミングAPI",
+      "href": "/ja/docs/for-developers/api/streaming/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "チャンネル一覧",
+      "href": "/ja/docs/for-developers/api/streaming/channel/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "globalTimeline",
+      "href": "/ja/docs/for-developers/api/streaming/channel/global-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "homeTimeline",
+      "href": "/ja/docs/for-developers/api/streaming/channel/home-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "hybridTimeline",
+      "href": "/ja/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "localTimeline",
+      "href": "/ja/docs/for-developers/api/streaming/channel/local-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "main",
+      "href": "/ja/docs/for-developers/api/streaming/channel/main/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "投稿キャプチャイベント",
+      "href": "/ja/docs/for-developers/api/streaming/note-capture-events/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アクセストークンの取得",
+      "href": "/ja/docs/for-developers/api/token/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "MiAuth方式でのアクセストークン取得方式",
+      "href": "/ja/docs/for-developers/api/token/miauth/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "OAuth方式でのアクセストークン取得方式",
+      "href": "/ja/docs/for-developers/api/token/oauth/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "アプリ作成方式でのアクセストークン取得方法（旧来型）",
+      "href": "/ja/docs/for-developers/api/token/app/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Botの作成",
+      "href": "/ja/docs/for-developers/bot/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグイン・Playの作成",
+      "href": "/ja/docs/for-developers/plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Playの作成",
+      "href": "/ja/docs/for-developers/plugin/create-play/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインの作成",
+      "href": "/ja/docs/for-developers/plugin/create-plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript Misskey拡張API リファレンス",
+      "href": "/ja/docs/for-developers/plugin/plugin-api-reference/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグイン・テーマを配布する",
+      "href": "/ja/docs/for-developers/publish-on-your-website/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "リリースノート",
+      "href": "/ja/docs/releases/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プロジェクトへの寄付",
+      "href": "/ja/docs/donate/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "スポンサーについて",
+      "href": "/ja/docs/become-a-sponsor/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "MisskeyIDプレート",
+      "href": "/ja/docs/mi-card/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "MisskeyとMisskeyサーバー",
+      "href": "/ja/docs/misskey-and-misskey-servers/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインの例",
+      "href": "#プラグインの例",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript",
+      "href": "#aiscript",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "メタデータ",
+      "href": "#メタデータ",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "name",
+      "href": "#name",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "author",
+      "href": "#author",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "version",
+      "href": "#version",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "description",
+      "href": "#description",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "permissions",
+      "href": "#permissions",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "config",
+      "href": "#config",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "API",
+      "href": "#api",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインを配布する",
+      "href": "#プラグインを配布する",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインの例",
+      "href": "#プラグインの例",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Plugin:register_post_form_action",
+      "href": "/ja/docs/for-developers/plugin/plugin-api-reference/#pluginregister_post_form_actiontitle-fn",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript",
+      "href": "#aiscript",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "メタデータ",
+      "href": "#メタデータ",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "name",
+      "href": "#name",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "author",
+      "href": "#author",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "version",
+      "href": "#version",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "description",
+      "href": "#description",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "permissions",
+      "href": "#permissions",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript Misskey拡張API リファレンス",
+      "href": "/ja/docs/for-developers/plugin/plugin-api-reference/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "こちら",
+      "href": "/ja/docs/for-developers/api/permission/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "config",
+      "href": "#config",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "type",
+      "href": "#type",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "label",
+      "href": "#label",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "description",
+      "href": "#description-1",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "default",
+      "href": "#default",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "API",
+      "href": "#api",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript Misskey拡張API リファレンス",
+      "href": "/ja/docs/for-developers/plugin/plugin-api-reference/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインを配布する",
+      "href": "#プラグインを配布する",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "こちら",
+      "href": "/ja/docs/for-developers/publish-on-your-website/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "このページを編集",
+      "href": "https://github.com/misskey-dev/misskey-hub-next/tree/master/content/ja/docs/4.for-developers/plugin/create-plugin.md",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "text": "このページを翻訳",
+      "href": "https://crowdin.com/project/misskey-hub",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "text": "前へPlayの作成",
+      "href": "/ja/docs/for-developers/plugin/create-play/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "次へAiScript Misskey拡張API リファレンス",
+      "href": "/ja/docs/for-developers/plugin/plugin-api-reference/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインの例",
+      "href": "#プラグインの例",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript",
+      "href": "#aiscript",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "メタデータ",
+      "href": "#メタデータ",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "name",
+      "href": "#name",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "author",
+      "href": "#author",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "version",
+      "href": "#version",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "description",
+      "href": "#description",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "permissions",
+      "href": "#permissions",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "config",
+      "href": "#config",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "API",
+      "href": "#api",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "プラグインを配布する",
+      "href": "#プラグインを配布する",
+      "rel": null,
+      "target": null
+    }
+  ],
+  "images": [],
+  "code": [
+    "/// @ 0.12.4\n### {\n  name: \"フグパンチボタン\"\n  version: \"0.0.1\"\n  author: \"Misskey Project\"\n}\n\nPlugin:register_post_form_action('フグパンチ', @(note, rewrite) {\n  let fugu = \"ﾌｸﾞﾊﾟﾝﾁ!!!!🐡( '-' 🐡 )\"\n\n  if (note.text.trim() == '') {\n    // ノートの中身がない場合はフグパンチに置き換え\n    rewrite('text', fugu)\n  } else {\n    // ノートの中身がある場合は冒頭にフグパンチを追加して改行\n    rewrite('text', `{fugu}{Str:lf}{note.text}`)\n  }\n})\n",
+    "/// @ 0.12.4\n### {\n  name: \"プラグイン名\"\n  version: \"4.2.1\"\n  author: \"作者名\"\n  description: \"説明文\"\n}\n"
+  ]
+}

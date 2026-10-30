@@ -1,0 +1,260 @@
+{
+  "recordedAt": "2026-10-30T03:43:35.464Z",
+  "mode": "ox-ported",
+  "compiler": "vue",
+  "pages": 1991,
+  "wallSeconds": 33.289984125,
+  "phases": [
+    {
+      "name": "Vue SSR",
+      "seconds": 10.57488483699992,
+      "percent": 31.765965394553707
+    },
+    {
+      "name": "クライアントJS・CSSビルド＋publicコピー",
+      "seconds": 6.3810580419999985,
+      "percent": 19.168101787131747
+    },
+    {
+      "name": "原稿・MDC互換・ナビゲーションの準備",
+      "seconds": 5.322779834,
+      "percent": 15.989132989711214
+    },
+    {
+      "name": "Oxの最終SSG（closeBundle）",
+      "seconds": 4.237748583,
+      "percent": 12.729800552285486
+    },
+    {
+      "name": "Vue SSRモジュールの読込・コンパイル",
+      "seconds": 1.779624832999998,
+      "percent": 5.3458266195553445
+    },
+    {
+      "name": "出力検証（worker＋親プロセス）",
+      "seconds": 1.8589019590000024,
+      "percent": 5.583967694367301
+    },
+    {
+      "name": "Oxへ渡す原稿ファイルの配置",
+      "seconds": 0.7743006249999999,
+      "percent": 2.3259266874162257
+    },
+    {
+      "name": "HTML外枠・payload組み立て",
+      "seconds": 0.7303989569998776,
+      "percent": 2.1940501811515287
+    },
+    {
+      "name": "起動・cleanup・その他",
+      "seconds": 1.630286455000194,
+      "percent": 4.897228093827438
+    }
+  ],
+  "nativeRustTransformSeconds": 0.11759714099999019,
+  "nativeMdcIslandsSeconds": 3.264141662999987,
+  "nativeBridgeSeconds": 1.1236946400000065,
+  "peakRssGiB": 3.222259521484375,
+  "externalFetches": [
+    {
+      "url": "https://ungh.cc/repos/misskey-dev/misskey/contributors",
+      "status": 200,
+      "ms": 1226.6980829999993
+    }
+  ],
+  "groups": {
+    "docs": {
+      "count": 1365,
+      "ssrMs": 8779.331696999918,
+      "htmlMs": 611.269456999893
+    },
+    "blog": {
+      "count": 106,
+      "ssrMs": 160.55696299999545,
+      "htmlMs": 23.418582999976934
+    },
+    "static": {
+      "count": 287,
+      "ssrMs": 1622.2492520000014,
+      "htmlMs": 56.634747999993124
+    },
+    "languageEntry": {
+      "count": 233,
+      "ssrMs": 12.74692500000674,
+      "htmlMs": 39.07616900001449
+    }
+  },
+  "cpu": {
+    "sampledSeconds": 31.660709,
+    "gcSampledSeconds": 4.254663999999998,
+    "gcPercent": 13.438309293705325,
+    "sharedAssetFunctionSampledSeconds": 1.3939989999999962,
+    "runSeconds": 33.142989375
+  },
+  "negativeAsyncSsrCheck": {
+    "recordedAt": "2026-10-30T03:37:32.144Z",
+    "page": "/cn/about-us/team/",
+    "noNetwork": true,
+    "passed": true,
+    "name": "AggregateError",
+    "message": "SSR failed: /cn/about-us/team/",
+    "errors": [
+      {
+        "name": "Error",
+        "message": "diagnostic async fetch rejection"
+      }
+    ]
+  },
+  "slowestPages": [
+    {
+      "path": "/cn/about-us/team/",
+      "kind": "static",
+      "locale": "cn",
+      "vueSsrMs": 1234.578333999998,
+      "htmlMs": 0.23941700000068522,
+      "bodyChars": 26470,
+      "htmlChars": 64101,
+      "stylesChars": 0
+    },
+    {
+      "path": "/it/docs/releases/",
+      "kind": "docs",
+      "locale": "it",
+      "vueSsrMs": 116.23429199999737,
+      "htmlMs": 2.161292000000685,
+      "bodyChars": 402769,
+      "htmlChars": 1005381,
+      "stylesChars": 0
+    },
+    {
+      "path": "/tw/docs/releases/",
+      "kind": "docs",
+      "locale": "tw",
+      "vueSsrMs": 94.52191700000185,
+      "htmlMs": 2.29175000000032,
+      "bodyChars": 384114,
+      "htmlChars": 967004,
+      "stylesChars": 0
+    },
+    {
+      "path": "/en/docs/releases/",
+      "kind": "docs",
+      "locale": "en",
+      "vueSsrMs": 94.04579100000046,
+      "htmlMs": 2.5841250000012224,
+      "bodyChars": 502661,
+      "htmlChars": 1224836,
+      "stylesChars": 0
+    },
+    {
+      "path": "/fr/docs/releases/",
+      "kind": "docs",
+      "locale": "fr",
+      "vueSsrMs": 91.82404099999985,
+      "htmlMs": 2.6941249999981665,
+      "bodyChars": 402677,
+      "htmlChars": 999301,
+      "stylesChars": 0
+    },
+    {
+      "path": "/cn/docs/releases/",
+      "kind": "docs",
+      "locale": "cn",
+      "vueSsrMs": 90.26816700000018,
+      "htmlMs": 2.388707999998587,
+      "bodyChars": 386211,
+      "htmlChars": 963964,
+      "stylesChars": 0
+    },
+    {
+      "path": "/de/docs/releases/",
+      "kind": "docs",
+      "locale": "de",
+      "vueSsrMs": 90.02441700000054,
+      "htmlMs": 2.539290999999139,
+      "bodyChars": 407336,
+      "htmlChars": 1017564,
+      "stylesChars": 0
+    },
+    {
+      "path": "/id/docs/releases/",
+      "kind": "docs",
+      "locale": "id",
+      "vueSsrMs": 89.66433300000062,
+      "htmlMs": 2.1513750000012806,
+      "bodyChars": 405495,
+      "htmlChars": 1009813,
+      "stylesChars": 0
+    },
+    {
+      "path": "/ja/docs/releases/",
+      "kind": "docs",
+      "locale": "ja",
+      "vueSsrMs": 87.98966599999767,
+      "htmlMs": 2.7479999999995925,
+      "bodyChars": 401589,
+      "htmlChars": 990843,
+      "stylesChars": 0
+    },
+    {
+      "path": "/ja-ks/docs/releases/",
+      "kind": "docs",
+      "locale": "ja-ks",
+      "vueSsrMs": 86.8032499999972,
+      "htmlMs": 2.2110829999983252,
+      "bodyChars": 402389,
+      "htmlChars": 989931,
+      "stylesChars": 0
+    },
+    {
+      "path": "/es/docs/releases/",
+      "kind": "docs",
+      "locale": "es",
+      "vueSsrMs": 84.09258300000147,
+      "htmlMs": 2.817749999998341,
+      "bodyChars": 550409,
+      "htmlChars": 1297519,
+      "stylesChars": 0
+    },
+    {
+      "path": "/th/docs/releases/",
+      "kind": "docs",
+      "locale": "th",
+      "vueSsrMs": 83.86920900000041,
+      "htmlMs": 2.595333000001119,
+      "bodyChars": 404069,
+      "htmlChars": 1004874,
+      "stylesChars": 0
+    },
+    {
+      "path": "/pl/docs/releases/",
+      "kind": "docs",
+      "locale": "pl",
+      "vueSsrMs": 80.76258299999972,
+      "htmlMs": 2.1030830000017886,
+      "bodyChars": 402495,
+      "htmlChars": 991850,
+      "stylesChars": 0
+    },
+    {
+      "path": "/ko/docs/releases/",
+      "kind": "docs",
+      "locale": "ko",
+      "vueSsrMs": 78.7245839999996,
+      "htmlMs": 2.2527919999993173,
+      "bodyChars": 405355,
+      "htmlChars": 981003,
+      "stylesChars": 0
+    },
+    {
+      "path": "/ja-ks/docs/for-users/features/online-status/",
+      "kind": "docs",
+      "locale": "ja-ks",
+      "vueSsrMs": 71.82125000000087,
+      "htmlMs": 0.27466700000150013,
+      "bodyChars": 57793,
+      "htmlChars": 117227,
+      "stylesChars": 0
+    }
+  ]
+}
