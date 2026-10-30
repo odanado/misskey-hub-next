@@ -21,7 +21,6 @@ export default {
 							resolve(root, 'content', page.source),
 						)) as MarkdownModule)
 					: undefined;
-				const title = document?.frontmatter.title ?? 'Misskey Hub';
 				const app = createSSRApp({
 					render: () => h(App, { content: document?.default, pages }),
 				});
@@ -41,6 +40,10 @@ export default {
 				);
 				if (errors.length)
 					throw new AggregateError(errors, 'Vue SSR failed: ' + page.path);
+				const title =
+					document?.frontmatter.title ||
+					/<h1[^>]*>([^<]+)/.exec(body)?.[1] ||
+					'Misskey Hub';
 				const assets = ctx.assets.stylesheets({ modules: ['App.vue'] });
 				const head = ctx.assets.document({ sharedStyles: assets.stylesheets });
 				const safeTitle = title
