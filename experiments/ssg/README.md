@@ -35,6 +35,10 @@ experiments/ssg/
 
 原稿のパーサーは[shared/content/](shared/content/README.md)、Astro共通設定・HTML文書は[shared/astro/](shared/astro/)へ置く。Oxの描画後のHTML保存処理は`ox-standalone/`、Astro側のルート列挙は各Astroディレクトリが所有する。方針間で同じVueページをコピーして管理しない。
 
+## PR #2単体の無改変計測
+
+PR #2の最小テーマは、このM1 Pro / Node22環境で1,343ページを**中央値5.37秒（5回）**で生成・検証できた。下記55.65秒の互換実装とは対象と機能が異なる。[単体計測の条件と結果](PR2_STANDALONE_REPORT.md)。
+
 ## 追加：Ox nativeの互換検証と同条件比較（Ox 3.4.3）
 
 | 構成 | 1回目 | 2回目 | 3回目 | 中央値 | 30ページVRT |

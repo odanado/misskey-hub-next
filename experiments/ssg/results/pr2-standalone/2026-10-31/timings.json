@@ -1,0 +1,90 @@
+{
+  "commit": "c52b733c227aaf5f91341544aebe4c3977800cee",
+  "startedAt": "2026-10-30T15:03:58.087816+00:00",
+  "node": "v22.22.2",
+  "platform": "Darwin-arm64",
+  "cpu": "Apple M1 Pro",
+  "sourceFingerprint": "8afa78e7d313a4eaea137b54db338ecf51dfee09c61cd9984693346afe202d09",
+  "trackedFiles": 3241,
+  "lockfileSha256": "c0015851e731e0e272214f857e49b8e29d31e8c35fcd8958206ad7d8fa322e31",
+  "dependencies": "Shared node_modules; exact lockfile SHA-256 match; source/build artifacts isolated",
+  "command": "HUB_PILOT_PAGES=all pnpm pilot:ox-native:build",
+  "policy": "Unmodified PR #2 head in git-archive checkout; 5 separate CLI processes; Vite emptyOutDir in each build; OS/dependency caches retained; PNPM/Vite startup, Vue Markdown/module SSR, CSS/HTML and public copy included; verifier outside timing; no VRT",
+  "results": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "elapsedSeconds": 5.28013616707176,
+      "peakRssBytes": 639336448,
+      "logSha256": "cdc6bbba5c369879827e7537f6abe603e3bce6ce67f6bc7a04477def5a66eba7",
+      "verifyExitCode": 0,
+      "verification": {
+        "renderedPages": 1343,
+        "stylesheets": 1
+      }
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "elapsedSeconds": 5.623680208111182,
+      "peakRssBytes": 692224000,
+      "logSha256": "8f5f0f33344dab093056590298634b9592bf1383c2ec1272219e09fd245e0b54",
+      "verifyExitCode": 0,
+      "verification": {
+        "renderedPages": 1343,
+        "stylesheets": 1
+      }
+    },
+    {
+      "run": 3,
+      "exitCode": 0,
+      "elapsedSeconds": 5.300997416023165,
+      "peakRssBytes": 629407744,
+      "logSha256": "a027660c8b31123e7fd302e6f51da601571094affc874a401755aa00c2323a81",
+      "verifyExitCode": 0,
+      "verification": {
+        "renderedPages": 1343,
+        "stylesheets": 1
+      }
+    },
+    {
+      "run": 4,
+      "exitCode": 0,
+      "elapsedSeconds": 5.368452541995794,
+      "peakRssBytes": 627539968,
+      "logSha256": "d6e4eb05ef60489f4fbba6e9082e0546c9d21b95acfe2c0f77fb7124260e0b01",
+      "verifyExitCode": 0,
+      "verification": {
+        "renderedPages": 1343,
+        "stylesheets": 1
+      }
+    },
+    {
+      "run": 5,
+      "exitCode": 0,
+      "elapsedSeconds": 5.435307374922559,
+      "peakRssBytes": 617037824,
+      "logSha256": "2e4ab847e807e345dde213d887cd80b74644a884107aa862340f56e112e758cc",
+      "verifyExitCode": 0,
+      "verification": {
+        "renderedPages": 1343,
+        "stylesheets": 1
+      }
+    }
+  ],
+  "finishedAt": "2026-10-30T15:04:29.626012+00:00",
+  "sourceUnchanged": true,
+  "medianSeconds": 5.368452541995794,
+  "medianPeakRssMiB": 600.25,
+  "packages": {
+    "@ox-content/napi": "3.4.3",
+    "@ox-content/vite-plugin": "3.4.3",
+    "@ox-content/vite-plugin-vue": "3.4.3",
+    "vue": "3.5.25",
+    "vite": "7.3.1"
+  },
+  "typecheck": {
+    "command": "pnpm pilot:ox-native:check",
+    "exitCode": 0
+  }
+}
