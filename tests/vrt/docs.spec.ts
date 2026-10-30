@@ -40,13 +40,24 @@ test.afterEach(async ({ page }, testInfo) => {
 	const file = `.pilot/${artifactPath(process.env.HUB_CONTENT_PILOT!)}/vrt/diagnostics/${testInfo.project.name}-${testInfo.title.split(':')[0]}.json`;
 	try {
 		const diagnostics = await page.evaluate(() => {
-			const inspect = (element: Element) => {
+			const inspect = (element: Element, allCss = false) => {
 				const style = getComputedStyle(element);
 				return {
 					tag: element.tagName,
 					class: element.getAttribute('class'),
 					style: element.getAttribute('style'),
 					bounds: element.getBoundingClientRect().toJSON(),
+					scroll: {
+						width: element.scrollWidth,
+						height: element.scrollHeight,
+						clientWidth: element.clientWidth,
+						clientHeight: element.clientHeight,
+						left: element.scrollLeft,
+						top: element.scrollTop,
+					},
+					allCss: allCss
+						? Object.fromEntries([...style].map((key) => [key, style.getPropertyValue(key)]))
+						: undefined,
 					css: Object.fromEntries(
 						[
 							'fontFamily',
@@ -64,6 +75,12 @@ test.afterEach(async ({ page }, testInfo) => {
 							'scrollbarWidth',
 							'opacity',
 							'transform',
+							'colorScheme',
+							'backgroundClip',
+							'boxShadow',
+							'borderRadius',
+							'contain',
+							'willChange',
 						].map((key) => [key, (style as any)[key]]),
 					),
 				};
@@ -72,10 +89,19 @@ test.afterEach(async ({ page }, testInfo) => {
 				devicePixelRatio,
 				userAgent: navigator.userAgent,
 				pre: [...document.querySelectorAll('.markdown-body pre')].map((pre) => ({
-					...inspect(pre),
+					...inspect(pre, true),
 					htmlStart: pre.innerHTML.slice(0, 2000),
 					htmlEnd: pre.innerHTML.slice(-1000),
-					children: [...pre.querySelectorAll('code, .line')].map(inspect),
+					children: [...pre.querySelectorAll('code, .line')].map((child) =>
+						inspect(child, child.tagName === 'CODE'),
+					),
+					ancestors: (() => {
+						const result = [];
+						let parent = pre.parentElement;
+						for (let i = 0; i < 6 && parent; i++, parent = parent.parentElement)
+							result.push(inspect(parent));
+						return result;
+					})(),
 				})),
 			};
 		});
