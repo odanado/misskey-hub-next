@@ -38,6 +38,6 @@ export default defineConfig({
 		outDir,
 		emptyOutDir: true,
 		manifest: true,
-		rollupOptions: { input: resolve(import.meta.dirname, 'client.ts') },
+		rollupOptions: { input: resolve(import.meta.dirname, 'App.vue') },
 	},
 });

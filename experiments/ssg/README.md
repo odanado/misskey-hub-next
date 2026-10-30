@@ -68,8 +68,8 @@ VRTは既存の基準画像を更新せず、許容差・マスクなしで実�
 ## Ox Content + Vue reference
 
 [ox-native/](ox-native/README.md) is a TypeScript/Vue example using Ox Content 3.4.3's Vite plugins.
-It renders native Markdown, YAML guides, and directory indexes in a Vue layout with selectively hydrated controls.
-Application-only routes are explicitly excluded; this example does not claim full Nuxt/MDC or VRT parity.
+It imports Markdown as Vue components and renders them through a small SSR host and layout.
+YAML and application-only routes are outside this minimal example; it does not claim full Nuxt/MDC or VRT parity.
 
 ```sh
 HUB_PILOT_PAGES=all pnpm pilot:ox-native:build

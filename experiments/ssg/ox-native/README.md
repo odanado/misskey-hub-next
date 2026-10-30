@@ -1,91 +1,32 @@
-# Ox Content + Vue SSG reference
+# Ox Content + Vue SSG
 
-A TypeScript/Vue reference using published Ox Content 3.4.3 packages and the
-normal Vite lifecycle. Start with [vite.config.ts](vite.config.ts):
+A small TypeScript example using the normal Vite lifecycle and published Ox Content 3.4.3 packages.
 
-```ts
-plugins: [
-	vue(),
-	oxContentVue({ srcDir: contentDir, embeds: false }),
-	createOxContentCustomHostPlugin({
-		host: './host.ts',
-		oxContent: { srcDir: contentDir, outDir, search: false, embeds: false },
-	}),
-];
-```
+- [vite.config.ts](vite.config.ts) combines `vue()`, `oxContentVue()`, and `createOxContentCustomHostPlugin()`.
+- [host.ts](host.ts) imports each Markdown file as a Vue component, renders it inside [App.vue](App.vue), and asks Ox to write the static HTML.
+- [routes.ts](routes.ts) reuses the existing experiment's route inventory and selects Markdown-backed pages.
 
-`oxContentVue()` compiles the Markdown overview into a Vue component.
-`createOxContentCustomHostPlugin()` owns route rendering, manifest assets,
-development serving, and static HTML output. The low-level host plugin is used
-instead of the `oxContentCustomHost()` convenience wrapper because the Vue
-integration already owns Markdown module transformation.
-
-Article bodies use `ctx.markdown.render()` and are placed inside the Vue layout.
-This keeps large collections in the native Markdown pipeline without compiling
-one Vue module per article. Aliased sources are rendered once per build through
-`ctx.memo()`. Reading controls are server-rendered Vue and hydrated individually;
-the static article does not need a hydration payload.
+There are no manual plugin-hook calls, temporary Markdown copies, custom Markdown renderer, client hydration, or placeholder pages. Vue renders the documents on the server; the HTML includes only the layout stylesheet. Ox's asset helper resolves its emitted filename through Vite's manifest.
 
 ## Run
 
-Use Node.js 22.6+ and the pnpm version in the root `package.json`.
-Run from the repository root:
+Use Node.js 22.6+ and the root project's pnpm version, from the repository root:
 
 ```sh
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm pilot:ox-native:check
-
-# Four articles plus the reference home page
 pnpm pilot:ox-native:build
 pnpm pilot:ox-native:verify
 
-# Thirty articles, or the full source-backed catalogue
-HUB_PILOT_PAGES=30 pnpm pilot:ox-native:build
-HUB_PILOT_PAGES=30 pnpm pilot:ox-native:verify
+# All Markdown-backed routes
 HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
 HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
-
-# Development: the same host and Vue components
-pnpm pilot:ox-native:dev
 ```
 
-No Nuxt prepare step or prebuilt Vue pilot output is required. Use the repository's
-normal install command with scripts enabled when developing the original Nuxt app.
-Vite 7 may warn about the parent Nuxt tsconfig during config bundling; the sample
-has its own strict [tsconfig.json](tsconfig.json).
+The default scope is four articles plus the index. `HUB_PILOT_PAGES=30` selects thirty articles. The full scope renders **1,342 Markdown URLs plus the index**; YAML pages, application-only Vue pages, and locale redirects are outside this example. It is not a complete 1,991-URL migration or a Nuxt/MDC compatibility implementation.
 
-Build output is `.pilot/ox-native-theme/public/`, prefixed with `30/` or `full/`
-under `.pilot/` for those scopes. Static files are copied from the existing
-`public/` directory. Vite's manifest supplies the emitted CSS and JavaScript URLs.
+Output goes to `.pilot/ox-native-theme/public/`, or `.pilot/30/ox-native-theme/public/` / `.pilot/full/ox-native-theme/public/` for those scopes. Existing public assets are copied alongside the generated pages.
 
-## Files
+The host retains relative article links and propagates Vue SSR errors. [verify.ts](verify.ts) checks complete documents, rendered Vue Markdown, titles, and emitted stylesheet files. [Actions](../../../.github/workflows/ox-native-reference.yml) checks TypeScript and 4/30/full builds on Linux.
 
-- [vite.config.ts](vite.config.ts): Vue, Ox Vue, and the custom-host plugin.
-- [host.ts](host.ts): native Markdown, cached source rendering, Vue SSR, assets,
-  and propagation of SSR errors.
-- [routes.ts](routes.ts): reuse the existing URL mapping, read source titles,
-  and adapt YAML guides to Markdown.
-- [App.vue](App.vue): the real server-rendered layout and section indexes.
-- [overview.md](overview.md): a Markdown component imported via `oxContentVue()`.
-- [ReadingTools.vue](ReadingTools.vue) / [client.ts](client.ts): selective Vue hydration.
-- [verify.ts](verify.ts): check each rendered URL, article/index content,
-  server-rendered controls, and emitted CSS/JS files.
-
-## Coverage
-
-`coverage.json` records every rendered and excluded route. Markdown retains its
-original source. `_dir.yml` becomes a titled index of its articles; stepped YAML
-guides render their body, groups, step descriptions, and images. Application-only
-Vue pages and locale redirects remain listed as excluded routes. They do not
-produce placeholder HTML.
-
-The layout is a small reference design, not a port of Misskey Hub's Nuxt theme.
-Raw MDC is processed by Ox and does not reproduce all Nuxt/MDC components.
-Guide content is rendered, but the original guide selector/layout behavior is
-not ported. Existing [ox-standalone](../ox-standalone/README.md) remains the example
-that reuses the Nuxt compatibility layer and existing Vue pages.
-
-[Actions](../../../.github/workflows/ox-native-reference.yml) runs strict TypeScript
-checking and 4/30/full builds with output verification. Coverage and verification
-JSON are uploaded as artifacts. Historical performance and VRT reports are untouched;
-the previous 1.8s default-native-theme measurement has a different rendering scope.
+The sample has its own strict tsconfig; Vite 7's config bundler may still warn about the parent Nuxt tsconfig when Nuxt prepare has not run. Existing performance/VRT reports remain historical records. Compiling articles as Vue modules has a different cost from the native default-theme renderer.
