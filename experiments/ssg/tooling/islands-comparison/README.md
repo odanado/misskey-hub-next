@@ -1,0 +1,39 @@
+# Ox主体＋Vue islandsの追加コスト診断
+
+通常の移行コードは変更せず、`6cbe059`（VRT合格済みislands案）とPR #2の`c52b733`を`git archive`で独立展開する。依存は同一lockfile・rootのnode_modulesを共有。`prepare.py`の各置換は1件一致を要求する。コピーへだけフックを挿入し、全ファイルのハッシュを`diagnostic-source.json`へ保存、計測の前後に照合する。Nuxt prepareはislands案だけ計測外で実行する。
+
+```sh
+python3 experiments/ssg/tooling/islands-comparison/prepare.py islands
+python3 experiments/ssg/tooling/islands-comparison/prepare.py pr2
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py full 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py pr2 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py md-only 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py no-client 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py no-theme 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py no-shiki 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py static-links 3
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py cpu 1
+python3 experiments/ssg/tooling/islands-comparison/benchmark.py full-end 3
+node experiments/ssg/tooling/islands-comparison/snippet-stats.mjs
+python3 experiments/ssg/tooling/islands-comparison/summarize.py
+```
+
+各計測は順次実行。既存コピーがある場合prepareは上書きしない。診断結果は`results/islands-comparison/2026-10-31/`、CPU生データは`.pilot/islands-comparison/islands/profile.cpuprofile`、画像・ログ・生成物はGitに含めない。
+
+| ケース | 残すもの／省くもの |
+| --- | --- |
+| full | 25秒版の全1,991 URL。フック以外は通常実装と同じ |
+| pr2 | PR #2の1,342 Markdown URL＋索引。フック以外は元実装と同じ |
+| md-only | fullから出力URLだけを同じ1,342 Markdownへ絞る。全原稿準備・全件用クライアントは維持 |
+| no-client | fullのクライアントエントリーを微小なCSS importだけにする。SSRとデータは維持。ブラウザー操作・スタイルの互換は成立しない |
+| no-theme | 通常Markdown本文生成は維持し、`fullTheme`によるフレーム・Vue UI・固定ページ/YAMLの描画を省く。head/payload出力は維持 |
+| no-shiki | MDCのrehype highlightプラグインだけを外す。MDC構文解析、他の原稿互換処理、クライアント/UI描画は維持 |
+| static-links | 本文のProseAだけVue補助から単純なaタグへ置換。その他のUI/Vue描画は維持 |
+| full-end | 一連の計測後にfullを再度3回実行し、時間変動を確認 |
+| cpu | fullと同じ機能の追加1回でV8 CPUサンプルを収集。通常3回の中央値に入れない |
+
+処理を省くケースは原因調査用であり、VRT合格済みの移行案ではない。VRTを実行したり基準を更新したりしない。各ケースで出力件数・DOCTYPE/title・例外ログを確認し、no-theme以外は各元verifierも計測外で実行する。no-themeは意図的に本文領域や固定ページを省くため、構造検査のみ。
+
+`buildSeconds`はVite import前からawaitしたbuildの完了まで。同じrunner・通常Vueで揃える。PNPM/Node起動・計測後の出力列挙・検証は除外する。過去の5.37秒/25.07秒とは計測境界が違う。OSキャッシュは保持、外部contributors APIは実取得。CPUは自プロセスのみで子プロセスを含まない。
+
+工程表は総時間が中央値だった**実際の1回**の、重ならない区間を使う。非同期transformフックとMDC各snippetの時間は並行処理・親子の重なりがあるため足さない。各処理を外した差も相互作用があり、合計しない。

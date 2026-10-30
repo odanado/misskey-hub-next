@@ -1,0 +1,46 @@
+{
+  "case": "pr2",
+  "ref": "c52b733c227aaf5f91341544aebe4c3977800cee",
+  "sourceFingerprint": "20e0332e1740d3782e9e631ddfe1b72f896d23da88e442a0a60bef81d28c8fb3",
+  "sourceUnchanged": true,
+  "startedAt": "2026-10-30T21:35:11.101598+00:00",
+  "finishedAt": "2026-10-30T21:35:27.925305+00:00",
+  "runs": [
+    {
+      "run": 1,
+      "processSeconds": 4.6445410419255495,
+      "buildSeconds": 4.375594625000001,
+      "htmlFiles": 1343,
+      "exitCode": 0,
+      "originalVerifierExitCode": 0,
+      "peakRssBytes": 623214592,
+      "profileSha256": "1012c55600922e651f1ca8e89e78149bf4d76b448e959adda7d8f7a6f1cc4e9b",
+      "logSha256": "293660bf2487d464d2028d4a1605a4f21f10e291fcb1e5a8942a80a795d51c44"
+    },
+    {
+      "run": 2,
+      "processSeconds": 4.4244218750391155,
+      "buildSeconds": 4.128651124999999,
+      "htmlFiles": 1343,
+      "exitCode": 0,
+      "originalVerifierExitCode": 0,
+      "peakRssBytes": 716701696,
+      "profileSha256": "49c929c86b778caf7181965ba44c82ba2f1bb557dad486602b90d05d1bfa577d",
+      "logSha256": "d5d1e8f20014f107af7b30c7e99cee215a6cb8a4edf9d9b5964c5808b6fb5b03"
+    },
+    {
+      "run": 3,
+      "processSeconds": 4.528938208008185,
+      "buildSeconds": 4.216005292,
+      "htmlFiles": 1343,
+      "exitCode": 0,
+      "originalVerifierExitCode": 0,
+      "peakRssBytes": 672120832,
+      "profileSha256": "90d745a7ade75db9f0ebf4b98a87ef003a02de5bfbcf0da1e150b4c374399e2d",
+      "logSha256": "4afb292da1b672689407559bc12d2c95b6c2ea577f7de89a54ba6fa1d00374b2"
+    }
+  ],
+  "medianBuildSeconds": 4.216005292,
+  "medianProcessSeconds": 4.528938208008185,
+  "policy": "Instrumented isolated archive. buildSeconds: before Vite import to awaited build completion; excludes PNPM/Node startup, output enumeration and verification. All cases sequential, OS caches retained. Ablations intentionally remove visual/functionality work, not migration candidates. Inclusive hook/async totals overlap and are not additive."
+}

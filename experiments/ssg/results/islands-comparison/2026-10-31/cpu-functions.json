@@ -1,0 +1,488 @@
+{
+  "sha256": "4c2cf4be82f8eedbc77885e08559f005eb43365d83a5bf7654301c34f89428c7",
+  "sampledSeconds": 26.42866699999999,
+  "gcSelfSeconds": 3.0394529999999906,
+  "policy": "One additional full run, self samples. Includes idle/GC samples, excludes child-process CPU; not additive to wall-clock phases. Raw file retained locally.",
+  "topFunctions": [
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "line": 0,
+      "selfMs": 3039.4529999999904
+    },
+    {
+      "function": "(idle)",
+      "url": "",
+      "line": 0,
+      "selfMs": 882.8850000000018
+    },
+    {
+      "function": "",
+      "url": "",
+      "line": 0,
+      "selfMs": 435.45399999999967
+    },
+    {
+      "function": "wasm-function[107]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 412.0509999999992
+    },
+    {
+      "function": "readFileUtf8",
+      "url": "",
+      "line": 0,
+      "selfMs": 399.5049999999998
+    },
+    {
+      "function": "serialize",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/nuxt-compat/head.mjs",
+      "line": 13,
+      "selfMs": 373.54299999999967
+    },
+    {
+      "function": "next",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vfile-location@5.0.3/node_modules/vfile-location/lib/index.js",
+      "line": 87,
+      "selfMs": 373.1689999999997
+    },
+    {
+      "function": "decode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/ufo@1.6.2/node_modules/ufo/dist/index.mjs",
+      "line": 124,
+      "selfMs": 296.33599999999996
+    },
+    {
+      "function": "(program)",
+      "url": "",
+      "line": 0,
+      "selfMs": 294.11299999999983
+    },
+    {
+      "function": "wrapSafe",
+      "url": "node:internal/modules/cjs/loader",
+      "line": 1595,
+      "selfMs": 273.253
+    },
+    {
+      "function": "wasm-function[198]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 264.75
+    },
+    {
+      "function": "wasm-function[25]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 261.0379999999999
+    },
+    {
+      "function": "rmdir",
+      "url": "",
+      "line": 0,
+      "selfMs": 253.99899999999997
+    },
+    {
+      "function": "copyFile",
+      "url": "",
+      "line": 0,
+      "selfMs": 246.082
+    },
+    {
+      "function": "unlink",
+      "url": "",
+      "line": 0,
+      "selfMs": 243.914
+    },
+    {
+      "function": "",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/nuxt-compat/runtime.ts",
+      "line": 138,
+      "selfMs": 225.043
+    },
+    {
+      "function": "utf8Write",
+      "url": "node:internal/buffer",
+      "line": 1054,
+      "selfMs": 205.04300000000003
+    },
+    {
+      "function": "compileSourceTextModule",
+      "url": "node:internal/modules/esm/utils",
+      "line": 344,
+      "selfMs": 197.001
+    },
+    {
+      "function": "parse",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+core@66.5.12/node_modules/@unocss/core/dist/index.mjs",
+      "line": 1001,
+      "selfMs": 165.37099999999998
+    },
+    {
+      "function": "wasm-function[104]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 163.37900000000002
+    },
+    {
+      "function": "match",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+core@66.5.12/node_modules/@unocss/core/dist/index.mjs",
+      "line": 888,
+      "selfMs": 160.79
+    },
+    {
+      "function": "RegExp: <(?:loom|asciinema|figma|note|googleslides|replit|spotify|applemusic|speakerdeck|audio|video|stackblitz|tweet|xpost|bluesky|googlemaps|qiita|zenn|npmpackage|cratesio|pypi|dockerhub|codepen|jsfiddle|observable|codesandbox|vimeo|twitch|discord|fediverse|mastodon|misskey|mixi2|facebook|threads|instagram|webcontainer|github|ogcard|reddit|youtube)[\\s/>]",
+      "url": "",
+      "line": 0,
+      "selfMs": 160.17000000000002
+    },
+    {
+      "function": "parseAst",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/parseAst.js",
+      "line": 2083,
+      "selfMs": 154.79
+    },
+    {
+      "function": "def",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+shared@3.5.25/node_modules/@vue/shared/dist/shared.cjs.prod.js",
+      "line": 92,
+      "selfMs": 147.41299999999998
+    },
+    {
+      "function": "internalModuleStat",
+      "url": "",
+      "line": 0,
+      "selfMs": 143.539
+    },
+    {
+      "function": "prepareFullData",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/shared/full-data.mjs",
+      "line": 22,
+      "selfMs": 141.42000000000002
+    },
+    {
+      "function": "transformMarkdown",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@ox-content+vite-plugin@3.4.3_@vue+compiler-sfc@3.5.25_katex@0.16.47_vite@7.3.1_@types+_58dbb1b44567959fd33840b5a8d7b5b1/node_modules/@ox-content/vite-plugin/dist/resolve-options.mjs",
+      "line": 7344,
+      "selfMs": 132.75500000000002
+    },
+    {
+      "function": "EntityPathTracker",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 2016,
+      "selfMs": 128.12099999999998
+    },
+    {
+      "function": "RegExp: <(GitHub|OgCard|Reddit|YouTube|NotByAI|loom|asciinema|figma|note|googleslides|replit|spotify|applemusic|speakerdeck|Audio|Video|stackblitz|tweet|xpost|bluesky|googlemaps|qiita|zenn|npmpackage|cratesio|pypi|dockerhub|codepen|jsfiddle|observable|codesandbox|vimeo|twitch|discord|fediverse|mastodon|misskey|mixi2|facebook|threads|instagram|webcontainer)((?:[^>\"']|\"[^\"]*\"|'[^']*')*?)\\s*\\/>(?:\\s*<\\/\\1\\s*>)?",
+      "url": "",
+      "line": 0,
+      "selfMs": 121.70399999999998
+    },
+    {
+      "function": "DiscriminatedPathTracker",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 2049,
+      "selfMs": 120.33800000000002
+    },
+    {
+      "function": "convertNode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 16339,
+      "selfMs": 107.05000000000004
+    },
+    {
+      "function": "read",
+      "url": "",
+      "line": 0,
+      "selfMs": 104.86899999999997
+    },
+    {
+      "function": "sanitizeInternalPath",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/assets/js/misc/index.ts",
+      "line": 39,
+      "selfMs": 104.67000000000002
+    },
+    {
+      "function": "splice",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/micromark-util-chunked@2.0.1/node_modules/micromark-util-chunked/index.js",
+      "line": 23,
+      "selfMs": 100.418
+    },
+    {
+      "function": "realpath",
+      "url": "",
+      "line": 0,
+      "selfMs": 98.32999999999997
+    },
+    {
+      "function": "render",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/ox-native-islands/html.ts",
+      "line": 27,
+      "selfMs": 96.87700000000001
+    },
+    {
+      "function": "normalizeClass",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+shared@3.5.25/node_modules/@vue/shared/dist/shared.cjs.prod.js",
+      "line": 298,
+      "selfMs": 96.793
+    },
+    {
+      "function": "syntaxExtension",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/micromark-util-combine-extensions@2.0.1/node_modules/micromark-util-combine-extensions/index.js",
+      "line": 44,
+      "selfMs": 95.0
+    },
+    {
+      "function": "renderComponentSubTree",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+server-renderer@3.5.25_vue@3.5.25_typescript@5.9.2_/node_modules/@vue/server-renderer/dist/server-renderer.cjs.prod.js",
+      "line": 419,
+      "selfMs": 94.913
+    },
+    {
+      "function": "component",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3011,
+      "selfMs": 93.00300000000001
+    },
+    {
+      "function": "finishComponentSetup",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 6439,
+      "selfMs": 87.95800000000001
+    },
+    {
+      "function": "RegExp: \\/$|\\/\\?|\\/#",
+      "url": "",
+      "line": 0,
+      "selfMs": 87.75500000000002
+    },
+    {
+      "function": "setFullProps",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3694,
+      "selfMs": 87.54600000000002
+    },
+    {
+      "function": "adapt",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/shared/content/ox-native.mjs",
+      "line": 95,
+      "selfMs": 86.496
+    },
+    {
+      "function": "islandApp",
+      "url": "",
+      "line": 35,
+      "selfMs": 86.16600000000001
+    },
+    {
+      "function": "readdir",
+      "url": "",
+      "line": 0,
+      "selfMs": 86.002
+    },
+    {
+      "function": "UtfString",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@shikijs+engine-oniguruma@1.29.2/node_modules/@shikijs/engine-oniguruma/dist/index.mjs",
+      "line": 122,
+      "selfMs": 81.081
+    },
+    {
+      "function": "renderElementVNode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+server-renderer@3.5.25_vue@3.5.25_typescript@5.9.2_/node_modules/@vue/server-renderer/dist/server-renderer.cjs.prod.js",
+      "line": 548,
+      "selfMs": 79.79500000000002
+    },
+    {
+      "function": "slice",
+      "url": "node:buffer",
+      "line": 640,
+      "selfMs": 79.082
+    },
+    {
+      "function": "bind",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 2804,
+      "selfMs": 77.99900000000001
+    },
+    {
+      "function": "readPackageJSON",
+      "url": "",
+      "line": 0,
+      "selfMs": 77.459
+    },
+    {
+      "function": "open",
+      "url": "node:internal/fs/promises",
+      "line": 635,
+      "selfMs": 76.37199999999999
+    },
+    {
+      "function": "normalizePropsOptions",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3772,
+      "selfMs": 74.039
+    },
+    {
+      "function": "lstat",
+      "url": "",
+      "line": 0,
+      "selfMs": 72.791
+    },
+    {
+      "function": "",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 834,
+      "selfMs": 71.251
+    },
+    {
+      "function": "initProps",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3584,
+      "selfMs": 70.959
+    },
+    {
+      "function": "inlineFor",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/ox-native-islands/host.ts",
+      "line": 35,
+      "selfMs": 70.209
+    },
+    {
+      "function": "wasm-function[203]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 69.71200000000002
+    },
+    {
+      "function": "_callState",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/parse5@7.3.0/node_modules/parse5/dist/tokenizer/index.js",
+      "line": 490,
+      "selfMs": 69.33
+    },
+    {
+      "function": "applyOptions",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 2609,
+      "selfMs": 68.24799999999999
+    },
+    {
+      "function": "sanitizeInternalPath",
+      "url": "",
+      "line": 39,
+      "selfMs": 67.879
+    },
+    {
+      "function": "get",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/module-runner.js",
+      "line": 1155,
+      "selfMs": 64.167
+    },
+    {
+      "function": "nodes",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/islands-comparison/islands/experiments/ssg/ox-native-islands/html.ts",
+      "line": 21,
+      "selfMs": 64.041
+    },
+    {
+      "function": "RegExp: \\/{2,}",
+      "url": "",
+      "line": 0,
+      "selfMs": 63.33300000000001
+    },
+    {
+      "function": "_emscripten_memcpy_big",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@shikijs+engine-oniguruma@1.29.2/node_modules/@shikijs/engine-oniguruma/dist/index.mjs",
+      "line": 24,
+      "selfMs": 62.833000000000006
+    },
+    {
+      "function": "renderVNode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+server-renderer@3.5.25_vue@3.5.25_typescript@5.9.2_/node_modules/@vue/server-renderer/dist/server-renderer.cjs.prod.js",
+      "line": 495,
+      "selfMs": 60.917
+    },
+    {
+      "function": "renderComponentRoot",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3371,
+      "selfMs": 58.416000000000004
+    },
+    {
+      "function": "RegExp: ^(\\/(ja|en|id|ko|it|pl|fr|th|es|de|cn|tw|ja-ks)\\/?){2,}(.*)$",
+      "url": "",
+      "line": 0,
+      "selfMs": 58.25
+    },
+    {
+      "function": "assignSlots",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 3886,
+      "selfMs": 56.37199999999999
+    },
+    {
+      "function": "_createVNode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 6015,
+      "selfMs": 56.04200000000001
+    },
+    {
+      "function": "createBaseVNode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 5963,
+      "selfMs": 55.623
+    },
+    {
+      "function": "createComponentInstance",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 6234,
+      "selfMs": 55.37400000000001
+    },
+    {
+      "function": "RegExp: (?:[\\w&:[\\]-]|\\[\\S{1,64}=\\S{1,64}\\]){1,64}\\[\\\\?['\"]?\\S{1,64}?['\"]\\]\\]?[\\w:-]{0,64}",
+      "url": "",
+      "line": 0,
+      "selfMs": 54.16700000000001
+    },
+    {
+      "function": "addRoute",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vue-router@4.6.3_vue@3.5.25_typescript@5.9.2_/node_modules/vue-router/dist/vue-router.mjs",
+      "line": 624,
+      "selfMs": 53.29
+    },
+    {
+      "function": "findVariable",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 5644,
+      "selfMs": 52.795
+    },
+    {
+      "function": "visit",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/unist-util-visit-parents@6.0.1/node_modules/unist-util-visit-parents/lib/index.js",
+      "line": 334,
+      "selfMs": 52.79299999999999
+    },
+    {
+      "function": "setup",
+      "url": "",
+      "line": 23,
+      "selfMs": 52.748999999999995
+    },
+    {
+      "function": "RegExp: [\"'&<>]",
+      "url": "",
+      "line": 0,
+      "selfMs": 52.25200000000001
+    },
+    {
+      "function": "include",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 2846,
+      "selfMs": 51.999
+    },
+    {
+      "function": "setupStatefulComponent",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+runtime-core@3.5.25/node_modules/@vue/runtime-core/dist/runtime-core.cjs.prod.js",
+      "line": 6374,
+      "selfMs": 51.374
+    }
+  ]
+}

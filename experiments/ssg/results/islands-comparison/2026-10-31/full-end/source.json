@@ -1,0 +1,15 @@
+{
+  "ref": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "name": "islands",
+  "patches": [
+    "experiments/ssg/ox-native-islands/decorations.ts",
+    "experiments/ssg/ox-native-islands/host.ts",
+    "experiments/ssg/ox-native-islands/html.ts",
+    "experiments/ssg/ox-native-islands/markdown.ts",
+    "experiments/ssg/ox-native-islands/routes.ts",
+    "experiments/ssg/ox-native-islands/vite.base.ts",
+    "experiments/ssg/ox-native-islands/vite.config.ts",
+    "experiments/ssg/shared/content/markdown.mjs",
+    "experiments/ssg/tooling/profiling.mjs"
+  ]
+}
