@@ -1,0 +1,307 @@
+{
+  "sampledSeconds": 55.28354100000003,
+  "gcSelfSeconds": 10.099779000000028,
+  "policy": "CPU self samples from one additional run; not additive to wall-clock stages. Child-process CPU not captured.",
+  "topFunctions": [
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "line": 0,
+      "selfMs": 10099.779000000028
+    },
+    {
+      "function": "(idle)",
+      "url": "",
+      "line": 0,
+      "selfMs": 2239.0389999999925
+    },
+    {
+      "function": "wasm-function[107]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 1084.2680000000012
+    },
+    {
+      "function": "next",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vfile-location@5.0.3/node_modules/vfile-location/lib/index.js",
+      "line": 87,
+      "selfMs": 1046.4120000000032
+    },
+    {
+      "function": "(program)",
+      "url": "",
+      "line": 0,
+      "selfMs": 983.2490000000023
+    },
+    {
+      "function": "match",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+core@66.5.12/node_modules/@unocss/core/dist/index.mjs",
+      "line": 888,
+      "selfMs": 825.5050000000017
+    },
+    {
+      "function": "wasm-function[25]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 736.1250000000005
+    },
+    {
+      "function": "wasm-function[198]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 712.3210000000003
+    },
+    {
+      "function": "",
+      "url": "",
+      "line": 0,
+      "selfMs": 697.1310000000008
+    },
+    {
+      "function": "parse",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+core@66.5.12/node_modules/@unocss/core/dist/index.mjs",
+      "line": 1001,
+      "selfMs": 665.667
+    },
+    {
+      "function": "runInlinedModule",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/module-runner.js",
+      "line": 912,
+      "selfMs": 638.3760000000003
+    },
+    {
+      "function": "serialize",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/native-comparison/pr1-cpu/experiments/ssg/nuxt-compat/head.mjs",
+      "line": 13,
+      "selfMs": 470.1309999999996
+    },
+    {
+      "function": "wasm-function[104]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 459.3169999999994
+    },
+    {
+      "function": "realpath",
+      "url": "",
+      "line": 0,
+      "selfMs": 450.45499999999925
+    },
+    {
+      "function": "manifestKey",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@ox-content+vite-plugin@3.4.3_@vue+compiler-sfc@3.5.25_katex@0.16.47_vite@7.3.1_@types+_58dbb1b44567959fd33840b5a8d7b5b1/node_modules/@ox-content/vite-plugin/dist/custom-host2.mjs",
+      "line": 855,
+      "selfMs": 449.1219999999994
+    },
+    {
+      "function": "copyFile",
+      "url": "",
+      "line": 0,
+      "selfMs": 378.208
+    },
+    {
+      "function": "render",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/native-comparison/pr1-cpu/experiments/ssg/ox-native/host.ts",
+      "line": 32,
+      "selfMs": 356.96299999999974
+    },
+    {
+      "function": "isCircularImport",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/module-runner.js",
+      "line": 1034,
+      "selfMs": 346.0019999999998
+    },
+    {
+      "function": "cleanModulePath$1",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@ox-content+vite-plugin@3.4.3_@vue+compiler-sfc@3.5.25_katex@0.16.47_vite@7.3.1_@types+_58dbb1b44567959fd33840b5a8d7b5b1/node_modules/@ox-content/vite-plugin/dist/custom-host2.mjs",
+      "line": 564,
+      "selfMs": 334.12599999999964
+    },
+    {
+      "function": "RegExp: [?#]",
+      "url": "",
+      "line": 0,
+      "selfMs": 328.41899999999976
+    },
+    {
+      "function": "eachNext",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/chunks/config.js",
+      "line": 2846,
+      "selfMs": 318.1279999999997
+    },
+    {
+      "function": "slice",
+      "url": "node:buffer",
+      "line": 640,
+      "selfMs": 297.7509999999998
+    },
+    {
+      "function": "decode",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/ufo@1.6.2/node_modules/ufo/dist/index.mjs",
+      "line": 124,
+      "selfMs": 284.3299999999999
+    },
+    {
+      "function": "RegExp: \\w",
+      "url": "",
+      "line": 0,
+      "selfMs": 283.74499999999995
+    },
+    {
+      "function": "splice",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/micromark-util-chunked@2.0.1/node_modules/micromark-util-chunked/index.js",
+      "line": 23,
+      "selfMs": 278.251
+    },
+    {
+      "function": "encode$1",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/chunks/config.js",
+      "line": 313,
+      "selfMs": 268.038
+    },
+    {
+      "function": "readFileUtf8",
+      "url": "",
+      "line": 0,
+      "selfMs": 266.62600000000003
+    },
+    {
+      "function": "utf8Write",
+      "url": "node:internal/buffer",
+      "line": 1054,
+      "selfMs": 264.87500000000006
+    },
+    {
+      "function": "RegExp: (?:[\\w&:[\\]-]|\\[\\S{1,64}=\\S{1,64}\\]){1,64}\\[\\\\?['\"]?\\S{1,64}?['\"]\\]\\]?[\\w:-]{0,64}",
+      "url": "",
+      "line": 0,
+      "selfMs": 259.592
+    },
+    {
+      "function": "syntaxExtension",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/micromark-util-combine-extensions@2.0.1/node_modules/micromark-util-combine-extensions/index.js",
+      "line": 44,
+      "selfMs": 256.66399999999993
+    },
+    {
+      "function": "transformMarkdown",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@ox-content+vite-plugin@3.4.3_@vue+compiler-sfc@3.5.44_katex@0.16.47_vite@7.3.1_@types+_610ab40480308de486285d20d141bbb0/node_modules/@ox-content/vite-plugin/dist/resolve-options.mjs",
+      "line": 7344,
+      "selfMs": 251.586
+    },
+    {
+      "function": "wrapSafe",
+      "url": "node:internal/modules/cjs/loader",
+      "line": 1595,
+      "selfMs": 245.163
+    },
+    {
+      "function": "genSourceMapUrl",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/chunks/config.js",
+      "line": 8025,
+      "selfMs": 236.24199999999996
+    },
+    {
+      "function": "UtfString",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@shikijs+engine-oniguruma@1.29.2/node_modules/@shikijs/engine-oniguruma/dist/index.mjs",
+      "line": 122,
+      "selfMs": 215.458
+    },
+    {
+      "function": "internalModuleStat",
+      "url": "",
+      "line": 0,
+      "selfMs": 210.874
+    },
+    {
+      "function": "",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/native-comparison/pr1-cpu/experiments/ssg/nuxt-compat/runtime.ts",
+      "line": 138,
+      "selfMs": 192.248
+    },
+    {
+      "function": "compileSourceTextModule",
+      "url": "node:internal/modules/esm/utils",
+      "line": 344,
+      "selfMs": 191.75400000000005
+    },
+    {
+      "function": "stat",
+      "url": "",
+      "line": 0,
+      "selfMs": 187.83800000000002
+    },
+    {
+      "function": "addUneditedChunk",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/chunks/config.js",
+      "line": 3064,
+      "selfMs": 182.50000000000003
+    },
+    {
+      "function": "generateFinalHashes",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/node-entry.js",
+      "line": 20448,
+      "selfMs": 179.958
+    },
+    {
+      "function": "transform",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.vite-temp/vite.config.ts.timestamp-1793373877813-137e703efb818.mjs",
+      "line": 1124,
+      "selfMs": 171.662
+    },
+    {
+      "function": "_callState",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/parse5@7.3.0/node_modules/parse5/dist/tokenizer/index.js",
+      "line": 490,
+      "selfMs": 169.918
+    },
+    {
+      "function": "transform",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.vite-temp/vite.config.ts.timestamp-1793373899102-7bbde136b63e1.mjs",
+      "line": 1124,
+      "selfMs": 169.915
+    },
+    {
+      "function": "parseAst",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/rollup@4.53.3/node_modules/rollup/dist/es/shared/parseAst.js",
+      "line": 2083,
+      "selfMs": 166.12500000000003
+    },
+    {
+      "function": "applyExtractors",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+core@66.5.12/node_modules/@unocss/core/dist/index.mjs",
+      "line": 701,
+      "selfMs": 163.457
+    },
+    {
+      "function": "getModuleById",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/vite@7.3.1_@types+node@24.10.7_jiti@2.6.1_sass-embedded@1.97.2_sass@1.97.2_terser@5.51.2_yaml@2.9.1/node_modules/vite/dist/node/module-runner.js",
+      "line": 259,
+      "selfMs": 163.041
+    },
+    {
+      "function": "_emscripten_memcpy_big",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@shikijs+engine-oniguruma@1.29.2/node_modules/@shikijs/engine-oniguruma/dist/index.mjs",
+      "line": 24,
+      "selfMs": 161.709
+    },
+    {
+      "function": "def",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+shared@3.5.25/node_modules/@vue/shared/dist/shared.cjs.prod.js",
+      "line": 92,
+      "selfMs": 160.002
+    },
+    {
+      "function": "",
+      "url": "file:///Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@unocss+preset-mini@66.5.12/node_modules/@unocss/preset-mini/dist/chunk-gol_9zmq.mjs",
+      "line": 25,
+      "selfMs": 155.04
+    },
+    {
+      "function": "wasm-function[157]",
+      "url": "wasm://wasm/001c7aca",
+      "line": 1,
+      "selfMs": 154.12800000000001
+    }
+  ]
+}

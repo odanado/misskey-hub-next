@@ -35,6 +35,10 @@ experiments/ssg/
 
 原稿のパーサーは[shared/content/](shared/content/README.md)、Astro共通設定・HTML文書は[shared/astro/](shared/astro/)へ置く。Oxの描画後のHTML保存処理は`ox-standalone/`、Astro側のルート列挙は各Astroディレクトリが所有する。方針間で同じVueページをコピーして管理しない。
 
+## PR #1 / #2のOx native速度差の調査
+
+同じ診断方法の各3回で、#1全件版53.50秒、同じ1,342 Markdown URLへの限定版52.45秒、Markdownのクライアント生成省略版36.17秒、#2最小テーマ4.43秒だった。主因は大量のクライアントモジュール、本文の重複変換とMDCノードのSSR。省略版は機能を減らす診断であり、表示互換の移行案ではない。[工程別の根拠・改善候補](NATIVE_COMPARISON_REPORT.md)。前回の起動込みベンチとは計測境界が異なる。
+
 ## PR #2単体の無改変計測
 
 PR #2の最小テーマは、このM1 Pro / Node22環境で1,343ページを**中央値5.37秒（5回）**で生成・検証できた。下記55.65秒の互換実装とは対象と機能が異なる。[単体計測の条件と結果](PR2_STANDALONE_REPORT.md)。

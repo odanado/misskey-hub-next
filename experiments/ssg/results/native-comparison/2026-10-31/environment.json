@@ -1,0 +1,15 @@
+{
+  "node": "v22.22.2",
+  "machine": "Apple M1 Pro",
+  "platform": "Darwin-arm64",
+  "packages": {
+    "vite": "7.3.1",
+    "vue": "3.5.25",
+    "@ox-content/napi": "3.4.3",
+    "@ox-content/vite-plugin": "3.4.3",
+    "@ox-content/vite-plugin-vue": "3.4.3"
+  },
+  "lockfileSha256": "c0015851e731e0e272214f857e49b8e29d31e8c35fcd8958206ad7d8fa322e31",
+  "preparation": "PR #1 snapshots run nuxt prepare before timed builds; PR #2 does not. Initial isolated PR #1 attempt failed on missing .nuxt/tsconfig.json and was excluded.",
+  "conditions": "Sequential builds; no concurrent VRT; existing OS/dependency caches retained; 3 separate processes per non-CPU case; source hashes checked before/after runs; no heap limit changes."
+}

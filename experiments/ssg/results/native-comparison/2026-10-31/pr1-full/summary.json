@@ -1,0 +1,48 @@
+{
+  "case": "pr1-full",
+  "ref": "ab4eec512675e6403e0ed8d142a3e3620dce9b60",
+  "sourceFingerprint": "81a09ac118128d19d1f6f0994c8a6d9ea0e437663adecf80e5c3f248dbe764ab",
+  "sourceUnchanged": true,
+  "runs": [
+    {
+      "run": 1,
+      "processSeconds": 56.71701370808296,
+      "buildSeconds": 56.038076875,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "verifyExitCode": 0,
+      "peakRssBytes": 3710730240,
+      "profileSha256": "3ed178d1f15c30cdb2152771ad4dba462e9d30894c4dec087533077a8a83f8cb",
+      "logSha256": "4e29168cb0b16115cafea56cd2ceaf3a493c6cf83db42fced388108d49011126",
+      "collectedProfileSha256": "7ee1c5c75d0ca5baea6ad71e121a63a242667a8a51cdd82ae59f0b235a7cd7be"
+    },
+    {
+      "run": 2,
+      "processSeconds": 53.36483337497339,
+      "buildSeconds": 52.655280749999996,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "verifyExitCode": 0,
+      "peakRssBytes": 3889332224,
+      "profileSha256": "7aef4c62eed3f8ab6980229f5f9950844967937ab0f3de1c7f0bca8ca2047890",
+      "logSha256": "57fb905973ca1dbcbc02151dd8071ea760e900f431b8e4f35ead476dc69e9ba2",
+      "collectedProfileSha256": "4746942f8b6fc857eadd23f3e9c50160a7bcbc19c04c03f99ab8db271fa7a336"
+    },
+    {
+      "run": 3,
+      "processSeconds": 54.0908742910251,
+      "buildSeconds": 53.49542525,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "verifyExitCode": 0,
+      "peakRssBytes": 4071817216,
+      "profileSha256": "fc57bf513ea02b06d71416e0adc09aa96f539091d589592bd728d5979a5c8cad",
+      "logSha256": "db314c57648d382db68d8ecf442e1af2ebc61d653b387f93c9eb2357e455c00f",
+      "collectedProfileSha256": "1a63bbbcd8d62d1181114102e0eafb111e46e0c9259386c2a6a19568447d60e6"
+    }
+  ],
+  "medianBuildSeconds": 53.49542525,
+  "medianProcessSeconds": 54.0908742910251,
+  "policy": "Instrumented isolated snapshot; processSeconds includes Node startup and post-build output enumeration; compare buildSeconds for stages. Original verifier outside timer. OS caches retained. No VRT.",
+  "evidenceFormatting": "Per-page JSON records reformatted to one row each after collection; parsed values unchanged. collectedProfileSha256 identifies original bytes, retained locally in .pilot/native-comparison/raw-evidence."
+}

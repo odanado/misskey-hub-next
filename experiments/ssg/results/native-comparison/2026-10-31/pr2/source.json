@@ -1,0 +1,9 @@
+{
+  "ref": "c52b733c227aaf5f91341544aebe4c3977800cee",
+  "name": "pr2",
+  "patches": [
+    "experiments/ssg/ox-native/host.ts",
+    "experiments/ssg/ox-native/vite.base.ts",
+    "experiments/ssg/ox-native/vite.config.ts"
+  ]
+}
