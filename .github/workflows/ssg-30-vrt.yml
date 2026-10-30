@@ -22,6 +22,10 @@ concurrency:
 jobs:
   vrt:
     runs-on: ubuntu-24.04
+    # Time.vue formats absolute dates in the process/browser timezone.
+    # Match Playwright's timezone to avoid an upstream UTC/JST hydration mismatch.
+    env:
+      TZ: Asia/Tokyo
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4

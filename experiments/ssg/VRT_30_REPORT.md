@@ -37,6 +37,8 @@ HUB_PILOT_PAGES=30 node experiments/ssg/tooling/repros/markdown-compat.mjs
 - [8構成の集計](results/30/vrt.json)、[基準ハッシュ](results/30/baseline.json)、[全Markdown解析チェック](results/30/parser-smoke.json)
 - [30ページCI](../../.github/workflows/ssg-30-vrt.yml): 同じOSで元Nuxtの基準を生成し、8構成を比較する。Playwright 1.58.2に対応するUbuntu 24.04を指定。
 
+CIではSSRの`TZ`もブラウザーと同じ`Asia/Tokyo`に固定する。既存のTime.vueはタイムゾーンを明示しない絶対日時表示を行うため、UTCのビルド環境とJSTのブラウザーの組み合わせでは、元Nuxt自身のMFMサンプルにhydration不一致が出る。警告を無視せず、比較環境の日時条件を揃えている。
+
 集計処理が参照していた旧i18n設定パスを修正した。全テスト成功後の保存失敗だったため、保存済みの8構成の結果・画像数・基準ハッシュを再検査して集計を回収した。
 
 画像はPRに含めず、ローカル/CI artifactで保持する。この30ページの合格率は全公開1,991 URLの合格率ではない。全件の比較はPC・ライトの1条件で別に実施する。
