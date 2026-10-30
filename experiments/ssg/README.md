@@ -65,6 +65,16 @@ VRTは既存の基準画像を更新せず、許容差・マスクなしで実�
 
 整理時には過去22 JSONの[バイト単位の保存](results/refactor/history-preservation.json)を確認した。その後、30ページのVRTを再開し、基準画像のハッシュを保って互換修正を完了した。
 
+## Native SSG の参照実装
+
+[ox-native/](ox-native/README.md) に Ox Content 3.4.3 の標準 native テーマを使う単独サンプルを追加した。
+原稿準備から4/30/全公開URLの生成・検証・複数回計測まで実行できる。
+Vue/YAML ページは明示的な仮ページとして扱い、MDC/Vue の互換実装や VRT の対象とは区別する。
+
+```sh
+HUB_PILOT_PAGES=all pnpm pilot:ox-native:measure --runs=5
+```
+
 ## 実行方法
 
 コマンドはリポジトリのルートで実行する。通常のコード整理確認は既定の4ページ、全件は`HUB_PILOT_PAGES=all`を指定する。
