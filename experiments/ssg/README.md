@@ -11,13 +11,15 @@ Misskey HubのSSGを高速化するため、既存のNuxt版を基準に、従�
 | Ox単独SSG＋Vue | [ox-standalone/](ox-standalone/README.md) | Ox N-API＋MDC互換 | 自前のVue SSR → Ox Built-in SSGの独自テーマ |
 | Astro＋既存MDC | [astro-mdc/](astro-mdc/README.md) | 既存MDC / Shiki | Astro公式Vue integration＋Astro SSG |
 | Astro＋Ox | [astro-ox/](astro-ox/README.md) | Ox N-API＋MDC互換 | Astro公式Vue integration＋Astro SSG |
-| Ox native（追加） | [ox-native/](ox-native/README.md) | 公式Ox Vueプラグイン＋MDC互換 | Vue SSR＋Custom HostによるVite SSG |
+| Ox主体＋Vue islands（追加） | [ox-native-islands/](ox-native-islands/README.md) | Custom Hostの公開Markdown API＋MDC部分互換 | 通常本文・docs外枠は静的HTML、Vueは補助islands |
+| Ox native（従来の互換案） | [ox-native/](ox-native/README.md) | 公式Ox Vueプラグイン＋MDC互換 | Vue SSR＋Custom HostによるVite SSG |
 
 ```text
 experiments/ssg/
 ├── ox-standalone/   # Ox固有: Viteクライアント、Vue SSR、HTML外枠、Ox SSG
 ├── astro-mdc/       # MDCを選ぶAstro設定・ページ入口
 ├── astro-ox/        # Oxを選ぶAstro設定・ページ入口
+├── ox-native-islands/ # Ox主体の静的HTML＋Vue補助、PR #2を起点に互換検証
 ├── ox-native/       # 公式Ox Vueプラグイン＋Custom Host、既存表示の互換処理
 ├── nuxt-compat/     # 共通: Nuxt API・ページ・レイアウト・CSSの互換ラッパー
 ├── shared/          # 原稿処理、対象URL、ナビ生成、Astro共通設定/Document
@@ -34,6 +36,16 @@ experiments/ssg/
 [nuxt-compat/](nuxt-compat/README.md)に各方針で共有するNuxtのラッパーを集約した。Nuxtフレームワークは起動せず、元のVueコンポーネントから呼ばれるcomposable、auto-import、i18n、ルート、ContentRenderer等を提供する。Nuxt公式Layersの`extends`設定を利用したものではない。
 
 原稿のパーサーは[shared/content/](shared/content/README.md)、Astro共通設定・HTML文書は[shared/astro/](shared/astro/)へ置く。Oxの描画後のHTML保存処理は`ox-standalone/`、Astro側のルート列挙は各Astroディレクトリが所有する。方針間で同じVueページをコピーして管理しない。
+
+## 追加：Ox主体SSG＋Vue islands（2026-10-31）
+
+| 構成 | 1回目 | 2回目 | 3回目 | 中央値 | 30ページVRT |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Ox主体＋Vue islands | 26.03秒 | 24.97秒 | 25.07秒 | **25.07秒** | 120/120・144/144画像一致 |
+
+全1,991 URLの生成・HTML/アセット検査が3回とも成功。Oxの公式Custom Hostが通常Markdownとdocs外枠の静的HTMLを出力し、Vueは補助部品に使う。`MkSchemaViewer`等は指定どおり空として扱う。ほかの旧部品14 URLには静的表示の暫定対応が残る。全件VRTは未実施。固定ページ・YAMLにはVue再利用が残り、全件の表示移植完了を示さない。
+
+通常Vue、Ox3.4.3 / Node22.22.2 / M1 Pro。起動からビルド終了までを計測し、出力検証はタイマー外。下記の過去計測とは境界と互換実装が異なるため、参考比較として扱う。[実装・検証条件・生データ](OX_ISLANDS_REPORT.md)。
 
 ## PR #1 / #2のOx native速度差の調査
 

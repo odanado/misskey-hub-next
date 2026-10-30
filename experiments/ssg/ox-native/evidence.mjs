@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 export const resultsDirectory = 'experiments/ssg/results/ox-native/2026-10-30';
-export async function fingerprint() {
+export async function fingerprint(extraDirectories = []) {
 	const paths = [
 		'package.json',
 		'pnpm-lock.yaml',
@@ -30,6 +30,7 @@ export async function fingerprint() {
 		'assets/css',
 		'assets/js',
 		'assets/data',
+		...extraDirectories,
 	]) {
 		for (const file of await readdir(directory, { recursive: true }))
 			if (

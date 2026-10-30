@@ -11,6 +11,7 @@ if (
 		'standalone',
 		'ox-ported',
 		'ox-native',
+		'ox-native-islands',
 		'astro',
 		'astro-ox',
 		'baseline-vize',

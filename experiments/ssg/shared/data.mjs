@@ -9,8 +9,8 @@ import { createNavigation, metadata, sourceOrder } from './navigation.mjs';
 import { localesConst } from '../../../assets/data/locales.ts';
 import { performance } from 'node:perf_hooks';
 
-export async function prepareData(mode) {
-	if (fullSite) return (await import('./full-data.mjs')).prepareFullData(mode);
+export async function prepareData(mode, { parseDocument = parseOx } = {}) {
+	if (fullSite) return (await import('./full-data.mjs')).prepareFullData(mode, { parseDocument });
 	const started = performance.now();
 	const ox = getStrategy(mode).engine === 'ox';
 	const native = ox ? await import('@ox-content/napi') : null;
@@ -79,7 +79,7 @@ export async function prepareData(mode) {
 		const raw = await readFile('content/' + page.source, 'utf8');
 		const locale = page.path.split('/')[1];
 		const document = ox
-			? await parseOx({ ...bySource.get(page.source), body: native.parseFrontmatter(raw).content })
+			? await parseDocument({ ...bySource.get(page.source), body: native.parseFrontmatter(raw).content })
 			: await parseMdc(raw, page.source);
 		// Ox hoists inline styles into shared assets. Keep generated Shiki CSS in
 		// the document head so Vue never hydrates a style node that Ox has moved.

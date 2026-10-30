@@ -7,7 +7,7 @@ import { pages } from './pages.mjs';
 import { metadata, createNavigation, sourceOrder } from './navigation.mjs';
 import { parseMdc, parseOx } from './content/markdown.mjs';
 import { localesConst } from '../../../assets/data/locales.ts';
-export async function prepareFullData(mode) {
+export async function prepareFullData(mode, { parseDocument = parseOx } = {}) {
 	const manifestStart = tick();
 	const start = performance.now(),
 		ox = getStrategy(mode).engine === 'ox',
@@ -43,7 +43,7 @@ export async function prepareFullData(mode) {
 			item = ox
 				? metadata(
 						source,
-						await parseOx({ ...manifest.get(source), body: napi.parseFrontmatter(raw).content }),
+						await parseDocument({ ...manifest.get(source), body: napi.parseFrontmatter(raw).content }),
 					)
 				: await parseMdc(raw, source);
 		} else {

@@ -31,7 +31,10 @@
     "pilot:astro-mdc:build": "node experiments/ssg/tooling/build.mjs astro",
     "pilot:astro-ox:build": "node experiments/ssg/tooling/build.mjs astro-ox",
     "pilot:full:vrt": "node experiments/ssg/tooling/full-vrt.mjs",
-    "pilot:ox-native:30:verify": "HUB_PILOT_PAGES=30 node experiments/ssg/ox-native/verify-30.mjs"
+    "pilot:ox-native:30:verify": "HUB_PILOT_PAGES=30 node experiments/ssg/ox-native/verify-30.mjs",
+    "pilot:ox-islands:build": "node experiments/ssg/ox-native-islands/build.mjs",
+    "pilot:ox-islands:check": "tsc --project experiments/ssg/ox-native-islands/tsconfig.json",
+    "pilot:ox-islands:verify": "node --experimental-strip-types experiments/ssg/ox-native-islands/verify.ts"
   },
   "devDependencies": {
     "@astrojs/vue": "6.0.1",

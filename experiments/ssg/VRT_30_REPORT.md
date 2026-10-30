@@ -1,5 +1,7 @@
 # 30ページVRTの互換修正
 
+追加のOx主体＋Vue islands案も、通常Vueで120/120テスト・144/144画像が完全一致した。元Nuxt基準は不変。従来の8構成とは別の追加案で、[構成と全件計測の条件](OX_ISLANDS_REPORT.md)を参照。
+
 初期4ページを含む日英30 Markdownページで、Nuxt基準・Ox単独・Astro＋MDC・Astro＋Oxの通常Vue/Vizeを比較した。ローカルのdarwin-arm64環境では、8構成とも**120/120テスト成功、144/144画像がRGBA完全一致**した。合計960テスト・1,152画像。対象は[ページ一覧](shared/pages-30.mjs)と[初期4ページ](shared/pilot-pages.mjs)を参照。
 
 | 構成 | テスト | 画像の完全一致 | 合格率 |
