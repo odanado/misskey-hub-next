@@ -12,6 +12,10 @@ on:
         description: "Build and measure SSG without deploying"
         type: boolean
         default: false
+      compiler_benchmark:
+        description: "Compare standard Vue and Vize once each (requires build_only)"
+        type: boolean
+        default: false
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -41,10 +45,15 @@ jobs:
           cache: pnpm
           node-version: "22"
 
+      - name: Require build-only for compiler benchmark
+        if: ${{ inputs.compiler_benchmark && !inputs.build_only }}
+        run: exit 1
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build website
+        if: ${{ !inputs.compiler_benchmark }}
         run: |
           /usr/bin/time -p -o "$RUNNER_TEMP/ssg-time.txt" pnpm generate
           cat "$RUNNER_TEMP/ssg-time.txt"
@@ -54,7 +63,7 @@ jobs:
           SERVER_LIST_API_BASE_URL: ${{ secrets.SERVER_LIST_API_BASE_URL }}
 
       - name: Verify full SSG and report timing
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_only }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_only && !inputs.compiler_benchmark }}
         run: |
           node --experimental-strip-types --input-type=module <<'JS'
           import assert from 'node:assert/strict';
@@ -83,6 +92,22 @@ jobs:
           await appendFile(process.env.GITHUB_STEP_SUMMARY,
             `## Full SSG (single run)\n\n| Item | Result |\n| --- | --- |\n| SSG | ${seconds}s |\n| Public URLs | ${pages.length} + 404 |\n| Node | ${process.version} |\n| CPU | ${result.cpu} (${result.cpuCount} vCPU) |\n`);
           JS
+
+      - name: Compare Vue compilers (single run)
+        if: ${{ inputs.compiler_benchmark && inputs.build_only }}
+        run: node --experimental-strip-types tooling/vize/actions.mjs
+        env:
+          NODE_ENV: production
+          CROWDIN_INTG_API: ${{ secrets.CROWDIN_INTG_API }}
+          SERVER_LIST_API_BASE_URL: ${{ secrets.SERVER_LIST_API_BASE_URL }}
+
+      - name: Upload compiler measurements
+        if: ${{ inputs.compiler_benchmark && inputs.build_only }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiler-benchmark
+          path: .vrt/vize-actions/
+          include-hidden-files: true
 
       # - name: Upload with ftp
       #   uses: SamKirkland/FTP-Deploy-Action@v4.3.6

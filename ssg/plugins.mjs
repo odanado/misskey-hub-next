@@ -162,6 +162,24 @@ export function plugins() {
 				return (await imports.injectImports(code)).code;
 			},
 		},
+        ...(process.env.HUB_VUE_COMPILER === "vize" ? [{
+            name: "site-vize-boundaries",
+            enforce: "post",
+            async transform(source, id) {
+                if (!id.includes(".vue") || /[?&]type=style/.test(id)) return;
+                // Vize loads generated JS before normal SFC pre-transforms run.
+                // Keep the same Nuxt compatibility imports on that JS path.
+                let code = source
+                    .replaceAll("import.meta.client", "(!import.meta.env.SSR)")
+                    .replaceAll("import.meta.server", "import.meta.env.SSR")
+                    .replace(/((?:from|import)\s*['"][^'"]+\.svg)(['"])/g, "$1?component$2");
+                // 0.609.0 incorrectly reads CSS Modules from setup bindings in
+                // render/ssrRender functions; Vue exposes them on the context.
+                if (/function\s+(?:ssrRender|render)\s*\(\s*_ctx/.test(code))
+                    code = code.replace(/\$setup\.\$style\b/g, "_ctx.$style");
+                return (await imports.injectImports(code)).code;
+            },
+        }] : []),
 		unocss({
 			configFile: resolve(root, "uno.config.ts"),
 			content: {

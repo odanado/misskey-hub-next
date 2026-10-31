@@ -6,7 +6,9 @@ import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { parse, compileStyle } from "@vue/compiler-sfc";
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import { createCompiler, profileCompiler } from "../tooling/vize/profile.mjs";
+const compiler = process.env.HUB_VUE_COMPILER ?? "vue";
+if (!["vue", "vize"].includes(compiler)) throw Error("Invalid Vue compiler");
 import { createOxContentCustomHostPlugin } from "@ox-content/vite-plugin";
 import { common } from "./plugins.mjs";
 import { root, outDir } from "./routes.mjs";
@@ -121,13 +123,7 @@ export default defineConfig({
 	plugins: [
 		...base.plugins,
 		themeStyles,
-		vue({
-			template: {
-				compilerOptions: {
-					isCustomElement: (tag) => tag.startsWith("model-viewer"),
-				},
-			},
-		}),
+		...profileCompiler(await createCompiler(compiler)),
 		createOxContentCustomHostPlugin({
 			host: resolve(import.meta.dirname, "host.ts"),
 			oxContent: {

@@ -1,0 +1,424 @@
+{
+  "startedAt": "2026-10-31T09:07:12.359Z",
+  "base": "c0aa1d20e1c2225f8c792996c4d5215477d04881",
+  "commit": "c0aa1d20e1c2225f8c792996c4d5215477d04881",
+  "dirty": true,
+  "sourceFingerprint": "2f53644c50b9b80dd448469833568db074b5fb150f2d2c5f031e5e08f7faf24e",
+  "node": "v22.22.2",
+  "platform": "darwin-arm64",
+  "cpu": "Apple M1 Pro",
+  "cpuCount": 10,
+  "publicUrls": 2003,
+  "versions": {
+    "vue": "3.5.25",
+    "pluginVue": "6.0.10",
+    "vize": "0.609.0",
+    "vite": "8.3.5",
+    "oxContent": "3.4.3"
+  },
+  "policy": "Three sequential fresh pnpm build processes per compiler, alternating order. Full production build through redirects and 404, client JS/CSS and all public URLs; compiler API/hook probes enabled equally, output checks and copying outside timer. VIZE_PRECOMPILE_CACHE=0; Vite default disk precompilation/dependency caches deleted before each run; OS caches retained. No concurrent VRT or builds. No compiler fallback. Standard Vue static-frame parse/compileStyle bridge remains in both variants and is outside compiler probes.",
+  "runs": [
+    {
+      "round": 1,
+      "compiler": "vue",
+      "seconds": 27.012429625,
+      "clientBuildSeconds": 3.8,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 524.2300530000105,
+      "vueSfcStyleMs": 36.96999599999344,
+      "allCompilerApiMs": 561.2000490000039,
+      "sfcPluginHookMs": 708.2803240000108,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 365,
+          "milliseconds": 148.08409500000948,
+          "files": 121
+        },
+        "compileScript/client": {
+          "calls": 104,
+          "milliseconds": 258.2406219999998,
+          "files": 103
+        },
+        "compileStyleAsync/client": {
+          "calls": 128,
+          "milliseconds": 36.96999599999344,
+          "files": 53
+        },
+        "compileTemplate/client": {
+          "calls": 17,
+          "milliseconds": 1.0853739999997742,
+          "files": 17
+        },
+        "compileScript/ssr": {
+          "calls": 99,
+          "milliseconds": 61.353463999997985,
+          "files": 99
+        },
+        "compileTemplate/ssr": {
+          "calls": 116,
+          "milliseconds": 55.46649800000341,
+          "files": 116
+        }
+      },
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "compiledFileCount": 121
+    },
+    {
+      "round": 1,
+      "compiler": "vize",
+      "seconds": 26.229526375000003,
+      "clientBuildSeconds": 3.18,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 111.85570199999734,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 111.85570199999734,
+      "sfcPluginHookMs": 280.4443480000257,
+      "apiBreakdown": {
+        "compileSfcBatchWithResults/client": {
+          "calls": 2,
+          "milliseconds": 43.88729100000069,
+          "files": 98
+        },
+        "compileSfc/client": {
+          "calls": 25,
+          "milliseconds": 3.732626999999866,
+          "files": 25
+        },
+        "compileSfc/ssr": {
+          "calls": 117,
+          "milliseconds": 64.23578399999678,
+          "files": 117
+        }
+      },
+      "plugins": [
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ],
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ]
+      ],
+      "compiledFileCount": 123
+    },
+    {
+      "round": 2,
+      "compiler": "vize",
+      "seconds": 26.116907917000002,
+      "clientBuildSeconds": 3.14,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 87.35941200000502,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 87.35941200000502,
+      "sfcPluginHookMs": 244.4287340000028,
+      "apiBreakdown": {
+        "compileSfcBatchWithResults/client": {
+          "calls": 2,
+          "milliseconds": 22.377959000000374,
+          "files": 98
+        },
+        "compileSfc/client": {
+          "calls": 25,
+          "milliseconds": 3.6870000000005803,
+          "files": 25
+        },
+        "compileSfc/ssr": {
+          "calls": 117,
+          "milliseconds": 61.29445300000407,
+          "files": 117
+        }
+      },
+      "plugins": [
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ],
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ]
+      ],
+      "compiledFileCount": 123
+    },
+    {
+      "round": 2,
+      "compiler": "vue",
+      "seconds": 26.424214791000004,
+      "clientBuildSeconds": 3.48,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 521.2662000000103,
+      "vueSfcStyleMs": 39.80587600000035,
+      "allCompilerApiMs": 561.0720760000106,
+      "sfcPluginHookMs": 702.5440059999928,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 365,
+          "milliseconds": 135.9494890000026,
+          "files": 121
+        },
+        "compileScript/client": {
+          "calls": 104,
+          "milliseconds": 270.28079400000297,
+          "files": 103
+        },
+        "compileStyleAsync/client": {
+          "calls": 128,
+          "milliseconds": 39.80587600000035,
+          "files": 53
+        },
+        "compileTemplate/client": {
+          "calls": 17,
+          "milliseconds": 1.1567900000000009,
+          "files": 17
+        },
+        "compileScript/ssr": {
+          "calls": 99,
+          "milliseconds": 58.805546000015056,
+          "files": 99
+        },
+        "compileTemplate/ssr": {
+          "calls": 116,
+          "milliseconds": 55.073580999989645,
+          "files": 116
+        }
+      },
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "compiledFileCount": 121
+    },
+    {
+      "round": 3,
+      "compiler": "vue",
+      "seconds": 26.47251795800001,
+      "clientBuildSeconds": 3.48,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 513.961150000013,
+      "vueSfcStyleMs": 40.084959000000254,
+      "allCompilerApiMs": 554.0461090000133,
+      "sfcPluginHookMs": 693.3912600000103,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 365,
+          "milliseconds": 132.36920600000758,
+          "files": 121
+        },
+        "compileScript/client": {
+          "calls": 104,
+          "milliseconds": 263.7138290000005,
+          "files": 103
+        },
+        "compileStyleAsync/client": {
+          "calls": 128,
+          "milliseconds": 40.084959000000254,
+          "files": 53
+        },
+        "compileTemplate/client": {
+          "calls": 17,
+          "milliseconds": 1.3309150000013688,
+          "files": 17
+        },
+        "compileScript/ssr": {
+          "calls": 99,
+          "milliseconds": 57.95678299999872,
+          "files": 99
+        },
+        "compileTemplate/ssr": {
+          "calls": 116,
+          "milliseconds": 58.59041700000489,
+          "files": 116
+        }
+      },
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "compiledFileCount": 121
+    },
+    {
+      "round": 3,
+      "compiler": "vize",
+      "seconds": 26.825097875000008,
+      "clientBuildSeconds": 3.43,
+      "verifiedPublicUrls": 2003,
+      "exitCode": 0,
+      "coreCompilerMs": 113.09313499999485,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 113.09313499999485,
+      "sfcPluginHookMs": 280.46202700001436,
+      "apiBreakdown": {
+        "compileSfcBatchWithResults/client": {
+          "calls": 2,
+          "milliseconds": 44.61320800000021,
+          "files": 98
+        },
+        "compileSfc/client": {
+          "calls": 25,
+          "milliseconds": 3.7092950000003384,
+          "files": 25
+        },
+        "compileSfc/ssr": {
+          "calls": 117,
+          "milliseconds": 64.7706319999943,
+          "files": 117
+        }
+      },
+      "plugins": [
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ],
+        [
+          "site-vize-source-compatibility",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest"
+        ]
+      ],
+      "compiledFileCount": 123
+    }
+  ],
+  "summary": {
+    "vue": {
+      "seconds": 26.47251795800001,
+      "clientBuildSeconds": 3.48,
+      "coreCompilerMs": 521.2662000000103,
+      "vueSfcStyleMs": 39.80587600000035,
+      "allCompilerApiMs": 561.0720760000106,
+      "sfcPluginHookMs": 702.5440059999928
+    },
+    "vize": {
+      "seconds": 26.229526375000003,
+      "clientBuildSeconds": 3.18,
+      "coreCompilerMs": 111.85570199999734,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 111.85570199999734,
+      "sfcPluginHookMs": 280.4443480000257
+    }
+  },
+  "finishedAt": "2026-10-31T09:10:04.180Z",
+  "vrt": {
+    "markdown30": {
+      "summary": [
+        {
+          "mode": "baseline",
+          "total": 30,
+          "processed": 30,
+          "passed": 30,
+          "passRatePercent": 100,
+          "comparable": 30,
+          "comparablePassRatePercent": 100,
+          "counts": {
+            "passed": 30
+          }
+        },
+        {
+          "mode": "migrated",
+          "total": 30,
+          "processed": 30,
+          "passed": 30,
+          "passRatePercent": 100,
+          "comparable": 30,
+          "comparablePassRatePercent": 100,
+          "counts": {
+            "passed": 30
+          }
+        }
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "colorScheme": "light",
+      "browserVersion": "145.0.7632.6",
+      "sourceFingerprint": "9d38b46eb33038238d26f4bcc90bb113dfdcfeabfe8990e51aca867c9aa3f8a9"
+    },
+    "additionalSurfaces": {
+      "summary": [
+        {
+          "mode": "baseline",
+          "total": 7,
+          "processed": 7,
+          "passed": 7,
+          "passRatePercent": 100,
+          "comparable": 7,
+          "comparablePassRatePercent": 100,
+          "counts": {
+            "passed": 7
+          }
+        },
+        {
+          "mode": "migrated",
+          "total": 7,
+          "processed": 7,
+          "passed": 6,
+          "passRatePercent": 85.71428571428571,
+          "comparable": 7,
+          "comparablePassRatePercent": 85.71428571428571,
+          "counts": {
+            "runtime-error": 1,
+            "passed": 6
+          }
+        }
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "colorScheme": "light",
+      "browserVersion": "145.0.7632.6",
+      "sourceFingerprint": "9d38b46eb33038238d26f4bcc90bb113dfdcfeabfe8990e51aca867c9aa3f8a9"
+    },
+    "additionalFailure": {
+      "path": "/ja/tools/share-link-generator/",
+      "status": "runtime-error",
+      "errors": [
+        "Hydration completed but contains mismatches."
+      ]
+    }
+  }
+}
