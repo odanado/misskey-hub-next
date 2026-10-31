@@ -25,6 +25,28 @@ forkの既定ブランチ`master`を親リポジトリの`ba74668080484d92da0d37
 
 Nuxtは1回の参考値で、比較用の全URL明示生成を使用する。候補には旧URL転送生成も含むため、処理境界が完全に同一の統計的ベンチマークではない。
 
+## GitHub Actions（各1回）
+
+2026-10-31（JST）に、移行版ブランチの`Deploy`を`build_only=true`で手動実行した。`pnpm generate`を1回実行し、**全2,003 HTML・404・クライアントmanifestの検証が成功**した。デプロイ・Cloudflareキャッシュ削除はスキップしている。
+
+| 構成・実行リンク | 生成ステップ | buildジョブ全体 | 依存インストール | 実際のOS / Node | pnpmキャッシュ |
+| --- | ---: | ---: | ---: | --- | --- |
+| [本家 Nuxt](https://github.com/misskey-dev/misskey-hub-next/actions/runs/40357343784) | **4分45秒** | 5分16秒 | 6秒 | Ubuntu 24.04 / 22.23.3 | ヒット |
+| [移行版 Ox Content＋Vue islands](https://github.com/odanado/misskey-hub-next/actions/runs/41185201960) | **44秒** | **1分17秒** | 9秒 | Ubuntu 26.04 / 22.23.4 | ミス |
+| [参考: 同forkの移行前Nuxt](https://github.com/odanado/misskey-hub-next/actions/runs/41164948920) | 5分35秒 | 6分05秒 | 10秒 | Ubuntu 26.04 / 22.23.4 | ミス |
+
+GitHubのステップ時刻は秒単位。移行版の生成コマンドを`/usr/bin/time -p`で測った実時間は**44.14秒**だった。CPUは`Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz`（4 vCPU）。本家の生成ステップ285秒に対して、この記録では約84.5%短縮している。
+
+本家の直近成功実行と参考fork実行は、いずれも移行元コミット`ba74668080484d92da0d372e58a53373e9064c27`。移行版は`568cc374544362e58980a1cedd90e03b3731d2bc`。同じ`ubuntu-latest`・Node `22`指定でも、実行日によって実際のOSとNodeのパッチ版が変わっている。本家はNuxtのクロール・API/payload生成等も含み、ログには6,320ルートのprerender完了とある。移行版は公開HTMLを明示生成するため、処理内容・キャッシュ・リポジトリ設定まで固定した比較ではない。
+
+参考forkのNuxtはbuildジョブが成功し、その後のPagesデプロイが失敗している。表はbuildジョブのみの時間で、デプロイを比較に含めていない。
+
+計測方法は通常のDeployに`build_only`入力を追加したもの。既定値は`false`で、従来のデプロイ動作を維持する。`true`なら生成・検証・artifactアップロードまで実行し、デプロイしない。
+
+```sh
+gh workflow run deploy.yml --ref codex/ox-native-islands-production -f build_only=true
+```
+
 ## VRT
 
 比較元は独立worktreeのmaster `ba74668080484d92da0d372e58a53373e9064c27`。候補は実装コミット`56a50491da4fca6e25b02327c3628bc06f281f10`、ソース指紋`1eb77ea15765b609583a2ed1d595e824d893aab92758ae17904ba9dc8c32bf18`。ベンチ・VRTの前後で対象ソースが変わっていないことを検証した。

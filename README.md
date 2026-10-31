@@ -76,6 +76,8 @@ pnpm benchmark
 
 測定結果・全件VRTの残差は[本番移行の検証レポート](docs/ssg-migration.md)に記載しています。
 
+Actionsで1回だけ生成する場合は、`Deploy`の`build_only=true`を指定します。デプロイとキャッシュ削除は実行せず、全公開HTML・404・manifestを検証してジョブのSummaryへ時間を出力します。通常の実行では既定値`false`によりデプロイ動作を維持します。
+
 ## クレジット・ライセンス
 
 Ox Custom Hostによる構成は[ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)を基にしています。派生コードのコミットには`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与します。
