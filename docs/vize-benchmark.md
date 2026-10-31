@@ -32,10 +32,18 @@ PR #3 の `c0aa1d20e1c2225f8c792996c4d5215477d04881` を基準に、Vue SFC の 
 | --- | ---: | ---: | ---: |
 | full SSG | 48.691秒 | 48.696秒 | ほぼ同じ（0.01%増） |
 | クライアント Vite ビルド全体 | 5.030秒 | 4.970秒 | 1.19% |
-| SFCコンパイラAPI内の処理 | 1.166秒 | 0.156秒 | 86.60% |
+| SFCコンパイラAPI内の処理 | 1.166秒 | 0.156秒 | 86.61% |
 | SFCコンパイラプラグインのフック内の処理 | 1.343秒 | 0.394秒 | 70.68% |
 
 ActionsでもSFCコンパイラAPI内処理は約7.5倍に高速化するが、full SSGの改善は確認できなかった。1回ずつの結果であり、有意差を示す検定ではない。
+
+再実行は次の手動workflowで行える。`build_only=true` によりデプロイしない。
+
+```sh
+gh workflow run deploy.yml --repo odanado/misskey-hub-next \
+  --ref codex/vize-islands-benchmark \
+  -f build_only=true -f compiler_benchmark=true
+```
 
 前回PR #3で測った通常Vueの44.14秒はIntel Xeon Platinum 8370Cの別ランナー・プローブなしの実行で、今回とはCPUと計測条件が異なる。Vizeの差分は今回の同一ジョブ内の48.691秒対48.696秒で判断する。
 
@@ -53,7 +61,7 @@ ActionsでもSFCコンパイラAPI内処理は約7.5倍に高速化するが、f
 
 ## 再現条件
 
-- macOS arm64 / Apple M1 Pro / Node 22.22.2 / pnpm 10.27.0。
+- macOS arm64 / Apple M1 Pro（10コア） / Node 22.22.2 / pnpm 10.27.0。
 - Vue 3.5.25 / Vite 8.3.5 / Ox Content 3.4.3。
 - 同じworktree、同じlockfile・コンテンツで、通常VueとVizeを交互に各3回。ビルドやVRTを同時実行しない。
 - 毎回新しい `pnpm build` プロセスを起動し、起動からクライアントJS/CSS、全ページ生成、publicコピー、旧URLリダイレクト、404処理の終了までを測る。
