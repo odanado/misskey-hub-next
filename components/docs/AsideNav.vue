@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content';
+import type { NavItem } from '@/ssg/types';
 import { findDeepObject } from '@/assets/js/misc';
 import { isSamePath } from 'ufo';
 import ArrowIco from "bi/chevron-right.svg";

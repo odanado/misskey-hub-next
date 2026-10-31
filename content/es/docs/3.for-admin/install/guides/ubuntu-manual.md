@@ -626,7 +626,7 @@ Regístrate e inicia sesión con tu cuenta en el servidor de Misskey y continúa
 
 - [**Descripción de la primera y otras configuraciones del servidor que deben configurarse en el servidor Misskey**](https://hide.ac/articles/Y504SIabp).
 - [**Crear un proxy Squid para proteger Misskey**](https://hide.ac/articles/MC7WsPDqw)
-- [Copia de seguridad de la base de datos Misskey [versión de almacenamiento de objetos OCI]\*\*](https://hide.ac/articles/E2Ea3cauk)
+- [Copia de seguridad de la base de datos Misskey <span>versión de almacenamiento de objetos OCI</span>\*\*](https://hide.ac/articles/E2Ea3cauk)
 
 ## Actualizando Misskey
 

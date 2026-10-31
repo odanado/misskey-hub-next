@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-31",
+  "baseCommit": "3d4a7f9b7f99205410d91823ec98cf789565d4d1",
+  "environment": {
+    "cpu": "Apple M1 Pro",
+    "platform": "darwin-arm64",
+    "node": "v22.22.2",
+    "pnpm": "10.27.0",
+    "vue": "3.5.25",
+    "vite": "8.3.5"
+  },
+  "scope": {
+    "markdown": 1440,
+    "yaml": 156,
+    "publicUrls": 2003,
+    "notFoundFallback": true,
+    "clientJsCss": true,
+    "fixedVuePages": true,
+    "legacyRedirects": true,
+    "vize": false
+  },
+  "policy": "Three sequential fresh PNPM-startup production builds on 3.4.3, then update only Ox Content packages and run the same three builds on 3.5.2. OS caches retained; no concurrent build/VRT. Dependency install and output validation outside timer. Includes normal Crowdin data preparation and its existing fallback.",
+  "before": {
+    "oxContent": "3.4.3",
+    "startedAt": "2026-10-31T14:19:26.364Z",
+    "commit": "3d4a7f9b7f99205410d91823ec98cf789565d4d1",
+    "dirty": false,
+    "node": "v22.22.2",
+    "platform": "darwin-arm64",
+    "cpu": "Apple M1 Pro",
+    "publicUrls": 2003,
+    "sourceFingerprint": "c504c5a00b917d8e5937df0e71536d698e216a9e83d7ffc6a70506e9556a21e0",
+    "policy": "Three sequential fresh PNPM processes, startup through full production build including Crowdin preparation, client JS/CSS, all Markdown/YAML, Ox SSG, public assets and legacy redirects. Output checks outside timer. OS caches retained, live contributor API once per process, no concurrent VRT or build.",
+    "runs": [
+      {
+        "round": 1,
+        "seconds": 23.184576958,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 2,
+        "seconds": 21.887541582999997,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 3,
+        "seconds": 21.65698362500001,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      }
+    ],
+    "medianSeconds": 21.887541582999997,
+    "finishedAt": "2026-10-31T14:20:36.001Z",
+    "sourceUnchanged": true
+  },
+  "after": {
+    "oxContent": "3.5.2",
+    "startedAt": "2026-10-31T14:21:21.639Z",
+    "commit": "3d4a7f9b7f99205410d91823ec98cf789565d4d1",
+    "dirty": true,
+    "node": "v22.22.2",
+    "platform": "darwin-arm64",
+    "cpu": "Apple M1 Pro",
+    "publicUrls": 2003,
+    "sourceFingerprint": "deb907b62a4304f2f7f0cb72dc3d428654619c150c3e2b71624fb954b4b190ca",
+    "policy": "Three sequential fresh PNPM processes, startup through full production build including Crowdin preparation, client JS/CSS, all Markdown/YAML, Ox SSG, public assets and legacy redirects. Output checks outside timer. OS caches retained, live contributor API once per process, no concurrent VRT or build.",
+    "runs": [
+      {
+        "round": 1,
+        "seconds": 22.275189542,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 2,
+        "seconds": 22.567541625,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 3,
+        "seconds": 21.878777499999998,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      }
+    ],
+    "medianSeconds": 22.275189542,
+    "finishedAt": "2026-10-31T14:22:31.476Z",
+    "sourceUnchanged": true
+  },
+  "comparison": {
+    "medianDifferenceSeconds": 0.3876479590000024,
+    "medianChangePercent": 1.771089537534392,
+    "conclusion": "No end-to-end speedup observed in these samples; run ranges overlap."
+  },
+  "checks": {
+    "frozenInstall": true,
+    "regressionTests": 25,
+    "markdownSnapshots": 1440,
+    "inlineYamlSnapshots": 201,
+    "validatedPublicUrlsEveryRun": 2003,
+    "notFoundAndManifestEveryRun": true,
+    "publicUrlTextAndCodeComparedToPr3": 2003,
+    "textOrCodeDifferences": 0,
+    "directAndPluginNapiBoth": "3.5.2",
+    "vrtRerun": false
+  }
+}

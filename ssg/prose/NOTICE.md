@@ -1,0 +1,1 @@
+The Prose Vue components, path metadata semantics, document-tree conversion, and Shiki highlighting helper are adapted from Nuxt Content 2.13.4 and @nuxtjs/mdc 0.9.5, copyright NuxtLabs, under the MIT license in LICENSE. They are maintained locally to preserve the existing site presentation. Neither Nuxt Content nor the MDC parser/runtime is loaded by the site.

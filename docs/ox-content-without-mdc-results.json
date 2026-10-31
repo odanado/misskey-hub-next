@@ -1,0 +1,1000 @@
+{
+  "baseCommit": "c0aa1d20e1c2225f8c792996c4d5215477d04881",
+  "environment": {
+    "node": "v22.22.2",
+    "platform": "darwin-arm64",
+    "cpu": "Apple M1 Pro"
+  },
+  "benchmark": {
+    "startedAt": "2026-10-31T13:43:23.573Z",
+    "finishedAt": "2026-10-31T13:44:33.920Z",
+    "sourceFingerprint": "c504c5a00b917d8e5937df0e71536d698e216a9e83d7ffc6a70506e9556a21e0",
+    "runs": [
+      {
+        "round": 1,
+        "seconds": 23.333091375,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 2,
+        "seconds": 21.937055708,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      },
+      {
+        "round": 3,
+        "seconds": 22.099292458999997,
+        "exitCode": 0,
+        "verifiedPublicUrls": 2003
+      }
+    ],
+    "medianSeconds": 22.099292458999997
+  },
+  "fullVrt": {
+    "startedAt": "2026-10-31T13:19:09.240Z",
+    "finishedAt": "2026-10-31T13:41:50.061Z",
+    "sourceFingerprint": "916c64e8a720a5a20048410a19678dd911c092d80054d1ae8e088c1c134a17d1",
+    "scriptHash": "b85073e4c8eb858a97043135123d6ac965a329398f5e8683c375b3a728cc4124",
+    "summary": [
+      {
+        "mode": "baseline",
+        "total": 2003,
+        "processed": 2003,
+        "passed": 1980,
+        "passRatePercent": 98.85172241637544,
+        "comparable": 1980,
+        "comparablePassRatePercent": 100,
+        "counts": {
+          "passed": 1980,
+          "reference-unavailable": 23
+        }
+      },
+      {
+        "mode": "migrated",
+        "total": 2003,
+        "processed": 2003,
+        "passed": 1953,
+        "passRatePercent": 97.50374438342486,
+        "comparable": 1980,
+        "comparablePassRatePercent": 98.63636363636363,
+        "counts": {
+          "passed": 1953,
+          "different": 27,
+          "reference-unavailable": 23
+        }
+      }
+    ],
+    "unpassed": [
+      {
+        "path": "/ja/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 408153
+      },
+      {
+        "path": "/blog/2024-06-11-mi-card/",
+        "kind": "languageEntry",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/cn/blog/",
+        "kind": "static",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/cn/docs/for-users/features/mfm/",
+        "kind": "docs",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/cn/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/cn/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/de/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/de/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/en/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 408324
+      },
+      {
+        "path": "/docs/mi-card/",
+        "kind": "languageEntry",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/en/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/en/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/es/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/es/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/fr/docs/for-admin/install/resources/forking/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/fr/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/fr/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/id/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 407428
+      },
+      {
+        "path": "/id/docs/for-admin/install/resources/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/id/docs/for-admin/install/resources/troubleshooting/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/id/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/id/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/it/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/ja-ks/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/ja-ks/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/ja/blog/2024-06-11-mi-card/",
+        "kind": "blog",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/ja/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/ja/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/ko/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 406964
+      },
+      {
+        "path": "/ko/docs/for-users/features/mfm/",
+        "kind": "docs",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/ko/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 1581
+      },
+      {
+        "path": "/ko/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/ko/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/pl/docs/for-admin/install/resources/scale-out/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/pl/docs/for-admin/install/resources/push-docker-hub/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/ko/docs/releases/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 4655
+      },
+      {
+        "path": "/pl/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/pl/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/pl/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/th/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/th/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/tools/mfm-playground/",
+        "kind": "languageEntry",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/tw/blog/",
+        "kind": "static",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/tw/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 406367
+      },
+      {
+        "path": "/tw/docs/for-users/features/mfm/",
+        "kind": "docs",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/tw/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 1298
+      },
+      {
+        "path": "/tw/docs/mi-card/",
+        "kind": "docs",
+        "reference": "unstable",
+        "status": "reference-unavailable",
+        "candidateStatus": "unstable"
+      },
+      {
+        "path": "/tw/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "runtime-error",
+        "status": "reference-unavailable",
+        "candidateStatus": "runtime-error"
+      },
+      {
+        "path": "/tw/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/tw/docs/releases/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 2407
+      }
+    ]
+  },
+  "artifactDelta": {
+    "before": "60165a1b289cb1051cb73ed70c4a9aff26ba0d81cf2b850bbd338c18ba9e9488",
+    "after": "8f93c9325e69dad882b078aa100bcb6b4a8e8e02892df77a5cbd36bb60f7260c",
+    "changed": [
+      "de/docs/for-users/features/share-form/index.html",
+      "id/docs/for-users/features/share-form/index.html",
+      "ko/docs/for-users/features/share-form/index.html",
+      "ko/docs/releases/index.html",
+      "tw/docs/for-users/features/share-form/index.html",
+      "tw/docs/releases/index.html"
+    ],
+    "fileCount": 3806,
+    "unchangedFiles": 3800,
+    "changedPublicUrls": [
+      "/de/docs/for-users/features/share-form/",
+      "/id/docs/for-users/features/share-form/",
+      "/ko/docs/for-users/features/share-form/",
+      "/ko/docs/releases/",
+      "/tw/docs/for-users/features/share-form/",
+      "/tw/docs/releases/"
+    ],
+    "globalAssetsUnchanged": true
+  },
+  "finalReview": {
+    "startedAt": "2026-10-31T13:45:15.039Z",
+    "finishedAt": "2026-10-31T13:47:37.421Z",
+    "sourceFingerprint": "c504c5a00b917d8e5937df0e71536d698e216a9e83d7ffc6a70506e9556a21e0",
+    "summary": [
+      {
+        "mode": "baseline",
+        "total": 62,
+        "processed": 62,
+        "passed": 62,
+        "passRatePercent": 100,
+        "comparable": 62,
+        "comparablePassRatePercent": 100,
+        "counts": {
+          "passed": 62
+        }
+      },
+      {
+        "mode": "migrated",
+        "total": 62,
+        "processed": 62,
+        "passed": 56,
+        "passRatePercent": 90.32258064516128,
+        "comparable": 62,
+        "comparablePassRatePercent": 90.32258064516128,
+        "counts": {
+          "passed": 56,
+          "different": 6
+        }
+      }
+    ],
+    "rows": [
+      {
+        "path": "/ja/docs/for-users/features/note/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/features/mfm/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/stepped-guides/how-to-enable-2fa/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/de/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/de/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/en/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 408324
+      },
+      {
+        "path": "/en/docs/about-misskey/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-admin/install/guides/manual/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-developers/api/permission/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-developers/api/token/oauth/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-developers/plugin/plugin-api-reference/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-users/features/note/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-users/features/mfm/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-users/features/theme/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-users/onboarding/get-started/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/docs/for-users/onboarding/join-server/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/es/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/fr/docs/for-admin/install/resources/forking/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/fr/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/id/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/id/docs/for-admin/install/resources/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/id/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/id/docs/for-admin/install/resources/troubleshooting/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja-ks/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/id/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/ja/docs/about-misskey/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/about-us/history/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-admin/features/managing-emojis/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-admin/install/guides/docker/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-admin/install/guides/manual/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-admin/install/guides/ubuntu-manual/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/api/permission/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-admin/install/resources/nginx/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/api/streaming/channel/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/api/streaming/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/plugin/create-plugin/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/api/token/oauth/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/features/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-developers/plugin/plugin-api-reference/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/features/hashtag/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/features/embed/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/onboarding/get-started/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/features/theme/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/stepped-guides/how-to-delete-account/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/docs/for-users/onboarding/join-server/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ja/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ko/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ko/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ko/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/pl/docs/for-admin/install/resources/push-docker-hub/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 22
+      },
+      {
+        "path": "/pl/docs/for-admin/install/resources/scale-out/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/pl/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/pl/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/th/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/tools/mfm-playground/",
+        "kind": "languageEntry",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/tw/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/tw/docs/for-users/features/share-form/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/ko/docs/releases/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/tw/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/tw/docs/releases/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      }
+    ]
+  },
+  "finalOutputCoverage": {
+    "policy": "Reuse the single full-run result only for byte-identical HTML with all global assets unchanged; replace only the six changed HTML URLs with final-review captures. Do not upgrade unchanged failures using retries.",
+    "passed": 1957,
+    "total": 2003,
+    "passRatePercent": 97.70344483275088,
+    "referenceUnavailable": 23,
+    "different": 23
+  },
+  "referenceSelfCheck": {
+    "policy": "Same PR #3 output served on both origins; independent contexts; identical capture code and conditions, two workers.",
+    "summary": [
+      {
+        "mode": "baseline",
+        "total": 6,
+        "processed": 6,
+        "passed": 6,
+        "passRatePercent": 100,
+        "comparable": 6,
+        "comparablePassRatePercent": 100,
+        "counts": {
+          "passed": 6
+        }
+      },
+      {
+        "mode": "migrated",
+        "total": 6,
+        "processed": 6,
+        "passed": 4,
+        "passRatePercent": 66.66666666666666,
+        "comparable": 6,
+        "comparablePassRatePercent": 66.66666666666666,
+        "counts": {
+          "passed": 4,
+          "different": 2
+        }
+      }
+    ],
+    "rows": [
+      {
+        "path": "/de/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/en/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/fr/tools/mfm-playground/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 18
+      },
+      {
+        "path": "/id/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "different",
+        "differentPixels": 28
+      },
+      {
+        "path": "/pl/docs/for-admin/install/resources/push-docker-hub/",
+        "kind": "docs",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      },
+      {
+        "path": "/th/tools/hub-servers-preview/",
+        "kind": "static",
+        "reference": "captured",
+        "status": "passed",
+        "differentPixels": 0
+      }
+    ]
+  },
+  "compatibility": {
+    "markdown": 1440,
+    "inlineYaml": 201,
+    "publicUrlTextAndCode": 2003,
+    "tests": 25
+  }
+}

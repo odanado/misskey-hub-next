@@ -1,6 +1,6 @@
 // Port of Nuxt Content v2's MIT-licensed navigation builder. Operates on fresh
 // source metadata only; no Nuxt cache, generated page, or baseline snapshot.
-import { generatePath, pathMeta } from "./mdc.mjs";
+import { generatePath, pathMeta } from "./path-meta.mjs";
 const collator = new Intl.Collator(undefined, {
 	numeric: true,
 	sensitivity: "base",

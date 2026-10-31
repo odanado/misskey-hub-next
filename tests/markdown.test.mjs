@@ -1,12 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
-	parseMdc,
-	compileHast,
-	generateToc,
-	generatePath,
-} from "../ssg/mdc.mjs";
-import { nativeDocument } from "../ssg/markdown-native.mjs";
+import { readFile } from "node:fs/promises";
+import { parseOx, compileFragment } from "../ssg/markdown-ox.mjs";
 const semantic = (node) =>
 	node.type === "text"
 		? node.value
@@ -25,46 +20,99 @@ const semantic = (node) =>
 					),
 				children: node.children?.map(semantic),
 			};
-for (const source of [
-	'<span title="[literal]">Text</span>',
-	'<script>const values = ["one"];</script>',
-
-	"# Title\n\n<MkSchemaViewer :schema=\"{\n $ref: 'misskey://Note'\n}\"/>\n\nDescription.\n\n## Operation\n\nNone",
-	":MkIndex",
-	"<figure>\n\n::ExampleFigure\n::\n\n<figcaption>Caption</figcaption>\n</figure>",
-	"Use [1OCPU RAM6GB or greater] here.",
-	"Use [a span]{.important} here.",
-	"Keep [docs](https://example.com), `literal [code]`, and \\[escaped\\].",
-	"- [x] completed\n- [ ] pending",
-	"[docs][ref]\n\n[ref]: https://example.com",
-	":::tip\nUse [a span] inside a component.\n:::",
-])
-	test("MDC compatibility: " + source.split("\n")[0], async () => {
-		const reference = await parseMdc(source, "test.md");
-		const migrated = await nativeDocument(
-			{ body: source, source: "test.md", path: "/test", frontmatter: {} },
-			(snippet) => parseMdc(snippet, "snippet.md"),
-			{ compileHast, generateToc, generatePath, mdcIslands: true },
-		);
+const fixture = JSON.parse(
+	await readFile(
+		new URL("./fixtures/markdown-pr3.json", import.meta.url),
+		"utf8",
+	),
+);
+for (const { source, body } of fixture.samples)
+	test("Legacy authoring: " + source.split("\n")[0], async () => {
+		const migrated = await parseOx(source, "test.md");
 		assert.deepEqual(
 			migrated.body.children.map(semantic),
-			reference.body.children.map(semantic),
+			body.children.map(semantic),
 		);
 	});
 
 test("Vue highlight preserves the original MDC grammar order", async () => {
- await parseMdc('```md\nExample Markdown\n```', "markdown.md");
- const parsed = await parseMdc('```vue\n<template>\n<div :class="$style.red">Text</div>\n</template>\n```', "vue.md");
- const tokens = [];
- const visit = node => { if (node.tag === "span") tokens.push(node); node.children?.forEach(visit); };
- visit(parsed.body);
- assert.ok(tokens.some(node => node.children?.some(child => child.value === " :class") && node.props?.style?.includes("--shiki-default:#DF8E1D")));
+	await parseOx("```md\nExample Markdown\n```", "markdown.md");
+	const parsed = await parseOx(
+		'```vue\n<template>\n<div :class="$style.red">Text</div>\n</template>\n```',
+		"vue.md",
+	);
+	const tokens = [];
+	const visit = (node) => {
+		if (node.tag === "span") tokens.push(node);
+		node.children?.forEach(visit);
+	};
+	visit(parsed.body);
+	assert.ok(
+		tokens.some(
+			(node) =>
+				node.children?.some((child) => child.value === " :class") &&
+				node.props?.style?.includes("--shiki-default:#DF8E1D"),
+		),
+	);
 });
 
 test("Vue route examples retain the original plain foreground", async () => {
- const parsed = await parseMdc('```vue\n<route lang="yaml">\nname: note\npath: /notes/:noteId\n</route>\n```', "route.md");
- const spans = [];
- const visit = node => { if (node.tag === "span") spans.push(node); node.children?.forEach(visit); };
- visit(parsed.body);
- assert.ok(spans.some(node => node.children?.some(child => child.value?.includes("name: note")) && node.props?.style?.includes("--shiki-default:#4C4F69")));
+	const parsed = await parseOx(
+		'```vue\n<route lang="yaml">\nname: note\npath: /notes/:noteId\n</route>\n```',
+		"route.md",
+	);
+	const spans = [];
+	const visit = (node) => {
+		if (node.tag === "span") spans.push(node);
+		node.children?.forEach(visit);
+	};
+	visit(parsed.body);
+	assert.ok(
+		spans.some(
+			(node) =>
+				node.children?.some((child) => child.value?.includes("name: note")) &&
+				node.props?.style?.includes("--shiki-default:#4C4F69"),
+		),
+	);
+});
+
+test("Ox MDX owns nested components and typed literal props", async () => {
+	const result = await compileFragment(
+		'<Tip count={42} options={{"open":true}} enabled={true}>\n\n**Bold**\n\n<Warning>\n\nNested *Markdown*\n\n</Warning>\n\n</Tip>',
+	);
+	const tip = result.body.children[0];
+	assert.equal(tip.tag, "tip");
+	assert.deepEqual(tip.props, {
+		count: 42,
+		options: { open: true },
+		enabled: true,
+	});
+	assert.equal(tip.children[0].children[0].tag, "strong");
+	assert.equal(tip.children[1].tag, "warning");
+	assert.equal(tip.children[1].children[0].children[1].tag, "em");
+});
+test("Dynamic MDX props fail instead of silently dropping expressions", async () => {
+	await assert.rejects(
+		() => compileFragment("<Tip count={unknownVariable} />"),
+		/Only literal MDX props/,
+	);
+});
+
+test("Named slots and quoted MDX-looking strings remain intact", async () => {
+	const { body } = await compileFragment(
+		":::tip\n#title\n\n**Heading**\n\n#default\n\nBody\n:::",
+	);
+	assert.equal(body.children[0].children[0].tag, "template");
+	assert.equal(body.children[0].children[0].props["#title"], "");
+	const literal = await compileFragment('<MfmPreview text="count={42}" />');
+	assert.deepEqual(literal.body.children[0].props, { text: "count={42}" });
+});
+
+test("MDX spreads fail while spread-like quoted text remains literal", async () => {
+	await assert.rejects(
+		() => compileFragment("<Tip {...props} />"),
+		/spread props are unsupported/,
+	);
+	const result = await compileFragment('<MfmPreview text="{...props}" />');
+	assert.deepEqual(result.body.children[0].props, { text: "{...props}" });
 });

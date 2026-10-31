@@ -141,7 +141,8 @@ Muestra el texto centrado.
 <center>Misskey amplía el mundo del Fediverso</center>
 ```
 
-<MfmPreview text="<center>Misskey amplía el mundo del Fediverso</center></MfmPreview>
+<p>&lt;MfmPreview text=&quot;</p>
+<center>Misskey amplía el mundo del Fediverso</center>
 
 ### Furigana/Yomigana (Ruby)
 

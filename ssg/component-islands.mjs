@@ -1,3 +1,4 @@
+import { markdownLinkRanges } from "./markdown-ranges.mjs";
 // Preserve MDC components before extracting code: a quoted component prop may
 // itself contain multiline Markdown fences (MfmPreview is a real example).
 const fenceOpening = /^ {0,3}(`{3,}|~{3,})[^\n]*(?:\n|$)/;
@@ -33,16 +34,17 @@ function componentEnd(input, start, name) {
 	}
 	throw new Error("Missing closing component " + name);
 }
-export function extractMdcIslands(
+export function extractComponentIslands(
 	input,
 	snippets,
 	{ allowUnclosed = false } = {},
 ) {
+	const linkRanges = markdownLinkRanges(input);
 	let containers = 0,
 		components = 0,
 		inline = 0;
 	const placeholder = (raw) =>
-		`<div data-mdc-slot="${snippets.push(raw) - 1}"></div>\n`;
+		`<div data-ox-slot="${snippets.push(raw) - 1}"></div>\n`;
 	// Scan in source order: fenced examples and inline code remain literal, while
 	// a component owns its complete quoted attributes before any inner fence scan.
 	const token =
@@ -67,7 +69,8 @@ export function extractMdcIslands(
 			const closing = new RegExp("(?<!`)" + match[0] + "(?!`)", "g");
 			closing.lastIndex = token.lastIndex;
 			const end = closing.exec(input);
-			if (end) token.lastIndex = closing.lastIndex;
+			if (end && !/\n[ \t]*\n/.test(input.slice(token.lastIndex, end.index)))
+				token.lastIndex = closing.lastIndex;
 			continue;
 		}
 		if (match[0].startsWith("<") && !match[1]) {
@@ -81,6 +84,13 @@ export function extractMdcIslands(
 			continue;
 		}
 		if (match[2] !== undefined) {
+			const protectedLink = linkRanges.find(
+				([a, b]) => start >= a && start < b,
+			);
+			if (protectedLink) {
+				token.lastIndex = protectedLink[1];
+				continue;
+			}
 			const before = input.slice(input.lastIndexOf("\n", start) + 1, start);
 			if (/^[ xX]$/.test(match[2]) && /^\s*(?:[-*+]|\d+[.)])\s+$/.test(before))
 				continue;
@@ -90,7 +100,7 @@ export function extractMdcIslands(
 				continue;
 			const slot = snippets.push(match[0]) - 1;
 			markdown +=
-				input.slice(cursor, start) + `<span data-mdc-inline="${slot}"></span>`;
+				input.slice(cursor, start) + `<span data-ox-inline="${slot}"></span>`;
 			cursor = token.lastIndex;
 			inline++;
 			continue;
@@ -118,11 +128,11 @@ export function extractMdcIslands(
 	const restore = (raw) =>
 		raw
 			.replace(
-				/<span data-mdc-inline="(\d+)"><\/span>/g,
+				/<span data-ox-inline="(\d+)"><\/span>/g,
 				(_, index) => snippets[Number(index)],
 			)
 			.replace(
-				/<div data-mdc-slot="(\d+)"><\/div>\n/g,
+				/<div data-ox-slot="(\d+)"><\/div>\n/g,
 				(_, index) => snippets[Number(index)],
 			);
 	let result = "";
@@ -145,9 +155,11 @@ export function extractMdcIslands(
 			continue;
 		}
 		let raw = lines[i];
-		if (start[1].length === 2 && /^::\s*$/.test(lines[i + 1] ?? ""))
-			raw += lines[++i];
-		const stack = start[1].length <= 2 ? [] : [start[1].length];
+		const immediateClose =
+			start[1].length === 2 && /^::\s*$/.test(lines[i + 1] ?? "");
+		if (immediateClose) raw += lines[++i];
+		const stack =
+			start[1].length < 2 || immediateClose ? [] : [start[1].length];
 		let codeFence = null;
 		while (stack.length && ++i < lines.length) {
 			const line = lines[i];
@@ -165,13 +177,18 @@ export function extractMdcIslands(
 			}
 			const nested = opening(line),
 				close = /^(:{2,})\s*$/.exec(line);
-			if (nested && nested[1].length >= 3) stack.push(nested[1].length);
-			else if (close && close[1].length >= stack.at(-1)) stack.pop();
+			if (nested && nested[1].length >= 2) stack.push(nested[1].length);
+			else if (close) {
+				const index = stack.lastIndexOf(close[1].length);
+				if (index !== -1) stack.splice(index);
+			}
 		}
 		if (stack.length) {
 			if (!allowUnclosed)
 				throw new Error("Unterminated MDC container: " + start[2]);
-			console.warn("[mdc] Implicit EOF closure delegated to MDC: " + start[2]);
+			console.warn(
+				"[ox] Legacy component implicitly closed at EOF: " + start[2],
+			);
 		}
 		result += placeholder(restore(raw));
 		containers++;

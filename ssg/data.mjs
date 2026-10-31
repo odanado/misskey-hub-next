@@ -3,7 +3,7 @@ import yaml from "js-yaml";
 import { performance } from "node:perf_hooks";
 import { loadPages } from "./routes.mjs";
 import { metadata, createNavigation, sourceOrder } from "./navigation.mjs";
-import { parseMdc } from "./mdc.mjs";
+import { parseOx } from "./markdown-ox.mjs";
 import { localesConst } from "../assets/data/locales.ts";
 export async function prepareData(parseDocument) {
 	const pages = await loadPages();
@@ -52,7 +52,7 @@ export async function prepareData(parseDocument) {
 			value.includes("\n") &&
 			!inlineMarkdown[value]
 		)
-			inlineMarkdown[value] = (await parseMdc(value, "inline.md")).body;
+			inlineMarkdown[value] = (await parseOx(value, "inline.md")).body;
 		else if (Array.isArray(value)) for (const item of value) await inline(item);
 		else if (value && typeof value === "object")
 			for (const item of Object.values(value)) await inline(item);
@@ -195,19 +195,16 @@ export async function prepareData(parseDocument) {
 			markdownSources: md,
 			renderedPages: out.length,
 			seconds: (performance.now() - start) / 1000,
-			markdownEngine: "Ox + MDC compatibility",
+			markdownEngine: "Ox Markdown/MDX + legacy authoring adapter",
 			oxPages: contents.filter((x) => x._parsing?.engine === "ox").length,
-			mdcComponentIslands: contents.reduce(
-				(n, x) => n + (x._parsing?.mdcIslands ?? 0),
+			componentIslands: contents.reduce(
+				(n, x) => n + (x._parsing?.componentIslands ?? 0),
 				0,
 			),
 			codeIslands: contents.reduce(
 				(n, x) => n + (x._parsing?.codeIslands ?? 0),
 				0,
 			),
-			fullMdcFallbackPages: contents.filter(
-				(x) => x._parsing?.fullMdcFallback,
-			).length,
 			inlineMarkdownStrings: Object.keys(inlineMarkdown).length,
 		}),
 	);
