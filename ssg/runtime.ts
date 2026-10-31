@@ -108,13 +108,18 @@ export const useGLocalePath = () => {
 		const normalized = base.includes("?")
 			? decodeURIComponent(base.replace("/?", "?"))
 			: base;
-		return `/${targetLocale?.value ?? targetLocale ?? context.locale.value}${normalized.startsWith("/") ? normalized : "/" + normalized}${hash === undefined ? "" : "#" + encodeURI(hash)}`;
+		const locale = /^\/blog(?:\/|\?|$)/.test(normalized)
+			? "ja"
+			: (targetLocale?.value ?? targetLocale ?? context.locale.value);
+		return `/${locale}${normalized.startsWith("/") ? normalized : "/" + normalized}${hash === undefined ? "" : "#" + encodeURI(hash)}`;
 	};
 };
 export const useGSwitchLocalePath = () => {
 	const context = useSiteContext();
 	return (locale: string) =>
-		context.route.path.replace(/^\/[a-z-]+\//, `/${locale}/`);
+		context.route.path.startsWith("/ja/blog/")
+			? context.route.path
+			: context.route.path.replace(/^\/[a-z-]+\//, `/${locale}/`);
 };
 export const useGAsyncData = async (key: string, fn: () => any) => {
 	const c = useSiteContext();

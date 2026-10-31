@@ -62,7 +62,10 @@ export default {
 						html: `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>${script}</script></head><body><noscript>Please enable Javascript to see this page properly.</noscript><noscript>${Object.entries(
 							targets,
 						)
-							.map(([code, path]) => `<a href="${path}">${escape(code)}</a>`)
+							.map(
+								([code, path]) =>
+									`<a href="${path}">${escape(payload.locales.find((locale: any) => locale.code === code)?.name ?? code)}</a>`,
+							)
 							.join(", ")}</noscript></body></html>`,
 					};
 				}
