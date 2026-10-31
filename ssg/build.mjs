@@ -1,4 +1,5 @@
 import { build, createServer } from "vite";
+import { copyFile, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
 try {
@@ -25,6 +26,11 @@ try {
 		"/scripts/get-old-hub-redirects.ts",
 	);
 	await generateOldHubRedirects();
+	await copyFile(
+		resolve(root, ".output/public/404/index.html"),
+		resolve(root, ".output/public/404.html"),
+	);
+	await rm(resolve(root, ".output/public/404"), { recursive: true });
 } finally {
 	await loader.close();
 }

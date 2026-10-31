@@ -1,8 +1,26 @@
 import { PNG } from "pngjs";
+import { takeSnapshot } from "./snapshot.mjs";
 
 // Identical PNG bytes necessarily contain identical pixels. Decode only when
 // encoded bytes differ; metadata/compression differences still use strict RGBA.
 export function compareCaptures(reference, candidate) {
+	if (reference.tiles || candidate.tiles) {
+		const size = (capture) => capture.tiles ? [capture.width, capture.height] : (() => { const png = PNG.sync.read(capture.bytes); return [png.width, png.height]; })();
+		const a = size(reference), b = size(candidate);
+		if (a[0] !== b[0] || a[1] !== b[1]) return { equal: false, reason: "dimensions", reference: a, candidate: b };
+		if (reference.tiles.length !== candidate.tiles.length) throw Error("Inconsistent tile coverage");
+		let differentPixels = 0, differentTile;
+		for (let i = 0;i < reference.tiles.length;i++) {
+			const left = reference.tiles[i], right = candidate.tiles[i];
+			if (left.y !== right.y) throw Error("Inconsistent tile coordinates");
+			if (left.bytes.equals(right.bytes)) continue;
+			const compared = comparePixels(PNG.sync.read(left.bytes), PNG.sync.read(right.bytes));
+			if (compared.reason === "dimensions") throw Error("Inconsistent tile dimensions");
+			differentPixels += compared.differentPixels;
+			if (!compared.equal && differentTile === undefined) differentTile = i;
+		}
+		return { equal: differentPixels === 0, differentPixels, totalPixels: a[0] * a[1], differentTile, ...(differentPixels ? { reason: "pixels" } : {}) };
+	}
 	if (reference.bytes.equals(candidate.bytes))
 		return { equal: true, differentPixels: 0 };
 	reference.png ??= PNG.sync.read(reference.bytes);
@@ -24,7 +42,7 @@ export function comparePixels(reference, candidate) {
 	if (reference.data.equals(candidate.data))
 		return { equal: true, differentPixels: 0 };
 	let differentPixels = 0;
-	for (let i = 0; i < reference.data.length; i += 4) {
+	for (let i = 0;i < reference.data.length;i += 4) {
 		if (
 			reference.data[i] !== candidate.data[i] ||
 			reference.data[i + 1] !== candidate.data[i + 1] ||
@@ -113,13 +131,13 @@ export async function capturePage(page, url, { clockTime } = {}) {
 				} else {
 					try {
 						animation.finish();
-					} catch {}
+					} catch { }
 				}
 			}
 			for (const animation of animations) {
 				try {
 					animation.commitStyles();
-				} catch {}
+				} catch { }
 			}
 		});
 		await page.addStyleTag({
@@ -133,22 +151,10 @@ export async function capturePage(page, url, { clockTime } = {}) {
 				finalPath: new URL(page.url()).pathname,
 			};
 		const started = Date.now();
-		let previous = {
-			bytes: await page.screenshot({
-				fullPage: true,
-				animations: "allow",
-				timeout: 10_000,
-			}),
-		};
-		let bytes,
-			stable = false;
+		let previous = await takeSnapshot(page);
+		let stable = false;
 		do {
-			bytes = await page.screenshot({
-				fullPage: true,
-				animations: "allow",
-				timeout: 10_000,
-			});
-			const current = { bytes };
+			const current = await takeSnapshot(page);
 			stable = compareCaptures(previous, current).equal;
 			previous = current;
 		} while (!stable && Date.now() - started < 5000);
@@ -160,7 +166,7 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		return {
 			status: errors.length ? "runtime-error" : "captured",
 			errors,
-			bytes,
+			...previous,
 			finalPath: new URL(page.url()).pathname,
 		};
 	} catch (error) {

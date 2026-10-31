@@ -48,10 +48,13 @@ const layouts = {
 	slim: Slim,
 	blank: Blank,
 };
-const files = import.meta.glob([
-	"../pages/**/*.vue",
-	"!../pages/docs/*slug*.vue",
-]);
+const files: Record<string, () => Promise<any>> = {
+	"../error.vue": () => import("../error.vue"),
+	...import.meta.glob([
+		"../pages/**/*.vue",
+		"!../pages/docs/*slug*.vue",
+	]),
+};
 const cache = new Map<string, any>();
 export async function resolveComponent(name: string) {
 	if (name.startsWith("Layout:"))

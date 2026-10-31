@@ -50,6 +50,7 @@ for (let round = 1; round <= 3; round++) {
 			(await stat(".output/public" + page.path + "index.html")).size > 0,
 			page.path,
 		);
+	assert.ok((await stat(".output/public/404.html")).size > 0);
 	const manifest = JSON.parse(
 		await readFile(".output/public/.vite/manifest.json", "utf8"),
 	);

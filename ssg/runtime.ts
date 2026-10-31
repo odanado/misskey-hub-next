@@ -98,6 +98,7 @@ export const useGLocalePath = () => {
 export const useGSwitchLocalePath = () => {
 	const context = useSiteContext();
 	return (locale: string) =>
+		context.kind === "error" ? `/${locale}/` :
 		context.route.path.startsWith("/ja/blog/")
 			? context.route.path
 			: context.route.path.replace(/^\/[a-z-]+\//, `/${locale}/`);

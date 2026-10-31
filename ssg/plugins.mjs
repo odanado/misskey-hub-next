@@ -170,6 +170,7 @@ export function plugins() {
 					"layouts/**/*.vue",
 					"pages/**/*.vue",
 					"ssg/**/*.vue",
+					"error.vue",
 				].map((path) => resolve(root, path)),
 			},
 		}),

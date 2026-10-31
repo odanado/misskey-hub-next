@@ -67,6 +67,7 @@ const benchmark = JSON.parse(await readFile(benchmarkFile, "utf8"));
 const scriptHash = createHash("sha256")
 	.update(await readFile(new URL(import.meta.url)))
 	.update(await readFile(new URL("./capture.mjs", import.meta.url)))
+	.update(await readFile(new URL("./snapshot.mjs", import.meta.url)))
 	.digest("hex");
 const manifest = {
 	startedAt,
@@ -81,8 +82,8 @@ const manifest = {
 	benchmarkFile: benchmark ? benchmarkFile : undefined,
 	benchmarkSha256: benchmark
 		? createHash("sha256")
-				.update(await readFile(benchmarkFile))
-				.digest("hex")
+			.update(await readFile(benchmarkFile))
+			.digest("hex")
 		: undefined,
 	viewport,
 	colorScheme,
@@ -92,7 +93,7 @@ const manifest = {
 	locale: "ja-JP",
 	timezone: "Asia/Tokyo",
 	policy:
-		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds (including deterministic shader phase); motion disabled after layout settles.",
+		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds (including deterministic shader phase); motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 90s.",
 };
 const rows = [];
 if (process.argv.includes("--resume")) {
@@ -187,12 +188,15 @@ async function saveSummary(finished = false) {
 	summaryWrite = summaryWrite.then(() => writeFile(summaryFile, contents));
 	await summaryWrite;
 }
-async function saveSamples(mode, entry, reference, candidate) {
+async function saveSamples(mode, entry, reference, candidate, comparison) {
+	const tile = comparison?.differentTile ?? 0;
+	const referenceBytes = reference.bytes ?? reference.tiles?.[tile]?.bytes;
+	const candidateBytes = candidate.bytes ?? candidate.tiles?.[tile]?.bytes;
 	const key = mode + "/" + entry.kind;
 	if (
 		(sampleCounts[key] ?? 0) >= maxSamplesPerKind ||
-		!reference.bytes ||
-		!candidate.bytes
+		!referenceBytes ||
+		!candidateBytes
 	)
 		return;
 	sampleCounts[key] = (sampleCounts[key] ?? 0) + 1;
@@ -202,8 +206,9 @@ async function saveSamples(mode, entry, reference, candidate) {
 		createHash("sha256").update(entry.path).digest("hex").slice(0, 12),
 	);
 	await mkdir(dir, { recursive: true });
-	await writeFile(dir + "/baseline.png", reference.bytes);
-	await writeFile(dir + "/candidate.png", candidate.bytes);
+	await writeFile(dir + "/baseline.png", referenceBytes);
+	await writeFile(dir + "/candidate.png", candidateBytes);
+	if (reference.tiles) await writeFile(dir + "/tile.json", JSON.stringify({ y: reference.tiles[tile].y, width: reference.width, pageHeight: reference.height }) + "\n");
 	return dir;
 }
 try {
@@ -218,7 +223,7 @@ try {
 				let file = resolve(
 					root,
 					"." +
-						decodeURIComponent(new URL(req.url, "http://localhost").pathname),
+					decodeURIComponent(new URL(req.url, "http://localhost").pathname),
 				);
 				if (file !== root && !file.startsWith(root + sep))
 					throw new Error("Invalid path");
@@ -267,9 +272,9 @@ try {
 									() =>
 										accept({
 											status: "capture-error",
-											errors: ["Overall capture timeout: 30 seconds"],
+											errors: ["Overall capture timeout: 90 seconds"],
 										}),
-									30_000,
+									90_000,
 								);
 							}),
 						]);
@@ -318,6 +323,7 @@ try {
 							entry,
 							reference,
 							candidate,
+							pixels,
 						);
 				}
 				const row = {

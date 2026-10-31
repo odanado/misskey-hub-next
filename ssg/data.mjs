@@ -8,22 +8,14 @@ import { localesConst } from "../assets/data/locales.ts";
 export async function prepareData(parseDocument) {
 	const pages = await loadPages();
 
-	const start = performance.now(),
-		ox = true,
-		napi = ox ? await import("@ox-content/napi") : null;
-	const manifest = ox
-		? new Map(
-				JSON.parse(
-					napi.buildCollectionManifest({
-						srcDir: "content",
-						extensions: ["md"],
-						collections: [
-							{ name: "all", source: ["**/*.md"], include: ["body"] },
-						],
-					}),
-				).collections.all.map((e) => [e.source, e]),
-			)
-		: null;
+	const start = performance.now();
+	const napi = await import("@ox-content/napi");
+	const manifest = new Map(
+		JSON.parse(napi.buildCollectionManifest({
+			srcDir: "content", extensions: ["md"],
+			collections: [{ name: "all", source: ["**/*.md"], include: ["body"] }],
+		})).collections.all.map((entry) => [entry.source, entry]),
+	);
 
 	const contents = [],
 		configs = {},
@@ -39,15 +31,9 @@ export async function prepareData(parseDocument) {
 
 		if (source.endsWith(".md")) {
 			md++;
-			item = ox
-				? metadata(
-						source,
-						await parseDocument({
-							...manifest.get(source),
-							body: napi.parseFrontmatter(raw).content,
-						}),
-					)
-				: await parseMdc(raw, source);
+			item = metadata(source, await parseDocument({
+				...manifest.get(source), body: napi.parseFrontmatter(raw).content,
+			}));
 		} else {
 			const fields = yaml.load(raw) ?? {};
 			item = metadata(source, fields);
@@ -162,11 +148,11 @@ export async function prepareData(parseDocument) {
 				children: document.body.children.map((n) =>
 					n.tag === "style"
 						? {
-								type: "element",
-								tag: "span",
-								props: { hidden: true },
-								children: [],
-							}
+							type: "element",
+							tag: "span",
+							props: { hidden: true },
+							children: [],
+						}
 						: n,
 				),
 			};
@@ -176,8 +162,8 @@ export async function prepareData(parseDocument) {
 			related =
 				page.pageFile === "pages/contact.vue"
 					? contents.filter((x) =>
-							x._path.startsWith("/" + sourceLocale + "/contact-faq/"),
-						)
+						x._path.startsWith("/" + sourceLocale + "/contact-faq/"),
+					)
 					: page.pageFile === "pages/blog/index.vue"
 						? blog
 						: [];
@@ -197,27 +183,27 @@ export async function prepareData(parseDocument) {
 
 	console.log(
 		"[ssg] " +
-			JSON.stringify({
-				engine: "Ox Content",
-				sourceCount: files.length,
-				markdownSources: md,
-				renderedPages: out.length,
-				seconds: (performance.now() - start) / 1000,
-				markdownEngine: ox ? "Ox + MDC islands" : "MDC",
-				oxPages: contents.filter((x) => x._parsing?.engine === "ox").length,
-				mdcComponentIslands: contents.reduce(
-					(n, x) => n + (x._parsing?.mdcIslands ?? 0),
-					0,
-				),
-				codeIslands: contents.reduce(
-					(n, x) => n + (x._parsing?.codeIslands ?? 0),
-					0,
-				),
-				fullMdcFallbackPages: contents.filter(
-					(x) => x._parsing?.fullMdcFallback,
-				).length,
-				inlineMarkdownStrings: Object.keys(inlineMarkdown).length,
-			}),
+		JSON.stringify({
+			engine: "Ox Content",
+			sourceCount: files.length,
+			markdownSources: md,
+			renderedPages: out.length,
+			seconds: (performance.now() - start) / 1000,
+			markdownEngine: "Ox + MDC compatibility",
+			oxPages: contents.filter((x) => x._parsing?.engine === "ox").length,
+			mdcComponentIslands: contents.reduce(
+				(n, x) => n + (x._parsing?.mdcIslands ?? 0),
+				0,
+			),
+			codeIslands: contents.reduce(
+				(n, x) => n + (x._parsing?.codeIslands ?? 0),
+				0,
+			),
+			fullMdcFallbackPages: contents.filter(
+				(x) => x._parsing?.fullMdcFallback,
+			).length,
+			inlineMarkdownStrings: Object.keys(inlineMarkdown).length,
+		}),
 	);
 	return out;
 }

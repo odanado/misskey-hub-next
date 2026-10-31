@@ -1,3 +1,4 @@
+import { legacyMdcSources, parseLegacyDocument } from "./mdc-compatibility.mjs";
 import { prepareNativeMarkdown, nativeDocument } from "./markdown-native.mjs";
 import { compileHast, generateToc, generatePath, parseMdc } from "./mdc.mjs";
 import { semanticFootnotes } from "./semantic-footnotes.mjs";
@@ -12,6 +13,7 @@ export function createDocumentParser(host: any) {
 			documents.set(
 				entry.source,
 				(async () => {
+					if (legacyMdcSources.has(entry.source)) return parseLegacyDocument(entry);
 					const prepared = prepareNativeMarkdown(entry, {
 						mdcIslands: true,
 						allowUnclosedContainers: true,

@@ -23,6 +23,23 @@ const browserCopy = (value: any): any => {
 export default {
 	async routes(host: any) {
 		const pages = await prepareData(createDocumentParser(host));
+		// A hosting fallback is an output artifact, separate from published URLs.
+		const base = pages.find((page: any) => page.path === "/ja/");
+		pages.push({
+			...base,
+			path: "/404/",
+			source: undefined,
+			kind: "error",
+			pageFile: "error.vue",
+			pageMeta: { layout: "blank" },
+			document: {
+				title: base.messages._error.notFound,
+				description: base.messages._error.notFoundDesc,
+				_path: "/404",
+			},
+			related: [],
+			surround: [null, null],
+		});
 		let assets: any;
 		return pages.map((payload: any) => ({
 			path: payload.path,

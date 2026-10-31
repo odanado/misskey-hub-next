@@ -18,13 +18,13 @@ pnpm build
 pnpm preview
 ```
 
-本番出力は`.output/public/`です。`pnpm generate`も同じ本番ビルドを実行します。GitHub Pagesの既存デプロイ先を維持し、Vercelの静的出力にも対応しています。`CROWDIN_INTG_API`と`SERVER_LIST_API_BASE_URL`は従来どおりビルド時に使用します。
+本番出力は`.output/public/`です。存在しないURL用の`404.html`も既存エラー画面から生成します。`pnpm generate`も同じ本番ビルドを実行します。GitHub Pagesの既存デプロイ先を維持し、Vercelの静的出力にも対応しています。`CROWDIN_INTG_API`と`SERVER_LIST_API_BASE_URL`は従来どおりビルド時に使用します。
 
 ## 構成
 
 - `ssg/host.ts`：Oxが所有するルート・HTML出力の入口。
 - `ssg/routes.mjs` / `data.mjs`：原稿とVueページから公開URL、翻訳、ナビゲーション、ページデータを生成。
-- `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は既存MDC/Shikiと接続。
+- `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は既存MDC/Shikiと接続。旧記法の構造が異なる38ファイルは`mdc-compatibility.mjs`で明示して元MDCを使用（生成先は同じOx Host）。
 - `ssg/theme.ts` / `html.ts`：ドキュメントの静的HTML。通常本文全体をVueのVNodeやクライアントモジュールにしません。
 - `ssg/registry.ts` / `runtime.ts` / `page.ts`：既存Vue部品、ページ、レイアウト、auto import、翻訳・非同期データ等の互換処理。
 - `ssg/client.ts`：islands、固定Vueページ、メニュー、表、スクロール位置などのクライアント処理。
@@ -53,7 +53,7 @@ pnpm build
 pnpm test:vrt
 ```
 
-全公開URLをmacOS上のChromiumでPC・ライト条件で比較します。全RGBA画素と寸法の完全一致、JS例外・hydration警告・ローカル404なしを合格条件とし、マスクや許容差は使いません。基準不成立も分母に残して別分類します。外部通信は遮断し、絵文字キャッシュ・乱数・時計・アニメーションを固定します。WebGL背景も同じ時刻で比較するため、時計を基準ビルド完了時刻＋30秒に停止します。
+全公開URLをmacOS上のChromiumでPC・ライト条件で比較します。全RGBA画素と寸法の完全一致、JS例外・hydration警告・ローカル404なしを合格条件とし、マスクや許容差は使いません。基準不成立も分母に残して別分類します。16,000pxを超える長大ページは、スクロールせず同じ文書座標を4,096pxずつ撮影して全画素を照合します（撮影上限90秒）。差分サンプルが分割画像の場合は`tile.json`に元ページの座標を保存します。外部通信は遮断し、絵文字キャッシュ・乱数・時計・アニメーションを固定します。WebGL背景も同じ時刻で比較するため、時計を基準ビルド完了時刻＋30秒に停止します。
 
 ```sh
 # 代表30ページやモバイル・ダークも指定可能

@@ -26,7 +26,7 @@ export function head(payload) {
 	const locales =
 		payload.kind === "blog"
 			? payload.locales.filter((locale) => locale.code === "ja")
-			: payload.path === "/ns/"
+			: payload.kind === "error" || payload.path === "/ns/"
 				? []
 				: payload.locales;
 	const locale = payload.locale;
@@ -70,5 +70,5 @@ export function head(payload) {
 <link rel="stylesheet" href="/fonts/fonts.css"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.${google}"><link rel="preconnect" href="https://fonts.gstatic.${google}"><link rel="stylesheet" href="https://fonts.googleapis.${google}/css2?family=Capriola&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 ${locales.map((locale) => `<link rel="alternate" hreflang="${locale.language}" href="https://misskey-hub.net${payload.path.replace(/^\/[a-z-]+\//, "/" + locale.code + "/")}">`).join("")}
-${payload.locale === "ja-ks" ? '<meta name="robots" content="noindex">' : ""}${payload.styles ? `<style>${payload.styles}</style>` : ""}<script type="application/ld+json">${serialize(graph)}</script><script>${themeScript(payload.pageMeta?.colorMode)}</script>`;
+${payload.kind === "error" ? '<meta name="robots" content="noindex">' : ""}${payload.locale === "ja-ks" ? '<meta name="robots" content="noindex">' : ""}${payload.styles ? `<style>${payload.styles}</style>` : ""}<script type="application/ld+json">${serialize(graph)}</script><script>${themeScript(payload.pageMeta?.colorMode)}</script>`;
 }
