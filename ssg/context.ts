@@ -104,6 +104,7 @@ export function islandApp(
 				});
 		},
 	});
+	app.config.throwUnhandledErrorInProduction = true;
 	runtimeConfig.public.locales = context.locales;
 	app.config.globalProperties.$route = context.route;
 	for (const [name, value] of Object.entries(components))

@@ -22,7 +22,8 @@ export async function createPage(payload: any) {
 	});
 	const app = islandApp(root, {}, context, components),
 		errors: unknown[] = [];
-	app.config.errorHandler = (error) => errors.push(error);
+	if (typeof window === "undefined")
+		app.config.errorHandler = (error) => errors.push(error);
 	app.config.globalProperties.$route = context.route;
 	return { app, context, errors };
 }
