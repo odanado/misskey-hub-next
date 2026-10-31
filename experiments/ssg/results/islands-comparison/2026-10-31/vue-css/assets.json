@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "case": "vue-island",
+      "htmlFiles": 1991,
+      "publicAssetsCopiedExactly": 750,
+      "publicAssetBytes": 65141521,
+      "generatedCss": []
+    },
+    {
+      "case": "vue-island-css",
+      "htmlFiles": 1991,
+      "publicAssetsCopiedExactly": 750,
+      "publicAssetBytes": 65141521,
+      "generatedCss": [
+        {
+          "file": "assets/diagnostic-client-DbhIEpLL.css",
+          "bytes": 148552,
+          "sha256": "21b9701a2ac9500ad02636eb2c7773512cf59f6e3e12037f02d2032c5ddd5b16"
+        }
+      ]
+    }
+  ],
+  "policy": "Outside timer: original public assets byte-identical; generated CSS hash recorded. All URL CSS links and representative CSS output tokens checked by benchmark; actual computed styles checked in Chromium."
+}

@@ -1,0 +1,847 @@
+{
+  "recordedAt": "2026-10-29T21:59:35.063Z",
+  "imagesPerMode": 20,
+  "pixelPolicy": "exact decoded RGBA, no masks, no baseline updates",
+  "summaries": [
+    {
+      "mode": "baseline",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vue",
+      "exactImages": 20
+    },
+    {
+      "mode": "baseline-vize",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vize",
+      "exactImages": 20
+    },
+    {
+      "mode": "ox-ported",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vue",
+      "exactImages": 20
+    },
+    {
+      "mode": "ox-ported-vize",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vize",
+      "exactImages": 20
+    },
+    {
+      "mode": "astro",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vue",
+      "exactImages": 20
+    },
+    {
+      "mode": "astro-vize",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vize",
+      "exactImages": 20
+    },
+    {
+      "mode": "astro-ox",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vue",
+      "exactImages": 20
+    },
+    {
+      "mode": "astro-ox-vize",
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-light",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "desktop-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "1: /ja/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "2: /ja/docs/for-users/features/hashtag/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        },
+        {
+          "title": "4: /en/docs/for-users/features/note/",
+          "project": "mobile-dark",
+          "status": "passed",
+          "screenshots": []
+        }
+      ],
+      "compiler": "vize",
+      "exactImages": 20
+    }
+  ]
+}

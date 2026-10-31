@@ -1,0 +1,31 @@
+import{resolve}from'node:path';
+import{renderToString}from'vue/server-renderer';
+import{preparePages}from'./pages-data.mjs';
+import{createPageApp}from'./pages-app';
+import{head,serialize}from'../nuxt-compat/head.mjs';
+import{root}from'./routes.ts';
+const escape=(value:any)=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+export default{
+ async routes(host:any){
+  const pages=await preparePages(host),paths=new Set(pages.map((p:any)=>p.path));let assets:any;
+  return pages.map((payload:any)=>({path:payload.path,...(payload.source?{inputPath:resolve(root,'content',payload.source)}:{}),async render(ctx:any){
+   if(!assets){const styles=ctx.assets.stylesheets({modules:[resolve(root,'experiments/ssg/ox-native-islands/pages-client.ts')]});if(styles.diagnostics.length||!styles.stylesheets.length)throw Error('Missing page CSS');const entry=Object.values(ctx.assets.clientManifest).find((entry:any)=>entry.isEntry)as any;if(!entry)throw Error('Missing page client');assets={js:'/'+entry.file,css:styles.stylesheets.map((s:any)=>s.href)};}
+   const css=assets.css.map((href:string)=>`<link rel="stylesheet" href="${href}">`).join('');let body:string,script='',title=payload.document.title??payload.path,htmlClass='';
+   if(payload.kind==='static'){
+    const{app,context,errors}=await createPageApp(payload);body=await renderToString(app);if(errors.length)throw new AggregateError(errors,'Original Vue page failed: '+payload.path);
+    payload.document={...payload.document,title:context.route.meta.title??(payload.pageFile==='pages/index.vue'?payload.messages._seo.siteNameLong:title),description:context.route.meta.description??payload.document.description};title=payload.document.title;
+    const browser={...payload,asyncData:context.asyncData,fetchCache:context.fetchCache,document:{...payload.document},surround:[]};
+    script=`<script id="vue-page-data" type="application/json">${serialize(browser)}</script><script type="module" src="${assets.js}"></script>`;
+    htmlClass=context.head.htmlAttrs.class??'';if(payload.pageMeta.colorMode)htmlClass+=' '+payload.pageMeta.colorMode;
+    body=`<div id="vue-page-root" data-original-vue-page="${escape(payload.pageFile)}">${body}</div>`;
+   }else if(payload.kind==='languageEntry'){
+    const available=payload.locales.filter((l:any)=>paths.has('/'+l.code+payload.path));if(!available.length)throw Error('No localized target: '+payload.path);
+    const targets=Object.fromEntries(available.map((l:any)=>[l.code,'/'+l.code+payload.path]));
+    script=`<script>(()=>{const targets=${serialize(targets)};const cookie=document.cookie.split(';').map(v=>v.trim()).find(v=>v.startsWith('i18n_redirected='))?.split('=').slice(1).join('=');const languages=[cookie,...navigator.languages].filter(Boolean);let code;for(const language of languages){const value=decodeURIComponent(language).toLowerCase();const candidate=value.startsWith('zh')?(value.includes('tw')||value.includes('hk')?'tw':'cn'):value in targets?value:value.split('-')[0];if(candidate in targets){code=candidate;break;}}code??=('ja' in targets?'ja':Object.keys(targets)[0]);location.replace(targets[code]+location.search+location.hash);})();</script>`;
+    body=`<main data-language-entry><h1>Misskey Hub</h1><p>Please select your language.</p>${available.map((locale:any)=>`<a lang="${locale.language}" href="/${locale.code}${payload.path}">${escape(locale.name)}</a>`).join('')}</main>`;
+   }else body=`<main data-raw-ox-content>${payload.document.rawHtml}</main>`;
+   const lang=payload.locales.find((l:any)=>l.code===payload.locale)?.language??'ja-JP';
+   return{title,html:`<!DOCTYPE html><html lang="${lang}" class="${escape(htmlClass)}"><head>${head(payload)}${css}</head><body>${body}${script}</body></html>`};
+  }}));
+ }
+};

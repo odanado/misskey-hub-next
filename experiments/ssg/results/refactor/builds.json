@@ -1,0 +1,54 @@
+{
+  "recordedAt": "2026-10-30T04:10:33.818Z",
+  "purpose": "Post-reorganization build validation, not replacement benchmark values",
+  "rows": [
+    {
+      "mode": "ox-ported",
+      "compiler": "vue",
+      "scope": 4,
+      "passed": true,
+      "seconds": 5.748,
+      "log": "/tmp/hub-refactor-ox-ported-vue.log"
+    },
+    {
+      "mode": "astro",
+      "compiler": "vue",
+      "scope": 4,
+      "passed": true,
+      "seconds": 5.625,
+      "log": "/tmp/hub-refactor-astro-vue.log"
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vue",
+      "scope": 4,
+      "passed": true,
+      "seconds": 4.939,
+      "log": "/tmp/hub-refactor-astro-ox-vue.log"
+    },
+    {
+      "mode": "ox-ported",
+      "compiler": "vize",
+      "scope": 4,
+      "passed": true,
+      "seconds": 4.027,
+      "log": "/tmp/hub-refactor-ox-ported-vize.log"
+    },
+    {
+      "mode": "astro",
+      "compiler": "vize",
+      "scope": 4,
+      "passed": true,
+      "seconds": 4.843,
+      "log": "/tmp/hub-refactor-astro-vize.log"
+    },
+    {
+      "mode": "astro-ox",
+      "compiler": "vize",
+      "scope": 4,
+      "passed": true,
+      "seconds": 4.907,
+      "log": "/tmp/hub-refactor-astro-ox-vize.log"
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "pages/index.vue": {
+    "layout": "landing",
+    "clientOnly": false,
+    "urls": [
+      "/pl/",
+      "/cn/",
+      "/ja/",
+      "/it/",
+      "/tw/",
+      "/de/",
+      "/ko/",
+      "/id/",
+      "/fr/",
+      "/es/",
+      "/en/",
+      "/th/",
+      "/ja-ks/"
+    ]
+  },
+  "pages/ns.vue": {
+    "layout": "slim",
+    "clientOnly": false,
+    "urls": [
+      "/ns/"
+    ]
+  },
+  "pages/contact.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/contact/",
+      "/th/contact/",
+      "/en/contact/",
+      "/es/contact/",
+      "/fr/contact/",
+      "/id/contact/",
+      "/ko/contact/",
+      "/de/contact/",
+      "/tw/contact/",
+      "/it/contact/",
+      "/ja/contact/",
+      "/cn/contact/",
+      "/pl/contact/"
+    ]
+  },
+  "pages/tools/index.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/",
+      "/th/tools/",
+      "/en/tools/",
+      "/es/tools/",
+      "/fr/tools/",
+      "/id/tools/",
+      "/ko/tools/",
+      "/de/tools/",
+      "/tw/tools/",
+      "/it/tools/",
+      "/ja/tools/",
+      "/cn/tools/",
+      "/pl/tools/"
+    ]
+  },
+  "pages/mi-web.client.vue": {
+    "layout": "blank",
+    "clientOnly": true,
+    "urls": [
+      "/ja-ks/mi-web/",
+      "/th/mi-web/",
+      "/en/mi-web/",
+      "/es/mi-web/",
+      "/fr/mi-web/",
+      "/id/mi-web/",
+      "/ko/mi-web/",
+      "/de/mi-web/",
+      "/tw/mi-web/",
+      "/it/mi-web/",
+      "/ja/mi-web/",
+      "/cn/mi-web/",
+      "/pl/mi-web/"
+    ]
+  },
+  "pages/brand-assets.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/brand-assets/",
+      "/th/brand-assets/",
+      "/en/brand-assets/",
+      "/es/brand-assets/",
+      "/fr/brand-assets/",
+      "/id/brand-assets/",
+      "/ko/brand-assets/",
+      "/de/brand-assets/",
+      "/tw/brand-assets/",
+      "/it/brand-assets/",
+      "/ja/brand-assets/",
+      "/cn/brand-assets/",
+      "/pl/brand-assets/"
+    ]
+  },
+  "pages/about-us/index.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/about-us/",
+      "/th/about-us/",
+      "/en/about-us/",
+      "/es/about-us/",
+      "/fr/about-us/",
+      "/id/about-us/",
+      "/ko/about-us/",
+      "/de/about-us/",
+      "/tw/about-us/",
+      "/it/about-us/",
+      "/ja/about-us/",
+      "/cn/about-us/",
+      "/pl/about-us/"
+    ]
+  },
+  "pages/test.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/test/",
+      "/th/test/",
+      "/en/test/",
+      "/es/test/",
+      "/fr/test/",
+      "/id/test/",
+      "/ko/test/",
+      "/de/test/",
+      "/tw/test/",
+      "/it/test/",
+      "/ja/test/",
+      "/cn/test/",
+      "/pl/test/"
+    ]
+  },
+  "pages/learn-more.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/learn-more/",
+      "/th/learn-more/",
+      "/en/learn-more/",
+      "/es/learn-more/",
+      "/fr/learn-more/",
+      "/id/learn-more/",
+      "/ko/learn-more/",
+      "/de/learn-more/",
+      "/tw/learn-more/",
+      "/it/learn-more/",
+      "/ja/learn-more/",
+      "/cn/learn-more/",
+      "/pl/learn-more/"
+    ]
+  },
+  "pages/docs/index.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/docs/",
+      "/th/docs/",
+      "/en/docs/",
+      "/es/docs/",
+      "/fr/docs/",
+      "/id/docs/",
+      "/ko/docs/",
+      "/de/docs/",
+      "/tw/docs/",
+      "/it/docs/",
+      "/ja/docs/",
+      "/cn/docs/",
+      "/pl/docs/"
+    ]
+  },
+  "pages/blog/index.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/blog/",
+      "/th/blog/",
+      "/en/blog/",
+      "/es/blog/",
+      "/fr/blog/",
+      "/id/blog/",
+      "/ko/blog/",
+      "/de/blog/",
+      "/tw/blog/",
+      "/it/blog/",
+      "/ja/blog/",
+      "/cn/blog/",
+      "/pl/blog/"
+    ]
+  },
+  "pages/servers/index.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/servers/",
+      "/th/servers/",
+      "/en/servers/",
+      "/es/servers/",
+      "/fr/servers/",
+      "/id/servers/",
+      "/ko/servers/",
+      "/de/servers/",
+      "/tw/servers/",
+      "/it/servers/",
+      "/ja/servers/",
+      "/cn/servers/",
+      "/pl/servers/"
+    ]
+  },
+  "pages/share.client.vue": {
+    "layout": "blank",
+    "clientOnly": true,
+    "urls": [
+      "/ja-ks/share/",
+      "/th/share/",
+      "/en/share/",
+      "/es/share/",
+      "/fr/share/",
+      "/id/share/",
+      "/ko/share/",
+      "/de/share/",
+      "/tw/share/",
+      "/it/share/",
+      "/ja/share/",
+      "/cn/share/",
+      "/pl/share/"
+    ]
+  },
+  "pages/servers/stats.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/servers/stats/",
+      "/th/servers/stats/",
+      "/en/servers/stats/",
+      "/es/servers/stats/",
+      "/fr/servers/stats/",
+      "/id/servers/stats/",
+      "/ko/servers/stats/",
+      "/de/servers/stats/",
+      "/tw/servers/stats/",
+      "/it/servers/stats/",
+      "/ja/servers/stats/",
+      "/cn/servers/stats/",
+      "/pl/servers/stats/"
+    ]
+  },
+  "pages/about-us/team.vue": {
+    "layout": "default",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/about-us/team/",
+      "/th/about-us/team/",
+      "/en/about-us/team/",
+      "/es/about-us/team/",
+      "/fr/about-us/team/",
+      "/id/about-us/team/",
+      "/ko/about-us/team/",
+      "/de/about-us/team/",
+      "/tw/about-us/team/",
+      "/it/about-us/team/",
+      "/ja/about-us/team/",
+      "/cn/about-us/team/",
+      "/pl/about-us/team/"
+    ]
+  },
+  "pages/about-us/history.vue": {
+    "layout": "landing",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/about-us/history/",
+      "/th/about-us/history/",
+      "/en/about-us/history/",
+      "/es/about-us/history/",
+      "/fr/about-us/history/",
+      "/id/about-us/history/",
+      "/ko/about-us/history/",
+      "/de/about-us/history/",
+      "/tw/about-us/history/",
+      "/it/about-us/history/",
+      "/ja/about-us/history/",
+      "/cn/about-us/history/",
+      "/pl/about-us/history/"
+    ]
+  },
+  "pages/tools/identicon-generator.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/identicon-generator/",
+      "/th/tools/identicon-generator/",
+      "/en/tools/identicon-generator/",
+      "/es/tools/identicon-generator/",
+      "/fr/tools/identicon-generator/",
+      "/id/tools/identicon-generator/",
+      "/ko/tools/identicon-generator/",
+      "/de/tools/identicon-generator/",
+      "/tw/tools/identicon-generator/",
+      "/it/tools/identicon-generator/",
+      "/ja/tools/identicon-generator/",
+      "/cn/tools/identicon-generator/",
+      "/pl/tools/identicon-generator/"
+    ]
+  },
+  "pages/tools/custom-emoji-preview.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/custom-emoji-preview/",
+      "/th/tools/custom-emoji-preview/",
+      "/en/tools/custom-emoji-preview/",
+      "/es/tools/custom-emoji-preview/",
+      "/fr/tools/custom-emoji-preview/",
+      "/id/tools/custom-emoji-preview/",
+      "/ko/tools/custom-emoji-preview/",
+      "/de/tools/custom-emoji-preview/",
+      "/tw/tools/custom-emoji-preview/",
+      "/it/tools/custom-emoji-preview/",
+      "/ja/tools/custom-emoji-preview/",
+      "/cn/tools/custom-emoji-preview/",
+      "/pl/tools/custom-emoji-preview/"
+    ]
+  },
+  "pages/tools/hub-servers-preview.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/hub-servers-preview/",
+      "/th/tools/hub-servers-preview/",
+      "/en/tools/hub-servers-preview/",
+      "/es/tools/hub-servers-preview/",
+      "/fr/tools/hub-servers-preview/",
+      "/id/tools/hub-servers-preview/",
+      "/ko/tools/hub-servers-preview/",
+      "/de/tools/hub-servers-preview/",
+      "/tw/tools/hub-servers-preview/",
+      "/it/tools/hub-servers-preview/",
+      "/ja/tools/hub-servers-preview/",
+      "/cn/tools/hub-servers-preview/",
+      "/pl/tools/hub-servers-preview/"
+    ]
+  },
+  "pages/tools/avatar-decoration-preview.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/avatar-decoration-preview/",
+      "/th/tools/avatar-decoration-preview/",
+      "/en/tools/avatar-decoration-preview/",
+      "/es/tools/avatar-decoration-preview/",
+      "/fr/tools/avatar-decoration-preview/",
+      "/id/tools/avatar-decoration-preview/",
+      "/ko/tools/avatar-decoration-preview/",
+      "/de/tools/avatar-decoration-preview/",
+      "/tw/tools/avatar-decoration-preview/",
+      "/it/tools/avatar-decoration-preview/",
+      "/ja/tools/avatar-decoration-preview/",
+      "/cn/tools/avatar-decoration-preview/",
+      "/pl/tools/avatar-decoration-preview/"
+    ]
+  },
+  "pages/tools/mfm-playground.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/mfm-playground/",
+      "/th/tools/mfm-playground/",
+      "/en/tools/mfm-playground/",
+      "/es/tools/mfm-playground/",
+      "/fr/tools/mfm-playground/",
+      "/id/tools/mfm-playground/",
+      "/ko/tools/mfm-playground/",
+      "/de/tools/mfm-playground/",
+      "/tw/tools/mfm-playground/",
+      "/it/tools/mfm-playground/",
+      "/ja/tools/mfm-playground/",
+      "/cn/tools/mfm-playground/",
+      "/pl/tools/mfm-playground/"
+    ]
+  },
+  "pages/tools/share-link-generator.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/share-link-generator/",
+      "/th/tools/share-link-generator/",
+      "/en/tools/share-link-generator/",
+      "/es/tools/share-link-generator/",
+      "/fr/tools/share-link-generator/",
+      "/id/tools/share-link-generator/",
+      "/ko/tools/share-link-generator/",
+      "/de/tools/share-link-generator/",
+      "/tw/tools/share-link-generator/",
+      "/it/tools/share-link-generator/",
+      "/ja/tools/share-link-generator/",
+      "/cn/tools/share-link-generator/",
+      "/pl/tools/share-link-generator/"
+    ]
+  },
+  "pages/tools/aid-converter.vue": {
+    "layout": "tools",
+    "clientOnly": false,
+    "urls": [
+      "/ja-ks/tools/aid-converter/",
+      "/th/tools/aid-converter/",
+      "/en/tools/aid-converter/",
+      "/es/tools/aid-converter/",
+      "/fr/tools/aid-converter/",
+      "/id/tools/aid-converter/",
+      "/ko/tools/aid-converter/",
+      "/de/tools/aid-converter/",
+      "/tw/tools/aid-converter/",
+      "/it/tools/aid-converter/",
+      "/ja/tools/aid-converter/",
+      "/cn/tools/aid-converter/",
+      "/pl/tools/aid-converter/"
+    ]
+  }
+}

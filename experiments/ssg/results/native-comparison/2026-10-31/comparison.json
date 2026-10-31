@@ -1,0 +1,1179 @@
+{
+  "pr1-full": {
+    "medianBuildSeconds": 53.49542525,
+    "representativeRun": {
+      "file": "pr1-full/run-3.json",
+      "buildSeconds": 53.49542525,
+      "stagesSeconds": {
+        "startupConfig": 1.8868268329999998,
+        "clientGraph": 10.165349542,
+        "clientRenderWrite": 9.042081291000002,
+        "hostStartupImports": 2.965821959000001,
+        "data": 5.665733374999999,
+        "markdownModuleLoad": 11.68642898900011,
+        "appCreateConfigure": 0.23656005700001334,
+        "vueSsr": 7.756419194999879,
+        "htmlAssetsPayload": 3.1050339770002755,
+        "hostRenderOther": 0.21019144799972492,
+        "finalOutputs": 0.7749556669999947,
+        "tail": 2.29170000020531e-05
+      },
+      "byKind": {
+        "docs": {
+          "pages": 1365,
+          "ssrMs": 7100.105662999929,
+          "loadMs": 10860.943694000183,
+          "htmlBytes": 223703257
+        },
+        "blog": {
+          "pages": 106,
+          "ssrMs": 137.28432999998768,
+          "loadMs": 808.629669000009,
+          "htmlBytes": 9728335
+        },
+        "static": {
+          "pages": 287,
+          "ssrMs": 508.53791099996306,
+          "loadMs": 16.821749999951862,
+          "htmlBytes": 27257425
+        },
+        "languageEntry": {
+          "pages": 233,
+          "ssrMs": 10.491290999998455,
+          "loadMs": 0.03387599996494828,
+          "htmlBytes": 17150177
+        }
+      },
+      "bundle": {
+        "css": {
+          "files": 1,
+          "bytes": 184423
+        },
+        "js": {
+          "files": 1252,
+          "bytes": 25833876
+        },
+        "other": {
+          "files": 2,
+          "bytes": 1031466
+        }
+      },
+      "output": {
+        "htmlFiles": 1991,
+        "htmlBytes": 277839194
+      },
+      "mdcCalls": {
+        "mdc.parse.client": 4585,
+        "mdc.parse.host-data": 5170,
+        "mdc.parse.host-render": 4585
+      },
+      "markdownTransforms": {
+        "hook.ox-native-mdc-output.transform.client.md": 1247,
+        "hook.ox-native-mdc-output.transform.ssr.md": 1247
+      }
+    },
+    "runs": [
+      {
+        "file": "pr1-full/run-1.json",
+        "buildSeconds": 56.038076875,
+        "stagesSeconds": {
+          "startupConfig": 2.659770167,
+          "clientGraph": 10.904808249999999,
+          "clientRenderWrite": 9.271918958,
+          "hostStartupImports": 3.403456582999999,
+          "data": 5.828890542000001,
+          "markdownModuleLoad": 11.592801203999977,
+          "appCreateConfigure": 0.23961193500021546,
+          "vueSsr": 8.075191371000171,
+          "htmlAssetsPayload": 3.1489657460000164,
+          "hostRenderOther": 0.21230982699962261,
+          "finalOutputs": 0.7003290839999973,
+          "tail": 2.3207999998703598e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1365,
+            "ssrMs": 7158.296461000067,
+            "loadMs": 10821.483205000037,
+            "htmlBytes": 223703257
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 130.85445300007268,
+            "loadMs": 755.0497110000288,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 287,
+            "ssrMs": 773.8124199999875,
+            "loadMs": 16.233000999920478,
+            "htmlBytes": 27257425
+          },
+          "languageEntry": {
+            "pages": 233,
+            "ssrMs": 12.228037000044424,
+            "loadMs": 0.03528699999151286,
+            "htmlBytes": 17150177
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 277839194
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-full/run-2.json",
+        "buildSeconds": 52.655280749999996,
+        "stagesSeconds": {
+          "startupConfig": 1.5488855,
+          "clientGraph": 10.166095625,
+          "clientRenderWrite": 9.164085125,
+          "hostStartupImports": 2.8585500830000017,
+          "data": 5.611881083,
+          "markdownModuleLoad": 11.458452035000017,
+          "appCreateConfigure": 0.234063129999955,
+          "vueSsr": 7.643223882999948,
+          "htmlAssetsPayload": 3.102082398000126,
+          "hostRenderOther": 0.2074862209999519,
+          "finalOutputs": 0.6604518329999992,
+          "tail": 2.383399999962421e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1365,
+            "ssrMs": 7029.797335999952,
+            "loadMs": 10688.903406999896,
+            "htmlBytes": 223703257
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 137.8587499999703,
+            "loadMs": 753.4490040000528,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 287,
+            "ssrMs": 465.40699700002006,
+            "loadMs": 16.070751999992353,
+            "htmlBytes": 27257425
+          },
+          "languageEntry": {
+            "pages": 233,
+            "ssrMs": 10.16080000000511,
+            "loadMs": 0.028872000075352844,
+            "htmlBytes": 17150177
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 277839194
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-full/run-3.json",
+        "buildSeconds": 53.49542525,
+        "stagesSeconds": {
+          "startupConfig": 1.8868268329999998,
+          "clientGraph": 10.165349542,
+          "clientRenderWrite": 9.042081291000002,
+          "hostStartupImports": 2.965821959000001,
+          "data": 5.665733374999999,
+          "markdownModuleLoad": 11.68642898900011,
+          "appCreateConfigure": 0.23656005700001334,
+          "vueSsr": 7.756419194999879,
+          "htmlAssetsPayload": 3.1050339770002755,
+          "hostRenderOther": 0.21019144799972492,
+          "finalOutputs": 0.7749556669999947,
+          "tail": 2.29170000020531e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1365,
+            "ssrMs": 7100.105662999929,
+            "loadMs": 10860.943694000183,
+            "htmlBytes": 223703257
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 137.28432999998768,
+            "loadMs": 808.629669000009,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 287,
+            "ssrMs": 508.53791099996306,
+            "loadMs": 16.821749999951862,
+            "htmlBytes": 27257425
+          },
+          "languageEntry": {
+            "pages": 233,
+            "ssrMs": 10.491290999998455,
+            "loadMs": 0.03387599996494828,
+            "htmlBytes": 17150177
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 277839194
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      }
+    ]
+  },
+  "pr1-md": {
+    "medianBuildSeconds": 52.451056208000004,
+    "representativeRun": {
+      "file": "pr1-md/run-2.json",
+      "buildSeconds": 52.451056208000004,
+      "stagesSeconds": {
+        "startupConfig": 1.5256966250000001,
+        "clientGraph": 10.27409,
+        "clientRenderWrite": 9.499334292,
+        "hostStartupImports": 3.2316247079999996,
+        "data": 5.703136542,
+        "markdownModuleLoad": 11.797395335000038,
+        "appCreateConfigure": 0.19968636399994283,
+        "vueSsr": 7.294419525999918,
+        "htmlAssetsPayload": 2.232124983999911,
+        "hostRenderOther": 0.16272466600019106,
+        "finalOutputs": 0.5307993750000023,
+        "tail": 2.379099999961909e-05
+      },
+      "byKind": {
+        "docs": {
+          "pages": 1235,
+          "ssrMs": 7138.501019999952,
+          "loadMs": 10961.20771100004,
+          "htmlBytes": 179759510
+        },
+        "blog": {
+          "pages": 106,
+          "ssrMs": 153.05583899996418,
+          "loadMs": 822.2066649999979,
+          "htmlBytes": 9728335
+        },
+        "static": {
+          "pages": 1,
+          "ssrMs": 2.862667000001238,
+          "loadMs": 13.98095900000044,
+          "htmlBytes": 108676
+        }
+      },
+      "bundle": {
+        "css": {
+          "files": 1,
+          "bytes": 184423
+        },
+        "js": {
+          "files": 1252,
+          "bytes": 25833876
+        },
+        "other": {
+          "files": 2,
+          "bytes": 1031466
+        }
+      },
+      "output": {
+        "htmlFiles": 1342,
+        "htmlBytes": 189596521
+      },
+      "mdcCalls": {
+        "mdc.parse.client": 4585,
+        "mdc.parse.host-data": 5170,
+        "mdc.parse.host-render": 4585
+      },
+      "markdownTransforms": {
+        "hook.ox-native-mdc-output.transform.client.md": 1247,
+        "hook.ox-native-mdc-output.transform.ssr.md": 1247
+      }
+    },
+    "runs": [
+      {
+        "file": "pr1-md/run-1.json",
+        "buildSeconds": 50.03256575,
+        "stagesSeconds": {
+          "startupConfig": 1.4301713749999998,
+          "clientGraph": 10.085920709,
+          "clientRenderWrite": 8.111509875,
+          "hostStartupImports": 3.212991915999999,
+          "data": 5.669016667,
+          "markdownModuleLoad": 11.69072650599997,
+          "appCreateConfigure": 0.18763763799987646,
+          "vueSsr": 6.812679619999912,
+          "htmlAssetsPayload": 2.209350321000049,
+          "hostRenderOther": 0.15710216500019306,
+          "finalOutputs": 0.4654382919999989,
+          "tail": 2.0666000003984665e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 6672.717913999924,
+            "loadMs": 10890.705794999994,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 137.23928999998316,
+            "loadMs": 786.5056279999772,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.7224160000041593,
+            "loadMs": 13.515082999998413,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-md/run-2.json",
+        "buildSeconds": 52.451056208000004,
+        "stagesSeconds": {
+          "startupConfig": 1.5256966250000001,
+          "clientGraph": 10.27409,
+          "clientRenderWrite": 9.499334292,
+          "hostStartupImports": 3.2316247079999996,
+          "data": 5.703136542,
+          "markdownModuleLoad": 11.797395335000038,
+          "appCreateConfigure": 0.19968636399994283,
+          "vueSsr": 7.294419525999918,
+          "htmlAssetsPayload": 2.232124983999911,
+          "hostRenderOther": 0.16272466600019106,
+          "finalOutputs": 0.5307993750000023,
+          "tail": 2.379099999961909e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 7138.501019999952,
+            "loadMs": 10961.20771100004,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 153.05583899996418,
+            "loadMs": 822.2066649999979,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.862667000001238,
+            "loadMs": 13.98095900000044,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-md/run-3.json",
+        "buildSeconds": 53.054133625000006,
+        "stagesSeconds": {
+          "startupConfig": 1.635109,
+          "clientGraph": 10.629753458,
+          "clientRenderWrite": 9.355433750000003,
+          "hostStartupImports": 3.4556123329999973,
+          "data": 5.974737292000001,
+          "markdownModuleLoad": 12.302190995999837,
+          "appCreateConfigure": 0.18251381300011782,
+          "vueSsr": 6.756161045999852,
+          "htmlAssetsPayload": 2.0785211279999602,
+          "hostRenderOther": 0.16204355900023437,
+          "finalOutputs": 0.5220206249999974,
+          "tail": 3.6625000000640285e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 6613.405968999858,
+            "loadMs": 11513.961162999854,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 140.07011899999634,
+            "loadMs": 774.2188739999838,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.684957999998005,
+            "loadMs": 14.010958999999275,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      }
+    ]
+  },
+  "pr1-no-md-client": {
+    "medianBuildSeconds": 36.169896666,
+    "representativeRun": {
+      "file": "pr1-no-md-client/run-3.json",
+      "buildSeconds": 36.169896666,
+      "stagesSeconds": {
+        "startupConfig": 1.5290735410000003,
+        "clientGraph": 4.238926916999999,
+        "clientRenderWrite": 1.9341295,
+        "hostStartupImports": 2.659576083000002,
+        "data": 6.099590874999998,
+        "markdownModuleLoad": 11.862540092000035,
+        "appCreateConfigure": 0.17602590299998702,
+        "vueSsr": 6.432783487999895,
+        "htmlAssetsPayload": 0.6400415639999665,
+        "hostRenderOther": 0.1503691200001158,
+        "finalOutputs": 0.4468159580000065,
+        "tail": 2.3624999994353856e-05
+      },
+      "byKind": {
+        "docs": {
+          "pages": 1235,
+          "ssrMs": 6278.267522999926,
+          "loadMs": 11000.630260000024,
+          "htmlBytes": 179759510
+        },
+        "blog": {
+          "pages": 106,
+          "ssrMs": 151.77796499997203,
+          "loadMs": 851.3669990000126,
+          "htmlBytes": 9728335
+        },
+        "static": {
+          "pages": 1,
+          "ssrMs": 2.7379999999975553,
+          "loadMs": 10.542832999999519,
+          "htmlBytes": 108676
+        }
+      },
+      "bundle": {
+        "css": {
+          "files": 1,
+          "bytes": 184026
+        },
+        "js": {
+          "files": 4,
+          "bytes": 1646159
+        },
+        "other": {
+          "files": 2,
+          "bytes": 506038
+        }
+      },
+      "output": {
+        "htmlFiles": 1342,
+        "htmlBytes": 189596521
+      },
+      "mdcCalls": {
+        "mdc.parse.host-data": 5170,
+        "mdc.parse.host-render": 4585
+      },
+      "markdownTransforms": {
+        "hook.ox-native-mdc-output.transform.ssr.md": 1247
+      }
+    },
+    "runs": [
+      {
+        "file": "pr1-no-md-client/run-1.json",
+        "buildSeconds": 35.780013834,
+        "stagesSeconds": {
+          "startupConfig": 1.480610542,
+          "clientGraph": 4.301353666999999,
+          "clientRenderWrite": 1.393180875,
+          "hostStartupImports": 2.6776795409999994,
+          "data": 6.014230334,
+          "markdownModuleLoad": 11.954860466999998,
+          "appCreateConfigure": 0.17367304799999875,
+          "vueSsr": 6.316376475000017,
+          "htmlAssetsPayload": 0.6594459989998668,
+          "hostRenderOther": 0.14688455200011957,
+          "finalOutputs": 0.6616969170000011,
+          "tail": 2.14170000035665e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 6171.748261000035,
+            "loadMs": 11124.310463999973,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 142.02175599998736,
+            "loadMs": 819.8496690000247,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.6064579999947455,
+            "loadMs": 10.700334000001021,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184026
+          },
+          "js": {
+            "files": 4,
+            "bytes": 1646159
+          },
+          "other": {
+            "files": 2,
+            "bytes": 506038
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-no-md-client/run-2.json",
+        "buildSeconds": 36.858456,
+        "stagesSeconds": {
+          "startupConfig": 1.714149666,
+          "clientGraph": 4.245379,
+          "clientRenderWrite": 1.8439474170000003,
+          "hostStartupImports": 2.690669166999999,
+          "data": 6.053828415999998,
+          "markdownModuleLoad": 12.262892407000068,
+          "appCreateConfigure": 0.17216948500000945,
+          "vueSsr": 6.63709466799998,
+          "htmlAssetsPayload": 0.6503514229999637,
+          "hostRenderOther": 0.1487174759999798,
+          "finalOutputs": 0.4392196249999979,
+          "tail": 3.725000000122236e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 6493.1109969999925,
+            "loadMs": 11418.86048800001,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 141.1505879999895,
+            "loadMs": 828.9833780000554,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.833082999997714,
+            "loadMs": 15.048541000003752,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184026
+          },
+          "js": {
+            "files": 4,
+            "bytes": 1646159
+          },
+          "other": {
+            "files": 2,
+            "bytes": 506038
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      },
+      {
+        "file": "pr1-no-md-client/run-3.json",
+        "buildSeconds": 36.169896666,
+        "stagesSeconds": {
+          "startupConfig": 1.5290735410000003,
+          "clientGraph": 4.238926916999999,
+          "clientRenderWrite": 1.9341295,
+          "hostStartupImports": 2.659576083000002,
+          "data": 6.099590874999998,
+          "markdownModuleLoad": 11.862540092000035,
+          "appCreateConfigure": 0.17602590299998702,
+          "vueSsr": 6.432783487999895,
+          "htmlAssetsPayload": 0.6400415639999665,
+          "hostRenderOther": 0.1503691200001158,
+          "finalOutputs": 0.4468159580000065,
+          "tail": 2.3624999994353856e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1235,
+            "ssrMs": 6278.267522999926,
+            "loadMs": 11000.630260000024,
+            "htmlBytes": 179759510
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 151.77796499997203,
+            "loadMs": 851.3669990000126,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 1,
+            "ssrMs": 2.7379999999975553,
+            "loadMs": 10.542832999999519,
+            "htmlBytes": 108676
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184026
+          },
+          "js": {
+            "files": 4,
+            "bytes": 1646159
+          },
+          "other": {
+            "files": 2,
+            "bytes": 506038
+          }
+        },
+        "output": {
+          "htmlFiles": 1342,
+          "htmlBytes": 189596521
+        },
+        "mdcCalls": {
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      }
+    ]
+  },
+  "pr2": {
+    "medianBuildSeconds": 4.4277750000000005,
+    "representativeRun": {
+      "file": "pr2/run-2.json",
+      "buildSeconds": 4.4277750000000005,
+      "stagesSeconds": {
+        "startupConfig": 0.270320583,
+        "clientGraph": 0.516809,
+        "clientRenderWrite": 0.8272580420000001,
+        "hostStartupImports": 0.08288641600000006,
+        "data": 0.259947709,
+        "markdownModuleLoad": 2.019358721000007,
+        "appCreateConfigure": 0.007660720000016681,
+        "vueSsr": 0.09537993299999971,
+        "htmlAssetsPayload": 0.1552785819999933,
+        "hostRenderOther": 0.05490037699998356,
+        "finalOutputs": 0.13795508299999984,
+        "tail": 1.9834000000628292e-05
+      },
+      "byKind": {
+        "index": {
+          "pages": 1,
+          "ssrMs": 1.9555829999999332,
+          "loadMs": 0.0006250000001273293,
+          "htmlBytes": 134413
+        },
+        "markdown": {
+          "pages": 1342,
+          "ssrMs": 93.42434999999978,
+          "loadMs": 2019.3580960000065,
+          "htmlBytes": 8959189
+        }
+      },
+      "bundle": {
+        "css": {
+          "files": 1,
+          "bytes": 465
+        },
+        "js": {
+          "files": 1,
+          "bytes": 1
+        },
+        "other": {
+          "files": 1,
+          "bytes": 173
+        }
+      },
+      "output": {
+        "htmlFiles": 1343,
+        "htmlBytes": 9093602
+      },
+      "mdcCalls": {},
+      "markdownTransforms": {}
+    },
+    "runs": [
+      {
+        "file": "pr2/run-1.json",
+        "buildSeconds": 4.079855,
+        "stagesSeconds": {
+          "startupConfig": 0.336626584,
+          "clientGraph": 0.650430791,
+          "clientRenderWrite": 0.247585375,
+          "hostStartupImports": 0.11665200000000005,
+          "data": 0.2412249589999999,
+          "markdownModuleLoad": 1.857537111000002,
+          "appCreateConfigure": 0.007050771999997324,
+          "vueSsr": 0.09122427300000299,
+          "htmlAssetsPayload": 0.1403139699999938,
+          "hostRenderOther": 0.04984649900000386,
+          "finalOutputs": 0.3413430830000002,
+          "tail": 1.9583000000238825e-05
+        },
+        "byKind": {
+          "index": {
+            "pages": 1,
+            "ssrMs": 1.902749999999969,
+            "loadMs": 0.0005830000000059954,
+            "htmlBytes": 134413
+          },
+          "markdown": {
+            "pages": 1342,
+            "ssrMs": 89.32152300000303,
+            "loadMs": 1857.5365280000021,
+            "htmlBytes": 8959189
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 465
+          },
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 173
+          }
+        },
+        "output": {
+          "htmlFiles": 1343,
+          "htmlBytes": 9093602
+        },
+        "mdcCalls": {},
+        "markdownTransforms": {}
+      },
+      {
+        "file": "pr2/run-2.json",
+        "buildSeconds": 4.4277750000000005,
+        "stagesSeconds": {
+          "startupConfig": 0.270320583,
+          "clientGraph": 0.516809,
+          "clientRenderWrite": 0.8272580420000001,
+          "hostStartupImports": 0.08288641600000006,
+          "data": 0.259947709,
+          "markdownModuleLoad": 2.019358721000007,
+          "appCreateConfigure": 0.007660720000016681,
+          "vueSsr": 0.09537993299999971,
+          "htmlAssetsPayload": 0.1552785819999933,
+          "hostRenderOther": 0.05490037699998356,
+          "finalOutputs": 0.13795508299999984,
+          "tail": 1.9834000000628292e-05
+        },
+        "byKind": {
+          "index": {
+            "pages": 1,
+            "ssrMs": 1.9555829999999332,
+            "loadMs": 0.0006250000001273293,
+            "htmlBytes": 134413
+          },
+          "markdown": {
+            "pages": 1342,
+            "ssrMs": 93.42434999999978,
+            "loadMs": 2019.3580960000065,
+            "htmlBytes": 8959189
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 465
+          },
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 173
+          }
+        },
+        "output": {
+          "htmlFiles": 1343,
+          "htmlBytes": 9093602
+        },
+        "mdcCalls": {},
+        "markdownTransforms": {}
+      },
+      {
+        "file": "pr2/run-3.json",
+        "buildSeconds": 4.464723875,
+        "stagesSeconds": {
+          "startupConfig": 0.309133917,
+          "clientGraph": 0.546893708,
+          "clientRenderWrite": 0.8062662079999999,
+          "hostStartupImports": 0.08488512500000002,
+          "data": 0.2643398340000001,
+          "markdownModuleLoad": 1.9427079139999976,
+          "appCreateConfigure": 0.007683658000008563,
+          "vueSsr": 0.09226330900000608,
+          "htmlAssetsPayload": 0.1561882609999891,
+          "hostRenderOther": 0.05474348299999838,
+          "finalOutputs": 0.19959195799999999,
+          "tail": 2.6499999999941792e-05
+        },
+        "byKind": {
+          "index": {
+            "pages": 1,
+            "ssrMs": 1.99737499999992,
+            "loadMs": 0.0006670000000212895,
+            "htmlBytes": 134413
+          },
+          "markdown": {
+            "pages": 1342,
+            "ssrMs": 90.26593400000615,
+            "loadMs": 1942.7072469999976,
+            "htmlBytes": 8959189
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 465
+          },
+          "js": {
+            "files": 1,
+            "bytes": 1
+          },
+          "other": {
+            "files": 1,
+            "bytes": 173
+          }
+        },
+        "output": {
+          "htmlFiles": 1343,
+          "htmlBytes": 9093602
+        },
+        "mdcCalls": {},
+        "markdownTransforms": {}
+      }
+    ]
+  },
+  "pr1-cpu": {
+    "medianBuildSeconds": 55.287736,
+    "representativeRun": {
+      "file": "pr1-cpu/run-1.json",
+      "buildSeconds": 55.287736,
+      "stagesSeconds": {
+        "startupConfig": 1.605084208,
+        "clientGraph": 10.949299292,
+        "clientRenderWrite": 8.8608835,
+        "hostStartupImports": 3.27405775,
+        "data": 5.854166207999999,
+        "markdownModuleLoad": 11.825145603999987,
+        "appCreateConfigure": 0.24794061199992576,
+        "vueSsr": 8.189600477999818,
+        "htmlAssetsPayload": 3.4288906130000325,
+        "hostRenderOther": 0.2214182770002444,
+        "finalOutputs": 0.8312214999999996,
+        "tail": 2.7957999998761806e-05
+      },
+      "byKind": {
+        "docs": {
+          "pages": 1365,
+          "ssrMs": 7254.078861999857,
+          "loadMs": 11038.922975999998,
+          "htmlBytes": 223703257
+        },
+        "blog": {
+          "pages": 106,
+          "ssrMs": 135.79737900001055,
+          "loadMs": 768.964169999992,
+          "htmlBytes": 9728335
+        },
+        "static": {
+          "pages": 287,
+          "ssrMs": 788.4786089999616,
+          "loadMs": 17.228538999981538,
+          "htmlBytes": 27257425
+        },
+        "languageEntry": {
+          "pages": 233,
+          "ssrMs": 11.245627999989665,
+          "loadMs": 0.029919000015070196,
+          "htmlBytes": 17150177
+        }
+      },
+      "bundle": {
+        "css": {
+          "files": 1,
+          "bytes": 184423
+        },
+        "js": {
+          "files": 1252,
+          "bytes": 25833876
+        },
+        "other": {
+          "files": 2,
+          "bytes": 1031466
+        }
+      },
+      "output": {
+        "htmlFiles": 1991,
+        "htmlBytes": 277839194
+      },
+      "mdcCalls": {
+        "mdc.parse.client": 4585,
+        "mdc.parse.host-data": 5170,
+        "mdc.parse.host-render": 4585
+      },
+      "markdownTransforms": {
+        "hook.ox-native-mdc-output.transform.client.md": 1247,
+        "hook.ox-native-mdc-output.transform.ssr.md": 1247
+      }
+    },
+    "runs": [
+      {
+        "file": "pr1-cpu/run-1.json",
+        "buildSeconds": 55.287736,
+        "stagesSeconds": {
+          "startupConfig": 1.605084208,
+          "clientGraph": 10.949299292,
+          "clientRenderWrite": 8.8608835,
+          "hostStartupImports": 3.27405775,
+          "data": 5.854166207999999,
+          "markdownModuleLoad": 11.825145603999987,
+          "appCreateConfigure": 0.24794061199992576,
+          "vueSsr": 8.189600477999818,
+          "htmlAssetsPayload": 3.4288906130000325,
+          "hostRenderOther": 0.2214182770002444,
+          "finalOutputs": 0.8312214999999996,
+          "tail": 2.7957999998761806e-05
+        },
+        "byKind": {
+          "docs": {
+            "pages": 1365,
+            "ssrMs": 7254.078861999857,
+            "loadMs": 11038.922975999998,
+            "htmlBytes": 223703257
+          },
+          "blog": {
+            "pages": 106,
+            "ssrMs": 135.79737900001055,
+            "loadMs": 768.964169999992,
+            "htmlBytes": 9728335
+          },
+          "static": {
+            "pages": 287,
+            "ssrMs": 788.4786089999616,
+            "loadMs": 17.228538999981538,
+            "htmlBytes": 27257425
+          },
+          "languageEntry": {
+            "pages": 233,
+            "ssrMs": 11.245627999989665,
+            "loadMs": 0.029919000015070196,
+            "htmlBytes": 17150177
+          }
+        },
+        "bundle": {
+          "css": {
+            "files": 1,
+            "bytes": 184423
+          },
+          "js": {
+            "files": 1252,
+            "bytes": 25833876
+          },
+          "other": {
+            "files": 2,
+            "bytes": 1031466
+          }
+        },
+        "output": {
+          "htmlFiles": 1991,
+          "htmlBytes": 277839194
+        },
+        "mdcCalls": {
+          "mdc.parse.client": 4585,
+          "mdc.parse.host-data": 5170,
+          "mdc.parse.host-render": 4585
+        },
+        "markdownTransforms": {
+          "hook.ox-native-mdc-output.transform.client.md": 1247,
+          "hook.ox-native-mdc-output.transform.ssr.md": 1247
+        }
+      }
+    ]
+  },
+  "routeSetCheck": {
+    "equalMarkdownPaths": true,
+    "paths": 1342,
+    "pr2ExtraIndex": "/",
+    "ablationPathsEqual": true
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "path": "/ja/docs/for-users/features/note/",
+    "htmlBytes": 148387,
+    "payloadBytes": 70495,
+    "payloadFieldBytes": {
+      "path": 35,
+      "kind": 6,
+      "source": 40,
+      "pageFile": 26,
+      "locale": 4,
+      "title": 2,
+      "fullSite": 4,
+      "document": 1535,
+      "styles": 2,
+      "messages": 36920,
+      "navigation": 28877,
+      "surround": 1880,
+      "related": 2,
+      "inlineMarkdown": 2,
+      "locales": 990
+    }
+  },
+  {
+    "path": "/ja/docs/for-developers/api/",
+    "htmlBytes": 134866,
+    "payloadBytes": 68843,
+    "payloadFieldBytes": {
+      "path": 30,
+      "kind": 6,
+      "source": 41,
+      "pageFile": 26,
+      "locale": 4,
+      "title": 2,
+      "fullSite": 4,
+      "document": 775,
+      "styles": 2,
+      "messages": 36920,
+      "navigation": 28877,
+      "surround": 992,
+      "related": 2,
+      "inlineMarkdown": 2,
+      "locales": 990
+    }
+  },
+  {
+    "path": "/en/docs/for-users/features/note/",
+    "htmlBytes": 132368,
+    "payloadBytes": 56298,
+    "payloadFieldBytes": {
+      "path": 35,
+      "kind": 6,
+      "source": 40,
+      "pageFile": 26,
+      "locale": 4,
+      "title": 2,
+      "fullSite": 4,
+      "document": 1313,
+      "styles": 2,
+      "messages": 28942,
+      "navigation": 23324,
+      "surround": 1436,
+      "related": 2,
+      "inlineMarkdown": 2,
+      "locales": 990
+    }
+  }
+]

@@ -1,0 +1,8 @@
+<script setup lang="ts">
+import {computed,inject} from 'vue';
+import {contextKey} from './runtime-bridge.mjs';
+const props=defineProps<{value?:any}>();const context=inject<any>(contextKey)!;
+const html=computed(()=>props.value?.rawHtml??props.value?.body?.rawHtml??(props.value===undefined?context.staticMarkdownHtml:undefined));
+if(typeof html.value!=='string')throw Error('Missing raw HTML for ContentRenderer');
+</script>
+<template><div v-html="html"/></template>

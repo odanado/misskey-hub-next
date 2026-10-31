@@ -1,0 +1,13 @@
+import '../nuxt-compat/styles';
+import 'scroll-hint/css/scroll-hint.css';
+import 'virtual:diagnostic-site-styles';
+import {watch,nextTick} from 'vue';
+import {createPageApp} from './pages-app';
+async function start(){
+const element=document.querySelector('#vue-page-data');
+if(element){const payload=JSON.parse(element.textContent!);const{app,context}=await createPageApp(payload);
+ watch(()=>context.route.meta.title,()=>{document.title=context.route.meta.title?context.route.meta.title+' | Misskey':payload.messages._seo.siteNameLong;},{immediate:true});
+ app.mount('#vue-page-root');document.documentElement.dataset.vuePagesMounted='true';
+ await nextTick();const update=()=>{context.state.miHub_global_scrollPos.value=document.body.getBoundingClientRect().y;};window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update,{passive:true});update();}
+}
+void start();

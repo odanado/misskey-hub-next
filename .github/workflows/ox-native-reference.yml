@@ -1,0 +1,52 @@
+name: Ox native compatibility pilot
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'experiments/ssg/ox-native/**'
+      - 'experiments/ssg/shared/**'
+      - 'experiments/ssg/nuxt-compat/**'
+      - 'experiments/ssg/results/public-url-count.json'
+      - 'tests/vrt/**'
+      - 'playwright.config.ts'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/ox-native-reference.yml'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native-ssg:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      TZ: Asia/Tokyo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm pilot:ox-native:check
+      - run: pnpm exec playwright install --with-deps chromium
+      # Compare native against original Nuxt on this OS. No full-site VRT.
+      - run: pnpm pilot:30:baseline
+      - run: pnpm pilot:ox-native:30:verify
+      # Only build the full scope if all 30-page VRT tests passed.
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:build
+      - run: HUB_PILOT_PAGES=all pnpm pilot:ox-native:verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ox-native-compatibility
+          include-hidden-files: true
+          retention-days: 3
+          path: |
+            .pilot/30/ox-native/build.log
+            .pilot/30/ox-native/vrt/
+            experiments/ssg/results/ox-native/
+            tests/vrt/snapshots/30/

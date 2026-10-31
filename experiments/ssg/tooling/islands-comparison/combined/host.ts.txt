@@ -1,0 +1,50 @@
+// Diagnostic template installed as ox-native-islands/host.ts in an isolated copy.
+// Ox renders every Markdown source directly. No Vue, MDC, Shiki or HAST bridge.
+import { readFile, readdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { parseFrontmatter } from '@ox-content/napi';
+import yaml from 'js-yaml';
+import { loadPages, root } from './routes.ts';
+import { now, add, mark, state } from '../tooling/islands-comparison/probe.mjs';
+const escape = (value: unknown) => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+export default {
+    async routes(host: any) {
+        mark('hostRoutesStart'); const dataStart = now();
+        const pages = await loadPages();
+        const documents = new Map<string, { title?: string; html: string }>();
+        let markdown = 0, yamlSources = 0;
+        for (const source of (await readdir(resolve(root, 'content'), { recursive: true })).filter((file) => /\.(md|ya?ml)$/.test(file) && !file.split('/').some((part) => part.startsWith('.')))) {
+            const raw = await readFile(resolve(root, 'content', source), 'utf8');
+            if (source.endsWith('.md')) {
+                const parsed = parseFrontmatter(raw), start = now();
+                const result = await host.markdown.render({ source: parsed.content, documentPath: resolve(root, 'content', source), convertMdLinks: false });
+                add('parser.rawOxMarkdown', start);
+                documents.set(source, { title: parsed.frontmatter?.title, html: result.html });
+                markdown++;
+            } else {
+                const fields = yaml.load(raw) as any;
+                // YAML/stepped-guide UI is off. Keep original YAML as visible text.
+                documents.set(source, { title: fields?.title, html: `<pre data-diagnostic-yaml>${escape(raw)}</pre>` });
+                yamlSources++;
+            }
+        }
+        state.diagnostic = { markdownSources: markdown, yamlSources, publicUrls: pages.length,
+            disabled: ['client JS/CSS and Vue compiler', 'Vue SSR and UI frames/fixed page bodies', 'MDC and Shiki', 'HAST/compatibility tree/TOC', 'navigation/translations/interactive payload/SEO frame'],
+            retained: ['all 1991 public URLs', 'all 1434 Markdown and 156 YAML sources', 'Ox public Markdown API and Custom Host SSG', 'all public assets copied by Vite'],
+        };
+        if (markdown !== 1434 || yamlSources !== 156 || pages.length !== 1991) throw new Error('Inventory changed');
+        add('host.prepareData', dataStart); mark('hostDataEnd'); mark('hostRoutesEnd');
+        return pages.map((page: any) => ({
+            path: page.path, ...(page.source ? { inputPath: resolve(root, 'content', page.source) } : {}),
+            async render() {
+                const start = now(), document = page.source ? documents.get(page.source) : undefined;
+                if (page.source && !document) throw new Error('Missing source: ' + page.source);
+                const title = document?.title ?? page.path;
+                const body = document?.html ?? `<p data-diagnostic-ui-omitted>${escape(page.kind)} UI omitted for this diagnostic.</p>`;
+                const html = `<!DOCTYPE html><html lang="${escape(page.locale)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(title)}</title></head><body><main data-diagnostic-combined><h1>${escape(title)}</h1>${body}</main></body></html>`;
+                state.pages.push({ path: page.path, kind: page.kind, totalMs: now() - start }); mark('lastPageEnd');
+                return { title, html };
+            }
+        }));
+    }
+};

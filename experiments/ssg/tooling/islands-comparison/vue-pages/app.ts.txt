@@ -1,0 +1,17 @@
+import {h,Suspense} from 'vue';
+import {createContext,islandApp} from './context';
+import {components,layouts,resolvePage} from './pages-registry';
+export async function createPageApp(payload:any){
+ const context=createContext(payload);context.isHydrating=true;context.head={htmlAttrs:{},meta:[]};
+ context.route.meta={...context.route.meta,...payload.pageMeta};context.staticMarkdownHtml=payload.document?.rawHtml??'';
+ if(payload.pageMeta?.colorMode){context.colorMode.preference=payload.pageMeta.colorMode;context.colorMode.value=payload.pageMeta.colorMode;context.colorMode.forced=true;if(typeof document!=='undefined'){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(payload.pageMeta.colorMode);document.documentElement.dataset.bsTheme=payload.pageMeta.colorMode;}}
+ if(typeof window!=='undefined'){
+  const url=new URL(window.location.href);context.route.fullPath=url.pathname+url.search+url.hash;context.route.query=Object.fromEntries([...new Set(url.searchParams.keys())].map(key=>[key,url.searchParams.getAll(key).length>1?url.searchParams.getAll(key):url.searchParams.get(key)]));
+ }
+ const Page=await resolvePage(payload.pageFile),Layout=layouts[payload.pageMeta?.layout as keyof typeof layouts];if(!Layout)throw Error('Unmapped layout: '+payload.pageMeta?.layout);
+ const Root={setup:()=>()=>h(Suspense,{onResolve:()=>{if(typeof document!=='undefined'){context.isHydrating=false;document.documentElement.dataset.vuePagesReady='true';}}},{default:()=>h(Layout,null,{default:()=>h(Page)})})};
+ const app=islandApp(Root,{},context,components);app.config.globalProperties.$route=context.route;
+ const errors:unknown[]=[];if(typeof window!=='undefined')(window as any).__vuePageErrors=errors;app.config.errorHandler=error=>{errors.push(error);if(typeof window!=='undefined')console.error(error);};
+ app.config.warnHandler=(message)=>{if(/Failed to resolve component/.test(message))throw Error(message);};
+ return{app,context,errors};
+}

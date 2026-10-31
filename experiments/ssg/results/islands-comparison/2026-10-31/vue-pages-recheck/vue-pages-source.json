@@ -1,0 +1,17 @@
+{
+  "ref": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "name": "vue-pages",
+  "patches": [
+    "experiments/ssg/nuxt-compat/runtime.ts",
+    "experiments/ssg/ox-native-islands/RawContent.vue",
+    "experiments/ssg/ox-native-islands/host.ts",
+    "experiments/ssg/ox-native-islands/pages-app.ts",
+    "experiments/ssg/ox-native-islands/pages-client.ts",
+    "experiments/ssg/ox-native-islands/pages-data.mjs",
+    "experiments/ssg/ox-native-islands/pages-registry.ts",
+    "experiments/ssg/ox-native-islands/raw-navigation.mjs",
+    "experiments/ssg/ox-native-islands/vite.config.ts",
+    "assets/js/mi/io-emojis.ts",
+    "components/index/mobile.vue"
+  ]
+}

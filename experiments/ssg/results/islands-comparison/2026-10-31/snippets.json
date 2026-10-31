@@ -1,0 +1,14 @@
+{
+  "sources": 1434,
+  "counts": {
+    "all": 4970,
+    "code": 2274,
+    "component": 2696
+  },
+  "unique": {
+    "all": 1541,
+    "code": 442,
+    "component": 1099
+  },
+  "policy": "Exact byte-identical source snippets only. Potential cache reuse count, not measured speedup. Cached ASTs would need immutable handling and parser/highlighter configuration in the key."
+}

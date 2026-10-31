@@ -1,0 +1,311 @@
+{
+  "mode": "standalone",
+  "passed": 0,
+  "failed": 16,
+  "tests": [
+    {
+      "title": "1: /ja/docs/for-users/features/note/",
+      "project": "desktop-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-1-actual.png",
+          "actual": [
+            1440,
+            3269
+          ],
+          "expected": [
+            1440,
+            3221
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "2: /ja/docs/for-users/features/hashtag/",
+      "project": "desktop-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-2-actual.png",
+          "actual": [
+            1440,
+            998
+          ],
+          "expected": [
+            1440,
+            1330
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+      "project": "desktop-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-3-actual.png",
+          "actual": [
+            1440,
+            2935
+          ],
+          "expected": [
+            1440,
+            3076
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "4: /en/docs/for-users/features/note/",
+      "project": "desktop-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-4-actual.png",
+          "actual": [
+            1440,
+            3215
+          ],
+          "expected": [
+            1440,
+            3345
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "1: /ja/docs/for-users/features/note/",
+      "project": "mobile-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-1-actual.png",
+          "actual": [
+            390,
+            4240
+          ],
+          "expected": [
+            390,
+            4681
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "2: /ja/docs/for-users/features/hashtag/",
+      "project": "mobile-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-2-actual.png",
+          "actual": [
+            390,
+            1287
+          ],
+          "expected": [
+            390,
+            1668
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+      "project": "mobile-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-3-actual.png",
+          "actual": [
+            390,
+            3215
+          ],
+          "expected": [
+            390,
+            3864
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "4: /en/docs/for-users/features/note/",
+      "project": "mobile-light",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-4-actual.png",
+          "actual": [
+            390,
+            4158
+          ],
+          "expected": [
+            390,
+            4797
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "1: /ja/docs/for-users/features/note/",
+      "project": "desktop-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-1-actual.png",
+          "actual": [
+            1440,
+            3269
+          ],
+          "expected": [
+            1440,
+            3221
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "2: /ja/docs/for-users/features/hashtag/",
+      "project": "desktop-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-2-actual.png",
+          "actual": [
+            1440,
+            998
+          ],
+          "expected": [
+            1440,
+            1330
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+      "project": "desktop-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-3-actual.png",
+          "actual": [
+            1440,
+            2935
+          ],
+          "expected": [
+            1440,
+            3076
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "4: /en/docs/for-users/features/note/",
+      "project": "desktop-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-4-actual.png",
+          "actual": [
+            1440,
+            3215
+          ],
+          "expected": [
+            1440,
+            3345
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "1: /ja/docs/for-users/features/note/",
+      "project": "mobile-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-1-actual.png",
+          "actual": [
+            390,
+            4240
+          ],
+          "expected": [
+            390,
+            4681
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "2: /ja/docs/for-users/features/hashtag/",
+      "project": "mobile-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-2-actual.png",
+          "actual": [
+            390,
+            1287
+          ],
+          "expected": [
+            390,
+            1668
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "3: /ja/docs/for-developers/plugin/create-plugin/",
+      "project": "mobile-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-3-actual.png",
+          "actual": [
+            390,
+            3215
+          ],
+          "expected": [
+            390,
+            3864
+          ],
+          "differentPixels": null
+        }
+      ]
+    },
+    {
+      "title": "4: /en/docs/for-users/features/note/",
+      "project": "mobile-dark",
+      "status": "failed",
+      "screenshots": [
+        {
+          "name": "page-4-actual.png",
+          "actual": [
+            390,
+            4158
+          ],
+          "expected": [
+            390,
+            4797
+          ],
+          "differentPixels": null
+        }
+      ]
+    }
+  ]
+}

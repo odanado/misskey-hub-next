@@ -1,0 +1,162 @@
+{
+  "startedAt": "2026-10-30T09:41:17.286Z",
+  "sample": "all",
+  "pages": 1991,
+  "modes": [
+    "baseline",
+    "baseline-vize",
+    "ox-ported",
+    "ox-ported-vize",
+    "astro",
+    "astro-vize",
+    "astro-ox",
+    "astro-ox-vize"
+  ],
+  "workers": 6,
+  "scriptHash": "9f0f02a066e087d2cbdd0e5a809621588c8fea4654813ae6eab3f5ca92be0b22",
+  "buildFingerprint": "f48e89e6e33633da6b0796fda6934550525ee3a96df71cf98fb86f1d6254f6c6",
+  "clockTime": "2026-10-30T09:00:49.425Z",
+  "benchmarkFile": "/Users/odan/source/github.com/odanado/misskey-hub-next/experiments/ssg/results/full/2026-10-30/compiler-timings.json",
+  "benchmarkSha256": "56a327d2894c31a12790b3fea336a170c230f6e234eca09c7bf969a1f4ee597c",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "colorScheme": "light",
+  "renderer": "Chromium with SwiftShader WebGL fallback",
+  "isolation": "Fresh browser context per URL and compiler variant; no cookies, clock or storage carry over",
+  "locale": "ja-JP",
+  "timezone": "Asia/Tokyo",
+  "policy": "Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks; motion disabled after layout settles.",
+  "browserVersion": "145.0.7632.6",
+  "updatedAt": "2026-10-30T10:54:55.361Z",
+  "finished": true,
+  "processed": 1991,
+  "referenceUnavailable": 43,
+  "summary": [
+    {
+      "mode": "baseline",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1948,
+      "passRatePercent": 97.84028126569562,
+      "comparable": 1948,
+      "comparablePassRatePercent": 100,
+      "counts": {
+        "reference-unavailable": 43,
+        "passed": 1948
+      }
+    },
+    {
+      "mode": "baseline-vize",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1903,
+      "passRatePercent": 95.58011049723757,
+      "comparable": 1948,
+      "comparablePassRatePercent": 97.68993839835728,
+      "counts": {
+        "reference-unavailable": 43,
+        "passed": 1903,
+        "runtime-error": 14,
+        "different": 30,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "ox-ported",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1202,
+      "passRatePercent": 60.371672526368656,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.70431211498973,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1202,
+        "different": 667,
+        "unstable": 1
+      }
+    },
+    {
+      "mode": "ox-ported-vize",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1207,
+      "passRatePercent": 60.62280261175289,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.960985626283374,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1207,
+        "different": 663
+      }
+    },
+    {
+      "mode": "astro",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1348,
+      "passRatePercent": 67.70467101958815,
+      "comparable": 1948,
+      "comparablePassRatePercent": 69.19917864476386,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1348,
+        "different": 521,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-vize",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1345,
+      "passRatePercent": 67.55399296835762,
+      "comparable": 1948,
+      "comparablePassRatePercent": 69.04517453798768,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1345,
+        "different": 524,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-ox",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1203,
+      "passRatePercent": 60.42189854344551,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.755646817248454,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1203,
+        "different": 666,
+        "capture-error": 1
+      }
+    },
+    {
+      "mode": "astro-ox-vize",
+      "total": 1991,
+      "processed": 1991,
+      "passed": 1203,
+      "passRatePercent": 60.42189854344551,
+      "comparable": 1948,
+      "comparablePassRatePercent": 61.755646817248454,
+      "counts": {
+        "reference-unavailable": 43,
+        "runtime-error": 78,
+        "passed": 1203,
+        "different": 665,
+        "capture-error": 2
+      }
+    }
+  ]
+}

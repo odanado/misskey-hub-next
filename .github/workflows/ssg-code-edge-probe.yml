@@ -1,0 +1,47 @@
+name: SSG code edge probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tests/vrt/docs.spec.ts'
+      - 'playwright.config.ts'
+      - '.github/workflows/ssg-code-edge-probe.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      TZ: Asia/Tokyo
+      HUB_PILOT_PAGES: '30'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm pilot:build baseline
+      - run: HUB_CONTENT_PILOT=baseline pnpm pilot:vrt --project=desktop-light --project=desktop-dark --grep '(10|18):' --update-snapshots
+      - run: pnpm pilot:ox:build
+      - run: HUB_CONTENT_PILOT=ox-ported pnpm pilot:vrt --project=desktop-light --project=desktop-dark --grep '(10|18):'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ssg-code-edge-probe
+          include-hidden-files: true
+          retention-days: 3
+          path: |
+            .pilot/30/*/vrt/
+            .pilot/30/*/public/**/*.css
+            tests/vrt/snapshots/30/

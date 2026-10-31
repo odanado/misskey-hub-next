@@ -1,0 +1,177 @@
+[
+  {
+    "path": "/ja/docs/for-users/features/note/",
+    "htmlBytes": 170477,
+    "payloadBytes": 92586,
+    "fields": [
+      {
+        "field": "messages",
+        "bytes": 36920
+      },
+      {
+        "field": "navigation",
+        "bytes": 28877
+      },
+      {
+        "field": "document",
+        "bytes": 12912
+      },
+      {
+        "field": "surround",
+        "bytes": 12594
+      },
+      {
+        "field": "locales",
+        "bytes": 990
+      },
+      {
+        "field": "source",
+        "bytes": 40
+      },
+      {
+        "field": "path",
+        "bytes": 35
+      }
+    ]
+  },
+  {
+    "path": "/ja/docs/releases/",
+    "htmlBytes": 1284574,
+    "payloadBytes": 747887,
+    "fields": [
+      {
+        "field": "document",
+        "bytes": 631238
+      },
+      {
+        "field": "surround",
+        "bytes": 49041
+      },
+      {
+        "field": "messages",
+        "bytes": 36920
+      },
+      {
+        "field": "navigation",
+        "bytes": 28877
+      },
+      {
+        "field": "locales",
+        "bytes": 990
+      },
+      {
+        "field": "pageFile",
+        "bytes": 26
+      },
+      {
+        "field": "source",
+        "bytes": 23
+      }
+    ]
+  },
+  {
+    "path": "/ja/docs/for-admin/install/guides/manual/",
+    "htmlBytes": 350136,
+    "payloadBytes": 260566,
+    "fields": [
+      {
+        "field": "surround",
+        "bytes": 156570
+      },
+      {
+        "field": "messages",
+        "bytes": 36920
+      },
+      {
+        "field": "document",
+        "bytes": 36004
+      },
+      {
+        "field": "navigation",
+        "bytes": 28877
+      },
+      {
+        "field": "locales",
+        "bytes": 990
+      },
+      {
+        "field": "styles",
+        "bytes": 900
+      },
+      {
+        "field": "source",
+        "bytes": 46
+      }
+    ]
+  },
+  {
+    "path": "/ja/contact/",
+    "htmlBytes": 119530,
+    "payloadBytes": 88537,
+    "fields": [
+      {
+        "field": "messages",
+        "bytes": 36920
+      },
+      {
+        "field": "navigation",
+        "bytes": 28877
+      },
+      {
+        "field": "related",
+        "bytes": 20275
+      },
+      {
+        "field": "surround",
+        "bytes": 1197
+      },
+      {
+        "field": "locales",
+        "bytes": 990
+      },
+      {
+        "field": "document",
+        "bytes": 63
+      },
+      {
+        "field": "pageFile",
+        "bytes": 19
+      }
+    ]
+  },
+  {
+    "path": "/ja/docs/for-users/stepped-guides/how-to-use-pwa/",
+    "htmlBytes": 348734,
+    "payloadBytes": 288830,
+    "fields": [
+      {
+        "field": "inlineMarkdown",
+        "bytes": 207926
+      },
+      {
+        "field": "messages",
+        "bytes": 36920
+      },
+      {
+        "field": "navigation",
+        "bytes": 28877
+      },
+      {
+        "field": "surround",
+        "bytes": 9213
+      },
+      {
+        "field": "document",
+        "bytes": 4580
+      },
+      {
+        "field": "locales",
+        "bytes": 990
+      },
+      {
+        "field": "source",
+        "bytes": 57
+      }
+    ]
+  }
+]

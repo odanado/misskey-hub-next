@@ -1,0 +1,38 @@
+// Raw Ox content plus metadata needed by the original Vue pages. No MDC/Shiki parse.
+import {readFile,readdir} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import yaml from 'js-yaml';
+import {parseFrontmatter} from '@ox-content/napi';
+import {localesConst} from '../../../assets/data/locales.ts';
+import {metadata,createNavigation,sourceOrder} from './raw-navigation.mjs';
+import {loadPages,root} from './routes.ts';
+const escape=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const tocLinks=items=>(items??[]).flatMap(item=>item.depth===1?tocLinks(item.children):[{id:item.slug,text:item.text,depth:item.depth,...(item.children?.length?{children:tocLinks(item.children)}:{})}]);
+export async function preparePages(host){
+ const pages=await loadPages(),contents=[],configs={};let markdownSources=0,yamlSources=0;
+ for(const source of(await readdir(resolve(root,'content'),{recursive:true})).filter(p=>/\.(md|ya?ml)$/.test(p)&&!p.split('/').some(x=>x.startsWith('.')))){
+  const raw=await readFile(resolve(root,'content',source),'utf8');let item;
+  if(source.endsWith('.md')){
+   const parsed=parseFrontmatter(raw),result=await host.markdown.render({source:parsed.content,documentPath:resolve(root,'content',source),convertMdLinks:false});
+   const heading=result.toc?.find(h=>h.depth===1)?.text;
+   item=metadata(source,{...parsed.frontmatter,title:parsed.frontmatter?.title??heading,_type:'markdown',rawHtml:result.html,body:{children:[{type:'static-html'}],toc:{links:tocLinks(result.toc)}}});markdownSources++;
+  }else{
+   const fields=yaml.load(raw)??{};item=metadata(source,fields);if(fields._TYPE_)Object.assign(item,fields);
+   item.rawHtml=`<pre data-diagnostic-yaml>${escape(raw)}</pre>`;yamlSources++;
+  }
+  contents.push(item);if(item._partial&&item._path.endsWith('/_dir'))configs[item._path.slice(0,-5)]={...item,...item.body};
+ }
+ if(markdownSources!==1434||yamlSources!==156||pages.length!==1991)throw Error('Unexpected inventory');
+ const sorted=[...contents].sort(sourceOrder),bySource=new Map(contents.map(item=>[item._file,item]));
+ const blog=contents.filter(item=>item._path.startsWith('/blog/')&&!item._partial).map(({body,rawHtml,...item})=>item).sort((a,b)=>String(b.date??'').localeCompare(String(a.date??'')));
+ const messages=new Map(),navigation=new Map();
+ for(const locale of localesConst){const code=locale.code==='ja-ks'?'ja':locale.code;messages.set(locale.code,yaml.load(await readFile(resolve(root,'locales',locale.files[0].replace('.json','.yml')),'utf8')));navigation.set(locale.code,createNavigation(sorted.filter(item=>item._path.startsWith('/'+code+'/docs/')&&!item._partial&&item.navigation!==false),configs));}
+ const metas=new Map();for(const file of new Set(pages.filter(p=>p.kind==='static').map(p=>p.pageFile))){const source=await readFile(resolve(root,file),'utf8');const match=/definePageMeta\(\{([\s\S]*?)\}\)/.exec(source)?.[1]??'';metas.set(file,{layout:/layout:\s*['"]([^'"]+)/.exec(match)?.[1]??'default',colorMode:/colorMode:\s*['"]([^'"]+)/.exec(match)?.[1]});}
+ const output=pages.map(page=>{
+  const document=page.source?bySource.get(page.source):{title:page.path,description:''};if(!document)throw Error('Missing source: '+page.source);
+  const code=page.locale==='ja-ks'?'ja':page.locale;
+  const related=page.pageFile==='pages/contact.vue'?contents.filter(item=>item._path.startsWith('/'+code+'/contact-faq/')):page.pageFile==='pages/blog/index.vue'?blog:[];
+  return{...page,fullSite:true,document,related,navigation:navigation.get(page.locale),messages:messages.get(page.locale),locales:localesConst,surround:[],pageMeta:metas.get(page.pageFile),asyncData:{},fetchCache:{}};
+ });
+ console.log('[vue-pages-data] '+JSON.stringify({markdownSources,yamlSources,urls:output.length,staticUrls:output.filter(p=>p.kind==='static').length,clientOnlyUrls:output.filter(p=>p.kind==='static'&&p.pageFile.endsWith('.client.vue')).length}));return output;
+}

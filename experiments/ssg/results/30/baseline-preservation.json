@@ -1,0 +1,7 @@
+{
+  "referenceCommit": "e454e79d42c4ce78f6dec5de81f218bb6bbad48d",
+  "scope": "Original paused 30-page baseline vs freshly generated original Nuxt baseline",
+  "images": 144,
+  "semanticSnapshots": 120,
+  "changed": []
+}

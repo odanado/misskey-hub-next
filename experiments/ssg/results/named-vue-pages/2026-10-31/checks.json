@@ -1,0 +1,62 @@
+{
+  "verifiedAt": "2026-10-31T10:06:41.415Z",
+  "sourceRef": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "node": "v22.22.2",
+  "variants": [
+    {
+      "name": "ox-native-vue-pages",
+      "compiler": "vue",
+      "publicUrls": 1991,
+      "originalVueFiles": 23,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "jsFiles": 29,
+      "cssFiles": 9,
+      "output": ".pilot/full/ox-native-vue-pages/public",
+      "policy": "Static output checks only; browser/VRT compatibility is reported separately.",
+      "buildCommand": "pnpm pilot:ox-native-vue-pages:build",
+      "verifyCommand": "pnpm pilot:ox-native-vue-pages:verify"
+    },
+    {
+      "name": "ox-native-vue-pages-vize",
+      "compiler": "vize",
+      "publicUrls": 1991,
+      "originalVueFiles": 23,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "jsFiles": 29,
+      "cssFiles": 10,
+      "output": ".pilot/full/ox-native-vue-pages-vize/public",
+      "policy": "Static output checks only; browser/VRT compatibility is reported separately.",
+      "buildCommand": "pnpm pilot:ox-native-vue-pages-vize:build",
+      "verifyCommand": "pnpm pilot:ox-native-vue-pages-vize:verify"
+    }
+  ],
+  "normalBrowser": {
+    "passed": 13,
+    "total": 13,
+    "policy": "Same representative functional checks as the recorded Vue-pages experiment; not VRT. External API CORS warnings retained."
+  },
+  "vize": {
+    "nativeClientCalls": 99,
+    "nativeSsrCalls": 92,
+    "compilerPinnedDespiteInheritedVueEnvironment": true,
+    "jsCssFilesByteIdenticalToMeasuredVariant": 40,
+    "knownBrowserCompatibility": "11/13 in previous measurement; Japanese/English share-link-generator hydration mismatches remain."
+  },
+  "normalOutputUnchangedAfterVizeBuild": {
+    "manifestSha256": "6a33941cd9db21bbf3bbe275072c3434a3c2a85c0848e62a4735db4bceabd820"
+  },
+  "normalAssetDifference": "New physical workspace changes scoped IDs and minified identifiers/chunk hashes. Full output validation and all 13 representative browser checks pass.",
+  "timing": "This refactor verifies output only; previous three-run benchmark values are preserved. New commands include initial preparation and final output verification."
+}

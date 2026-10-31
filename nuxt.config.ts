@@ -10,6 +10,8 @@ import type { NuxtConfig } from 'nuxt/schema';
 import { fetchCrowdinMembers } from './scripts/fetch-crowdin';
 import { genSpaLoadingTemplate } from './scripts/gen-spa-loading-template';
 
+const pilotVize = Boolean(process.env.HUB_CONTENT_PILOT) && process.env.HUB_VUE_COMPILER === 'vize';
+
 // 公開時のドメイン（末尾スラッシュなし）
 const baseUrl =
 	process.env.NODE_ENV == 'development'
@@ -89,6 +91,15 @@ export default defineNuxtConfig({
 		"@/assets/css/bootstrap-forms.scss",
 	],
 	modules: [
+		...(process.env.HUB_CONTENT_PILOT ? ['./experiments/ssg/nuxt-pilot/module.ts'] : []),
+		...(pilotVize ? [[
+			'@vizejs/nuxt',
+			{
+				lint: false,
+				bridge: { i18n: false },
+				compiler: { configMode: false, scanPatterns: [], customElements: ['model-viewer*'] },
+			},
+		]] : []),
 		'@nuxt/content',
 		'@nuxtjs/i18n',
 		'@nuxtjs/color-mode',
@@ -174,7 +185,7 @@ export default defineNuxtConfig({
 	},
 	vue: {
 		compilerOptions: {
-			isCustomElement: (tag) => tag.startsWith('model-viewer'),
+			...(pilotVize ? {} : { isCustomElement: (tag: string) => tag.startsWith('model-viewer') }),
 		},
 	},
 	nitro: {

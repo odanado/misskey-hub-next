@@ -1,0 +1,508 @@
+{
+  "createdAt": "2026-10-31T00:24:09.476Z",
+  "total": 1991,
+  "mode": "ox-native-islands",
+  "summary": {
+    "mode": "ox-native-islands",
+    "total": 1991,
+    "processed": 1991,
+    "passed": 972,
+    "passRatePercent": 48.81968859869412,
+    "comparable": 1947,
+    "comparablePassRatePercent": 49.922958397534664,
+    "counts": {
+      "different": 840,
+      "runtime-error": 130,
+      "passed": 972,
+      "reference-unavailable": 44,
+      "capture-error": 5
+    }
+  },
+  "reference": {
+    "mode": "baseline",
+    "total": 1991,
+    "processed": 1991,
+    "passed": 1947,
+    "passRatePercent": 97.79005524861878,
+    "comparable": 1947,
+    "comparablePassRatePercent": 100,
+    "counts": {
+      "passed": 1947,
+      "reference-unavailable": 44
+    }
+  },
+  "referenceFailureCounts": {
+    "capture-error": 2,
+    "runtime-error": 5,
+    "unstable": 37
+  },
+  "historicalReferenceUnavailable": 43,
+  "historicalReferenceNowAvailable": [
+    "/it/docs/about-misskey/"
+  ],
+  "historicalReferenceNowUnavailable": [
+    "/de/docs/for-admin/features/ftt/",
+    "/ja/blog/2023-03-22-gihyo/"
+  ],
+  "commonComparable": 1946,
+  "commonComparableRates": [
+    {
+      "mode": "baseline",
+      "total": 1946,
+      "passed": 1946,
+      "passRatePercent": 100
+    },
+    {
+      "mode": "baseline-vize",
+      "total": 1946,
+      "passed": 1901,
+      "passRatePercent": 97.68756423432683
+    },
+    {
+      "mode": "ox-ported",
+      "total": 1946,
+      "passed": 1200,
+      "passRatePercent": 61.66495375128469
+    },
+    {
+      "mode": "ox-ported-vize",
+      "total": 1946,
+      "passed": 1205,
+      "passRatePercent": 61.9218910585817
+    },
+    {
+      "mode": "astro",
+      "total": 1946,
+      "passed": 1346,
+      "passRatePercent": 69.16752312435766
+    },
+    {
+      "mode": "astro-vize",
+      "total": 1946,
+      "passed": 1343,
+      "passRatePercent": 69.01336073997945
+    },
+    {
+      "mode": "astro-ox",
+      "total": 1946,
+      "passed": 1201,
+      "passRatePercent": 61.716341212744084
+    },
+    {
+      "mode": "astro-ox-vize",
+      "total": 1946,
+      "passed": 1201,
+      "passRatePercent": 61.716341212744084
+    },
+    {
+      "mode": "ox-native-islands",
+      "total": 1946,
+      "passed": 972,
+      "passRatePercent": 49.9486125385406
+    }
+  ],
+  "kinds": {
+    "blog": {
+      "total": 106,
+      "passed": 0,
+      "comparable": 104,
+      "counts": {
+        "different": 104,
+        "reference-unavailable": 2
+      }
+    },
+    "docs": {
+      "total": 1365,
+      "passed": 843,
+      "comparable": 1340,
+      "counts": {
+        "capture-error": 2,
+        "different": 456,
+        "passed": 843,
+        "reference-unavailable": 25,
+        "runtime-error": 39
+      }
+    },
+    "static": {
+      "total": 287,
+      "passed": 129,
+      "comparable": 274,
+      "counts": {
+        "capture-error": 2,
+        "different": 52,
+        "passed": 129,
+        "reference-unavailable": 13,
+        "runtime-error": 91
+      }
+    },
+    "languageEntry": {
+      "total": 233,
+      "passed": 0,
+      "comparable": 229,
+      "counts": {
+        "capture-error": 1,
+        "different": 228,
+        "reference-unavailable": 4
+      }
+    }
+  },
+  "fullArtifactPilot30": {
+    "total": 30,
+    "passed": 28,
+    "counts": {
+      "different": 2,
+      "passed": 28
+    }
+  },
+  "candidateSsgMedianSeconds": 25.073330042000002,
+  "elapsedSeconds": 1433.009,
+  "capturePolicyMatchesHistorical": true,
+  "representativeFailures": {
+    "different": [
+      {
+        "path": "/ja/blog/2021-09-11-hello-to-misskey-hub/",
+        "kind": "blog",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/ja/blog/2021-09-11-hello-to-misskey-hub/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "different",
+            "equal": false,
+            "reason": "pixels",
+            "differentPixels": 112833,
+            "totalPixels": 1296000,
+            "finalPath": "/ja/blog/2021-09-11-hello-to-misskey-hub/",
+            "sampleDirectory": "/Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full-vrt/samples/ox-native-islands/59d28c7c99d5"
+          }
+        }
+      },
+      {
+        "path": "/about-us/",
+        "kind": "languageEntry",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/ja/about-us/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "different",
+            "equal": false,
+            "reason": "dimensions",
+            "reference": [
+              1440,
+              1033
+            ],
+            "candidate": [
+              1440,
+              900
+            ],
+            "finalPath": "/about-us/",
+            "sampleDirectory": "/Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full-vrt/samples/ox-native-islands/4a42131baad0"
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/about-misskey/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/about-misskey/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "different",
+            "equal": false,
+            "reason": "pixels",
+            "differentPixels": 1873,
+            "totalPixels": 6274080,
+            "finalPath": "/cn/docs/about-misskey/",
+            "sampleDirectory": "/Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full-vrt/samples/ox-native-islands/298508a59145"
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/for-admin/features/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/for-admin/features/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "different",
+            "equal": false,
+            "reason": "pixels",
+            "differentPixels": 2937,
+            "totalPixels": 1573920,
+            "finalPath": "/cn/docs/for-admin/features/"
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/for-admin/install/guides/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/for-admin/install/guides/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "different",
+            "equal": false,
+            "reason": "pixels",
+            "differentPixels": 2809,
+            "totalPixels": 2151360,
+            "finalPath": "/cn/docs/for-admin/install/guides/"
+          }
+        }
+      }
+    ],
+    "runtime-error": [
+      {
+        "path": "/ja/docs/for-users/stepped-guides/how-to-enable-2fa/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/ja/docs/for-users/stepped-guides/how-to-enable-2fa/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "runtime-error",
+            "errors": [
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: Warning",
+              "Hydration completed but contains mismatches."
+            ]
+          }
+        }
+      },
+      {
+        "path": "/ja/tools/share-link-generator/",
+        "kind": "static",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/ja/tools/share-link-generator/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "runtime-error",
+            "errors": [
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: Tip",
+              "Hydration completed but contains mismatches.",
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: MkMfm"
+            ]
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/for-users/stepped-guides/how-to-delete-account/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/for-users/stepped-guides/how-to-delete-account/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "runtime-error",
+            "errors": [
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: Warning",
+              "Hydration completed but contains mismatches."
+            ]
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/for-users/stepped-guides/how-to-use-pwa/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/for-users/stepped-guides/how-to-use-pwa/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "runtime-error",
+            "errors": [
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: Warning",
+              "Hydration completed but contains mismatches."
+            ]
+          }
+        }
+      },
+      {
+        "path": "/cn/docs/for-users/stepped-guides/how-to-enable-2fa/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/cn/docs/for-users/stepped-guides/how-to-enable-2fa/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "runtime-error",
+            "errors": [
+              "[Vue warn]: Hydration node mismatch:\n- rendered on server: JSHandle@node  \n- expected on client: Warning",
+              "Hydration completed but contains mismatches."
+            ]
+          }
+        }
+      }
+    ],
+    "capture-error": [
+      {
+        "path": "/de/docs/for-admin/features/federation/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/de/docs/for-admin/features/federation/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "capture-error",
+            "errors": [
+              "page.screenshot: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+            ]
+          }
+        }
+      },
+      {
+        "path": "/pl/docs/for-admin/features/ftt/",
+        "kind": "docs",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/pl/docs/for-admin/features/ftt/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "capture-error",
+            "errors": [
+              "page.screenshot: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+            ]
+          }
+        }
+      },
+      {
+        "path": "/es/about-us/team/",
+        "kind": "static",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/es/about-us/team/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "capture-error",
+            "errors": [
+              "clock.pauseAt: Error: Cannot fast-forward to the past\n    at ClockController._innerFastForwardTo (<anonymous>:197:13)\n    at ClockController.pauseAt (<anonymous>:128:16)\n    at async <anonymous>:316:30"
+            ]
+          }
+        }
+      },
+      {
+        "path": "/id/about-us/team/",
+        "kind": "static",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/id/about-us/team/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "capture-error",
+            "errors": [
+              "clock.pauseAt: Error: Cannot fast-forward to the past\n    at ClockController._innerFastForwardTo (<anonymous>:197:13)\n    at ClockController.pauseAt (<anonymous>:128:16)\n    at async <anonymous>:316:30"
+            ]
+          }
+        }
+      },
+      {
+        "path": "/servers/stats/",
+        "kind": "languageEntry",
+        "reference": {
+          "status": "captured",
+          "errors": [],
+          "finalPath": "/ja/servers/stats/"
+        },
+        "results": {
+          "baseline": {
+            "status": "passed",
+            "errors": []
+          },
+          "ox-native-islands": {
+            "status": "capture-error",
+            "errors": [
+              "page.screenshot: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

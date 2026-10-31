@@ -1,0 +1,103 @@
+{
+  "recordedAt": "2026-10-29T22:17:09.501Z",
+  "environment": {
+    "node": "v22.22.2",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "@vizejs/vite-plugin",
+      "version": "0.607.0"
+    },
+    {
+      "name": "@vizejs/native",
+      "version": "0.607.0"
+    },
+    {
+      "name": "@vizejs/nuxt",
+      "version": "0.607.0",
+      "peerDependencies": {
+        "nuxt": "^2.16.0 || ^3.0.0 || ^4.0.0",
+        "oxlint": "^1.64.0",
+        "oxlint-plugin-vize": ">=0.474.0",
+        "vite": "^7.3.0 || ^8.0.0"
+      }
+    },
+    {
+      "name": "vue",
+      "version": "3.5.25"
+    },
+    {
+      "name": "vite",
+      "version": "7.3.1"
+    }
+  ],
+  "scope": "Compiler outputs and helper import only. Browser hydration/VRT evidence is recorded separately in compiler-vrt.json.",
+  "slotFragment": {
+    "source": "<script setup>const show = false</script><template><Link><i v-if=\"show\"/><template v-else>Docs</template></Link></template>",
+    "vizeClient": "import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createElementBlock as _createElementBlock, Fragment as _Fragment, createCommentVNode as _createCommentVNode, createTextVNode as _createTextVNode, withCtx as _withCtx } from \"vue\"\n\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_Link = _resolveComponent(\"Link\")\n  \n  return (_openBlock(), _createBlock(_component_Link, null, {\n    default: _withCtx(() => [\n      ($setup.show)\n        ? (_openBlock(), _createElementBlock(\"i\", { key: 0 }))\n        : (_openBlock(), _createElementBlock(_Fragment, { key: 1 }, [\n          _createTextVNode(\"Docs\")\n        ], 64 /* STABLE_FRAGMENT */))\n    ]),\n    _: 1 /* STABLE */\n  }))\n}\n\nconst show = false\n\nexport default {\n  __name: 'VizeIssue',\n  render: _sfc_render,\n  setup(__props, { expose: __expose }) {\n  __expose();\n\n\nconst __returned__ = { show }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n}",
+    "vizeSsr": "import { ssrRenderComponent as _ssrRenderComponent } from \"@vue/server-renderer\"\nimport { createElementVNode as _createElementVNode, createCommentVNode as _createCommentVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx } from \"vue\"\n\n\nfunction ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {\n  _push(_ssrRenderComponent(_resolveComponent(\"Link\"), _attrs, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        if ($setup.show) {\n          _push(`<i></i>`)\n        } else {\n          _push(`Docs`)\n        }\n      } else {\n        return [($setup.show) ? _createElementVNode(\"i\", null, null) : _createTextVNode(\"Docs\")]\n      }\n    }),\n    _: 1\n  }, _parent))\n}\n\nconst show = false\n\nexport default {\n  __name: 'VizeIssue',\n  ssrRender: ssrRender,\n  setup(__props, { expose: __expose }) {\n  __expose();\n\n\nconst __returned__ = { show }\nObject.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })\nreturn __returned__\n}\n\n}",
+    "vueSsr": "import { resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createTextVNode as _createTextVNode, Fragment as _Fragment } from \"vue\"\nimport { ssrRenderComponent as _ssrRenderComponent } from \"vue/server-renderer\"\n\nexport function ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {\n  const _component_Link = _resolveComponent(\"Link\")\n\n  _push(_ssrRenderComponent(_component_Link, _attrs, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        if ($setup.show) {\n          _push(`<i${_scopeId}></i>`)\n        } else {\n          _push(`<!--[-->Docs<!--]-->`)\n        }\n      } else {\n        return [\n          ($setup.show)\n            ? (_openBlock(), _createBlock(\"i\", { key: 0 }))\n            : (_openBlock(), _createBlock(_Fragment, { key: 1 }, [\n                _createTextVNode(\"Docs\")\n              ], 64 /* STABLE_FRAGMENT */))\n        ]\n      }\n    }),\n    _: 1 /* STABLE */\n  }, _parent))\n}",
+    "errors": {
+      "client": [],
+      "ssr": [],
+      "vue": []
+    }
+  },
+  "css": [
+    {
+      "name": "screen-directive",
+      "source": ".docs-root { grid-template-columns: 1fr; } @screen lg { .docs-root { grid-template-columns: 16rem 1fr; } }",
+      "vizeSfcCss": ".docs-root[data-v-repro]{ grid-template-columns: 1fr; }@screen lg{.docs-root[data-v-repro]{ grid-template-columns: 16rem 1fr; }}",
+      "vizeVitePipelineCss": ".docs-root[data-v-repro]{grid-template-columns: 1fr;} @screen lg { .docs-root { grid-template-columns: 16rem 1fr; } }",
+      "vueScopedCss": ".docs-root[data-v-repro] { grid-template-columns: 1fr;\n}\n@screen lg {\n.docs-root[data-v-repro] { grid-template-columns: 16rem 1fr;\n}\n}",
+      "errors": {
+        "native": [],
+        "vue": []
+      }
+    },
+    {
+      "name": "screen-media-workaround",
+      "source": ".docs-root { grid-template-columns: 1fr; } @media (min-width:1024px) { .docs-root { grid-template-columns: 16rem 1fr; } }",
+      "vizeSfcCss": ".docs-root[data-v-repro]{ grid-template-columns: 1fr; }@media (min-width:1024px){.docs-root[data-v-repro]{ grid-template-columns: 16rem 1fr; }}",
+      "vizeVitePipelineCss": ".docs-root[data-v-repro]{grid-template-columns: 1fr;} @media (min-width:1024px) { .docs-root[data-v-repro]{grid-template-columns: 16rem 1fr;}}",
+      "vueScopedCss": ".docs-root[data-v-repro] { grid-template-columns: 1fr;\n}\n@media (min-width:1024px) {\n.docs-root[data-v-repro] { grid-template-columns: 16rem 1fr;\n}\n}",
+      "errors": {
+        "native": [],
+        "vue": []
+      }
+    },
+    {
+      "name": "nested-global",
+      "source": ":global(html.dark) { .x { color: #f0ffc7; } }",
+      "vizeSfcCss": " html.dark{color: #f0ffc7;}",
+      "vizeVitePipelineCss": " html.dark{color: #f0ffc7;}",
+      "vueScopedCss": "html.dark {\n.x[data-v-repro] { color: #f0ffc7;\n}\n}",
+      "errors": {
+        "native": [],
+        "vue": []
+      }
+    },
+    {
+      "name": "nested-ancestor-workaround",
+      "source": "html.dark { .x { color: #f0ffc7; } }",
+      "vizeSfcCss": " html.dark .x[data-v-repro]{color: #f0ffc7;}",
+      "vizeVitePipelineCss": " html.dark .x[data-v-repro]{color: #f0ffc7;}",
+      "vueScopedCss": "html.dark {\n.x[data-v-repro] { color: #f0ffc7;\n}\n}",
+      "errors": {
+        "native": [],
+        "vue": []
+      }
+    }
+  ],
+  "i18n": {
+    "viteExportsParseSync": false,
+    "helperImport": {
+      "status": "import-failed",
+      "helper": "dist/i18n-CPEBELnL.mjs",
+      "errorName": "SyntaxError",
+      "message": "The requested module 'vite' does not provide an export named 'parseSync'"
+    }
+  }
+}

@@ -1,0 +1,1971 @@
+{
+  "startedAt": "2026-10-30T21:22:11.078Z",
+  "scope": "All 1991 public URLs, including Markdown, YAML, fixed pages and language entry HTML",
+  "policy": "Three sequential fresh processes; PNPM/Node startup, Vite client build, Ox Custom Host preparation/render/output and full public asset copy included. HTML/asset verifier outside timer. OS caches retained; no concurrent VRT; live contributor API fetched once per process; default heap limit. Visual parity only verified in the separate 30-page scope.",
+  "node": "v22.22.2",
+  "cpu": "Apple M1 Pro",
+  "platform": "darwin-arm64",
+  "sourceFingerprint": "d4620fb60f3fa705a16e563da9a1135e5f541243111331f6fa46a00342454698",
+  "vrtSha256": "81f41695101f8a552538343a3d2d767a48f559919cee6ec2a5275bd9cd9b852c",
+  "runs": [
+    {
+      "run": 1,
+      "seconds": 26.03249125,
+      "exitCode": 0,
+      "logSha256": "07997a4b96d981ccb8c1a49a7755dae13fa88326bd0b5bcfe4a93aaaf548112c",
+      "peakRssBytes": 2734342144,
+      "verification": {
+        "renderedPages": 1991,
+        "htmlFiles": 1991,
+        "localCssAndJs": 3,
+        "clientMarkdownAst": false
+      },
+      "client": {
+        "jsFiles": 29,
+        "jsBytes": 1638385,
+        "markdownModuleEntries": 0,
+        "manifestSha256": "4b541f1ebf8c994686923a84e7f7c900b95ca17ef4e44c6e683792e11352de39"
+      },
+      "compatibility": [
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/cn/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/de/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/en/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/es/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/fr/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/id/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/it/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ko/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/pl/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/th/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/tw/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/blog/2023-12-19-mac202319/",
+          "components": [
+            "x--blog--2023-12-19-mac202319--figure1"
+          ]
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "seconds": 24.974303541999998,
+      "exitCode": 0,
+      "logSha256": "c128a00b876bb569501f2b1c9a16056335f9dfbd9479b56ed8db99e6419e1e01",
+      "peakRssBytes": 3127345152,
+      "verification": {
+        "renderedPages": 1991,
+        "htmlFiles": 1991,
+        "localCssAndJs": 3,
+        "clientMarkdownAst": false
+      },
+      "client": {
+        "jsFiles": 29,
+        "jsBytes": 1638385,
+        "markdownModuleEntries": 0,
+        "manifestSha256": "4b541f1ebf8c994686923a84e7f7c900b95ca17ef4e44c6e683792e11352de39"
+      },
+      "compatibility": [
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/cn/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/de/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/en/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/es/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/fr/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/id/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/it/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ko/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/pl/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/th/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/tw/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/blog/2023-12-19-mac202319/",
+          "components": [
+            "x--blog--2023-12-19-mac202319--figure1"
+          ]
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "seconds": 25.073330042000002,
+      "exitCode": 0,
+      "logSha256": "df092abdadbb99b79b909f619a09543690b7e4f6d2d35cbc06e9c73dc5b84d08",
+      "peakRssBytes": 3086352384,
+      "verification": {
+        "renderedPages": 1991,
+        "htmlFiles": 1991,
+        "localCssAndJs": 3,
+        "clientMarkdownAst": false
+      },
+      "client": {
+        "jsFiles": 29,
+        "jsBytes": 1638385,
+        "markdownModuleEntries": 0,
+        "manifestSha256": "4b541f1ebf8c994686923a84e7f7c900b95ca17ef4e44c6e683792e11352de39"
+      },
+      "compatibility": [
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/cn/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/cn/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/de/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/de/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/en/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/en/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/es/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/es/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/fr/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/fr/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/id/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/id/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/it/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/it/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja-ks/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ja/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ja/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/ko/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/ko/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/pl/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/pl/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/th/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/th/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/global-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/home-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/local-timeline/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/channel/main/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-developers/api/streaming/note-capture-events/",
+          "components": [
+            "mk-schema-viewer"
+          ]
+        },
+        {
+          "path": "/tw/docs/for-users/features/webhook/",
+          "components": [
+            "mk-schema-viewer-item-object"
+          ]
+        },
+        {
+          "path": "/tw/docs/mi-card/",
+          "components": [
+            "x--docs--mi-card--interactive-view",
+            "x--docs--mi-card--calculator"
+          ]
+        },
+        {
+          "path": "/ja/blog/2023-12-19-mac202319/",
+          "components": [
+            "x--blog--2023-12-19-mac202319--figure1"
+          ]
+        }
+      ]
+    }
+  ],
+  "finishedAt": "2026-10-30T21:23:34.303Z",
+  "sourceUnchanged": true,
+  "medianSeconds": 25.073330042000002
+}

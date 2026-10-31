@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-10-29T15:47:54.226Z",
+  "referenceCommit": "11722922c19ffede1c61653192831e3075f4b68d",
+  "platform": "darwin 27.0.0 arm64",
+  "node": "v22.22.2",
+  "versions": {
+    "nuxt": "3.20.2",
+    "@nuxt/content": "2.13.4",
+    "@ox-content/napi": "3.4.0",
+    "@ox-content/vite-plugin": "3.4.0",
+    "@playwright/test": "1.58.2"
+  },
+  "externalNetwork": "blocked identically for all variants",
+  "pages": [
+    {
+      "path": "/ja/docs/for-users/features/note/",
+      "source": "ja/docs/2.for-users/3.features/note.md",
+      "title": "ノート"
+    },
+    {
+      "path": "/ja/docs/for-users/features/hashtag/",
+      "source": "ja/docs/2.for-users/3.features/hashtag.md",
+      "title": "ハッシュタグ"
+    },
+    {
+      "path": "/ja/docs/for-developers/plugin/create-plugin/",
+      "source": "ja/docs/4.for-developers/plugin/create-plugin.md",
+      "title": "プラグインの作成"
+    },
+    {
+      "path": "/en/docs/for-users/features/note/",
+      "source": "en/docs/2.for-users/3.features/note.md",
+      "title": "Notes"
+    }
+  ],
+  "variants": [
+    {
+      "mode": "baseline",
+      "passed": 16,
+      "failed": 0,
+      "exactRgbaCaptures": 20,
+      "screenshotFailures": 0
+    },
+    {
+      "mode": "query",
+      "passed": 16,
+      "failed": 0,
+      "exactRgbaCaptures": 20,
+      "screenshotFailures": 0
+    },
+    {
+      "mode": "native",
+      "passed": 16,
+      "failed": 0,
+      "exactRgbaCaptures": 20,
+      "screenshotFailures": 0
+    },
+    {
+      "mode": "standalone",
+      "passed": 0,
+      "failed": 16,
+      "exactRgbaCaptures": 0,
+      "screenshotFailures": 16
+    }
+  ]
+}

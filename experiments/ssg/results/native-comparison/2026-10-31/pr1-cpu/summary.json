@@ -1,0 +1,24 @@
+{
+  "case": "pr1-cpu",
+  "ref": "ab4eec512675e6403e0ed8d142a3e3620dce9b60",
+  "sourceFingerprint": "18bca86a1a2f83dd16b57f562054026eade2e6c33fb29b5f87c1b3c63cdfccd0",
+  "sourceUnchanged": true,
+  "runs": [
+    {
+      "run": 1,
+      "processSeconds": 56.203039249870926,
+      "buildSeconds": 55.287736,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "verifyExitCode": 0,
+      "peakRssBytes": 3872587776,
+      "profileSha256": "ae67414d584fb4c3c9956e40877111ff3df61de424cb13066b6071ae0295fd30",
+      "logSha256": "cf58250235440bf3d5bb8c0578f3c37fda73843522d0d9f414d46bccc0335d2a",
+      "collectedProfileSha256": "a57411ec8c443d171985f984754e0e28c291a0b83cf4bebecaa24525e7a0b041"
+    }
+  ],
+  "medianBuildSeconds": 55.287736,
+  "medianProcessSeconds": 56.203039249870926,
+  "policy": "Instrumented isolated snapshot; processSeconds includes Node startup and post-build output enumeration; compare buildSeconds for stages. Original verifier outside timer. OS caches retained. No VRT.",
+  "evidenceFormatting": "Per-page JSON records reformatted to one row each after collection; parsed values unchanged. collectedProfileSha256 identifies original bytes, retained locally in .pilot/native-comparison/raw-evidence."
+}

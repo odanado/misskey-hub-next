@@ -1,0 +1,24 @@
+{
+  "case": "cpu",
+  "ref": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "sourceFingerprint": "2a2d985e41ecf7a11c8d41aa44ccc15076a4d21b7a815516dac7ce46baa9fc33",
+  "sourceUnchanged": true,
+  "startedAt": "2026-10-30T21:41:38.126983+00:00",
+  "finishedAt": "2026-10-30T21:42:09.102371+00:00",
+  "runs": [
+    {
+      "run": 1,
+      "processSeconds": 27.158566375030205,
+      "buildSeconds": 26.432506709000002,
+      "htmlFiles": 1991,
+      "exitCode": 0,
+      "originalVerifierExitCode": 0,
+      "peakRssBytes": 2747973632,
+      "profileSha256": "5f47db9cf4fdd8bbeb9029efa0ba4a2f90be77e07f6b06ea4013a02412c152c7",
+      "logSha256": "be69d5c46382798fec1dee5fa7a5cb52ea40bd15d5aac7842a0f597a03111e04"
+    }
+  ],
+  "medianBuildSeconds": 26.432506709000002,
+  "medianProcessSeconds": 27.158566375030205,
+  "policy": "Instrumented isolated archive. buildSeconds: before Vite import to awaited build completion; excludes PNPM/Node startup, output enumeration and verification. All cases sequential, OS caches retained. Ablations intentionally remove visual/functionality work, not migration candidates. Inclusive hook/async totals overlap and are not additive."
+}

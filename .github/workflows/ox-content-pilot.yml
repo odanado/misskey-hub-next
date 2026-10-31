@@ -1,0 +1,74 @@
+name: Ox Content pilot VRT
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'experiments/ssg/**'
+      - 'tests/vrt/**'
+      - 'playwright.config.ts'
+      - 'nuxt.config.ts'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/ox-content-pilot.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pilot:
+    # Playwright 1.58.2 does not support Ubuntu 26.04 dependencies yet.
+    runs-on: ubuntu-24.04
+    env:
+      TZ: Asia/Tokyo
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node --test experiments/ssg/tooling/full-vrt-pixels.test.mjs
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: HUB_PILOT_PAGES=30 node experiments/ssg/tooling/repros/markdown-compat.mjs
+      # Baseline uses the original Nuxt Content query and renderer. Generate it
+      # on the same OS/browser as candidates; macOS font rasterization differs.
+      - run: pnpm pilot:build baseline
+      - run: HUB_CONTENT_PILOT=baseline pnpm pilot:vrt --update-snapshots
+      - run: HUB_CONTENT_PILOT=baseline pnpm pilot:vrt
+      - run: pnpm pilot:build query
+      - run: HUB_CONTENT_PILOT=query pnpm pilot:vrt
+      - run: pnpm pilot:build native
+      - run: HUB_CONTENT_PILOT=native pnpm pilot:vrt
+      - run: node experiments/ssg/tooling/build.mjs ox-ported
+      - run: HUB_CONTENT_PILOT=ox-ported pnpm pilot:vrt
+      - run: node experiments/ssg/tooling/build.mjs astro
+      - run: HUB_CONTENT_PILOT=astro pnpm pilot:vrt
+      - run: node experiments/ssg/tooling/build.mjs astro-ox
+      - run: HUB_CONTENT_PILOT=astro-ox pnpm pilot:vrt
+      - name: Vize compiler variants
+        run: |
+          HUB_VUE_COMPILER=vize pnpm pilot:build baseline
+          for mode in ox-ported astro astro-ox; do
+            HUB_VUE_COMPILER=vize pnpm pilot:ssg:build "$mode"
+          done
+          pnpm pilot:ssg:verify-compilers
+      - name: Upload builds, timings, VRT and baseline snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ox-content-pilot
+          include-hidden-files: true
+          path: |
+            .pilot/*/build.log
+            .pilot/*/vrt/
+            .pilot/timings.json
+            .pilot/ported-timings.json
+            experiments/ssg/results/compiler-vrt.json
+            tests/vrt/snapshots/

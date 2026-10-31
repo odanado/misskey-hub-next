@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-30T21:47:03.854Z",
+  "normalMigrationSourceUnchanged": true,
+  "sourceFingerprint": "d4620fb60f3fa705a16e563da9a1135e5f541243111331f6fa46a00342454698",
+  "vrtRecordSha256": "81f41695101f8a552538343a3d2d767a48f559919cee6ec2a5275bd9cd9b852c",
+  "baselineUnchanged": true,
+  "baselineFiles": 264,
+  "policy": "Investigation hooks and ablations apply only to isolated .pilot copies. No new VRT run or baseline update."
+}

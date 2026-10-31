@@ -1,0 +1,994 @@
+{
+  "title": "Notes | Misskey",
+  "lang": "en-US",
+  "canonical": "https://misskey-hub.net/en/docs/for-users/features/note//",
+  "description": "Notes are the main content of Misskey. They can consist of images, texts, polls, and more. On other platforms, notes are known as posts.",
+  "headings": [
+    {
+      "id": "notes",
+      "text": "Notes"
+    },
+    {
+      "id": "composing-a-note",
+      "text": "Composing a Note"
+    },
+    {
+      "id": "renote",
+      "text": "Renote"
+    },
+    {
+      "id": "cw",
+      "text": "CW"
+    },
+    {
+      "id": "visibility",
+      "text": "Visibility"
+    },
+    {
+      "id": "public",
+      "text": "Public"
+    },
+    {
+      "id": "home",
+      "text": "Home"
+    },
+    {
+      "id": "followers",
+      "text": "Followers"
+    },
+    {
+      "id": "direct",
+      "text": "Direct"
+    },
+    {
+      "id": "local-only",
+      "text": "Local Only"
+    },
+    {
+      "id": "visibility-comparison",
+      "text": "Visibility comparison"
+    },
+    {
+      "id": "pin-to-profile",
+      "text": "Pin to profile"
+    },
+    {
+      "id": "new-post-notifications",
+      "text": "New Post Notifications"
+    }
+  ],
+  "links": [
+    {
+      "text": "About Misskey",
+      "href": "/en/docs/about-misskey/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "For Misskey Users",
+      "href": "/en/docs/for-users/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Getting Started with Misskey",
+      "href": "/en/docs/for-users/onboarding/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Important notes",
+      "href": "/en/docs/for-users/onboarding/warning/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Find a Misskey Server",
+      "href": "/en/docs/for-users/onboarding/get-started/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Register on a server",
+      "href": "/en/docs/for-users/onboarding/join-server/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Basics",
+      "href": "/en/docs/for-users/onboarding/things-to-know/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Various features",
+      "href": "/en/docs/for-users/features/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Advertisements",
+      "href": "/en/docs/for-users/features/ads/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Antennas",
+      "href": "/en/docs/for-users/features/antenna/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Charts",
+      "href": "/en/docs/for-users/features/charts/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Clips",
+      "href": "/en/docs/for-users/features/clip/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Custom Emoji",
+      "href": "/en/docs/for-users/features/custom-emoji/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Deck",
+      "href": "/en/docs/for-users/features/deck/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Developer Mode",
+      "href": "/en/docs/for-users/features/dev-mode/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Drive",
+      "href": "/en/docs/for-users/features/drive/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Embed to Website",
+      "href": "/en/docs/for-users/features/embed/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Favorites",
+      "href": "/en/docs/for-users/features/favorite/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Follow",
+      "href": "/en/docs/for-users/features/follow/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Hashtags",
+      "href": "/en/docs/for-users/features/hashtag/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Mentions",
+      "href": "/en/docs/for-users/features/mention/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "MFM",
+      "href": "/en/docs/for-users/features/mfm/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Mutes and Blocks",
+      "href": "/en/docs/for-users/features/mute-and-block/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Notes",
+      "href": "/en/docs/for-users/features/note/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Online Status",
+      "href": "/en/docs/for-users/features/online-status/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Page",
+      "href": "/en/docs/for-users/features/pages/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Plugins",
+      "href": "/en/docs/for-users/features/plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Polls",
+      "href": "/en/docs/for-users/features/poll/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Reactions",
+      "href": "/en/docs/for-users/features/reaction/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Safe Mode",
+      "href": "/en/docs/for-users/features/safemode/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Share Form",
+      "href": "/en/docs/for-users/features/share-form/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Silence",
+      "href": "/en/docs/for-users/features/silence/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Themes",
+      "href": "/en/docs/for-users/features/theme/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Mute Thread",
+      "href": "/en/docs/for-users/features/thread-mute/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Timelines",
+      "href": "/en/docs/for-users/features/timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Webhook",
+      "href": "/en/docs/for-users/features/webhook/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Widgets",
+      "href": "/en/docs/for-users/features/widgets/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Word Mute",
+      "href": "/en/docs/for-users/features/word-mute/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Additional Resources",
+      "href": "/en/docs/for-users/resources/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Troubleshooting",
+      "href": "/en/docs/for-users/resources/troubleshooting/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Apps",
+      "href": "/en/docs/for-users/resources/apps/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Frequently Asked Questions",
+      "href": "/en/docs/for-users/resources/faq/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Glossary",
+      "href": "/en/docs/for-users/resources/glossary/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Hub",
+      "href": "/en/docs/for-users/resources/misskey-hub/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Self-XSS Attack",
+      "href": "/en/docs/for-users/resources/self-xss/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Step-by-step Guides",
+      "href": "/en/docs/for-users/stepped-guides/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "How to delete your account",
+      "href": "/en/docs/for-users/stepped-guides/how-to-delete-account/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "How to Set Up Two-Factor Authentication (One-Time Password)",
+      "href": "/en/docs/for-users/stepped-guides/how-to-enable-2fa/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "How to use Misskey Web as a smartphone app",
+      "href": "/en/docs/for-users/stepped-guides/how-to-use-pwa/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "For Server Operators",
+      "href": "/en/docs/for-admin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Server Features",
+      "href": "/en/docs/for-admin/features/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "通報",
+      "href": "/en/docs/for-admin/features/abuse-report/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Announcements",
+      "href": "/en/docs/for-admin/features/announcement/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "管理コマンド",
+      "href": "/en/docs/for-admin/features/cli/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "連合モード",
+      "href": "/en/docs/for-admin/features/federation/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Fan-out Timeline Technology (FTT)",
+      "href": "/en/docs/for-admin/features/ftt/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Managing Custom Emojis",
+      "href": "/en/docs/for-admin/features/managing-emojis/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Roles",
+      "href": "/en/docs/for-admin/features/role/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "ノート検索",
+      "href": "/en/docs/for-admin/features/search/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Install and Maintain Misskey",
+      "href": "/en/docs/for-admin/install/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Creating a Misskey Server",
+      "href": "/en/docs/for-admin/install/guides/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Use Dedicated Service",
+      "href": "/en/docs/for-admin/install/guides/service/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Installation Shell Script v3.0.0",
+      "href": "/en/docs/for-admin/install/guides/bash/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Building Misskey using Docker Compose",
+      "href": "/en/docs/for-admin/install/guides/docker/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Building Misskey with Kubernetes / TrueNAS",
+      "href": "/en/docs/for-admin/install/guides/kubernetes/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Manual Misskey Installation",
+      "href": "/en/docs/for-admin/install/guides/manual/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Detailed guide to installing Misskey on Ubuntu",
+      "href": "/en/docs/for-admin/install/guides/ubuntu-manual/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey Maintenance & Troubleshooting",
+      "href": "/en/docs/for-admin/install/resources/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "CDN Configuration",
+      "href": "/en/docs/for-admin/install/resources/cdn/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Notes on Forking and Customizing Misskey",
+      "href": "/en/docs/for-admin/install/resources/forking/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Nginx configuration",
+      "href": "/en/docs/for-admin/install/resources/nginx/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "How to push to Docker Hub using GitHub Actions",
+      "href": "/en/docs/for-admin/install/resources/push-docker-hub/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Scaling Misskey",
+      "href": "/en/docs/for-admin/install/resources/scale-out/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Troubleshooting Manual Installation",
+      "href": "/en/docs/for-admin/install/resources/troubleshooting/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Moderation Tips",
+      "href": "/en/docs/for-admin/moderation-tips/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Disabling the LTL/STL/GTL",
+      "href": "/en/docs/for-admin/moderation-tips/disable-timelines/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "For Developers",
+      "href": "/en/docs/for-developers/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript",
+      "href": "/en/docs/for-developers/aiscript/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey API",
+      "href": "/en/docs/for-developers/api/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Endpoints",
+      "href": "/en/docs/for-developers/api/endpoints/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "List of Libraries",
+      "href": "/en/docs/for-developers/api/libraries/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "List of permissions",
+      "href": "/en/docs/for-developers/api/permission/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Streaming API",
+      "href": "/en/docs/for-developers/api/streaming/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Channel List",
+      "href": "/en/docs/for-developers/api/streaming/channel/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "globalTimeline",
+      "href": "/en/docs/for-developers/api/streaming/channel/global-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "homeTimeline",
+      "href": "/en/docs/for-developers/api/streaming/channel/home-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "hybridTimeline",
+      "href": "/en/docs/for-developers/api/streaming/channel/hybrid-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "localTimeline",
+      "href": "/en/docs/for-developers/api/streaming/channel/local-timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "main",
+      "href": "/en/docs/for-developers/api/streaming/channel/main/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Note Capture Events",
+      "href": "/en/docs/for-developers/api/streaming/note-capture-events/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Obtain an access token",
+      "href": "/en/docs/for-developers/api/token/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Obtaining an Access Token via MiAuth",
+      "href": "/en/docs/for-developers/api/token/miauth/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Obtaining an Access Token via OAuth",
+      "href": "/en/docs/for-developers/api/token/oauth/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Obtaining an Access Token by Creating an App (Legacy)",
+      "href": "/en/docs/for-developers/api/token/app/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Create a bot",
+      "href": "/en/docs/for-developers/bot/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Creating a Plugin/Play",
+      "href": "/en/docs/for-developers/plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Create Play",
+      "href": "/en/docs/for-developers/plugin/create-play/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Creating Plugins",
+      "href": "/en/docs/for-developers/plugin/create-plugin/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "AiScript Misskey Extended API Reference",
+      "href": "/en/docs/for-developers/plugin/plugin-api-reference/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Distributing Plugins and Themes",
+      "href": "/en/docs/for-developers/publish-on-your-website/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Release Notes",
+      "href": "/en/docs/releases/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Donating to the project",
+      "href": "/en/docs/donate/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Become a Sponsor",
+      "href": "/en/docs/become-a-sponsor/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey ID Card",
+      "href": "/en/docs/mi-card/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Misskey vs Misskey Servers",
+      "href": "/en/docs/misskey-and-misskey-servers/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Composing a Note",
+      "href": "#composing-a-note",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Renote",
+      "href": "#renote",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "CW",
+      "href": "#cw",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility",
+      "href": "#visibility",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Public",
+      "href": "#public",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Home",
+      "href": "#home",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Followers",
+      "href": "#followers",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Direct",
+      "href": "#direct",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Local Only",
+      "href": "#local-only",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility comparison",
+      "href": "#visibility-comparison",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Pin to profile",
+      "href": "#pin-to-profile",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "New Post Notifications",
+      "href": "#new-post-notifications",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Crowdin",
+      "href": "https://crowdin.com/project/misskey-hub",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "text": "timeline",
+      "href": "/en/docs/for-users/features/timeline/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "followers",
+      "href": "/en/docs/for-users/features/follow/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "react",
+      "href": "/en/docs/for-users/features/reaction/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Favorites",
+      "href": "/en/docs/for-users/features/favorite/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Composing a Note",
+      "href": "#composing-a-note",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "polls",
+      "href": "/en/docs/for-users/features/poll/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Markup language for Misskey (MFM)",
+      "href": "/en/docs/for-users/features/mfm/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "mention",
+      "href": "/en/docs/for-users/features/mention/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "hashtags",
+      "href": "/en/docs/for-users/features/hashtag/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Renote",
+      "href": "#renote",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "CW",
+      "href": "#cw",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility",
+      "href": "#visibility",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Public",
+      "href": "#public",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "silenced",
+      "href": "/en/docs/for-users/features/silence/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Home",
+      "href": "#home",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Followers",
+      "href": "#followers",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Direct",
+      "href": "#direct",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Local Only",
+      "href": "#local-only",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility comparison",
+      "href": "#visibility-comparison",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Pin to profile",
+      "href": "#pin-to-profile",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "New Post Notifications",
+      "href": "#new-post-notifications",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Edit this page",
+      "href": "https://github.com/misskey-dev/misskey-hub-next/tree/master/content/ja/docs/2.for-users/3.features/note.md",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "text": "Translate this page",
+      "href": "https://crowdin.com/project/misskey-hub",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "text": "PreviousMutes and Blocks",
+      "href": "/en/docs/for-users/features/mute-and-block/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "NextOnline Status",
+      "href": "/en/docs/for-users/features/online-status/",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Composing a Note",
+      "href": "#composing-a-note",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Renote",
+      "href": "#renote",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "CW",
+      "href": "#cw",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility",
+      "href": "#visibility",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Public",
+      "href": "#public",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Home",
+      "href": "#home",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Followers",
+      "href": "#followers",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Direct",
+      "href": "#direct",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Local Only",
+      "href": "#local-only",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Visibility comparison",
+      "href": "#visibility-comparison",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "Pin to profile",
+      "href": "#pin-to-profile",
+      "rel": null,
+      "target": null
+    },
+    {
+      "text": "New Post Notifications",
+      "href": "#new-post-notifications",
+      "rel": null,
+      "target": null
+    }
+  ],
+  "images": [],
+  "code": []
+}

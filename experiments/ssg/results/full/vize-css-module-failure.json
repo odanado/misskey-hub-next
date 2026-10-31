@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-30T03:01:39.725Z",
+  "vizeVersion": "0.607.0",
+  "mode": "astro-ox-vize",
+  "page": "/cn/about-us/team/",
+  "source": "pages/about-us/team.vue",
+  "generatedReference": "$setup.$style.teamRoot",
+  "evidenceSource": ".pilot/full/astro-ox-vize/build.log",
+  "evidence": [
+    "11:36:15   ├─ /cn/about-us/index.html (+4ms) ",
+    "11:36:15   ├─ /cn/about-us/history/index.html (+5ms) ",
+    "11:36:15   ├─ /cn/about-us/team/index.html11:36:15 [ERROR] TypeError: Cannot read properties of undefined (reading 'teamRoot')",
+    "    at ssrRender$r (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/_.._DlNYCJ2J.mjs:520:86)",
+    "    at renderComponentSubTree (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/registry_Dec4v8X7.mjs:705:9)",
+    "    at file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/registry_Dec4v8X7.mjs:652:25",
+    "    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+    "    at async renderToString (/Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+server-renderer@3.5.25_vue@3.5.25_typescript@5.9.2_/node_modules/@vue/server-renderer/dist/server-renderer.cjs.prod.js:697:18)",
+    "    at async Object.renderToStaticMarkup (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/prerender_C_bQZSvV.mjs:9746:16)",
+    "    at async renderFrameworkComponent (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/prerender_C_bQZSvV.mjs:3857:26)",
+    "11:36:15 [ERROR] [build] Caught error rendering /cn/about-us/team/: TypeError: Cannot read properties of undefined (reading 'teamRoot')",
+    "Cannot read properties of undefined (reading 'teamRoot')",
+    "  Stack trace:",
+    "    at ssrRender$r (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/_.._DlNYCJ2J.mjs:520:86)",
+    "    at file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/registry_Dec4v8X7.mjs:652:25",
+    "    at async renderToString (/Users/odan/source/github.com/odanado/misskey-hub-next/node_modules/.pnpm/@vue+server-renderer@3.5.25_vue@3.5.25_typescript@5.9.2_/node_modules/@vue/server-renderer/dist/server-renderer.cjs.prod.js:697:18)",
+    "    at async renderFrameworkComponent (file:///Users/odan/source/github.com/odanado/misskey-hub-next/.pilot/full/astro-ox-vize/public/.prerender/chunks/prerender_C_bQZSvV.mjs:3857:26)",
+    ""
+  ],
+  "workaround": "Only full-site Vize: rewrite generated $setup.$style to _ctx.$style when a render function provides _ctx. Vue resolves CSS modules on that component public context.",
+  "isolatedCompilerReproduction": false
+}

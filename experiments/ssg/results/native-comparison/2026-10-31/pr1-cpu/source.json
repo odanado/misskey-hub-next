@@ -1,0 +1,11 @@
+{
+  "ref": "ab4eec512675e6403e0ed8d142a3e3620dce9b60",
+  "name": "pr1-cpu",
+  "patches": [
+    "experiments/ssg/ox-native/host.ts",
+    "experiments/ssg/ox-native/vite.base.ts",
+    "experiments/ssg/ox-native/vite.config.ts",
+    "experiments/ssg/shared/content/markdown.mjs",
+    "experiments/ssg/tooling/profiling.mjs"
+  ]
+}

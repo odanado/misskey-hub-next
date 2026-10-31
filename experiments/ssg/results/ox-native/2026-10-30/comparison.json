@@ -1,0 +1,54 @@
+{
+  "expectedPublicPages": 1991,
+  "runs": 3,
+  "node": "v22.22.2",
+  "platform": "darwin-arm64",
+  "cpu": "Apple M1 Pro",
+  "packages": {
+    "@ox-content/napi": "3.4.3",
+    "@ox-content/vite-plugin": "3.4.3",
+    "@ox-content/vite-plugin-vue": "3.4.3",
+    "vue": "3.5.25",
+    "vite": "7.3.1"
+  },
+  "heapLimitBytes": 4345298944,
+  "sourceFingerprint": "2c68dd016a3013d74d9806683ba849a33fcfca0a22366a323ebe441a5e3b7ca1",
+  "benchmarkFingerprint": "d512bae3e0642c99c4775503499899230cc9ebc08ab0d31c3c18864651cdab07",
+  "benchmarkSha256": "9be64fabc82d258803c194675c6612f6c6bc36607ade348435424950f8ea38ca",
+  "rows": [
+    {
+      "mode": "ox-native",
+      "seconds": [
+        55.651029,
+        54.478340417,
+        56.003671542
+      ],
+      "medianSeconds": 55.651029,
+      "completedPublicPagesPerRun": [
+        1991,
+        1991,
+        1991
+      ],
+      "vrt30Tests": 120,
+      "vrt30ExactRgbaImages": 144
+    },
+    {
+      "mode": "ox-ported",
+      "seconds": [
+        34.305631500000004,
+        35.523369083,
+        35.626677583999964
+      ],
+      "medianSeconds": 35.523369083,
+      "completedPublicPagesPerRun": [
+        1991,
+        1991,
+        1991
+      ],
+      "vrt30Tests": 120,
+      "vrt30ExactRgbaImages": 144
+    }
+  ],
+  "nativeElapsedIncreasePercent": 56.66033497546903,
+  "fullVrt": "not run"
+}

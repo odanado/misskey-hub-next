@@ -1,0 +1,219 @@
+{
+  "checks": [
+    {
+      "path": "/ja/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 5342,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/stats.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 5342,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/stats.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/",
+      "width": 390,
+      "status": 200,
+      "bodyTextLength": 5318,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/servers/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 192,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/docs/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 1005,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/tools/share-link-generator/",
+      "width": 1440,
+      "status": "failed",
+      "error": "Error: {\"errors\":[\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: パブリック\\n  - expected on client: _noteVisibility.undefined\",\"Hydration completed but contains mismatches.\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: ホーム\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: フォロワー\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: 指名\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\"],\"failures\":[]}",
+      "errors": [
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: パブリック\n  - expected on client: _noteVisibility.undefined",
+        "Hydration completed but contains mismatches.",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: ホーム\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: フォロワー\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: 指名\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch."
+      ],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/en/tools/share-link-generator/",
+      "width": 1440,
+      "status": "failed",
+      "error": "Error: {\"errors\":[\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: Public\\n  - expected on client: _noteVisibility.undefined\",\"Hydration completed but contains mismatches.\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: Home\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: Followers\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\",\"[Vue warn]: Hydration text content mismatch on JSHandle@node \\n  - rendered on server: Direct\\n  - expected on client: _noteVisibility.undefined\",\"[Vue warn]: Hydration attribute mismatch on JSHandle@node \\n  - rendered on server: value=\\\"true\\\"\\n  - expected on client: (not rendered)\\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\\n  You should fix the source of the mismatch.\"],\"failures\":[]}",
+      "errors": [
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: Public\n  - expected on client: _noteVisibility.undefined",
+        "Hydration completed but contains mismatches.",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: Home\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: Followers\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch.",
+        "[Vue warn]: Hydration text content mismatch on JSHandle@node \n  - rendered on server: Direct\n  - expected on client: _noteVisibility.undefined",
+        "[Vue warn]: Hydration attribute mismatch on JSHandle@node \n  - rendered on server: value=\"true\"\n  - expected on client: (not rendered)\n  Note: this mismatch is check-only. The DOM will not be rectified in production due to performance overhead.\n  You should fix the source of the mismatch."
+      ],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/contact/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 414,
+      "interaction": "FAQ content + open",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/blog/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 4111,
+      "interaction": "article links",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/about-us/team/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 737,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ns/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 7799,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434"
+      ]
+    },
+    {
+      "path": "/ja/share/?text=bench",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 72,
+      "interaction": "client page mounted",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances5.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/mi-web/?path=/test",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 77,
+      "interaction": "client page mounted",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at z5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20232)\n    at V5 (http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20388)\n    at http://127.0.0.1:52527/assets/pages-client-BSTK0fcv.js:34:20434",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances5.json' from origin 'http://127.0.0.1:52527' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    }
+  ],
+  "policy": "Representative original Vue pages in Chromium, including mobile, tool input/MFM, FAQ, blog, and .client pages. Not full VRT."
+}
