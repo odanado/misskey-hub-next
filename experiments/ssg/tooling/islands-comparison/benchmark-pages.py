@@ -1,7 +1,7 @@
 """Interleave original Vue pages with the previous CSS/minimal-counter control."""
 from pathlib import Path
 import subprocess,json,hashlib,os,time,statistics,re,datetime
-repo=Path.cwd();out=repo/'experiments/ssg/results/islands-comparison/2026-10-31/vue-pages';out.mkdir(parents=True,exist_ok=True);cases=['vue-island-css','vue-pages'];evidence={};fingerprints={}
+repo=Path.cwd();out=Path(os.environ.get('HUB_COMPARE_RESULT_DIRECTORY',repo/'experiments/ssg/results/islands-comparison/2026-10-31/vue-pages'));out.mkdir(parents=True,exist_ok=True);cases=['vue-island-css','vue-pages'];evidence={};fingerprints={}
 def source(case):
  h=hashlib.sha256();base=repo/'.pilot/islands-comparison'/case
  for name,expected in sorted(evidence[case]['files'].items()):

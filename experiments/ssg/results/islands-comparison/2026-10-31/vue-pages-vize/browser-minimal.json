@@ -1,0 +1,47 @@
+{
+  "cssComparison": true,
+  "node": "v22.22.2",
+  "cpu": "Apple M1 Pro",
+  "platform": "darwin-arm64",
+  "checks": [
+    {
+      "case": "vue",
+      "httpStatus": 200,
+      "before": "Vue: 0",
+      "after": "Vue: 1",
+      "errors": [],
+      "stylesheets": [
+        {
+          "url": "http://127.0.0.1:52738/assets/diagnostic-client-DbhIEpLL.css",
+          "status": 200
+        }
+      ],
+      "computedStyle": {
+        "color": "rgb(12, 34, 56)",
+        "backgroundColor": "rgb(220, 230, 240)",
+        "borderRadius": "7px",
+        "className": "_counter_ad8bp_1"
+      }
+    },
+    {
+      "case": "vize",
+      "httpStatus": 200,
+      "before": "Vue: 0",
+      "after": "Vue: 1",
+      "errors": [],
+      "stylesheets": [
+        {
+          "url": "http://127.0.0.1:52741/assets/diagnostic-client-CYbmwnWy.css",
+          "status": 200
+        }
+      ],
+      "computedStyle": {
+        "color": "rgb(12, 34, 56)",
+        "backgroundColor": "rgb(220, 230, 240)",
+        "borderRadius": "7px",
+        "className": "_counter_ad8bp_1"
+      }
+    }
+  ],
+  "policy": "After SSG timing: actual Chromium load and counter click, no JS/hydration errors. Minimal Vue button only, not site VRT."
+}

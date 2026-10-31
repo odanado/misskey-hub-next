@@ -1,0 +1,201 @@
+{
+  "checks": [
+    {
+      "path": "/ja/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 5342,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/stats.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 5342,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/stats.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/",
+      "width": 390,
+      "status": 200,
+      "bodyTextLength": 5318,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances20.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/servers/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 192,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/docs/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 1005,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/tools/share-link-generator/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 478,
+      "interaction": "share-link input + MFM preview",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/en/tools/share-link-generator/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 921,
+      "interaction": "share-link input + MFM preview",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/contact/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 414,
+      "interaction": "FAQ content + open",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/blog/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 4111,
+      "interaction": "article links",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/about-us/team/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 737,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ns/",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 7799,
+      "interaction": "rendered",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245"
+      ]
+    },
+    {
+      "path": "/ja/share/?text=bench",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 72,
+      "interaction": "client page mounted",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances5.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "path": "/ja/mi-web/?path=/test",
+      "width": 1440,
+      "status": 200,
+      "bodyTextLength": 77,
+      "interaction": "client page mounted",
+      "errors": [],
+      "localFailures": [],
+      "externalWarnings": [
+        "Access to fetch at 'https://misskey.io/api/emojis' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Emoji provider unavailable: TypeError: Failed to fetch\n    at uS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20043)\n    at dS (http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20199)\n    at http://127.0.0.1:52330/assets/pages-client-CTZMnZVt.js:34:20245",
+        "Access to fetch at 'https://instanceapp.misskey.page/_hub/instances5.json' from origin 'http://127.0.0.1:52330' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    }
+  ],
+  "policy": "Representative original Vue pages in Chromium, including mobile, tool input/MFM, FAQ, blog, and .client pages. Not full VRT."
+}

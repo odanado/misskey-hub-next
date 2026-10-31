@@ -1,0 +1,769 @@
+{
+  "startedAt": "2026-10-31T09:27:15.114693+00:00",
+  "base": "cbe507dc6ccd43094b96e91dcf5e04f3c3b84702",
+  "historicalSourceRef": "6cbe059c5d3b358557f6493b606f196c2ca06e8a",
+  "sourceFingerprints": {
+    "vue-island-css": "62897c2ebf0bc748671c98e8e245b1793f4f1e8ce1fcd0dae07ca55d26e35280",
+    "vue-pages": "cc220e22e541756ae92a54214b40e3258467db5e1075638a41061535762422bc"
+  },
+  "versions": {
+    "vue": "3.5.25",
+    "pluginVue": "6.0.2",
+    "vite": "7.3.1",
+    "vize": "0.609.0",
+    "oxContent": "3.4.3",
+    "node": "v22.22.2"
+  },
+  "policy": "Three fresh PNPM-startup builds for each of four cases; balanced sequential order, no parallel builds/browser. All 1434 Markdown and 156 YAML sources, 1991 URLs, public assets. Original 23 Vue pages/287 URLs, client JS/CSS, contributors live API, SSR and hydration code retained in page variant. Nuxt prepare outside timer as in historical case. Shared root dependencies unchanged; Vize 0.609.0 with Vite 7.3.1 isolated. On-demand SFC compilation (scanPatterns=[]), disk precompile cache disabled, Vite/Vize caches cleared; OS caches retained. Compiler API/hook probes in both variants. Output checks and artifact copying outside timer.",
+  "runs": [
+    {
+      "case": "vue-island-css",
+      "compiler": "vue",
+      "round": 1,
+      "seconds": 4.4465504579711705,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "coreCompilerMs": 41.71749799999884,
+      "vueSfcStyleMs": 57.165623999999525,
+      "allCompilerApiMs": 98.88312199999837,
+      "sfcPluginHookMs": 257.9944159999998,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 55,
+          "milliseconds": 32.44091499999922
+        },
+        "compileStyleAsync/client": {
+          "calls": 58,
+          "milliseconds": 57.165623999999525
+        },
+        "compileScript/client": {
+          "calls": 1,
+          "milliseconds": 6.84154199999989
+        },
+        "compileScript/ssr": {
+          "calls": 1,
+          "milliseconds": 1.0102079999996931
+        },
+        "compileTemplate/ssr": {
+          "calls": 1,
+          "milliseconds": 1.424833000000035
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "f987ceaaf8dd96c9d910a1e15cbb12d3492f0a23a487d38445bb69050663088b"
+    },
+    {
+      "case": "vue-island-css",
+      "compiler": "vize",
+      "round": 1,
+      "seconds": 4.92509691696614,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63366,
+      "cssFiles": 1,
+      "cssBytes": 173577,
+      "coreCompilerMs": 82.63325000000009,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 82.63325000000009,
+      "sfcPluginHookMs": 107.33083399999748,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 53,
+          "milliseconds": 79.19929200000001
+        },
+        "compileSfc/ssr": {
+          "calls": 1,
+          "milliseconds": 3.433958000000075
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "a5255e61c35496e47f37c46b7d2fc812a8f0f9cae4d61c934c84e5ca300d4c37"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vue",
+      "round": 1,
+      "seconds": 11.472994833020493,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "coreCompilerMs": 361.882075,
+      "vueSfcStyleMs": 79.4466739999948,
+      "allCompilerApiMs": 441.3287489999948,
+      "sfcPluginHookMs": 966.3534160000022,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 334,
+          "milliseconds": 132.82574800000134
+        },
+        "compileStyleAsync/client": {
+          "calls": 159,
+          "milliseconds": 79.4466739999948
+        },
+        "compileScript/client": {
+          "calls": 93,
+          "milliseconds": 115.05558200000064
+        },
+        "compileTemplate/client": {
+          "calls": 3,
+          "milliseconds": 0.40475000000014916
+        },
+        "compileScript/ssr": {
+          "calls": 88,
+          "milliseconds": 59.71345500000007
+        },
+        "compileTemplate/ssr": {
+          "calls": 91,
+          "milliseconds": 53.88253999999779
+        }
+      },
+      "compiledFileCount": 99,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "a2f96f673e057d11e6acad1fbef3116652faca51634fe11c9a807e4574367bee"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vize",
+      "round": 1,
+      "seconds": 12.152269709156826,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613813,
+      "cssFiles": 10,
+      "cssBytes": 213173,
+      "coreCompilerMs": 151.00670600000012,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 151.00670600000012,
+      "sfcPluginHookMs": 1555.6069219999986,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 99,
+          "milliseconds": 91.27454599999874
+        },
+        "compileSfc/ssr": {
+          "calls": 92,
+          "milliseconds": 59.732160000001386
+        }
+      },
+      "compiledFileCount": 100,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "2b0008ed69472f72c10ead0c97a326e2a5c06127facfa008cc8dc9995d5a7382"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vize",
+      "round": 2,
+      "seconds": 11.340628875186667,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613813,
+      "cssFiles": 10,
+      "cssBytes": 213173,
+      "coreCompilerMs": 109.10675200000469,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 109.10675200000469,
+      "sfcPluginHookMs": 1250.1587299999856,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 99,
+          "milliseconds": 53.27070799999956
+        },
+        "compileSfc/ssr": {
+          "calls": 92,
+          "milliseconds": 55.83604400000513
+        }
+      },
+      "compiledFileCount": 100,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "4dab7d107d755755b823340d8ab33e6e52947ab4148d33317c7dfaf1f52945a0"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vue",
+      "round": 2,
+      "seconds": 11.714708166895434,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "coreCompilerMs": 348.40203400000746,
+      "vueSfcStyleMs": 79.01857799999902,
+      "allCompilerApiMs": 427.4206120000065,
+      "sfcPluginHookMs": 1085.8312080000069,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 334,
+          "milliseconds": 127.41174900000169
+        },
+        "compileStyleAsync/client": {
+          "calls": 159,
+          "milliseconds": 79.01857799999902
+        },
+        "compileScript/client": {
+          "calls": 93,
+          "milliseconds": 107.05407500000001
+        },
+        "compileTemplate/client": {
+          "calls": 3,
+          "milliseconds": 0.3950399999998808
+        },
+        "compileScript/ssr": {
+          "calls": 88,
+          "milliseconds": 61.377299000004314
+        },
+        "compileTemplate/ssr": {
+          "calls": 91,
+          "milliseconds": 52.16387100000156
+        }
+      },
+      "compiledFileCount": 99,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "60b34fb10d0be963cbbc8048a08753813a63f1e1275f977d938703b19a0357c4"
+    },
+    {
+      "case": "vue-island-css",
+      "compiler": "vize",
+      "round": 2,
+      "seconds": 5.206736583961174,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63366,
+      "cssFiles": 1,
+      "cssBytes": 173577,
+      "coreCompilerMs": 82.41783699999928,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 82.41783699999928,
+      "sfcPluginHookMs": 107.01109599999972,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 53,
+          "milliseconds": 79.35550299999909
+        },
+        "compileSfc/ssr": {
+          "calls": 1,
+          "milliseconds": 3.0623340000001917
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "8489b1fdf87e3a7c14605c0825aedbe304c7a9941ad11c7fa17329a5948c030a"
+    },
+    {
+      "case": "vue-island-css",
+      "compiler": "vue",
+      "round": 2,
+      "seconds": 4.734255333896726,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "coreCompilerMs": 38.10013099999958,
+      "vueSfcStyleMs": 51.06716600000027,
+      "allCompilerApiMs": 89.16729699999985,
+      "sfcPluginHookMs": 214.65787900000043,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 55,
+          "milliseconds": 30.475172999999245
+        },
+        "compileStyleAsync/client": {
+          "calls": 58,
+          "milliseconds": 51.06716600000027
+        },
+        "compileScript/client": {
+          "calls": 1,
+          "milliseconds": 5.35229100000015
+        },
+        "compileScript/ssr": {
+          "calls": 1,
+          "milliseconds": 0.9327079999998205
+        },
+        "compileTemplate/ssr": {
+          "calls": 1,
+          "milliseconds": 1.3399590000003627
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "fa48a43043948b6c463e81e341b31d1addce21509aab088885352caa8554d0f6"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vue",
+      "round": 3,
+      "seconds": 11.189968542195857,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "coreCompilerMs": 354.52695800000424,
+      "vueSfcStyleMs": 83.64983199999892,
+      "allCompilerApiMs": 438.17679000000317,
+      "sfcPluginHookMs": 1075.3148400000014,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 334,
+          "milliseconds": 129.78787300000204
+        },
+        "compileStyleAsync/client": {
+          "calls": 159,
+          "milliseconds": 83.64983199999892
+        },
+        "compileScript/client": {
+          "calls": 93,
+          "milliseconds": 112.68204300000161
+        },
+        "compileTemplate/client": {
+          "calls": 3,
+          "milliseconds": 0.4105000000001837
+        },
+        "compileScript/ssr": {
+          "calls": 88,
+          "milliseconds": 60.22733399999561
+        },
+        "compileTemplate/ssr": {
+          "calls": 91,
+          "milliseconds": 51.4192080000048
+        }
+      },
+      "compiledFileCount": 99,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "9cc243ee1c652503b22342b2bd27ca61c4946179c647dc13fd5739305b5e7b10"
+    },
+    {
+      "case": "vue-pages",
+      "compiler": "vize",
+      "round": 3,
+      "seconds": 11.549101040931419,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613813,
+      "cssFiles": 10,
+      "cssBytes": 213173,
+      "coreCompilerMs": 148.79595199999085,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 148.79595199999085,
+      "sfcPluginHookMs": 1273.1837790000016,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 99,
+          "milliseconds": 88.05099399999699
+        },
+        "compileSfc/ssr": {
+          "calls": 92,
+          "milliseconds": 60.74495799999386
+        }
+      },
+      "compiledFileCount": 100,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "1fcbf826c012518d364a1ffa0a4a8f9df43cf11bd0310bd8cee0116ec4c585fa"
+    },
+    {
+      "case": "vue-island-css",
+      "compiler": "vue",
+      "round": 3,
+      "seconds": 4.872777667129412,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "coreCompilerMs": 35.66124899999954,
+      "vueSfcStyleMs": 48.15804099999991,
+      "allCompilerApiMs": 83.81928999999946,
+      "sfcPluginHookMs": 207.93758000000003,
+      "apiBreakdown": {
+        "parse/client": {
+          "calls": 55,
+          "milliseconds": 27.363164999999526
+        },
+        "compileStyleAsync/client": {
+          "calls": 58,
+          "milliseconds": 48.15804099999991
+        },
+        "compileScript/client": {
+          "calls": 1,
+          "milliseconds": 5.832792000000154
+        },
+        "compileScript/ssr": {
+          "calls": 1,
+          "milliseconds": 1.033042000000023
+        },
+        "compileTemplate/ssr": {
+          "calls": 1,
+          "milliseconds": 1.43224999999984
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "vite:vue"
+        ],
+        [
+          "vite:vue"
+        ]
+      ],
+      "logSha256": "62c205a5a19f4ea6c40242780b4eb1338d07d25920aac61b32945bb3e4bdd103"
+    },
+    {
+      "case": "vue-island-css",
+      "compiler": "vize",
+      "round": 3,
+      "seconds": 4.6741854581050575,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": 0,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63366,
+      "cssFiles": 1,
+      "cssBytes": 173577,
+      "coreCompilerMs": 37.606172999999444,
+      "vueSfcStyleMs": 0,
+      "allCompilerApiMs": 37.606172999999444,
+      "sfcPluginHookMs": 56.36246500000141,
+      "apiBreakdown": {
+        "compileSfc/client": {
+          "calls": 53,
+          "milliseconds": 37.20963099999949
+        },
+        "compileSfc/ssr": {
+          "calls": 1,
+          "milliseconds": 0.396541999999954
+        }
+      },
+      "compiledFileCount": 53,
+      "plugins": [
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ],
+        [
+          "comparison-vize-registry-boundary",
+          "vite:vue",
+          "vite-plugin-vize",
+          "vize:style-post-transform",
+          "vize:post-transform",
+          "vite-plugin-vize:manifest",
+          "comparison-vize-css-module-context"
+        ]
+      ],
+      "logSha256": "c198ddb4dcdab7bcf9b1a4004b6f281e6e86f880d3b4779c107213a90af0c4ba"
+    }
+  ],
+  "medians": {
+    "vue-island-css/vue": {
+      "seconds": 4.734255333896726,
+      "allCompilerApiMs": 89.16729699999985,
+      "coreCompilerMs": 38.10013099999958,
+      "vueSfcStyleMs": 51.06716600000027,
+      "sfcPluginHookMs": 214.65787900000043
+    },
+    "vue-island-css/vize": {
+      "seconds": 4.92509691696614,
+      "allCompilerApiMs": 82.41783699999928,
+      "coreCompilerMs": 82.41783699999928,
+      "vueSfcStyleMs": 0,
+      "sfcPluginHookMs": 107.01109599999972
+    },
+    "vue-pages/vue": {
+      "seconds": 11.472994833020493,
+      "allCompilerApiMs": 438.17679000000317,
+      "coreCompilerMs": 354.52695800000424,
+      "vueSfcStyleMs": 79.4466739999948,
+      "sfcPluginHookMs": 1075.3148400000014
+    },
+    "vue-pages/vize": {
+      "seconds": 11.549101040931419,
+      "allCompilerApiMs": 148.79595199999085,
+      "coreCompilerMs": 148.79595199999085,
+      "vueSfcStyleMs": 0,
+      "sfcPluginHookMs": 1273.1837790000016
+    }
+  },
+  "finishedAt": "2026-10-31T09:29:08.802012+00:00",
+  "sourceUnchanged": true,
+  "host": {
+    "cpu": "Apple M1 Pro",
+    "cpuCount": 10,
+    "platform": "darwin-arm64"
+  },
+  "comparison": {
+    "incrementDefinition": "Difference of three-run medians: restored pages minus minimal Vue+CSS, separately for each compiler. Not exclusive compiler time.",
+    "vueIncrementSeconds": 6.738739499123767,
+    "vizeIncrementSeconds": 6.624004123965278,
+    "incrementChangeSeconds": -0.11473537515848875,
+    "restoredPagesChangeSeconds": 0.07610620791092515,
+    "sfcCompilerReductionPercent": 66.04202792211112
+  },
+  "pairedRoundIncrements": [
+    {
+      "round": 1,
+      "vueSeconds": 7.026444375049323,
+      "vizeSeconds": 7.227172792190686,
+      "differenceSeconds": 0.20072841714136302
+    },
+    {
+      "round": 2,
+      "vueSeconds": 6.980452832998708,
+      "vizeSeconds": 6.133892291225493,
+      "differenceSeconds": -0.8465605417732149
+    },
+    {
+      "round": 3,
+      "vueSeconds": 6.317190875066444,
+      "vizeSeconds": 6.874915582826361,
+      "differenceSeconds": 0.5577247077599168
+    }
+  ],
+  "historicalRecheck": {
+    "originalSourceFingerprintsMatch": true,
+    "medians": {
+      "vue-pages": 11.958559167105705,
+      "vue-island-css": 4.9651195839978755
+    },
+    "incrementSeconds": 6.993439583107829
+  },
+  "browser": {
+    "vue": {
+      "passed": 13,
+      "total": 13,
+      "failures": []
+    },
+    "vize": {
+      "passed": 11,
+      "total": 13,
+      "failures": [
+        "/ja/tools/share-link-generator/",
+        "/en/tools/share-link-generator/"
+      ]
+    },
+    "minimalCountersPassed": 2
+  }
+}

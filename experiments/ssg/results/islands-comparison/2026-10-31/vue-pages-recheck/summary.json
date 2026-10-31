@@ -1,0 +1,142 @@
+{
+  "startedAt": "2026-10-31T09:20:54.574472+00:00",
+  "sourceFingerprints": {
+    "vue-island-css": "9d7eac7332d3c244fbc2f8999c376a343ef22216708dbc5350553a3feb7bbe7d",
+    "vue-pages": "c37c3b021582420d5449f7cdac639e424c1fb6e19a21a6c0a9162a04b7e38803"
+  },
+  "identicalInputs": [
+    "content",
+    "public",
+    "pages",
+    "layouts",
+    "locales"
+  ],
+  "supportDifferences": [
+    "assets/data/i18n-members.ts",
+    "assets/js/mi/io-emojis.ts",
+    "components/index/mobile.vue"
+  ],
+  "policy": "Three fresh PNPM-startup builds per case, order alternated per round, no concurrent browser/VRT. Full 1434 raw Ox Markdown and 156 YAML reads, all 1991 URLs and public copy. Candidate restores 287 original Vue URLs (26 .client), layouts/i18n/data and hydration. Nuxt prepare outside timer. Live contributors API fetched per candidate process and cached into hydration payload; auxiliary browser APIs outside SSG. Verification outside timer; OS caches retained.",
+  "runs": [
+    {
+      "case": "vue-island-css",
+      "round": 1,
+      "seconds": 5.491569832898676,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": null,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "peakRssBytes": 481476608,
+      "logSha256": "05b5037865db7d35385293d3c75a8e17f41133d388ecff15da7f10d2d4450e25"
+    },
+    {
+      "case": "vue-pages",
+      "round": 1,
+      "seconds": 12.169726041145623,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "peakRssBytes": 1541619712,
+      "logSha256": "f492dd697c2cbc2ac363401113c35e437a4fb53da5a3623d6dc7b526d1724775"
+    },
+    {
+      "case": "vue-pages",
+      "round": 2,
+      "seconds": 11.958559167105705,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "peakRssBytes": 1577484288,
+      "logSha256": "6eac839ef9d986564044d3853901ff58d59e31906d6743618bf0d00c7b40d9d0"
+    },
+    {
+      "case": "vue-island-css",
+      "round": 2,
+      "seconds": 4.9651195839978755,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": null,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "peakRssBytes": 487276544,
+      "logSha256": "5a926a9baf4a740918de44c3c7ba06f4b411d4ab8f785dcf351b362440742982"
+    },
+    {
+      "case": "vue-island-css",
+      "round": 3,
+      "seconds": 4.680195749970153,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": null,
+      "originalVueFiles": null,
+      "contributors": null,
+      "jsFiles": 1,
+      "jsBytes": 63314,
+      "cssFiles": 1,
+      "cssBytes": 148552,
+      "peakRssBytes": 485376000,
+      "logSha256": "176632a7aca91a81a0344638a27602fbd13750a2749f7676dee5aa08066fb25f"
+    },
+    {
+      "case": "vue-pages",
+      "round": 3,
+      "seconds": 11.602203374961391,
+      "exitCode": 0,
+      "verifiedUrls": 1991,
+      "counts": {
+        "staticUrls": 287,
+        "ssrVueUrls": 261,
+        "clientVueUrls": 26,
+        "languageEntryUrls": 233,
+        "rawContentUrls": 1471
+      },
+      "originalVueFiles": 23,
+      "contributors": 30,
+      "jsFiles": 29,
+      "jsBytes": 1613308,
+      "cssFiles": 9,
+      "cssBytes": 216096,
+      "peakRssBytes": 1495269376,
+      "logSha256": "2009d93e98ffabf10369cfbb99c6a3591fee206209a18da97815455c512dfb91"
+    }
+  ],
+  "medians": {
+    "vue-pages": 11.958559167105705,
+    "vue-island-css": 4.9651195839978755
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-31T09:21:51.482988+00:00"
+}

@@ -1,5 +1,7 @@
 # SSG高速化の比較実験
 
+続報：[固定ページ追加の約7秒を再確認しVizeと比較](ISLANDS_VUE_PAGES_VIZE_REPORT.md)。当時の構成は4.97→11.96秒（＋6.99秒）を再現。4条件の比較では通常Vueの追加6.74秒に対しVizeは6.62秒で、大きな改善は確認できなかった。Vizeの固定ページfull SSGは11.55秒、代表操作確認は11/13で、日英共有リンク生成ツールにhydration不一致が残る。これはraw Ox本文・YAML原文表示の診断条件。
+
 続報：[25秒版の全件VRT](ISLANDS_FULL_VRT_REPORT.md)を以前と同じmacOS・PC・ライト条件で測定し、**972/1,991 URL（48.82%）**が合格。Vizeは未測定。SSGは既存3回の中央値25.07秒を引用。
 
 続報：[既存Vue固定ページも復帰](ISLANDS_VUE_PAGES_REPORT.md)。全1,991 URLの起動込み中央値は**11.52秒**、今回の最小Vue＋CSS対照4.85秒から約6.67秒増。元のVueページ287 URLを含む。Markdown／YAMLは直接HTML・原文表示のままで、VRT互換版ではない。
