@@ -1,5 +1,7 @@
 # SSG高速化の比較実験
 
+固定ページ復帰版は、[ox-native-vue-pages](ox-native-vue-pages/README.md)（通常Vue）と [ox-native-vue-pages-vize](ox-native-vue-pages-vize/README.md)（Vize 0.609.0）として別ディレクトリに保存した。`pnpm pilot:ox-native-vue-pages:build` / `pnpm pilot:ox-native-vue-pages-vize:build` でそれぞれ生成し、出力も `.pilot/full/` 内で分離する。
+
 続報：[固定ページ追加の約7秒を再確認しVizeと比較](ISLANDS_VUE_PAGES_VIZE_REPORT.md)。当時の構成は4.97→11.96秒（＋6.99秒）を再現。4条件の比較では通常Vueの追加6.74秒に対しVizeは6.62秒で、大きな改善は確認できなかった。Vizeの固定ページfull SSGは11.55秒、代表操作確認は11/13で、日英共有リンク生成ツールにhydration不一致が残る。これはraw Ox本文・YAML原文表示の診断条件。
 
 続報：[25秒版の全件VRT](ISLANDS_FULL_VRT_REPORT.md)を以前と同じmacOS・PC・ライト条件で測定し、**972/1,991 URL（48.82%）**が合格。Vizeは未測定。SSGは既存3回の中央値25.07秒を引用。

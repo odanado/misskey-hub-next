@@ -5,9 +5,8 @@ import { readFileSync } from 'node:fs';
 import { currentProfile, timedApi, profileCompiler } from './profile.mjs';
 const require = createRequire(import.meta.url);
 const repository = resolve(import.meta.dirname, '../../../../..');
-const dependencyRoot = resolve(repository, '.pilot/islands-comparison/vize-deps');
-export async function compilerPlugins(root) {
-  const compiler = process.env.HUB_VUE_COMPILER ?? 'vue';
+const historicalDependencyRoot = resolve(repository, '.pilot/islands-comparison/vize-deps');
+export async function compilerPlugins(root, { compiler = process.env.HUB_VUE_COMPILER ?? 'vue', dependencyRoot = historicalDependencyRoot } = {}) {
   if (!['vue', 'vize'].includes(compiler)) throw Error('Invalid compiler');
   if (compiler === 'vue') {
     const { default: vue } = await import('@vitejs/plugin-vue');

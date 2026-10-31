@@ -1,7 +1,7 @@
 """Restore original Vue fixed pages/layouts over raw Ox Markdown + site CSS."""
 from pathlib import Path
-import subprocess,shutil,json,hashlib
-repo=Path.cwd();ref='6cbe059c5d3b358557f6493b606f196c2ca06e8a';dest=repo/'.pilot/islands-comparison/vue-pages';assert not dest.exists(),dest
+import subprocess,shutil,json,hashlib,os
+repo=Path.cwd();ref='6cbe059c5d3b358557f6493b606f196c2ca06e8a';dest=Path(os.environ.get('HUB_COMPARE_WORKSPACE',repo/'.pilot/islands-comparison/vue-pages'));assert not dest.exists(),dest
 archive=subprocess.run(['git','archive',ref],check=True,stdout=subprocess.PIPE).stdout;dest.mkdir(parents=True);subprocess.run(['tar','-x','-C',str(dest)],input=archive,check=True)
 (dest/'node_modules').symlink_to(repo/'node_modules',target_is_directory=True);assert(dest/'pnpm-lock.yaml').read_bytes()==(repo/'pnpm-lock.yaml').read_bytes()
 helper=Path('experiments/ssg/tooling/islands-comparison');shutil.copytree(repo/helper,dest/helper,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))

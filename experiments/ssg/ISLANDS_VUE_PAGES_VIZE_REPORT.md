@@ -1,5 +1,7 @@
 # 既存Vue固定ページの追加コストを再確認し、Vizeと比較
 
+保存構成：[ox-native-vue-pages](ox-native-vue-pages/README.md) / [ox-native-vue-pages-vize](ox-native-vue-pages-vize/README.md)。コンパイラ、ビルドコマンド、作業コピー、出力先を別にした。以下の既存ベンチ値は保持し、新コマンドの初回準備・生成後検証込みの時間へ読み替えない。
+
 **約7秒の増加は再現した。Vize 0.609.0へ差し替えても、この増加分の大きな短縮は確認できなかった。** PR #1 の `codex/ssg-migration-pilot` で行った診断実験で、本番移行のPR #3は変更していない。
 
 ## 当時の通常Vue構成をそのまま再計測

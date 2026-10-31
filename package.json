@@ -34,7 +34,13 @@
     "pilot:ox-native:30:verify": "HUB_PILOT_PAGES=30 node experiments/ssg/ox-native/verify-30.mjs",
     "pilot:ox-islands:build": "node experiments/ssg/ox-native-islands/build.mjs",
     "pilot:ox-islands:check": "tsc --project experiments/ssg/ox-native-islands/tsconfig.json",
-    "pilot:ox-islands:verify": "node --experimental-strip-types experiments/ssg/ox-native-islands/verify.ts"
+    "pilot:ox-islands:verify": "node --experimental-strip-types experiments/ssg/ox-native-islands/verify.ts",
+    "pilot:ox-native-vue-pages:prepare": "node experiments/ssg/ox-native-vue-pages/prepare.mjs",
+    "pilot:ox-native-vue-pages:build": "node experiments/ssg/ox-native-vue-pages/build.mjs",
+    "pilot:ox-native-vue-pages:verify": "node experiments/ssg/ox-native-vue-pages/verify.mjs",
+    "pilot:ox-native-vue-pages-vize:prepare": "node experiments/ssg/ox-native-vue-pages-vize/prepare.mjs",
+    "pilot:ox-native-vue-pages-vize:build": "node experiments/ssg/ox-native-vue-pages-vize/build.mjs",
+    "pilot:ox-native-vue-pages-vize:verify": "node experiments/ssg/ox-native-vue-pages-vize/verify.mjs"
   },
   "devDependencies": {
     "@astrojs/vue": "6.0.1",
