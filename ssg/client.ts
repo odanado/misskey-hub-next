@@ -64,9 +64,11 @@ async function start() {
 		);
 		app.config.idPrefix = "oxi" + element.dataset.oxIsland;
 		app.mount(element);
+		await (app as any).whenReady;
 	}
 	if (pageApp) {
 		pageApp.app.mount("#vue-page-root");
+		await pageApp.ready;
 		await nextTick();
 		if (pageApp.errors.length)
 			throw new AggregateError(pageApp.errors, "Page hydration failed");

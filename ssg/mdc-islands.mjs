@@ -39,12 +39,19 @@ export function extractMdcIslands(
 	{ allowUnclosed = false } = {},
 ) {
 	let containers = 0,
-		components = 0;
+		components = 0,
+		inline = 0;
 	const placeholder = (raw) =>
 		`<div data-mdc-slot="${snippets.push(raw) - 1}"></div>\n`;
 	// Scan in source order: fenced examples and inline code remain literal, while
 	// a component owns its complete quoted attributes before any inner fence scan.
-	const token = /^ {0,3}(?:`{3,}|~{3,})[^\n]*(?:\n|$)|`+|<([A-Z][\w-]*)\b/gm;
+	const token =
+		/^ {0,3}(?:`{3,}|~{3,})[^\n]*(?:\n|$)|`+|<([A-Z][\w-]*)\b|<(?:[^"'<>]|"[^"]*"|'[^']*')+>|(?<![\\!])\[(?!\^)([^\]\n]+)\](?![\[(:])(?:\{[^}\n]*\})?/gm;
+	const references = new Set(
+		[...input.matchAll(/^ {0,3}\[([^\]\n]+)\]:/gm)].map((match) =>
+			match[1].toLowerCase(),
+		),
+	);
 	let markdown = "",
 		cursor = 0,
 		match;
@@ -63,7 +70,39 @@ export function extractMdcIslands(
 			if (end) token.lastIndex = closing.lastIndex;
 			continue;
 		}
-		const end = componentEnd(input, start, match[1]);
+		if (match[0].startsWith("<") && !match[1]) {
+			const raw = /^<(script|style|pre|code)\b/i.exec(match[0]);
+			if (raw) {
+				const close = new RegExp("</" + raw[1] + "\\s*>", "ig");
+				close.lastIndex = token.lastIndex;
+				const end = close.exec(input);
+				token.lastIndex = end ? close.lastIndex : input.length;
+			}
+			continue;
+		}
+		if (match[2] !== undefined) {
+			const before = input.slice(input.lastIndexOf("\n", start) + 1, start);
+			if (/^[ xX]$/.test(match[2]) && /^\s*(?:[-*+]|\d+[.)])\s+$/.test(before))
+				continue;
+			if (references.has(match[2].toLowerCase())) continue;
+			const reference = /^\s*\[([^\]\n]*)\]/.exec(input.slice(token.lastIndex));
+			if (reference && references.has((reference[1] || match[2]).toLowerCase()))
+				continue;
+			const slot = snippets.push(match[0]) - 1;
+			markdown +=
+				input.slice(cursor, start) + `<span data-mdc-inline="${slot}"></span>`;
+			cursor = token.lastIndex;
+			inline++;
+			continue;
+		}
+		// Nuxt MDC treats the legacy multiline schema tag as owning the
+		// following document. Preserve that tree without rendering a schema UI.
+		const componentClose = componentEnd(input, start, match[1]);
+		const end =
+			/^MkSchemaViewer/.test(match[1]) &&
+			input.slice(start, componentClose).includes("\n")
+				? input.length
+				: componentClose;
 		markdown +=
 			input.slice(cursor, start) + placeholder(input.slice(start, end));
 		cursor = token.lastIndex = end;
@@ -72,15 +111,20 @@ export function extractMdcIslands(
 	markdown += input.slice(cursor);
 	const lines = markdown.match(/[^\n]*\n|[^\n]+$/g) ?? [];
 	const opening = (line) =>
-		/^(:{2,})([A-Za-z][\w-]*)(?:\{[^\n]*\})?[ \t]*(?:\r?\n)?$/.exec(line) ??
+		/^(:{1,})([A-Za-z][\w-]*)(?:\{[^\n]*\})?[ \t]*(?:\r?\n)?$/.exec(line) ??
 		(allowUnclosed
 			? /^(:{2,})([A-Za-z][\w-]*)\{[^\n]*(?:\r?\n)?$/.exec(line)
 			: null);
 	const restore = (raw) =>
-		raw.replace(
-			/<div data-mdc-slot="(\d+)"><\/div>\n/g,
-			(_, index) => snippets[Number(index)],
-		);
+		raw
+			.replace(
+				/<span data-mdc-inline="(\d+)"><\/span>/g,
+				(_, index) => snippets[Number(index)],
+			)
+			.replace(
+				/<div data-mdc-slot="(\d+)"><\/div>\n/g,
+				(_, index) => snippets[Number(index)],
+			);
 	let result = "";
 	for (let i = 0; i < lines.length; i++) {
 		const fence = fenceOpening.exec(lines[i]);
@@ -101,7 +145,9 @@ export function extractMdcIslands(
 			continue;
 		}
 		let raw = lines[i];
-		const stack = start[1].length === 2 ? [] : [start[1].length];
+		if (start[1].length === 2 && /^::\s*$/.test(lines[i + 1] ?? ""))
+			raw += lines[++i];
+		const stack = start[1].length <= 2 ? [] : [start[1].length];
 		let codeFence = null;
 		while (stack.length && ++i < lines.length) {
 			const line = lines[i];
@@ -130,5 +176,5 @@ export function extractMdcIslands(
 		result += placeholder(restore(raw));
 		containers++;
 	}
-	return { markdown: result, containers, components };
+	return { markdown: result, containers, components, inline };
 }

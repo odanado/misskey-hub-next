@@ -182,10 +182,10 @@ export async function createFixtureContext(browser, options = {}) {
 			? route.continue()
 			: route.abort(),
 	);
-	await context.addInitScript(() => {
+	await context.addInitScript((colorScheme) => {
 		if (window !== window.top) return;
 		localStorage.setItem("miHub_io_emoji", JSON.stringify({ emojis: [] }));
-		localStorage.setItem("nuxt-color-mode", "light");
+		localStorage.setItem("nuxt-color-mode", colorScheme);
 		localStorage.setItem("miHub_aichan_mode", "false");
 		// Reproducible client-side randomness for static/canvas examples as well.
 		let state = 0x12345678;
@@ -195,6 +195,6 @@ export async function createFixtureContext(browser, options = {}) {
 			state ^= state << 5;
 			return (state >>> 0) / 4294967296;
 		};
-	});
+	}, options.colorScheme ?? "light");
 	return context;
 }

@@ -94,6 +94,26 @@ export async function nativeDocument(
 			node.value = node.value.replace(/(?<=[\.\?\!])([A-Z(])/g, " $1");
 		}
 		if (node.type === "element") {
+			const first = node.children?.[0];
+			const checkbox =
+				first?.tagName === "input"
+					? first
+					: first?.tagName === "p"
+						? first.children?.[0]
+						: null;
+			if (node.tagName === "li" && checkbox?.properties?.type === "checkbox") {
+				node.properties.className = [
+					...new Set([...(node.properties.className ?? []), "task-list-item"]),
+				];
+				if (parent?.tagName === "ul")
+					parent.properties.className = [
+						...new Set([
+							...(parent.properties.className ?? []),
+							"contains-task-list",
+						]),
+					];
+			}
+
 			const classes = node.properties.className ?? [];
 			if (classes.includes("ox-container")) {
 				const type = classes
@@ -224,11 +244,15 @@ export async function nativeDocument(
 		}
 	function substitute(node) {
 		node.children = node.children?.flatMap((child) =>
-			child.tag === "div" && child.props.dataMdcSlot !== undefined
-				? compiled[Number(child.props.dataMdcSlot)].body.children
-						.filter((node) => node.tag !== "style")
+			child.tag === "span" && child.props.dataMdcInline !== undefined
+				? compiled[Number(child.props.dataMdcInline)].body.children
+						.flatMap((part) => (part.tag === "p" ? part.children : [part]))
 						.map(substitute)
-				: [substitute(child)],
+				: child.tag === "div" && child.props.dataMdcSlot !== undefined
+					? compiled[Number(child.props.dataMdcSlot)].body.children
+							.filter((node) => node.tag !== "style")
+							.map(substitute)
+					: [substitute(child)],
 		);
 		return node;
 	}

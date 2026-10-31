@@ -63,11 +63,21 @@ export async function renderBody(body: any, decorations: any) {
 				]),
 			) as Record<string, any>;
 		if (tag === "style") return ""; // Already hoisted into head by data preparation.
-		// Legacy schema viewers intentionally render nothing, as approved for
-		// the migration.
+		// Schema UI is omitted. Keep the inert legacy wrapper and child flow
+		// emitted by Nuxt MDC so following content retains its original margins.
 		if (["mk-schema-viewer", "mk-schema-viewer-item-object"].includes(tag)) {
 			decorations.notices.add(tag);
-			return "<!---->";
+			const name =
+				tag === "mk-schema-viewer"
+					? "MkSchemaViewer"
+					: "MkSchemaViewerItemObject";
+			const legacyProps = Object.fromEntries(
+				Object.entries(props).map(([key, value]) => [
+					key.replace(/^:/, ""),
+					value,
+				]),
+			);
+			return `<${name}${attributes(legacyProps)}>${await nodes(node.children)}</${name}>`;
 		}
 		const named =
 			custom[tag] ??

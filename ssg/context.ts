@@ -9,13 +9,21 @@ import {
 	watch,
 	type Component,
 } from "vue";
-import { contextKey, runtimeConfig, translate } from "./runtime";
+import { contextKey, runtimeConfig } from "./runtime";
+import { createI18n } from "vue-i18n";
 export function createContext(payload: any) {
 	const locale = payload.locale ?? payload.path.split("/")[1];
+	const i18n = createI18n({
+		legacy: false,
+		locale,
+		fallbackLocale: ["en", "ja"],
+		messages: { [locale]: payload.messages },
+	});
 	const context = {
+		i18n,
 		...payload,
 		staticMarkdownHtml: payload.staticMarkdownHtml ?? "",
-		locale: ref(locale),
+		locale: i18n.global.locale,
 		state: { miHub_global_scrollPos: ref(0) } as Record<string, any>,
 		route: reactive({
 			path: payload.path,
@@ -41,8 +49,8 @@ export function createContext(payload: any) {
 		}),
 		colorMode: reactive({
 			preference: "system",
-			value: "light",
-			forced: false,
+			value: payload.pageMeta?.colorMode ?? "light",
+			forced: !!payload.pageMeta?.colorMode,
 		}),
 	};
 	if (typeof window !== "undefined") {
@@ -79,42 +87,46 @@ export function islandApp(
 	components: Record<string, Component>,
 	slots: Record<string, string> = {},
 ) {
+	let readyResolve: any;
+	const ready = new Promise<void>((resolve) => {
+		readyResolve = resolve;
+	});
 	const app = createSSRApp({
 		setup() {
 			provide(contextKey, context);
 			return () =>
-				h(Suspense, null, {
-					default: () =>
-						h(
-							component,
-							props,
-							Object.fromEntries(
-								Object.entries(slots).map(([name, html]) => [
-									name,
-									() =>
-										createStaticVNode(
-											html,
-											typeof document === "undefined"
-												? 1
-												: staticNodeCount(html),
-										),
-								]),
+				h(
+					Suspense,
+					{ onResolve: readyResolve },
+					{
+						default: () =>
+							h(
+								component,
+								props,
+								Object.fromEntries(
+									Object.entries(slots).map(([name, html]) => [
+										name,
+										() =>
+											createStaticVNode(
+												html,
+												typeof document === "undefined"
+													? 1
+													: staticNodeCount(html),
+											),
+									]),
+								),
 							),
-						),
-				});
+					},
+				);
 		},
 	});
+	app.use(context.i18n);
+	(app as any).whenReady = ready;
 	app.config.throwUnhandledErrorInProduction = true;
 	runtimeConfig.public.locales = context.locales;
 	app.config.globalProperties.$route = context.route;
 	for (const [name, value] of Object.entries(components))
 		app.component(name, value);
-	app.config.globalProperties.$t = (key: string, params?: any) =>
-		translate(context.messages, key, params);
-	app.config.globalProperties.$n = (value: number) =>
-		new Intl.NumberFormat(context.locale.value).format(value);
-	app.config.globalProperties.$d = (value: any) =>
-		new Intl.DateTimeFormat(context.locale.value).format(value);
 	(app as any).$nuxt = { $config: runtimeConfig, _route: context.route };
 	return app;
 }

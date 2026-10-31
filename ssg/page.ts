@@ -8,6 +8,10 @@ export async function createPage(payload: any) {
 			"Layout:" + (payload.pageMeta?.layout ?? "default"),
 		);
 	context.isHydrating = true;
+	let readyResolve: any;
+	const ready = new Promise<void>((resolve) => {
+		readyResolve = resolve;
+	});
 	const root = defineComponent({
 		setup: () => () =>
 			h(
@@ -15,6 +19,7 @@ export async function createPage(payload: any) {
 				{
 					onResolve: () => {
 						context.isHydrating = false;
+						readyResolve();
 					},
 				},
 				{ default: () => h(Layout, null, { default: () => h(Page) }) },
@@ -25,5 +30,5 @@ export async function createPage(payload: any) {
 	if (typeof window === "undefined")
 		app.config.errorHandler = (error) => errors.push(error);
 	app.config.globalProperties.$route = context.route;
-	return { app, context, errors };
+	return { app, context, errors, ready };
 }

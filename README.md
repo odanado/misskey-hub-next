@@ -30,6 +30,8 @@ pnpm preview
 - `ssg/client.ts`：islands、固定Vueページ、メニュー、表、スクロール位置などのクライアント処理。
 - `tests/vrt/`：masterとの画像比較とfull SSG計測。
 
+翻訳は既存辞書とVue I18nを使い、文中のリンク・スロット・特殊文字も維持します。
+
 Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMDC描画・Prose部品・メタデータ変換との互換のため、`@nuxt/content` 2.13.4と`@nuxtjs/mdc`はライブラリとして残しています（`@nuxt/content`の依存経由でNuxtのpeer packageもインストールされます）。他方式の実験コードやVizeは含みません。
 
 ## 原稿・リンク・お知らせ
@@ -39,6 +41,8 @@ Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMD
 内部・外部リンクには既存の`GNuxtLink`を使います。ロケール付きURLは`useGLocalePath`で生成します。`x-mi-web://`のリンクも既存のMisskey Web用ゲートウェイへ接続します。ページ遷移は通常の静的HTMLへのリンクです。
 
 ## VRT
+
+`pnpm test`で元MDCパーサーとの構文互換テストを実行します。
 
 基準は移行前のmasterです。画像をGit管理せず、別worktreeを`.vrt/main/`に作ってNuxt基準を生成します。必要なら`VRT_BASELINE_REF`で比較元コミット、`VRT_BASELINE_DIR`で既存checkoutを指定できます。
 

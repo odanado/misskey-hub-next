@@ -3,6 +3,7 @@ declare const __HUB_PUBLIC_CONFIG__: {
 	serverListApiBaseUrl: string;
 };
 import MDC from "./FullMDC.vue";
+export { Translation as I18nT } from "vue-i18n";
 export { MDC };
 import appConfig from "../app.config";
 import packageJson from "../package.json";
@@ -71,27 +72,7 @@ export function useState<T>(key: string, init?: () => T) {
 	const context = useSiteContext();
 	return (context.state[key] ??= ref(init?.()));
 }
-export function translate(
-	messages: any,
-	key: string,
-	params?: Record<string, unknown>,
-) {
-	const value =
-		key.split(".").reduce((value, part) => value?.[part], messages) ?? key;
-	return typeof value === "string" && params
-		? value.replace(/\{(\w+)\}/g, (match, name) =>
-				String(params[name] ?? match),
-			)
-		: value;
-}
-export const useI18n = () => {
-	const context = useSiteContext();
-	return {
-		locale: context.locale,
-		t: (key: string, params?: Record<string, unknown>) =>
-			translate(context.messages, key, params),
-	};
-};
+export const useI18n = () => useSiteContext().i18n.global;
 export const useColorMode = () => useSiteContext().colorMode;
 export const useGLocalePath = () => {
 	const context = useSiteContext();
@@ -133,7 +114,10 @@ export const queryContent = (...args: any[]) => {
 		filters: any[] = [];
 	let fields: string[] | undefined, order: any;
 	const query: any = {
-		path: args[0],
+		path:
+			typeof args[0] === "string"
+				? "/" + args[0].replace(/^\/+|\/+$/g, "")
+				: args[0],
 		where: (value: any) => {
 			filters.push(value);
 			return query;
@@ -149,7 +133,9 @@ export const queryContent = (...args: any[]) => {
 	};
 	const matches = (item: any, filter: any) =>
 		Object.entries(filter).every(([key, value]: any) => {
-			const actual = item[key];
+			const actual = ["_draft", "_partial"].includes(key)
+				? (item[key] ?? false)
+				: item[key];
 			if (value && typeof value === "object") {
 				if ("$eq" in value) return actual === value.$eq;
 				if ("$ne" in value) return actual !== value.$ne;
@@ -265,25 +251,6 @@ export const ClientOnly = defineComponent({
 		return () => (mounted.value ? slots.default?.() : null);
 	},
 });
-export const I18nT = defineComponent({
-	props: ["keypath", "tag", "scope"],
-	setup(props, { slots }) {
-		const { t } = useI18n();
-		return () =>
-			h(
-				props.tag ?? "span",
-				null,
-				String(t(props.keypath))
-					.split(/(\{[^}]+\})/)
-					.flatMap((part) =>
-						part.startsWith("{")
-							? (slots[part.slice(1, -1)]?.() ?? [])
-							: [part],
-					),
-			);
-	},
-});
-
 export const ContentNavigation = defineComponent({
 	props: ["query"],
 	setup(props, { slots }) {

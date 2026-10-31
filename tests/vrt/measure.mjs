@@ -14,6 +14,7 @@ const result = {
 	commit: execFileSync("git", ["rev-parse", "HEAD"], {
 		encoding: "utf8",
 	}).trim(),
+	dirty: !!execFileSync("git", ["status", "--porcelain"], { encoding: "utf8" }).trim(),
 	node: process.version,
 	platform: platform() + "-" + arch(),
 	cpu: cpus()[0].model,

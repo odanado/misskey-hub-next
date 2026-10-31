@@ -11,7 +11,7 @@ const directories = [
 	"locales",
 	"public",
 	"scripts",
-	"tests/vrt",
+	"tests",
 ];
 export async function sourceFingerprint() {
 	const paths = [

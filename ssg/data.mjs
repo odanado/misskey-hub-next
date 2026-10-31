@@ -109,6 +109,22 @@ export async function prepareData(parseDocument) {
 		);
 	}
 
+	const merge = (base, addition) => {
+		const out = { ...base };
+		for (const [key, value] of Object.entries(addition ?? {})) {
+			out[key] =
+				value && typeof value === "object" && !Array.isArray(value)
+					? merge(out[key], value)
+					: value;
+		}
+		return out;
+	};
+	const originals = new Map(messages);
+	for (const [code, value] of originals)
+		messages.set(
+			code,
+			merge(merge(originals.get("ja"), originals.get("en")), value),
+		);
 	const pageMeta = new Map();
 	for (const file of new Set(
 		pages.filter((p) => p.pageFile).map((p) => p.pageFile),

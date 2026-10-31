@@ -98,6 +98,7 @@ const rows = [];
 if (process.argv.includes("--resume")) {
 	const previous = JSON.parse(await readFile(manifestFile, "utf8"));
 	if (
+		previous.sourceFingerprint !== sourceBefore ||
 		previous.scriptHash !== scriptHash ||
 		previous.benchmarkSha256 !== manifest.benchmarkSha256 ||
 		JSON.stringify(previous.modes) !== JSON.stringify(manifest.modes) ||

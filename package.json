@@ -8,7 +8,8 @@
 		"preview": "vite preview",
 		"test:vrt": "node --experimental-strip-types tests/vrt/run.mjs",
 		"test:vrt:baseline": "node --experimental-strip-types tests/vrt/build-main.mjs",
-		"benchmark": "node --experimental-strip-types tests/vrt/measure.mjs"
+		"benchmark": "node --experimental-strip-types tests/vrt/measure.mjs",
+		"test": "node --test tests/markdown.test.mjs"
 	},
 	"devDependencies": {
 		"@google/model-viewer": "^4.1.0",
@@ -27,6 +28,7 @@
 		"@vitejs/plugin-vue": "6.0.10",
 		"@vue/compiler-sfc": "3.5.25",
 		"aiscript-vscode": "github:aiscript-dev/aiscript-vscode#v0.1.16",
+		"autoprefixer": "10.4.22",
 		"bootstrap": "^5.3.8",
 		"bootstrap-icons": "^1.13.1",
 		"cssnano": "7.1.2",
@@ -39,6 +41,7 @@
 		"misskey-js": "2025.12.2",
 		"nprogress": "^0.2.0",
 		"pngjs": "7.0.0",
+		"property-information": "6.5.0",
 		"random-seed": "^0.3.0",
 		"sass-embedded": "^1.97.2",
 		"schema-dts": "^1.1.5",
@@ -54,9 +57,8 @@
 		"vite-node": "^5.2.0",
 		"vite-svg-loader": "^5.1.0",
 		"vue": "3.5.25",
-		"vue-router": "4.6.3",
-		"autoprefixer": "10.4.22",
-		"property-information": "6.5.0"
+		"vue-i18n": "11.1.11",
+		"vue-router": "4.6.3"
 	},
 	"packageManager": "pnpm@10.27.0",
 	"dependencies": {
