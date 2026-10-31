@@ -30,6 +30,8 @@ pnpm preview
 - `ssg/client.ts`：islands、固定Vueページ、メニュー、表、スクロール位置などのクライアント処理。
 - `tests/vrt/`：masterとの画像比較とfull SSG計測。
 
+MDC/Shikiの設定は`ssg/mdc.mjs`、旧記法の互換対象は`ssg/mdc-compatibility.mjs`で管理します。
+
 翻訳は既存辞書とVue I18nを使い、文中のリンク・スロット・特殊文字も維持します。
 
 Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMDC描画・Prose部品・メタデータ変換との互換のため、`@nuxt/content` 2.13.4と`@nuxtjs/mdc`はライブラリとして残しています（`@nuxt/content`の依存経由でNuxtのpeer packageもインストールされます）。他方式の実験コードやVizeは含みません。
@@ -48,6 +50,7 @@ Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMD
 
 ```sh
 git fetch origin
+pnpm exec playwright install chromium
 pnpm test:vrt:baseline
 pnpm build
 pnpm test:vrt
@@ -70,6 +73,8 @@ pnpm benchmark
 ```
 
 新規プロセスで本番ビルドを順次3回実行し、起動から全生成・publicコピー・旧URL転送生成の完了までを計測します。出力検証はタイマー外。VRTや他のビルドと同時に実行しないでください。結果は`.vrt/benchmark.json`です。
+
+測定結果・全件VRTの残差は[本番移行の検証レポート](docs/ssg-migration.md)に記載しています。
 
 ## クレジット・ライセンス
 
