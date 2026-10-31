@@ -420,5 +420,115 @@
         "Hydration completed but contains mismatches."
       ]
     }
+  },
+  "actions": {
+    "commit": "0329f5a328f45c2e27e73010d0941243daf8d293",
+    "node": "v22.23.4",
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "cpuCount": 4,
+    "publicUrls": 2003,
+    "runs": [
+      {
+        "compiler": "vue",
+        "seconds": 48.690671027,
+        "clientBuildSeconds": 5.03,
+        "verifiedPublicUrls": 2003,
+        "coreCompilerMs": 1072.8352210000069,
+        "vueSfcStyleMs": 93.3924260000008,
+        "allCompilerApiMs": 1166.2276470000077,
+        "sfcPluginHookMs": 1342.73463499997,
+        "apiBreakdown": {
+          "parse/client": {
+            "calls": 365,
+            "milliseconds": 337.12091800001986,
+            "files": 121
+          },
+          "compileStyleAsync/client": {
+            "calls": 128,
+            "milliseconds": 93.3924260000008,
+            "files": 53
+          },
+          "compileScript/client": {
+            "calls": 104,
+            "milliseconds": 486.15143799999714,
+            "files": 103
+          },
+          "compileTemplate/client": {
+            "calls": 17,
+            "milliseconds": 2.5440450000005512,
+            "files": 17
+          },
+          "compileScript/ssr": {
+            "calls": 99,
+            "milliseconds": 117.5488359999963,
+            "files": 99
+          },
+          "compileTemplate/ssr": {
+            "calls": 116,
+            "milliseconds": 129.46998399999302,
+            "files": 116
+          }
+        },
+        "plugins": [
+          [
+            "vite:vue"
+          ],
+          [
+            "vite:vue"
+          ]
+        ],
+        "compiledFileCount": 121
+      },
+      {
+        "compiler": "vize",
+        "seconds": 48.696340983000006,
+        "clientBuildSeconds": 4.97,
+        "verifiedPublicUrls": 2003,
+        "coreCompilerMs": 156.2159320000012,
+        "vueSfcStyleMs": 0,
+        "allCompilerApiMs": 156.2159320000012,
+        "sfcPluginHookMs": 393.70786000002045,
+        "apiBreakdown": {
+          "compileSfcBatchWithResults/client": {
+            "calls": 2,
+            "milliseconds": 59.49234499999943,
+            "files": 98
+          },
+          "compileSfc/client": {
+            "calls": 25,
+            "milliseconds": 7.332850999998755,
+            "files": 25
+          },
+          "compileSfc/ssr": {
+            "calls": 117,
+            "milliseconds": 89.39073600000302,
+            "files": 117
+          }
+        },
+        "plugins": [
+          [
+            "site-vize-source-compatibility",
+            "vite:vue",
+            "vite-plugin-vize",
+            "vize:style-post-transform",
+            "vize:post-transform",
+            "vite-plugin-vize:manifest"
+          ],
+          [
+            "site-vize-source-compatibility",
+            "vite:vue",
+            "vite-plugin-vize",
+            "vize:style-post-transform",
+            "vize:post-transform",
+            "vite-plugin-vize:manifest"
+          ]
+        ],
+        "compiledFileCount": 123
+      }
+    ],
+    "url": "https://github.com/odanado/misskey-hub-next/actions/runs/41187738039",
+    "conclusion": "success",
+    "os": "Ubuntu 26.04",
+    "policy": "One sequential fresh pnpm generate per compiler in the same Actions job; Vue first, Vize second; same code, dependencies, runner, cleared Vite/Vize caches and VIZE_PRECOMPILE_CACHE=0; compiler probes enabled; non-empty 2,003 HTML files plus 404 and manifest checked outside timer; no deployment."
   }
 }
