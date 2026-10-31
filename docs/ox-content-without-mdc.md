@@ -1,5 +1,7 @@
 # Nuxt Content／MDC依存をOx Markdown/MDXへ置換
 
+> この文書の計測・VRTはOx Content 3.4.3時点の記録です。3.5.2への更新後の速度計測は[別レポート](ox-content-3.5.2-benchmark.md)を参照してください。
+
 ベースは[PR #3](https://github.com/odanado/misskey-hub-next/pull/3)の`c0aa1d20e1c2225f8c792996c4d5215477d04881`。Nuxt ContentとMDCをライブラリとして残していた部分を置き換える、本番移行への追加PR。Vizeや他のSSG方式は含めない。
 
 ## 置換した処理

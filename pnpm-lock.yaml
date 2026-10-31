@@ -28,11 +28,11 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(three@0.182.0)
       '@ox-content/napi':
-        specifier: 3.4.3
-        version: 3.4.3
+        specifier: 3.5.2
+        version: 3.5.2
       '@ox-content/vite-plugin':
-        specifier: 3.4.3
-        version: 3.4.3(@vue/compiler-sfc@3.5.25)(katex@0.16.47)(vite@8.3.5(@types/node@24.10.7)(esbuild@0.27.2)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))
+        specifier: 3.5.2
+        version: 3.5.2(@vue/compiler-sfc@3.5.25)(csstype@3.2.3)(katex@0.16.47)(vite@8.3.5(@types/node@24.10.7)(esbuild@0.27.2)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))
       '@playwright/test':
         specifier: 1.58.2
         version: 1.58.2
@@ -675,57 +675,64 @@ packages:
     peerDependencies:
       three: '>= 0.159.0'
 
-  '@ox-content/binding-darwin-arm64@3.4.3':
-    resolution: {integrity: sha512-mZA+C+e140cuL+atggIg3fOUb6iPqBn6jJZ4HZDMQK69FneWDr/eoI2H0Y2L+cfQCEbkuKOIlq12Cbxkfvxlsg==}
+  '@ox-content/binding-darwin-arm64@3.5.2':
+    resolution: {integrity: sha512-exJ+3fGc3yxOsXe0Pa8jj6gEg0Cyb7tmWdODWbgMzdJKKKqqKXmOsAj9GzRxGTFLXJ1SREOSmQi9zHP+gJPj9A==}
     cpu: [arm64]
     os: [darwin]
 
-  '@ox-content/binding-darwin-x64@3.4.3':
-    resolution: {integrity: sha512-Fwrq+/cAK98CoIu6/g1+wO0pkgC1yQv7vsx/ppBZ2GzvgIE7ZLBl6K6GzMaOcoRLWEnMTC18aDBOYWoqFDv7Tw==}
+  '@ox-content/binding-darwin-x64@3.5.2':
+    resolution: {integrity: sha512-OM1ruGm11eDDMQFUOLhc+y6fz+L7YFMPcfZ5qhI1Rpo/h/e+dxWGFluHyWrifATiFilaHq5BAsPw9NFMMPR6MQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@ox-content/binding-linux-arm64-gnu@3.4.3':
-    resolution: {integrity: sha512-L5+zC0BmSZ2YbuPHWgWf3NTDV4lN+ba0SlTwIXMyZPlzvVhNx7KiZgxJyOsu2K1S6Ebu1OTZatN4zBSLO5BLGA==}
+  '@ox-content/binding-linux-arm64-gnu@3.5.2':
+    resolution: {integrity: sha512-2cJAQxQs+ouyIxvygskUy4VtVeXNLnfPqcsCfEWE4QOGDypCgYDmRQAd+ZcdSkVh3lX2VORALa/yafmcKnVq6g==}
     cpu: [arm64]
     os: [linux]
 
-  '@ox-content/binding-linux-arm64-musl@3.4.3':
-    resolution: {integrity: sha512-+gKhdoot8NpukRpihIy5E4pfOivcEWyJDA6copqgUipH01oyA8kSr4YyK8HRzsjVB9M1z2a9J6kMISgRuqqh/w==}
+  '@ox-content/binding-linux-arm64-musl@3.5.2':
+    resolution: {integrity: sha512-o1UXSBs054cPWSC5WcvSj6Q0apIq98FK1+HaMWqjRwP53/qoxtBfZE+MDuVvfvgiBTUIZNs/VlXqKG3kMPYqQg==}
     cpu: [arm64]
     os: [linux]
 
-  '@ox-content/binding-linux-x64-gnu@3.4.3':
-    resolution: {integrity: sha512-goPu6o2boBKtO3polV0e7CkdpBAj1pt/ytPR6rvr3YRgdDB4bfLyNT64xWaXZ0Ov0KkgWkYcDUVGFUVk1IH1jA==}
+  '@ox-content/binding-linux-x64-gnu@3.5.2':
+    resolution: {integrity: sha512-WyBjoUnuVeLTtx4ytmEioVU96p493ESH8Q7HdAEtNhXCrkFJLC3dTcInXO/WKzRWPvNvTcxEXT/5HChTsKawoQ==}
     cpu: [x64]
     os: [linux]
 
-  '@ox-content/binding-linux-x64-musl@3.4.3':
-    resolution: {integrity: sha512-/1Zs8UgEP6HmGdqLVGIaUwWfy3FH/7UCaAG2BNN1h2b0YEf+0OwMFK7rBdwT3/SZzSuv0qg8kcZS6uJ0mwpxFw==}
+  '@ox-content/binding-linux-x64-musl@3.5.2':
+    resolution: {integrity: sha512-zpKAN09aDENqVxB/SK4RSfAlQAMF6g8+FdyfW6CVegCHYfYp30rIULRg/+BtNWHImmTvUIJQRa1KEnYMs2+z2A==}
     cpu: [x64]
     os: [linux]
 
-  '@ox-content/binding-win32-x64-msvc@3.4.3':
-    resolution: {integrity: sha512-sMhsGO/oYTacqS41RrZdMajKOzEtT1cCsQICaxRp+B7WPrRSzT1yg7gSugr6qis2HzQsEwoWhH+IYHJZHYs3hg==}
+  '@ox-content/binding-win32-x64-msvc@3.5.2':
+    resolution: {integrity: sha512-W59EtZrHvWx2ijrH6lzaxpN/B2Lb+rMFayAzvFfFbZII6t+dxz7XcMJAJOulWIq+U5zM1TCIGl4CEbJSVEytWg==}
     cpu: [x64]
     os: [win32]
 
-  '@ox-content/napi@3.4.3':
-    resolution: {integrity: sha512-N2Cum5f+XONyyR65vB0HiDGRO56mG4etwDOqjOnbCaydmDGD+dI1yKr+sNWXi7L07/HfcO9AQ62sSxPxSYYK3A==}
+  '@ox-content/napi@3.5.2':
+    resolution: {integrity: sha512-EC591ljCqmPOLwlIq97SzVKElVeUVsjfDq/5wFZ5UfSaukz+4n9ZEAwxWuhItaHwhTBaLbCd9AuO7kADNbVRCA==}
 
-  '@ox-content/vite-plugin@3.4.3':
-    resolution: {integrity: sha512-EFkvIRj0jb2EuCs2QxAsSWFmcKwCYr/T84Y2hN2NNbVT/eKYua/qzOpQ3mqugJveAqgpT5BD3QQFdHoQDMkYrA==}
+  '@ox-content/vite-plugin@3.5.2':
+    resolution: {integrity: sha512-XLmonMPPPGIQsUltrP+qo1udiKP9kxE1kCngBIxgWTZQbRS1WS9pO/4Q5TK+fGijtQpSHgGF7dGEhJTGRWciFQ==}
     hasBin: true
     peerDependencies:
+      '@solidjs/compiler': ^2.0.0-rc.9
+      '@solidjs/web': ^2.0.0-rc.8
       '@vue/compiler-sfc': ^3.4.0
       budoux: ^0.9.0
       katex: ^0.16.0
       react: ^19.0.0
       react-dom: ^19.0.0
+      solid-js: ^2.0.0-rc.8
       svelte: ^5.0.0
       vite: ^0.2.8 || ^8.0.0
       vue: ^3.4.0
     peerDependenciesMeta:
+      '@solidjs/compiler':
+        optional: true
+      '@solidjs/web':
+        optional: true
       '@vue/compiler-sfc':
         optional: true
       budoux:
@@ -735,6 +742,8 @@ packages:
       react:
         optional: true
       react-dom:
+        optional: true
+      solid-js:
         optional: true
       svelte:
         optional: true
@@ -1167,6 +1176,75 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
+
+  '@takumi-rs/core-darwin-arm64@2.19.0':
+    resolution: {integrity: sha512-W/SI7Zrxo70dIaKNo+/kOLVr97S3ezkqsi7OM0RWz2CtP+cFgdBTPHXNsrB561gJFPHsuWN/LZ0u8oZxeAYtGw==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@takumi-rs/core-darwin-x64@2.19.0':
+    resolution: {integrity: sha512-xO/eTwPLrfUZRybMnG4lb6fDa7BjFryFi1TSkRF5KjPhkv21Lr5ovFEYz1y2P5k/4psrk66FJbU2EJDOEjdXiw==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@takumi-rs/core-linux-arm64-gnu@2.19.0':
+    resolution: {integrity: sha512-0PvL5bNTZTkLExjKveI3pOz3mtfjJtECqK49f/KGnp7J0bBmdoi2muszCh/dQQEEFKXcWNe27yfK1tzsO5fm0g==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-arm64-musl@2.19.0':
+    resolution: {integrity: sha512-nwKZMGcNVdmCP+U7+uINtXpgOeyk5m7g5D9EAtttpWc6ImjJm7MaqNK4Q2YBkOFeAIbRkY5dDL8Xcu19ATSj0w==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-x64-gnu@2.19.0':
+    resolution: {integrity: sha512-gf/U6qxWZk6uX5MFnl5/PTOzxBbISj89UQwbliHa1sflcq2d+SeITDqnGtkUueF/4TlgPVV7JvrPuhAbINy2Gg==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-x64-musl@2.19.0':
+    resolution: {integrity: sha512-zHD0EdIA2ZMCnKV/KtMgEerUcdvjYU4hGiru9I/x96u+BJXaQGMtHCxXt9Srhj+dlqhPyWdQTMAE3wpflN+0nw==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [linux]
+
+  '@takumi-rs/core-win32-arm64-msvc@2.19.0':
+    resolution: {integrity: sha512-v1CrPsmzhIe0+v+kIAdaSwrNMqiOpUXgMxHLUo0xDQdPMNML0EefDsL9ADtKDpT1pjhY/r9tvwVl3RhKsdottw==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@takumi-rs/core-win32-x64-msvc@2.19.0':
+    resolution: {integrity: sha512-9HJb2LTDSlehFrGfPw+uKgxM3XCnpy/PYnwtyzcgAiSFJVjwv0zCLl3IvJREakj5Y9rJCg0mMtPje9hlPbJL/A==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [win32]
+
+  '@takumi-rs/core@2.19.0':
+    resolution: {integrity: sha512-cYxOTb4pOu25Y8GBm3JTyIwenHNAZF11pxEmTxA3Q7VabC0pqeWDo/nOjTc2slTHORaglkvwK4SMmnpzab5BjQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      csstype: '*'
+    peerDependenciesMeta:
+      csstype:
+        optional: true
+
+  '@takumi-rs/helpers@2.19.0':
+    resolution: {integrity: sha512-3ycCjYCP31HACXBvlpv4fMLw9vneCVGuttFBfZr4jpL0nHNCt2wlXvt0XFt05FscLMUY2s+5PGKPE6EatXI/mg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      preact: ^10.0.0 || ^11.0.0
+      react: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      preact:
+        optional: true
+      react:
+        optional: true
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -4298,46 +4376,47 @@ snapshots:
       promise-worker-transferable: 1.0.4
       three: 0.182.0
 
-  '@ox-content/binding-darwin-arm64@3.4.3':
+  '@ox-content/binding-darwin-arm64@3.5.2':
     optional: true
 
-  '@ox-content/binding-darwin-x64@3.4.3':
+  '@ox-content/binding-darwin-x64@3.5.2':
     optional: true
 
-  '@ox-content/binding-linux-arm64-gnu@3.4.3':
+  '@ox-content/binding-linux-arm64-gnu@3.5.2':
     optional: true
 
-  '@ox-content/binding-linux-arm64-musl@3.4.3':
+  '@ox-content/binding-linux-arm64-musl@3.5.2':
     optional: true
 
-  '@ox-content/binding-linux-x64-gnu@3.4.3':
+  '@ox-content/binding-linux-x64-gnu@3.5.2':
     optional: true
 
-  '@ox-content/binding-linux-x64-musl@3.4.3':
+  '@ox-content/binding-linux-x64-musl@3.5.2':
     optional: true
 
-  '@ox-content/binding-win32-x64-msvc@3.4.3':
+  '@ox-content/binding-win32-x64-msvc@3.5.2':
     optional: true
 
-  '@ox-content/napi@3.4.3':
+  '@ox-content/napi@3.5.2':
     optionalDependencies:
-      '@ox-content/binding-darwin-arm64': 3.4.3
-      '@ox-content/binding-darwin-x64': 3.4.3
-      '@ox-content/binding-linux-arm64-gnu': 3.4.3
-      '@ox-content/binding-linux-arm64-musl': 3.4.3
-      '@ox-content/binding-linux-x64-gnu': 3.4.3
-      '@ox-content/binding-linux-x64-musl': 3.4.3
-      '@ox-content/binding-win32-x64-msvc': 3.4.3
+      '@ox-content/binding-darwin-arm64': 3.5.2
+      '@ox-content/binding-darwin-x64': 3.5.2
+      '@ox-content/binding-linux-arm64-gnu': 3.5.2
+      '@ox-content/binding-linux-arm64-musl': 3.5.2
+      '@ox-content/binding-linux-x64-gnu': 3.5.2
+      '@ox-content/binding-linux-x64-musl': 3.5.2
+      '@ox-content/binding-win32-x64-msvc': 3.5.2
 
-  '@ox-content/vite-plugin@3.4.3(@vue/compiler-sfc@3.5.25)(katex@0.16.47)(vite@8.3.5(@types/node@24.10.7)(esbuild@0.27.2)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))':
+  '@ox-content/vite-plugin@3.5.2(@vue/compiler-sfc@3.5.25)(csstype@3.2.3)(katex@0.16.47)(vite@8.3.5(@types/node@24.10.7)(esbuild@0.27.2)(jiti@2.6.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.25(typescript@5.9.2))':
     dependencies:
       '@cspell/dict-de-de': 4.1.3
       '@cspell/dict-en_us': 4.4.43
       '@cspell/dict-fr-fr': 2.3.2
       '@cspell/dict-pl_pl': 3.0.8
-      '@ox-content/napi': 3.4.3
+      '@ox-content/napi': 3.5.2
       '@resvg/resvg-js': 2.6.2
       '@standard-schema/spec': 1.1.0
+      '@takumi-rs/core': 2.19.0(csstype@3.2.3)
       clean-css: 5.3.3
       cspell-lib: 10.4.0
       glob: 13.0.6
@@ -4362,6 +4441,8 @@ snapshots:
       vue: 3.5.25(typescript@5.9.2)
     transitivePeerDependencies:
       - bufferutil
+      - csstype
+      - preact
       - proxy-agent
       - utf-8-validate
       - yauzl
@@ -4658,6 +4739,49 @@ snapshots:
   '@simplewebauthn/types@12.0.0': {}
 
   '@standard-schema/spec@1.1.0': {}
+
+  '@takumi-rs/core-darwin-arm64@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-darwin-x64@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-gnu@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-musl@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-gnu@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-musl@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-win32-arm64-msvc@2.19.0':
+    optional: true
+
+  '@takumi-rs/core-win32-x64-msvc@2.19.0':
+    optional: true
+
+  '@takumi-rs/core@2.19.0(csstype@3.2.3)':
+    dependencies:
+      '@takumi-rs/helpers': 2.19.0
+    optionalDependencies:
+      '@takumi-rs/core-darwin-arm64': 2.19.0
+      '@takumi-rs/core-darwin-x64': 2.19.0
+      '@takumi-rs/core-linux-arm64-gnu': 2.19.0
+      '@takumi-rs/core-linux-arm64-musl': 2.19.0
+      '@takumi-rs/core-linux-x64-gnu': 2.19.0
+      '@takumi-rs/core-linux-x64-musl': 2.19.0
+      '@takumi-rs/core-win32-arm64-msvc': 2.19.0
+      '@takumi-rs/core-win32-x64-msvc': 2.19.0
+      csstype: 3.2.3
+    transitivePeerDependencies:
+      - preact
+      - react
+
+  '@takumi-rs/helpers@2.19.0': {}
 
   '@trysound/sax@0.2.0': {}
 

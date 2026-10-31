@@ -75,7 +75,7 @@ pnpm benchmark
 
 新規プロセスで本番ビルドを順次3回実行し、起動から全生成・publicコピー・旧URL転送生成の完了までを計測します。出力検証はタイマー外。VRTや他のビルドと同時に実行しないでください。結果は`.vrt/benchmark.json`です。
 
-今回の依存削除の結果は[OxのみでのMarkdown移行レポート](docs/ox-content-without-mdc.md)に記載しています。#3時点のmasterとの比較は[本番移行の検証レポート](docs/ssg-migration.md)に残しています。
+Ox Content 3.5.2への更新計測は[最新版のSSG計測レポート](docs/ox-content-3.5.2-benchmark.md)に記載しています。今回の依存削除の結果は[OxのみでのMarkdown移行レポート](docs/ox-content-without-mdc.md)に記載しています。#3時点のmasterとの比較は[本番移行の検証レポート](docs/ssg-migration.md)に残しています。
 
 Actionsで1回だけ生成する場合は、`Deploy`の`build_only=true`を指定します。デプロイとキャッシュ削除は実行せず、全公開HTML・404・manifestを検証してジョブのSummaryへ時間を出力します。通常の実行では既定値`false`によりデプロイ動作を維持します。
 

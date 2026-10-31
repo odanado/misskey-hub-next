@@ -13,8 +13,8 @@
 	},
 	"devDependencies": {
 		"@google/model-viewer": "^4.1.0",
-		"@ox-content/napi": "3.4.3",
-		"@ox-content/vite-plugin": "3.4.3",
+		"@ox-content/napi": "3.5.2",
+		"@ox-content/vite-plugin": "3.5.2",
 		"@playwright/test": "1.58.2",
 		"@shikijs/transformers": "1.29.2",
 		"@types/js-yaml": "^4.0.9",
