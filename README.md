@@ -24,17 +24,18 @@ pnpm preview
 
 - `ssg/host.ts`：Oxが所有するルート・HTML出力の入口。
 - `ssg/routes.mjs` / `data.mjs`：原稿とVueページから公開URL、翻訳、ナビゲーション、ページデータを生成。
-- `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は既存MDC/Shikiと接続。旧記法の構造が異なる38ファイルは`mdc-compatibility.mjs`で明示して元MDCを使用（生成先は同じOx Host）。
+- `ssg/markdown.ts` / `markdown-native.mjs`：OxのMarkdown APIで全原稿を解析。旧コンポーネント記法は`component-syntax.mjs`でMDXに変換し、`markdown-ox.mjs`からOxのネイティブコンポーネント解析へ渡す。
 - `ssg/theme.ts` / `html.ts`：ドキュメントの静的HTML。通常本文全体をVueのVNodeやクライアントモジュールにしません。
 - `ssg/registry.ts` / `runtime.ts` / `page.ts`：既存Vue部品、ページ、レイアウト、auto import、翻訳・非同期データ等の互換処理。
 - `ssg/client.ts`：islands、固定Vueページ、メニュー、表、スクロール位置などのクライアント処理。
-- `tests/vrt/`：masterとの画像比較とfull SSG計測。
+- `ssg/prose/` / `MarkdownRenderer.vue`：既存の見た目を維持するローカルのVue描画部品。YAML内のMarkdownもOxで事前解析する。
+- `tests/vrt/`：ベースブランチとの画像比較とfull SSG計測。
 
-MDC/Shikiの設定は`ssg/mdc.mjs`、旧記法の互換対象は`ssg/mdc-compatibility.mjs`で管理します。
+コード色は`ssg/highlight.mjs`のShiki設定で管理します。全1,440原稿をOxで解析し、旧MDCパーサーへのフォールバックはありません。
 
 翻訳は既存辞書とVue I18nを使い、文中のリンク・スロット・特殊文字も維持します。
 
-Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMDC描画・Prose部品・メタデータ変換との互換のため、`@nuxt/content` 2.13.4と`@nuxtjs/mdc`はライブラリとして残しています（`@nuxt/content`の依存経由でNuxtのpeer packageもインストールされます）。他方式の実験コードやVizeは含みません。
+Nuxt Content、MDC、Nuxt本体には依存しません。ProseのHTML/CSS、パス・目次の規則、Shikiの描画設定はMITライセンスに従って必要部分をローカル化しています（`ssg/prose/NOTICE.md`）。既存Vue側の`MDC`という名前は`MarkdownRenderer.vue`への互換エイリアスです。他方式の実験コードやVizeは含みません。
 
 ## 原稿・リンク・お知らせ
 
@@ -44,9 +45,9 @@ Nuxtのアプリビルド・Nitroサーバーは使用しません。既存のMD
 
 ## VRT
 
-`pnpm test`で元MDCパーサーとの構文互換テストを実行します。
+`pnpm test`で、#3の旧パーサーから採取した独立スナップショットとの互換テストを実行します。本文・リンク・画像属性、タイトル・説明・目次、コンポーネントprops、YAML内のMarkdown、OxのネイティブMDXを検証します。スナップショットはビルドに使用しません。
 
-基準は移行前のmasterです。画像をGit管理せず、別worktreeを`.vrt/main/`に作ってNuxt基準を生成します。必要なら`VRT_BASELINE_REF`で比較元コミット、`VRT_BASELINE_DIR`で既存checkoutを指定できます。
+この依存削除PRの基準は、#3の`origin/codex/ox-native-islands-production`です。画像をGit管理せず、別worktreeを`.vrt/main/`に作って比較元をビルドします。`VRT_BASELINE_REF`で比較元コミット、`VRT_BASELINE_DIR`で既存checkoutを指定できます。Nuxtのmasterを指定する従来の比較も利用できます。既存worktreeの参照先は自動更新しないため、別の比較元に切り替える際は別checkoutを指定してください。
 
 ```sh
 git fetch origin
@@ -74,12 +75,12 @@ pnpm benchmark
 
 新規プロセスで本番ビルドを順次3回実行し、起動から全生成・publicコピー・旧URL転送生成の完了までを計測します。出力検証はタイマー外。VRTや他のビルドと同時に実行しないでください。結果は`.vrt/benchmark.json`です。
 
-測定結果・全件VRTの残差は[本番移行の検証レポート](docs/ssg-migration.md)に記載しています。
+今回の依存削除の結果は[OxのみでのMarkdown移行レポート](docs/ox-content-without-mdc.md)に記載しています。#3時点のmasterとの比較は[本番移行の検証レポート](docs/ssg-migration.md)に残しています。
 
 Actionsで1回だけ生成する場合は、`Deploy`の`build_only=true`を指定します。デプロイとキャッシュ削除は実行せず、全公開HTML・404・manifestを検証してジョブのSummaryへ時間を出力します。通常の実行では既定値`false`によりデプロイ動作を維持します。
 
 ## クレジット・ライセンス
 
-Ox Custom Hostによる構成は[ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)を基にしています。派生コードのコミットには`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与します。
+Ox Custom Hostによる構成は[ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)を基にしています。#2の作者によるコードを直接移植・改変するコミットに、`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与します。
 
 GNU Affero General Public License v3.0。既存コンテンツ・部品の著作権表示を維持します。

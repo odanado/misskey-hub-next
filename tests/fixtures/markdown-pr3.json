@@ -1,0 +1,579 @@
+{
+  "base": "c0aa1d20e1c2225f8c792996c4d5215477d04881",
+  "samples": [
+    {
+      "source": "<span title=\"[literal]\">Text</span>",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "element",
+                "tag": "span",
+                "props": {
+                  "title": "[literal]"
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Text"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "<script>const values = [\"one\"];</script>",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "script",
+            "props": {},
+            "children": [
+              {
+                "type": "text",
+                "value": "const values = [\"one\"];"
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "# Title\n\n<MkSchemaViewer :schema=\"{\n $ref: 'misskey://Note'\n}\"/>\n\nDescription.\n\n## Operation\n\nNone",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "h1",
+            "props": {
+              "id": "title"
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Title"
+              }
+            ]
+          },
+          {
+            "type": "element",
+            "tag": "mk-schema-viewer",
+            "props": {
+              ":schema": "{\n$ref: 'misskey://Note'\n}"
+            },
+            "children": [
+              {
+                "type": "element",
+                "tag": "p",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Description."
+                  }
+                ]
+              },
+              {
+                "type": "element",
+                "tag": "h2",
+                "props": {
+                  "id": "operation"
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Operation"
+                  }
+                ]
+              },
+              {
+                "type": "element",
+                "tag": "p",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "None"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": [
+            {
+              "id": "operation",
+              "depth": 2,
+              "text": "Operation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source": ":MkIndex",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "mk-index",
+            "props": {},
+            "children": []
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "<figure>\n\n::ExampleFigure\n::\n\n<figcaption>Caption</figcaption>\n</figure>",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "figure",
+            "props": {},
+            "children": [
+              {
+                "type": "element",
+                "tag": "example-figure",
+                "props": {},
+                "children": []
+              },
+              {
+                "type": "element",
+                "tag": "figcaption",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Caption"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "Use [1OCPU RAM6GB or greater] here.",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "text",
+                "value": "Use "
+              },
+              {
+                "type": "element",
+                "tag": "span",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "1OCPU RAM6GB or greater"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": " here."
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "Use [a span]{.important} here.",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "text",
+                "value": "Use "
+              },
+              {
+                "type": "element",
+                "tag": "span",
+                "props": {
+                  "className": [
+                    "important"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "a span"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": " here."
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "Keep [docs](https://example.com), `literal [code]`, and \\[escaped\\].",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "text",
+                "value": "Keep "
+              },
+              {
+                "type": "element",
+                "tag": "a",
+                "props": {
+                  "href": "https://example.com",
+                  "rel": [
+                    "nofollow"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "docs"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": ", "
+              },
+              {
+                "type": "element",
+                "tag": "code",
+                "props": {
+                  "className": []
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "literal [code]"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": ", and [escaped]."
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "- [x] completed\n- [ ] pending",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "ul",
+            "props": {
+              "className": [
+                "contains-task-list"
+              ]
+            },
+            "children": [
+              {
+                "type": "element",
+                "tag": "li",
+                "props": {
+                  "className": [
+                    "task-list-item"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "element",
+                    "tag": "input",
+                    "props": {
+                      "checked": true,
+                      "disabled": true,
+                      "type": "checkbox"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "value": " completed"
+                  }
+                ]
+              },
+              {
+                "type": "element",
+                "tag": "li",
+                "props": {
+                  "className": [
+                    "task-list-item"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "element",
+                    "tag": "input",
+                    "props": {
+                      "disabled": true,
+                      "type": "checkbox"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "text",
+                    "value": " pending"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "[docs][ref]\n\n[ref]: https://example.com",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "element",
+                "tag": "a",
+                "props": {
+                  "href": "https://example.com",
+                  "rel": [
+                    "nofollow"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "docs"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": ":::tip\nUse [a span] inside a component.\n:::",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "tip",
+            "props": {},
+            "children": [
+              {
+                "type": "element",
+                "tag": "p",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Use "
+                  },
+                  {
+                    "type": "element",
+                    "tag": "span",
+                    "props": {},
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "a span"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " inside a component."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "Use [ … ] here.",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "text",
+                "value": "Use "
+              },
+              {
+                "type": "element",
+                "tag": "span",
+                "props": {},
+                "children": [
+                  {
+                    "type": "text",
+                    "value": " …"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": " here."
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    },
+    {
+      "source": "[ $rainbow ]{.example}",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "element",
+            "tag": "p",
+            "props": {},
+            "children": [
+              {
+                "type": "element",
+                "tag": "span",
+                "props": {
+                  "className": [
+                    "example"
+                  ]
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": " $rainbow"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "toc": {
+          "title": "",
+          "searchDepth": 2,
+          "depth": 2,
+          "links": []
+        }
+      }
+    }
+  ]
+}

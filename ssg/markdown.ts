@@ -1,6 +1,10 @@
-import { legacyMdcSources, parseLegacyDocument } from "./mdc-compatibility.mjs";
 import { prepareNativeMarkdown, nativeDocument } from "./markdown-native.mjs";
-import { compileHast, generateToc, generatePath, parseMdc } from "./mdc.mjs";
+import {
+	compileHast,
+	generateToc,
+	generatePath,
+	compileFragment,
+} from "./markdown-ox.mjs";
 import { semanticFootnotes } from "./semantic-footnotes.mjs";
 import { resolve } from "node:path";
 import { root } from "./routes.mjs";
@@ -13,9 +17,8 @@ export function createDocumentParser(host: any) {
 			documents.set(
 				entry.source,
 				(async () => {
-					if (legacyMdcSources.has(entry.source)) return parseLegacyDocument(entry);
 					const prepared = prepareNativeMarkdown(entry, {
-						mdcIslands: true,
+						componentIslands: true,
 						allowUnclosedContainers: true,
 					});
 					const result = await host.markdown.render({
@@ -24,20 +27,16 @@ export function createDocumentParser(host: any) {
 						convertMdLinks: false,
 						renderHtml: async ({ html }: { html: string }) => ({
 							html,
-							metadata: await nativeDocument(
-								entry,
-								(snippet: string) => parseMdc(snippet, "snippet.md"),
-								{
-									compileHast,
-									generateToc,
-									generatePath,
-									mdcIslands: true,
-									allowUnclosedContainers: true,
-									prepared,
-									renderedHtml: html,
-									normalizeTree: semanticFootnotes,
-								},
-							),
+							metadata: await nativeDocument(entry, compileFragment, {
+								compileHast,
+								generateToc,
+								generatePath,
+								componentIslands: true,
+								allowUnclosedContainers: true,
+								prepared,
+								renderedHtml: html,
+								normalizeTree: semanticFootnotes,
+							}),
 						}),
 					});
 					return result.metadata;

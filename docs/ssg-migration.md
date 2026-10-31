@@ -1,5 +1,7 @@
 # Ox Content＋Vue islandsへの本番SSG移行
 
+> この文書はPR #3時点の記録です。その後のNuxt Content／MDC依存削除は[別レポート](ox-content-without-mdc.md)を参照してください。
+
 forkの既定ブランチ`master`を親リポジトリの`ba74668080484d92da0d372e58a53373e9064c27`へ同期し、そのコミットから本番移行を作成した。[PR #3](https://github.com/odanado/misskey-hub-next/pull/3)は、この方式の実装とmasterとのVRTだけを含む。
 
 ## 生成方式

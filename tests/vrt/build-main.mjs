@@ -17,7 +17,8 @@ try {
 			"add",
 			"--detach",
 			baseline,
-			process.env.VRT_BASELINE_REF ?? "origin/master",
+			process.env.VRT_BASELINE_REF ??
+				"origin/codex/ox-native-islands-production",
 		],
 		{ cwd: root, stdio: "inherit" },
 	);
@@ -34,7 +35,11 @@ try {
 }
 const directory = resolve(baseline),
 	config = resolve(directory, "nuxt.config.ts");
-const original = await readFile(config, "utf8");
+const pkg = JSON.parse(
+	await readFile(resolve(directory, "package.json"), "utf8"),
+);
+const isOx = pkg.scripts?.build === "node ssg/build.mjs";
+const original = isOx ? null : await readFile(config, "utf8");
 const pages = await loadPages(),
 	output = resolve(root, ".vrt");
 await mkdir(output, { recursive: true });
@@ -47,16 +52,18 @@ await writeFile(
 	module,
 	`export default function(_options,nuxt){nuxt.options.plugins.push(${JSON.stringify(resolve(import.meta.dirname, "ready.mjs"))});nuxt.options.routeRules={};nuxt.options.nitro.prerender={routes:${JSON.stringify(pages.map((p) => p.path))},crawlLinks:false,failOnError:true,concurrency:1,ignore:[route=>!${JSON.stringify(pages.map((p) => p.path))}.some(p=>route===p||route===p+'_payload.json')&&!['/api/','/__nuxt_island/','/_i18n/'].some(p=>route.startsWith(p))]};}`,
 );
-const modified = original.replace(
+const modified = original?.replace(
 	"modules: [",
 	"modules: [" + JSON.stringify(module) + ",",
 );
-if (modified === original) throw Error("Cannot instrument Nuxt baseline");
-await writeFile(config, modified);
+if (!isOx) {
+	if (modified === original) throw Error("Cannot instrument Nuxt baseline");
+	await writeFile(config, modified);
+}
 try {
 	const log = createWriteStream(resolve(output, "baseline-build.log"));
 	const start = performance.now();
-	const child = spawn("pnpm", ["exec", "nuxt", "generate"], {
+	const child = spawn("pnpm", isOx ? ["build"] : ["exec", "nuxt", "generate"], {
 		cwd: directory,
 		env: { ...process.env, NODE_ENV: "production", TZ: "Asia/Tokyo" },
 		stdio: ["ignore", "pipe", "pipe"],
@@ -70,7 +77,7 @@ try {
 	await new Promise((ok) => log.end(ok));
 	if (code !== 0)
 		throw Error(
-			"Nuxt baseline build failed: " + resolve(output, "baseline-build.log"),
+			"Baseline build failed: " + resolve(output, "baseline-build.log"),
 		);
 	const baselineCommit = execFileSync("git", ["rev-parse", "HEAD"], {
 		cwd: directory,
@@ -89,5 +96,5 @@ try {
 	);
 	console.log(result);
 } finally {
-	await writeFile(config, original);
+	if (!isOx) await writeFile(config, original);
 }

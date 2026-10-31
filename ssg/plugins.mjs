@@ -1,16 +1,13 @@
-import { resolve, dirname } from "node:path";
-import { createRequire } from "node:module";
+import { resolve } from "node:path";
 import { readdirSync } from "node:fs";
 import { createUnimport } from "unimport";
 import unocss from "unocss/vite";
 import svgLoader from "vite-svg-loader";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
-const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
 const runtime = resolve(import.meta.dirname, "runtime.ts");
-const mdc = dirname(require.resolve("@nuxtjs/mdc")),
-	content = dirname(require.resolve("@nuxt/content"));
+const prose = resolve(root, "ssg/prose");
 const names = [
 	"ref",
 	"shallowRef",
@@ -105,33 +102,10 @@ export function plugins() {
 							);
 						})
 						.join("\n");
-				if (id === "\0virtual:site-prose")
-					return [...readdirSync(resolve(mdc, "runtime/components/prose")), "ProseCodeInline.vue"]
-						.filter(
-							(file) =>
-								file.endsWith(".vue") &&
-								!["ProseA.vue", "ProseImg.vue", "ProseTable.vue"].includes(
-									file,
-								),
-						)
-						.map((file) => {
-							const name = file.slice(0, -4);
-							const path = [
-								"ProsePre",
-								"ProseCode",
-								"ProseCodeInline",
-							].includes(name)
-								? resolve(content, "runtime/components/Prose", file)
-								: resolve(mdc, "runtime/components/prose", file);
-							return (
-								"export{default as " +
-								name +
-								"}from " +
-								JSON.stringify(path) +
-								";"
-							);
-						})
-						.join("\n");
+                if (id === "\0virtual:site-prose")
+                    return readdirSync(prose).filter(file => file.endsWith(".vue")).map(file =>
+                        `export{default as ${file.slice(0,-4)}}from ${JSON.stringify(resolve(prose,file))};`
+                    ).join("\n");
 			},
 			async transform(source, id) {
 				if (

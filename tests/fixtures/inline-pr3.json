@@ -1,0 +1,809 @@
+{
+  "base": "c0aa1d20e1c2225f8c792996c4d5215477d04881",
+  "samples": [
+    {
+      "source": "如果你因不再需要使用 Misskey 帳號而想刪除帳號，本頁將介紹以下內容：\n\n- 刪除帳號時的注意事項\n- 刪除帳號的方法\n\n:::danger\n\n稍後會有更詳細的說明：**一旦刪除帳號，將會影響日後重新使用 Misskey（再次註冊）。**\n請務必慎重刪除帳號。\n\n:::\n\n## 刪除帳號時的注意事項\n刪除帳號後，將會發生以下情況：\n\n- 無法再登入該帳號\n- 資料的刪除會在一段時間內逐步進行\n- 相同的 ID 將永遠無法再次使用\n\n以下將逐項說明。\n\n### 無法再登入該帳號\n一旦刪除帳號，就無法再次登入該帳號。 **也沒有「誤刪後復原」等功能。** 請特別注意。\n\n### 資料的刪除會在一段時間內逐步進行\n刪除資料是一項負載非常高的操作。因此，為了不影響其他使用者的正常使用，系統會在一段時間內逐步刪除資料。\n\n請注意，刪除帳號並不代表所有資料會在同一時間立刻被刪除。\n\n### 相同的 ID 將永遠無法再次使用\n由於與聯邦處理機制的相容性限制，目前一旦取得過的 ID（`@someone@misskey.example.com` 中的 `@someone` 部分）**將永遠無法再次使用。**\n\n因此，在同一台伺服器上無法再次以相同的 ID 註冊帳號，**請務必留意。**\n\n---------------\n\n在充分理解以上所有內容後，若仍需刪除帳號，請從下方選擇您所使用的裝置類型，並依指示刪除帳號。\n",
+      "semanticSha256": "621972d7149d8630d03c53b97776d5deb136002319618894977c89d8444de7e3"
+    },
+    {
+      "source": "開啟 Misskey，點選螢幕左下方的「≡」按鈕，然後在出現的功能表中點選「設定」。\n",
+      "semanticSha256": "7b2d73c8e93748acbadefacbe6a5d796a6f49ae3bec71cdb62eb3a76a973f3cb"
+    },
+    {
+      "source": "在「設定」類別中找到「其他」，然後點選它。\n",
+      "semanticSha256": "25272ac89ee1bd6acfe318b78e2d41ba2c76b2af14d203a719ddf7d11b50a0f8"
+    },
+    {
+      "source": "點擊並開啟「停用帳戶」，確認注意事項後，點擊「刪除帳號請求」。\n",
+      "semanticSha256": "2158ddf1b0ca25b1c144138bd264d8278f1801933254afe8f63c78a2062b8f0a"
+    },
+    {
+      "source": "由於這是重要操作，系統會要求你輸入登入該帳號時所使用的密碼以進行確認。\n",
+      "semanticSha256": "c6cee94164f718350daa716c919d36d1229e3f328552ddb7b0bf822c2860e56a"
+    },
+    {
+      "source": "顯示此畫面即表示帳號刪除申請已完成。點擊「知道了」後，將會從 Misskey 伺服器登出。\n",
+      "semanticSha256": "8837ec6a903f1c7fb7a3f44b709ab9ea2223c5a1d5895a0670d3539adeb8a103"
+    },
+    {
+      "source": "開啟「設定」，稍微向下捲動後，點擊「其他」。\n",
+      "semanticSha256": "f88cedad920775a2c9581739e1119096f0b5fc5e7eec80a62c9f453c13106d08"
+    },
+    {
+      "source": "設定兩步驗證可降低帳戶被入侵的風險，並加強安全性。 您可以在此瞭解如何設定一次性密碼。\n",
+      "semanticSha256": "1c76765bfd85c6a71d1d3c0418ecf4f7de8ee3a58e5bce75df70822c2d72653f"
+    },
+    {
+      "source": "在開始操作之前，請安裝用於生成兩步驟驗證一次性密碼的應用程序。以下是一些例子：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "9beb75be6b7e2a908cfbf56df681b844bfec851c5fd8788e8745fae18d02967c"
+    },
+    {
+      "source": "在「設定」類別中找到「安全性」，然後點選它\n",
+      "semanticSha256": "3d13fa82c08930a4fdcc6663ea6347968409bda3cb7b42d40854c37a8e229a8b"
+    },
+    {
+      "source": "在「雙因素驗證」的「驗證應用程式」下，點選「開始設定驗證應用程式」。\n",
+      "semanticSha256": "e7f287bb987b18c37446d34a82a51b73ae30cabc6d9c449e5106300d8af6ff3a"
+    },
+    {
+      "source": "對於安全相關的設定，請輸入您登入帳號時使用的密碼以進行確認。\n",
+      "semanticSha256": "0c6d5f2d0b6b6c6f35566fa73b95adba6b949f36dac559c0a24f16b42546971e"
+    },
+    {
+      "source": "系統將產生用於設定兩步驟驗證應用程式的代碼。請使用以下其中一種方式進行設定。\n\n### 在目前使用的裝置上設定兩步驟驗證應用程式\n\n點擊「啟動應用程式」按鈕。若沒有顯示此按鈕，**點擊二維碼即可啟動應用程式。**\n\n:::tip\n\n若無法啟動，請確認兩步驟驗證應用程式是否已正確安裝。\n\n:::\n\n### 在其他裝置上設定已安裝的兩步驟驗證應用程式\n\n開啟兩步驟驗證應用程式，並依照應用程式的指示進行一次性密碼的新註冊。此時，請掃描畫面上顯示的二維碼。\n",
+      "semanticSha256": "f2ceb89ee8eb845db5e483abae18875f056f6022acc59d87b3235d49fca5ccd3"
+    },
+    {
+      "source": "在接下來的 Misskey 設定步驟中，為了確認驗證應用程式是否已正確設定，系統會要求你輸入由應用程式產生的一次性密碼。\n\n請依照應用程式的指示，記住或先行複製一次性密碼。\n\n:::warning\n\n一次性密碼會很快失效（約 30 秒），請特別留意。\n\n:::\n",
+      "semanticSha256": "ecc8fcd3ee73f65edeb920e660b34360f979ea5578cd8ba2962778fc61a9b029"
+    },
+    {
+      "source": "輸入剛才的一次性密碼，然後點擊「繼續」。\n",
+      "semanticSha256": "cffcc8ccccf2e2576ab87d37e82e5ca7432b3d7344ee931ec8363403ff8d4f43"
+    },
+    {
+      "source": "**兩步驟驗證已設定完成。**\n\n最後，系統會產生可在無法使用兩步驟驗證時使用的「備用驗證碼」，請務必在結束前先行下載。\n\n:::warning\n\n備用驗證碼是在無法使用一次性密碼時，用於登入帳號的救援機制。\n\n若沒有此備用驗證碼，將無法登入帳號，請務必下載並妥善保存在安全的地方。\n\n此備用驗證碼在此之後將不會再次顯示。\n\n:::\n",
+      "semanticSha256": "fed59c5923a5f089eb7d5a6104c2fdb5fe9ba0f9bc5cc925c943883f5b03bd0f"
+    },
+    {
+      "source": "在開始操作之前，請先在您的智慧型手機等裝置上安裝可產生兩步驟驗證一次性密碼的應用程式。以下是一些範例：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n\n:::tip\n\n雖然也有適用於個人電腦的一次性密碼產生軟體，但基於攜帶便利性的考量，建議使用智慧型手機上的應用程式。\n\n:::\n",
+      "semanticSha256": "2b4f282d77f78573d475b2b864bd3d2baa5d794f39bbecb1cdfc099f4d49a30c"
+    },
+    {
+      "source": "依序前往「設定」→「安全性」，在「雙因素驗證」的「驗證應用程式」下，點選「開始設定驗證應用程式」。\n",
+      "semanticSha256": "e2d125c979f10b22221cedeb7c25aaa80c2db8107578db51c96d410a256e6e6d"
+    },
+    {
+      "source": "系統會產生用於設定兩步驟驗證應用程式的代碼。請使用以下其中一種方式進行設定。\n\n### 使用手機上的兩步驟驗證應用程式（建議）\n\n在您的智慧型手機上開啟兩步驟驗證應用程式，並依照應用程式的指示進行一次性密碼的新註冊。此時，請掃描畫面上顯示的二維碼。\n\n### 使用個人電腦上的兩步驟驗證應用程式\n\n點擊「啟動應用程式」按鈕。若沒有顯示此按鈕，點擊二維碼即可啟動應用程式。\n",
+      "semanticSha256": "783ccc8b75abb0f6e2d97bab16ac9acde54d0bcd8dbe3d50ac30ab1b9aeb7ab7"
+    },
+    {
+      "source": "這裡將介紹如何將 Misskey Web 安裝為 PWA 應用程式。這是在智慧型手機上使用 Misskey 的推薦方式。\n\n## 什麼是 PWA？\n\nPWA 是 Progressive Web App 的縮寫，是一種可以將網頁像應用程式一樣使用的技術。Misskey 預設即支援 PWA。\n\n以下將依照裝置的作業系統介紹 PWA 的設定方法。請從下方選擇您所使用的作業系統並繼續。\n",
+      "semanticSha256": "bd9ada7602ec604e51782160c5c35bb4f726356dbbc8d37830ba300208a20838"
+    },
+    {
+      "source": "在 Android 上使用 PWA 時，建議使用 Google Chrome。\n\n這裡將說明使用 Google Chrome 進行設定的方法。\n",
+      "semanticSha256": "61ada1a91854b63f58dc6a09aed44ff2fdd498d8f83bf5c727162970de5735f5"
+    },
+    {
+      "source": "請前往您想要以 PWA 形式安裝到裝置上的 Misskey 伺服器，並先登入帳號。\n",
+      "semanticSha256": "0a4371aa2eac8571cab5ec7b4821a13f4146caeaf0a6899981b3f9efbd5f727b"
+    },
+    {
+      "source": "在保持 Misskey 伺服器任一頁面開啟的狀態下，點選右上角的「︙」按鈕。\n",
+      "semanticSha256": "f9b13b4ab4aecdbafa72a115f7af019b08d228deec5b013dc7411edde6a0a22c"
+    },
+    {
+      "source": "在選單中點選「新增至主畫面」或「安裝應用程式」，並依照顯示的對話框指示完成操作。\n",
+      "semanticSha256": "32915d6a1ea7cc2ab6650550c911c2259a13ef5878bc4c52d0c3f42f1f7dec7a"
+    },
+    {
+      "source": "稍待片刻後，主畫面上會新增伺服器圖示或 Misskey 圖示。\n\n點選此圖示後，Misskey 會以應用程式模式啟動。\n",
+      "semanticSha256": "84a6b3de681ad4873bdab4c4695d5ce7b8153c9cc7e502e976d6e271b0f39ca6"
+    },
+    {
+      "source": "在 iOS 或 iPadOS 上使用 PWA 時，請使用 Safari。\n\n開始之前，請先確認您裝置上的作業系統是否為最新版本。\n若不是最新版本，請參考[此頁面](https://support.apple.com/ja-jp/ios/update)進行更新。\n",
+      "semanticSha256": "321d81b9ae747ec3f0bfef691034e3ae70bc8e058a5ea93988a977e21ee76044"
+    },
+    {
+      "source": "在保持 Misskey 伺服器任一頁面開啟的狀態下，點選選單列中的分享按鈕。\n",
+      "semanticSha256": "4980530bc2376f7db5930c534c022c2aab4c9e04337e4d8cff2a8759f060faca"
+    },
+    {
+      "source": "向下捲動選項列表，然後點選「加入主畫面」。\n\n之後，系統可能會要求允許傳送通知，請依照畫面指示，視需要允許。\n\n若未顯示「加入主畫面」，可能是該項目被隱藏。請捲動至列表最下方，點選「編輯動作」，並新增「加入主畫面」項目。詳情請參考 [Apple 的支援頁面](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)。\n",
+      "semanticSha256": "9f777dccdbb2a89dc99a5bb363e06ae53874700783ae887beb06a01c56c6f247"
+    },
+    {
+      "source": "Misskeyのアカウントが必要なくなったなどで、アカウントを削除したい方もおられると思います。このページでは、\n\n- アカウント削除に際しての注意点\n- アカウント削除の方法\n\nについてご紹介します。\n\n:::danger\n\n後ほど詳しくご紹介しますが、**アカウントを削除すると、Misskeyの利用を再開する（再度登録し直す）際にまで影響がおよびます。**\nアカウントの削除はくれぐれも慎重に行ってください。\n\n:::\n\n## アカウント削除に際しての注意点\nアカウントを削除すると、次のことが起こります：\n\n- アカウントにログインできなくなります\n- データの削除は時間をかけて行われます\n- 同じIDは二度と使えなくなります\n\n一つずつ説明します。\n\n### アカウントにログインできなくなります\nアカウント削除を実施すると、そのアカウントに再度ログインすることはできなくなります。 **間違えて削除した際の復旧機能などはありません。** ご注意ください。\n\n### データの削除は時間をかけて行われます\nデータの削除は非常に負荷のかかる操作です。そのため、他のユーザーの利用に支障をきたさないように、データの削除は時間をかけて行われます。\n\nアカウント削除と同時にすべてのデータが削除されるわけではありませんのでご注意ください。\n\n### 同じIDは二度と使えなくなります\n連合処理との兼ね合い上、現時点では、一度取得したID（`@someone@misskey.example.com` の `@someone` の部分）は**二度と使えなくなります。**\n\n同じサーバー上において再度同じIDでアカウントを取得することは出来なくなりますので、**十分ご注意ください。**\n\n---------------\n\n以上すべてをご理解の上で、それでもアカウントを削除する必要がある方は、以下からお使いの機器タイプを選択し、アカウント削除を行ってください。\n",
+      "semanticSha256": "7b390a2058bc79e92ac9e42eb16d3e32b14d0435245675b6b43f8117e34c723b"
+    },
+    {
+      "source": "Misskeyを開き、画面左下の「≡」ボタンをタップ、でてきたメニューの「設定」をタップします。\n",
+      "semanticSha256": "615122081827832922e4dbb5dcb542d3577d161f0101f3e0592bb83ecd57eacb"
+    },
+    {
+      "source": "設定カテゴリの中から「その他」を見つけてタップします。\n",
+      "semanticSha256": "db267e6d2f61c0407568fcdfe4c4588a51c869b54f574fb5d46fc622f22a40fb"
+    },
+    {
+      "source": "「アカウントを閉鎖する」をタップして開き、注意事項を確認の上「アカウント削除をリクエスト」をタップします。\n",
+      "semanticSha256": "cae548c5aef9428b8bd4f303da3dbbf0821844987e173eba6149be5f066c4f6c"
+    },
+    {
+      "source": "重要な操作のため、確認のために、お使いのアカウントにログインする際に使用しているパスワードを入力します。\n",
+      "semanticSha256": "632c5b9e988fd9148d21eee0e72e313c798731fd4b7fdd87eaa1f3d1a710add1"
+    },
+    {
+      "source": "この画面が表示されたらアカウント削除の申請は完了です。「わかった」をタップすると、Misskeyサーバーからログアウトします。\n",
+      "semanticSha256": "0109d523dbb1aac83ffb7f815d93f648cbfa63af0af537a02b54e8fc525b298e"
+    },
+    {
+      "source": "「設定」を開き、少しスクロールすると見える「その他」をクリックします。\n",
+      "semanticSha256": "9d989f0d924a11666a516bf1051408c34aee9f23370b8e014e7a01dbdb6af970"
+    },
+    {
+      "source": "2段階認証を設定すると、アカウントへの侵入リスクを軽減し、セキュリティを強化できます。ここでは、ワンタイムパスワードの設定方法をご紹介します。\n",
+      "semanticSha256": "458f95f9e5687bc2a02002c8f884a12c8c39057e91845bcef97bfb144e4b5694"
+    },
+    {
+      "source": "操作を始める前に、2段階認証用のワンタイムパスワードを生成するためのアプリをインストールしてください。以下にその例を示します：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "b265f520ba2654fe20437ba04273c1faa0b7d864bbf33165d976df56b95420c8"
+    },
+    {
+      "source": "設定カテゴリの中から「セキュリティ」を見つけてタップします。\n",
+      "semanticSha256": "44325d25304d9643112fcd0e8f6f98e755e94fbae1e8a3c0d803c380768e99d7"
+    },
+    {
+      "source": "「二要素認証」の中にある「認証アプリ」から、「認証アプリの設定を開始」をタップします。\n",
+      "semanticSha256": "c543aca7648f5771306399998a56f585e0b1930cdcc88c8bfcc722e6c41422e8"
+    },
+    {
+      "source": "セキュリティに関わる設定のため、確認のために、お使いのアカウントにログインする際に使用しているパスワードを入力します。\n",
+      "semanticSha256": "b677917c1f124c8ed5464dfb004c1e63d25efe10fc05bd3875a3b38ac880333b"
+    },
+    {
+      "source": "2段階認証アプリを設定するためのコードが生成されます。以下のいずれかの方法で設定してください。\n\n### 今お使いの端末で二段階認証アプリを設定する場合\n\n「アプリを起動」ボタンをタップします。このボタンがない場合は、**二次元コードをタップするとアプリが起動します。**\n\n:::tip\n\n起動しない場合は、2段階認証用アプリが正しくインストールされているか確認してください。\n\n:::\n\n### 別の端末にインストールされた2段階認証アプリを設定する場合\n\n2段階認証アプリを開き、アプリの指示に従って、ワンタイムパスワードの新規登録を行います。この際に、画面に表示されている二次元コードをスキャンしてください。\n",
+      "semanticSha256": "34eba3c012be840cdeaebc5a0b0e96a246a4400ad3f76af8196a6e4405585712"
+    },
+    {
+      "source": "このあとのMisskey側でのセットアップで、認証アプリが正しく設定されていたかの確認のために、アプリで生成されたワンタイムパスワードを入力する手順があります。\n\nアプリの指示に従い、ワンタイムパスワードを覚えておくか、コピーしておいてください。\n\n:::warning\n\nワンタイムパスワードはすぐ（約30秒）失効します。ご注意ください。\n\n:::\n",
+      "semanticSha256": "ee8fea4b9279abc18b3a9a492c53fc50e4318905eeecd90b48b2e85c9bc405b9"
+    },
+    {
+      "source": "さきほどのワンタイムパスワードを入力し、「続ける」をタップします。\n",
+      "semanticSha256": "7b95bca75d623cf9991a973e1ca19954c38f0ccab9a76c3814ccc10ebc38a17a"
+    },
+    {
+      "source": "**２段階認証の設定が完了しました。**\n\n最後に、２段階認証が使えなくなった際に使用できる「バックアップコード」も生成されますので、必ずダウンロードしてから終了してください。\n\n:::warning\n\nバックアップコードは、ワンタイムパスワードが使用できなくなったときにアカウントにログインできる救済機能です。\n\nこのコードが無いとアカウントにログインすることができなくなるので、必ずダウンロードして安全な場所に保管しておいてください。\n\nこのコードは、これ以降 二度と表示されません。\n\n:::\n",
+      "semanticSha256": "e34a9e9bd49752b16a1e50f079495b11bd2b8ee38e1b55bc10929885263fa179"
+    },
+    {
+      "source": "操作を始める前に、2段階認証用のワンタイムパスワードを生成するためのアプリをお使いのスマートフォンなどにインストールしてください。以下にその例を示します：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n\n:::tip\n\nPC用のワンタイムパスワード生成ソフトもありますが、ポータビリティの観点からスマホ用のアプリをおすすめします。\n\n:::\n",
+      "semanticSha256": "672f12b24a90db73a62a4635f80a9299b7cbfad2de4027058fadfbc238ce2ac5"
+    },
+    {
+      "source": "「設定」→「セキュリティ」と進み、「二要素認証」の中にある「認証アプリ」から、「認証アプリの設定を開始」をタップします。\n",
+      "semanticSha256": "de5e2ca8370fbb4a130834298ae52b9f79c02e4f2c1e73d39a894edb4605d184"
+    },
+    {
+      "source": "2段階認証アプリを設定するためのコードが生成されます。以下のいずれかの方法で設定してください。\n\n### スマホの2段階認証アプリを設定する場合（推奨）\n\nお使いのスマートフォンで2段階認証アプリを開き、アプリの指示に従って、ワンタイムパスワードの新規登録を行います。この際に、画面に表示されている二次元コードをスキャンしてください。\n\n### PC上の2段階認証アプリを使用する場合\n\n「アプリを起動」ボタンをタップします。このボタンがない場合は、二次元コードをタップするとアプリが起動します。\n",
+      "semanticSha256": "728d62ff47982baf0a7ae8d2bc1f1333feed410789fa648180e83c97bf1f75d0"
+    },
+    {
+      "source": "ここでは、Misskey WebをPWAアプリ化する方法をご紹介します。スマートフォンでMisskeyを利用する際のおすすめの方法です。\n\n## PWAとは？\n\nPWAは、Progressive Web Appの略で、ウェブページをアプリのように扱うことができる技術です。Misskeyは、標準でPWAに対応しています。\n\nここでは、PWAの設定方法を端末のOS別に紹介しています。以下からお使いのOSを選んで進んでください！\n",
+      "semanticSha256": "f9bbc3b7f9dd1da5d094a4b34c7c71b31ec85fa7977d1881ec3235b86a528581"
+    },
+    {
+      "source": "AndroidでPWAをお使いになる際は、Google Chromeがおすすめです。\n\nここでは、Google Chromeを使用した設定方法について解説します。\n",
+      "semanticSha256": "b3e294c5d606009623014c58fe51ac72c3592af890ce88d2f9ec67be5dcd331d"
+    },
+    {
+      "source": "PWAとして端末にインストールしたいMisskeyサーバーにアクセスし、ログインしてください。\n",
+      "semanticSha256": "43a98555303f9391a0df665b4bbc5159616b0a62dc186278ae182a3ac0a734fc"
+    },
+    {
+      "source": "Misskeyサーバーの任意のページを開いたまま、右上にある「︙」ボタンをタップします。\n",
+      "semanticSha256": "e2c4cdacbc04ad811729e30b935eaae9ec87c2ad2c648014bc329494025232ba"
+    },
+    {
+      "source": "メニュー内にある「ホーム画面に追加」もしくは「アプリをインストール」の項目をタップし、出てきたダイアログの指示に従ってください。\n",
+      "semanticSha256": "7980fde7910f578e0ff5447841442796980a00328ae6602525da455aad6d6158"
+    },
+    {
+      "source": "しばらくすると、ホーム画面に、サーバーのアイコンもしくはMisskeyのアイコンが追加されます。\n\nこのアイコンをタップすることで、Misskeyはアプリモードで起動します。\n",
+      "semanticSha256": "fc1b255efe9728117d83ca7919c0fe0510cf43841acae76949d03fd47eda6c0d"
+    },
+    {
+      "source": "iOS または iPadOS でPWAをお使いになる際は、Safariをご利用ください。\n\n開始する前に、お使いの端末に搭載されているOSが最新のものかどうかを確認してください。最新ではない場合は、[こちら](https://support.apple.com/ja-jp/ios/update)を参考にしてアップデートしてください。\n",
+      "semanticSha256": "5280f46776078743ffdf770ed865260d4ef9117e19ccc054858a0f54d3b9ce05"
+    },
+    {
+      "source": "Misskeyサーバーの任意のページを開いたまま、メニューバーの共有ボタンをタップします。\n",
+      "semanticSha256": "35bab556131b0875b4d2ab09759beacc64a01ab54a76e91401f8c55ac2e67707"
+    },
+    {
+      "source": "オプションのリストを下にスクロールしてから、「ホーム画面に追加」をタップします。\n\nこの後、通知の送信許可を求められることがありますので、画面の指示に従い、必要に応じて許可してください。\n\n「ホーム画面に追加」が表示されない場合は、設定項目が非表示になっている可能性があります。表示するには、リストの一番下までスクロールし、「アクションを編集」から「ホーム画面に追加」の項目を追加してください。詳しくは[Appleのサポートページ](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)をご覧ください。\n",
+      "semanticSha256": "8a65643ffa7ea757fb124f77a1ba8ed56a62b46fe6fbf5cc41286fcf244ea9da"
+    },
+    {
+      "source": "Misskey 계정이 필요하지 않아, 계정을 삭제하고 싶은 분도 계실 거라 생각합니다. 이 페이지에서는,\n\n- 계정 삭제 시의 주의점\n- 계정 삭제 방법\n\n에 대해 소개하겠습니다.\n\n:::danger\n뒤에 자세히 소개하겠지만, **계정을 삭제하면 Misskey의 이용을 재개하는(다시 등록하는) 때까지 영향을 미칩니다.**\n계정 삭제는 부디 신중하게 해주세요.\n:::\n\n## 계정 삭제 시의 주의점\n계정을 삭제하면 다음과 같은 일이 발생합니다:\n\n- 계정에 로그인할 수 없게 됩니다\n- 데이터 삭제는 시간을 두고 이루어집니다\n- 같은 아이디는 다시는 쓸 수 없게 됩니다\n\n하나씩 설명해드릴게요.\n\n### 계정에 로그인할 수 없게 됩니다\n계정 삭제를 실시하면 해당 계정에 다시 로그인할 수 없습니다. **잘못 삭제했을 때의 복구 기능 등은 없습니다.** 주의하세요.\n\n### 데이터 삭제는 시간을 두고 이루어집니다\n데이터 삭제는 매우 높은 부하가 걸리는 조작입니다. 따라서 다른 사용자의 이용에 지장을 주지 않도록 데이터 삭제는 시간을 두고 이루어집니다.\n\n계정 삭제와 동시에 모든 데이터가 삭제되는 것은 아니므로 주의하시기 바랍니다.\n\n### 같은 아이디는 다시는 못쓰게 됩니다\n연합처리와의 균형상, 현시점에서는, 한 번 취득한 ID(`@someone@misskey.example.com ` 의 '@someone' 부분)는 **다시는 사용할 수 없게 됩니다.**\n\n같은 서버에서 다시 같은 아이디로 계정을 취득할 수는 없으므로 **각별히 주의해 주십시오.**\n\n---------------\n\n이상 모든 것을 이해하시고, 그래도 계정을 삭제할 필요가 있는 분은, 아래에서 사용의 기기 타입을 선택해, 계정 삭제를 실시해 주세요.\n",
+      "semanticSha256": "45495e11c9f470af98b1c6ccb7a961d36a2fc75705118f21767c781ee24b47fd"
+    },
+    {
+      "source": "Misskey 를 열고, 화면 우측 하단의 「≡」버튼을 선택, 나온 메뉴의 「설정」을 선택합니다.\n",
+      "semanticSha256": "36f39271dc413cee0decbb314d8703f884136b97dc10dd095baa97f633f192ae"
+    },
+    {
+      "source": "설정 카테고리 안에서 \"기타\" 탭을 찾아 선택합니다.\n",
+      "semanticSha256": "56aaf3ad1fdc574f903cae15e12cb8c503eff53b5109ece6d21a3a7075f0ea98"
+    },
+    {
+      "source": "\"계정 삭제 요청\"을 탭해 열고 주의사항을 확인한 후 \"계정 삭제 요청\"을 탭합니다.\n",
+      "semanticSha256": "afa682c4a7469fa853049a15e0470e0f92b023295d23cf023ee4bd284a233f17"
+    },
+    {
+      "source": "중요한 조작에 대한 확인 절차로, 사용 중인 계정에 로그인할 때 사용하고 있는 비밀번호를 입력합니다.\n",
+      "semanticSha256": "bc3b87c1bfeb37b23cc2de15e408e27e5932e689401caee8c1dbab6bbe0b37c4"
+    },
+    {
+      "source": "이 화면이 뜨면 계정 삭제 요청이 완료됩니다. \"확인\"을 탭하면 Misskey에서 로그아웃됩니다.\n",
+      "semanticSha256": "5530f850571eae20f39ff4f8e6fbe81912794b54bc5c76f7851fd4cc641114df"
+    },
+    {
+      "source": "\"설정\"을 열고 조금 내리면 보이는 \"기타\"를 클릭합니다.\n",
+      "semanticSha256": "4bb1ae6648e7efc2ce4d1e250b4b9691ee68a1aac5d47fff580f014942a77309"
+    },
+    {
+      "source": "\"계정 삭제 요청\"을 선택해 열고 주의사항을 확인한 후 \"계정 삭제 요청\"을 선택합니다.\n",
+      "semanticSha256": "b2f765d4f69851308840b9c898a0dbfa023f0b5fb6195651beb431950116245d"
+    },
+    {
+      "source": "이 화면이 뜨면 계정 삭제 요청이 완료됩니다. \"확인\"을 선택하면 Misskey에서 로그아웃됩니다.\n",
+      "semanticSha256": "2ed3cb16be6bf8febdcd2d5b9cd79f5e5f35e6bf7553d1863eb7acd90a408b1f"
+    },
+    {
+      "source": "2차 인증을 설정하면 계정 도난 위험을 줄이고 보안을 강화할 수 있습니다. 여기서는 일회용 비밀번호 설정 방법을 소개합니다.\n",
+      "semanticSha256": "48e0f95962f3b20d07183cab635eb21ae4659a389a56c98acb4fc87a0402f737"
+    },
+    {
+      "source": "작업을 시작하기 전에 2차 인증용 일회용 비밀번호를 생성하기 위한 앱을 설치해야 합니다. 아래에 몇 가지를 소개합니다.\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- Twilio Authy Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.authy.authy) [App Store](https://itunes.apple.com/app/authy/id494168017)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "633b53cc9b53f23ed148dad8f789e7fb8c8c6dbde10604b432204d34f0c4f0a0"
+    },
+    {
+      "source": "설정 카테고리 안에서 \"보안\" 탭을 찾아 선택합니다.\n",
+      "semanticSha256": "9ddf705faf9de1d35b4938f62143d5abc045469628cea9145caa77ed29be28dc"
+    },
+    {
+      "source": "\"2단계 인증\" 안에 있는 \"인증 앱\"에서 \"인증 앱 설정 시작\"을 누릅니다.\n",
+      "semanticSha256": "916609f1bb0bf109e21d3e33f791310e588f83e923cfd453441be9158f5a3551"
+    },
+    {
+      "source": "보안 관련 설정을 위한 확인 절차로, 사용 중인 계정에 로그인할 때 사용하고 있는 비밀번호를 입력합니다.\n",
+      "semanticSha256": "3d5c63fd3f6641069dcd4facbf8bf9bcffdf47dd87f61d833e443b02b0b9a1d8"
+    },
+    {
+      "source": "2단계 인증 앱을 설정하기 위한 코드가 생성됩니다. 다음 중 한 가지 방법으로 설정해 주세요.\n\n### 지금 사용 중인 단말기에서 2단계 인증 앱을 설정하는 경우\n\n'앱 실행' 버튼을 누릅니다. 이 버튼이 없는 경우 **QR코드를 누르면 앱이 실행됩니다. **\n\n:::tip\n\n앱이 실행되지 않는 경우, 2단계 인증용 앱이 제대로 설치되었는지 확인해주세요.\n\n:::\n\n### 다른 단말기에 설치된 2단계 인증 앱을 설정하는 경우\n\n2단계 인증 앱을 열고, 앱의 안내에 따라 일회용 비밀번호를 새로 등록합니다. 이때 화면에 표시되는 QR코드를 스캔해 주세요.\n",
+      "semanticSha256": "4327bb4cc13e0b506a5145e095446b677b912c5084789fe32e44f4bc78fe2677"
+    },
+    {
+      "source": "이후 Misskey 측 설정에서 인증 앱이 올바르게 설정되었는지 확인하기 위해 앱에서 생성된 일회용 비밀번호를 입력하는 절차가 있습니다.\n\n앱의 안내에 따라 일회용 비밀번호를 기억하거나 복사해 두어야 합니다.\n\n:::warning\n\n일회용 비밀번호는 즉시(약 30초) 만료됩니다. 주의하시기 바랍니다.\n\n:::\n",
+      "semanticSha256": "7ac528f8be5ad18761bdc5663dfaaf85be4165d8d3bbdeb8769981a13003b31a"
+    },
+    {
+      "source": "앞서 입력한 일회용 비밀번호를 입력하고 '계속'을 누릅니다.\n",
+      "semanticSha256": "b89842e1b2b95f01dc41199662b42fa8109b30f5d931377dce7468518c1dcda2"
+    },
+    {
+      "source": "**2단계 인증 설정이 완료되었습니다. **\n\n마지막으로 2단계 인증을 사용할 수 없게 되었을 때 사용할 수 있는 '백업 코드'도 생성되므로 반드시 다운로드 후 종료하시기 바랍니다.\n\n:::warning\n\n백업 코드는 일회용 비밀번호를 사용할 수 없게 되었을 때 계정에 로그인할 수 있는 복구 기능입니다.\n\n이 코드가 없으면 계정에 로그인할 수 없으므로 반드시 다운로드하여 안전한 곳에 보관하시기 바랍니다.\n\n이 코드는 이후 다시는 나타나지 않습니다.\n\n:::\n",
+      "semanticSha256": "ab81bf9eb26cf3f09c950a0d696c1c8fcbc5c24be4693fb18611cf5cf8ecd36e"
+    },
+    {
+      "source": "작업을 시작하기 전에 2단계 인증을 위한 일회용 비밀번호를 생성할 수 있는 앱을 스마트폰 등에 설치해야 한다. 다음은 그 예시입니다:\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store]( https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app /freeotp-authenticator/id872559395)\n\n:::tip\n\nPC용 일회용 비밀번호 생성 프로그램도 있지만, 휴대성 측면에서 스마트폰용 앱을 추천합니다.\n\n:::\n",
+      "semanticSha256": "e0a7c03a7d34e1586102fbe09d41b4132b2bf2ae85bdac84cf7f1742e135d95f"
+    },
+    {
+      "source": "'설정' → '보안'으로 이동하여 '2단계 인증' 중 '인증 앱'에서 '인증 앱 설정 시작'을 누릅니다.\n",
+      "semanticSha256": "727f38d8e2044f12acd25250612b739237a197dbca6578d85a24544e9ab893bc"
+    },
+    {
+      "source": "보안과 관련된 설정이므로 확인을 위해 계정에 로그인할 때 사용하는 비밀번호를 입력합니다.\n",
+      "semanticSha256": "c48bc5dea137382a59b7adbf9b0c6c02ad8536f113708c3a5f92a81f5e2efa0d"
+    },
+    {
+      "source": "2단계 인증 앱을 설정하기 위한 코드가 생성됩니다. 다음 중 한 가지 방법으로 설정해 주세요.\n\n### 스마트폰 2단계 인증 앱으로 설정하는 경우 (권장)\n\n스마트폰에서 2단계 인증 앱을 열고 앱의 안내에 따라 일회용 비밀번호를 새로 등록합니다. 이때 화면에 표시되는 QR코드를 스캔해 주세요.\n\n### PC에서 2단계 인증 앱을 사용하는 경우\n\n'앱 실행' 버튼을 누릅니다. 이 버튼이 없는 경우, QR코드를 누르면 앱이 실행됩니다.\n",
+      "semanticSha256": "daaa46f3db46138987b4a4edbeaf04b262b30d638080b20d6bbdc66918a46fbd"
+    },
+    {
+      "source": "**2단계 인증 설정이 완료되었습니다. **\n\n마지막으로 2단계 인증을 사용할 수 없게 되었을 때 사용할 수 있는 '백업 코드'도 생성되므로 반드시 다운로드 후 종료하시기 바랍니다.\n\n:::warning\n\n백업 코드는 일회용 비밀번호를 사용할 수 없게 되었을 때 계정에 로그인할 수 있는 복구 기능입니다.\n\n이 코드가 없으면 계정에 로그인할 수 없으므로 반드시 다운로드하여 안전한 곳에 보관하시기 바랍니다.\n\n이 코드는 이후 다시는 나타나지 않습니다.\n\n::::: :::\n",
+      "semanticSha256": "4342df6152dadd30cf6e3f89ddb25f9a4730e754cbd73423e68b9e63a7259459"
+    },
+    {
+      "source": "여기서는 Misskey Web을 PWA 앱으로 만드는 방법을 소개합니다. 스마트폰에서 Misskey를 이용할 때 추천하는 방법입니다.\n\n## PWA란?\n\nPWA는 Progressive Web App의 약자로, 웹 페이지를 앱처럼 취급할 수 있는 기술로 Misskey는 표준으로 PWA를 지원합니다.\n\n여기서는 PWA 설정 방법을 단말기 OS별로 소개하고 있습니다. 아래에서 사용 중인 OS를 선택해 진행해주세요!\n",
+      "semanticSha256": "1f41a715f578673ca2734573f14775d1d2d4b7fffbc339741a6bc4a5c69eca90"
+    },
+    {
+      "source": "안드로이드에서 PWA를 사용하려면 구글 크롬을 추천합니다.\n\n여기서는 구글 크롬을 이용한 설정 방법에 대해 설명합니다.\n",
+      "semanticSha256": "4012121341dfd4620c94a58e18cef55f7d6c13346ae56a78fa722ec8e40efe6c"
+    },
+    {
+      "source": "PWA로 단말기에 설치하고자 하는 Misskey 서버에 접속하여 로그인합니다.\n",
+      "semanticSha256": "5b8eb8093f7178d4706c20cc91e7ba0cdde8cade7d517774245147f9df0a38d5"
+    },
+    {
+      "source": "Misskey 서버의 아무 페이지나 열어둔 상태에서 오른쪽 상단에 있는 '︙' 버튼을 누릅니다.\n",
+      "semanticSha256": "a55f562a560ce2886ef0deeedf2bd1ae4995a8046432edbd01170c3877608588"
+    },
+    {
+      "source": "메뉴 내 '홈 화면에 추가' 또는 '앱 설치' 항목을 누르고 나오는 대화창의 지시를 따릅니다.\n",
+      "semanticSha256": "95471544894bd04d2f86d89e21b761fe4bf7e59ae1047dca3686b5fa3ce2c9a3"
+    },
+    {
+      "source": "잠시 후 홈 화면에 서버 아이콘 또는 Misskey 아이콘이 추가됩니다.\n\n이 아이콘을 누르면 Misskey가 앱 모드로 실행됩니다.\n",
+      "semanticSha256": "b8118dc8493817835e8217c4b0a30768199cf757929b6fdea3c556f0ac75dec8"
+    },
+    {
+      "source": "iOS 또는 iPadOS에서 PWA를 사용하려면 Safari를 사용하십시오.\n\n시작하기 전, 사용 중인 단말기의 OS가 최신 버전인지 확인하시기 바랍니다. 최신 버전이 아닌 경우 [여기](https://support.apple.com/ja-jp/ios/update)를 참고하여 업데이트하시기 바랍니다.\n",
+      "semanticSha256": "97f004bde137b20819d46e1b13cf650089bf374238d916bc18a34e194883de01"
+    },
+    {
+      "source": "Misskey 서버의 아무 페이지나 열어둔 상태에서 메뉴바의 공유 버튼을 누릅니다.\n",
+      "semanticSha256": "3cbfe63f2dd9bafb132319da9a6963d630f656ea7eaa3e8bd9f5b65004afe6bb"
+    },
+    {
+      "source": "옵션 목록을 아래로 스크롤하여 '홈 화면에 추가'를 탭합니다.\n\n이후 알림 전송 권한을 요청할 수 있으므로 화면의 지시에 따라 필요에 따라 허용해 주세요.\n\n'홈 화면에 추가'가 표시되지 않으면 설정 항목이 숨겨져 있을 수 있습니다. 표시하려면 목록의 맨 아래로 스크롤하여 '동작 편집'에서 '홈 화면에 추가' 항목을 추가하십시오. 자세한 내용은 [Apple 지원 페이지](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)를 참고하세요.\n",
+      "semanticSha256": "fa8845ae51d6845666d82afc70fb8c6786ef8318e545550840c154d664863299"
+    },
+    {
+      "source": "オプションのリストを下にスクロールしてから、「ホーム画面に追加」をタップします。\n\n「Webアプリとして開く」オプションが表示された場合は、必ずオンにして続行してください。\n\nこの後、通知の送信許可を求められることがありますので、画面の指示に従い、必要に応じて許可してください。\n\n「ホーム画面に追加」が表示されない場合は、設定項目が非表示になっている可能性があります。表示するには、リストの一番下までスクロールし、「アクションを編集」から「ホーム画面に追加」の項目を追加してください。詳しくは[Appleのサポートページ](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)をご覧ください。\n",
+      "semanticSha256": "11eb88bbfbe946def9b32878251984ad74c23f4da89e8a8be849455f731477d0"
+    },
+    {
+      "source": "\nAlgunos usuarios pueden darse cuenta de que ya no necesitan sus cuentas Misskey y pueden desear borrarlas. En esta página, proporcionaremos información sobre:\n\n- Puntos a tener en cuenta al eliminar una cuenta\n- Cómo eliminar una cuenta\n\n:::danger\n\nComo explicaremos con más detalle más adelante, **borrar una cuenta afectará incluso cuando vuelvas a utilizar Misskey (es decir, cuando te vuelvas a registrar).**\nPor favor, ten mucho cuidado cuando borres tu cuenta.\n\n:::\n\n## Puntos a tener en cuenta al eliminar una cuenta\nCuando elimines tu cuenta, ocurrirá lo siguiente:\n\n- Ya no podrás ser capaz de iniciar sesión en tu cuenta.\n- La eliminación de los datos tardará algún tiempo.\n- No podrás volver a utilizar el mismo ID, es decir, el mismo nombre de usuario.\n\nVamos a explicar cada punto.\n\n### Ya no podrás iniciar sesión en tu cuenta\nUna vez que elimines tu cuenta, ya no podrás iniciar sesión en ella. **No existe ninguna función de recuperación en caso de borrado accidental.** Ten en cuenta esto.\n\n### La eliminación de datos llevará algún tiempo\nLa eliminación de datos es una operación que consume muchos recursos. Por lo tanto, para evitar interrumpir el uso de otros usuarios, la eliminación de datos llevará algún tiempo.\n\nTen en cuenta que no todos los datos se borrarán inmediatamente al eliminar la cuenta.\n\n### No se puede volver a utilizar el mismo ID (Nombre de usuario)\nDebido a la limitación técnica de la federación, en la actualidad, una vez que se obtiene un ID (la parte antes del segundo `@` en `@someone@misskey.example.com`), **no se puede volver a utilizar.**\n\n**No podrás volver a obtener el mismo ID (Nombre de usuario) en el mismo servidor,** así que ten cuidado.\n\n---------------\n\nDespués de entender  todo lo anterior, y si todavía necesitas eliminar tu cuenta, por favor selecciona tu tipo de dispositivo a continuación y procede con la eliminación de la cuenta.\n",
+      "semanticSha256": "718da046d577557a9a917a635af69549c5182c912ef8bbcfb8dc8c51fd0cc748"
+    },
+    {
+      "source": "Abre Misskey, pulsa el botón «≡» en la parte inferior derecha de la pantalla y, a continuación, pulsa \"Configuración\" en el menú que aparece.\n",
+      "semanticSha256": "4117be5985e86dc26b7ed6ad327dd59ac2e98a59556fd494aabd3b50b0015102"
+    },
+    {
+      "source": "Busque y pulse \"Otro\" dentro de la categoría de configuración.\n",
+      "semanticSha256": "2f9aba02fdbb57057b2fd911f88e7b6fbec171fda59ae0387b3308e703a59839"
+    },
+    {
+      "source": "Pulsa \"Cerrar cuenta\" para abrirla y, a continuación, pulse el botón \"Solicitar eliminación de cuenta\" después de revisar las instrucciones.\n",
+      "semanticSha256": "0310a114c2bdb5b641874f43c196c0811bb90c84f302c2c7252c791a194d0a3d"
+    },
+    {
+      "source": "Introduzca la contraseña para confirmar que inicia la operación peligrosa.\n",
+      "semanticSha256": "5c1ba210f1eedb9c7306fc6635c08f3845eaa27ee176752df1d37d9da0d80859"
+    },
+    {
+      "source": "Cuando aparezca esta pantalla, su solicitud para eliminar su cuenta se habrá completado. Pulse \"Aceptar\" para cerrar la sesión en el servidor de Misskey.\n",
+      "semanticSha256": "c89facb2f01efe56e5fe64aa7c2c92f247696f9a76c04e1a0c925427ad5a799f"
+    },
+    {
+      "source": "Abre \"Configuración\" y haz clic en \"Otro\", que encontrarás desplazándote un poco hacia abajo.\n",
+      "semanticSha256": "8cc3af7b11d90b6d53ba05655d16c2c1d3234985f03e6bd356476f0b0cb85814"
+    },
+    {
+      "source": "Activar la autenticación de dos pasos puede reducir el riesgo de acceso no autorizado a su cuenta y mejorar la seguridad. A continuación, te presentamos cómo configurar una contraseña de un solo uso.\n",
+      "semanticSha256": "51895d1390d063b475abebd80790676218a22e35cd0d6b092bef6e2a1568ea47"
+    },
+    {
+      "source": "Antes de empezar, instala una aplicación para generar contraseñas de un solo uso para la autenticación de dos factores. Aquí tienes algunos ejemplos:\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "af1dedbeb20e08c3f8a63063380f3fe77c6d14e88e718296fdae68642fa5606f"
+    },
+    {
+      "source": "Busque y pulse \"Seguridad\" dentro de la categoría de configuración.\n",
+      "semanticSha256": "8e0942f1e3749d1169da5fde799b68cf0a363152dd0220f380fef71f99391425"
+    },
+    {
+      "source": "Dentro de \"Autenticación de doble factor\", busca la sección \"Aplicación autenticadora\" y, a continuación, pulsa \"Registrar aplicación autenticadora\".\n",
+      "semanticSha256": "e00930110e13bc5b866a9b8ca0d7a6e101676a12849a5bea4f17af2b050605cb"
+    },
+    {
+      "source": "Para los ajustes relacionados con la seguridad, introduce la contraseña que utilizas para iniciar sesión en tu cuenta para confirmarla.\n",
+      "semanticSha256": "276770067504427c03b785370e4ff0cd5709fee6ccaa0a4690ae6cb437c500c2"
+    },
+    {
+      "source": "Se generará un código para configurar la aplicación de autenticación de dos factores. Configúrelo utilizando uno de los siguientes métodos:\n\n### Si configura la aplicación de autenticación en tu dispositivo actual\n\nPulsa el botón \"Iniciar aplicación\". Si este botón no está disponible, **tocar el código QR iniciará la aplicación.\n\n:::tip\n\nSi no se inicia, asegúrate de que la aplicación de autenticación de dos factores está correctamente instalada.\n\n:::\n\n### Si configuras la aplicación de autenticación en otro dispositivo\n\nAbre la aplicación de autenticación de dos factores en el otro dispositivo y sigue las instrucciones de la aplicación para registrar una nueva contraseña de un solo uso. Escanea el código QR que aparece en la pantalla durante este proceso.\n",
+      "semanticSha256": "f07c8091d1487367e53ed53ef408176d9651535fcc62d1992c3445be82ab2f20"
+    },
+    {
+      "source": "Más adelante en la configuración del lado de Misskey, habrá un paso para introducir la contraseña de un solo uso generada por la aplicación de autenticación para confirmar que se ha configurado correctamente.\n\nSigue las instrucciones de la aplicación para recordar o copiar la contraseña de un solo uso.\n\n:::warning\n\nLa contraseña de un solo uso caduca rápidamente (unos 30 segundos), así que ten cuidado.\n\n:::\n",
+      "semanticSha256": "3d556b8585be9aed7e2f173168b831cbafaec2f78f2b4db17ed9d7896fb3c625"
+    },
+    {
+      "source": "Introduzca la contraseña de un solo uso generada anteriormente y pulse \"Continuar\".\n",
+      "semanticSha256": "0005ae5b20774fcd91ad5eff9fe602f94a07abd69aabb87be330e881cae3878f"
+    },
+    {
+      "source": "** La configuración inicial de la verificación en dos pasos está completada.**\n\nFinalmente descarga los \"Códigos de recuperación\", que pueden ser usados si el segundo factor de autenticación no está disponible \n\n:::warning\n\nLos códigos de recuperación son el último recurso para acceder a tu cuenta cuando no dispones de contraseñas de un solo uso.\n\nSi no tienes estos códigos, no podrás acceder a tu cuenta, así que asegúrate de descargarlos y guardarlos en un lugar seguro.\n\nEstos códigos no volverán a aparecer.\n\n:::\n",
+      "semanticSha256": "c216f05b8c2da6dd334b35fe25c18182f0e332ee9ee2998283d91c0979d30655"
+    },
+    {
+      "source": "Antes empezar, instala una aplicación en tu móvil u otro dispositivo para generar una contraseña de un solo uso para la autenticación de dos factores. Aquí tienes un ejemplo:\n",
+      "semanticSha256": "d900f690b6fb2c13554e9d4a46e73c52972a8f585569f904b1850927d9fb0719"
+    },
+    {
+      "source": "Se generará un código para configurar la aplicación de autenticación de dos factores. Configúralo utilizando uno de los siguientes métodos.\n\n### Si configuras la aplicación Authenticator en un smartphone (recomendado)\n\nAbre la aplicación de autenticación de dos factores en tu smartphone, sigue las instrucciones de la aplicación para registrar una nueva contraseña de un solo uso. Escanea el código QR que aparece en la pantalla durante este proceso.\n\n### Si utilizas una aplicación de autenticación de dos factores en el PC\n\nPulsa el botón «Iniciar aplicación». Si este botón no está disponible, pulsa el código QR para iniciar la aplicación.\n",
+      "semanticSha256": "9e2dd7a97ec53ae6520f8be59a77a6d50ed7006d2691d496e3ca09a227b201e2"
+    },
+    {
+      "source": "Aquí se explica cómo convertir Misskey Web en una aplicación progresiva PWA. Esta es la forma recomendada para utilizar Misskey en tu smartphone.\n\n## ¿Qué es PWA?\n\nPWA significa Progressive Web App, Aplicación Web Progresiva, una tecnología que permite que las páginas web sean tratadas como aplicaciones normales.\n\nEn esta página, explicaremos cómo configurar PWA para cada sistema operativo. Selecciona tu sistema operativo para continuar.\n",
+      "semanticSha256": "3298f476e503e417608c84dc09009bfe6cafb8ea1dfacd9dc335f6c20ef41bc8"
+    },
+    {
+      "source": "Recomendamos utilizar Google Chrome para utilizar PWA en Android.\n\nVeamos cómo configurarlo con Google Chrome.\n",
+      "semanticSha256": "94a96ecfc9f0ecb27f0f88e858fe58d552a98e31c9c7c078a7e928008ca97aa0"
+    },
+    {
+      "source": "Accede al servidor Misskey que quieras instalar en tu dispositivo e inicia sesión.\n",
+      "semanticSha256": "c3e046c3b494e78932a068ee5c71a8ee4f26e35266193d8971c3818537e9ed31"
+    },
+    {
+      "source": "Pulsa el botón ︙ en la esquina superior derecha mientras cualquier página del servidor Misskey está abierta.\n",
+      "semanticSha256": "e3c68d97f02318ff26d3d4ecc241bc430391a80b16e6150e471bf87af1530ad6"
+    },
+    {
+      "source": "Pulsa \"Añadir a la pantalla de inicio\" o \"Instalar aplicación\" en el menú y sigue las instrucciones del cuadro de diálogo.\n",
+      "semanticSha256": "2b82d644e0214d43d1a033c66deaf32375186c7eb00729cb127116af72c19b28"
+    },
+    {
+      "source": "Tras unos instantes, el icono del servidor o un icono de Misskey se añadirá a la pantalla de inicio.\n\nCuando se inicie desde este icono, Misskey se iniciará en modo aplicación.\n",
+      "semanticSha256": "c59f74d15ceb68b1a11504b4a762b1c49f6be78af41679b9a5ef07b2f8d82eb9"
+    },
+    {
+      "source": "Usa Safari cuando utilices la PWA en iOS o iPadOS.\n\nAntes de empezar, asegúrese de que el sistema operativo de su dispositivo está actualizado. Si no lo está, por favor actualice su sistema siguiendo las instrucciones [aquí](https://support.apple.com/en-us/ios/update).\n",
+      "semanticSha256": "06d8e7f878c742e5564af343eb52ddc7728fe601e9fe7a4d06fb6529f1510516"
+    },
+    {
+      "source": "Desplázate por la lista de opciones y pulsa Añadir a la pantalla de inicio.\n\nDespués de esto, es posible que se te pida que permitas el envío de notificaciones, así que sigue las instrucciones en pantalla y permítelas si es necesario.\n\nSi no aparece \"Añadir a pantalla de inicio\", es posible que el elemento de configuración esté oculto. Para que aparezca, desplázate hasta el final de la lista, ve a \"Editar acciones\" y añade el elemento \"Añadir a la pantalla de inicio\". Para más información, consulta [la página de soporte de Apple](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios).\n",
+      "semanticSha256": "10086e3a73ac9c966c24179d7540d83d62e1ad19757835b9e53c09c9d7b9eb59"
+    },
+    {
+      "source": "Some users may find that they no longer need their Misskey accounts and may wish to delete them. On this page, we will provide information about:\n\n- Points to consider when deleting an account\n- How to delete an account\n\n:::danger\n\nAs we will explain in more detail later, **deleting an account will affect even when you resume using Misskey (i.e., re-register).**\nPlease be very careful when deleting your account.\n\n:::\n\n## Points to Consider When Deleting an Account\nWhen you delete your account, the following will occur:\n\n- You will no longer be able to log in to your account.\n- Data deletion will take some time.\n- The same ID cannot be used again.\n\nLet's explain each point.\n\n### You will no longer be able to log in to your account\nOnce you delete your account, you will no longer be able to log in to it. **There is no recovery function in case of accidental deletion.** Please take note of this.\n\n### Data deletion will take some time\nData deletion is a resource-intensive operation. Therefore, to avoid disrupting other users' usage, data deletion will take some time.\n\nPlease note that not all data will be deleted immediately upon account deletion.\n\n### The same ID cannot be used again\nDue to the technical limitation on federation, at present, once an ID (the part before `@` in `@someone@misskey.example.com`) is obtained, **it cannot be used again.**\n\n**You will not be able to obtain the same ID again on the same server,** so please be cautious.\n\n---------------\n\nAfter understanding all of the above, and if you still need to delete your account, please select your device type below and proceed with the account deletion.\n",
+      "semanticSha256": "36bcf22f97a43f6648de44f01374b9f6eac470757f55e0addb327c8add4cc50b"
+    },
+    {
+      "source": "Open Misskey, tap the \"≡\" button at the bottom left of the screen, then tap \"Settings\" from the menu that appears.\n",
+      "semanticSha256": "b503a162bf01794fe0e48e4bc18b065f22d160fbc4eb2be05a6aa8eea09e0d7d"
+    },
+    {
+      "source": "Find and tap on \"Other\" within the settings category.\n",
+      "semanticSha256": "f587ace8b4bb86689a65900b4841c34d201ab56814f0d998abfe098e9132782d"
+    },
+    {
+      "source": "Tap \"Close Account\" to open it, then tap \"Request account deletion\" button after reviewing the instructions.\n",
+      "semanticSha256": "c276f4d28c2f77ef7cd49725945c347f251c746ee077c637e4facd8cea0d968b"
+    },
+    {
+      "source": "Enter the password for confirmation as it initiates the dangerous operation.\n",
+      "semanticSha256": "cbf343a7c8c765b6e5da69cde3a196e5b944e23cb996f04e309a5be68c798b73"
+    },
+    {
+      "source": "When this screen appears, your request to delete your account is complete. Tap \"OK\" to log out of the Misskey server.\n",
+      "semanticSha256": "625c514f6511acc9338afa938de6674cd4d4922226e2299f73be91b254d4f1ca"
+    },
+    {
+      "source": "Open \"Settings\" and click on \"Other,\" which can be found by scrolling down a bit.\n",
+      "semanticSha256": "50ce3cf44fe82e818d3a9b3d236548fe43ee8fb4b4a2eb694e0fc46742d0b0e2"
+    },
+    {
+      "source": "Click \"Close Account\" to open it, then click \"Request account deletion\" button after reviewing the instructions.\n",
+      "semanticSha256": "793990c8c56039c6b453068eb1edf749fcff666e2f47e815ade1d3948af7e741"
+    },
+    {
+      "source": "Enabling two-factor authentication can reduce the risk of unauthorized access to your account and enhance security. Here, we will introduce how to set up a one-time password.\n",
+      "semanticSha256": "cb368c6d323764fcd994581c635ad56e33b6ae16401d9e8ff759cb5e3bc3d512"
+    },
+    {
+      "source": "Before starting, install an app for generating one-time passwords for two-factor authentication. Here are some examples:\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "d1bc84b3cd4a1d6040e7f32651d7cc08537d7bdc7c840fddee14a34954d407f1"
+    },
+    {
+      "source": "Find and tap on \"Security\" within the settings category.\n",
+      "semanticSha256": "9669726c6acd82b27db7e17b960820ece2e805d52de4a66225f50330e0708f11"
+    },
+    {
+      "source": "Within \"Two-factor authentication,\" find \"Authenticator App\" section and then tap on \"Register authenticator app.\"\n",
+      "semanticSha256": "bbb3f4d8918666d7c41cdf2ff738734c13761b27e900623a2b92162452829e76"
+    },
+    {
+      "source": "Enter the password for verification.\n",
+      "semanticSha256": "ad575fd413aad4ae56bb3e3f8f363626acde51fa0c765b12f41b4c1421cc59d1"
+    },
+    {
+      "source": "A code for setting up two-factor authentication app will be generated. Set it up using one of the following methods:\n\n### If setting up the authentication app on your current device\n\nTap the \"Launch App\" button. If this button is not available, **tapping on the QR code will launch the app.**\n\n:::tip\n\nIf it doesn't launch, make sure the two-factor authentication app is properly installed.\n\n:::\n\n### If setting up the authentication app on another device\n\nOpen the two-factor authentication app on the other device and follow the app's instructions to register a new one-time password. Scan the QR code displayed on the screen during this process.\n",
+      "semanticSha256": "27575563947e20aa843a9290a3dec1a633e7ab318c346d1d6f67907f9e1d1673"
+    },
+    {
+      "source": "Later in the setup on the Misskey side, there will be a step to input the one-time password generated by the authentication app to confirm that it was set up correctly.\n\nFollow the app's instructions to either remember or copy the one-time password.\n\n:::warning\n\nThe one-time password expires quickly (about 30 seconds), so please be careful.\n\n:::\n",
+      "semanticSha256": "67525a6a0e0a4d462514f05b02b9e2352651956d1c758e1bd61a9a64a1701d26"
+    },
+    {
+      "source": "Enter the one-time password generated earlier and tap \"Continue.\"\n",
+      "semanticSha256": "94d25f9938966066b16abc6687d1b2f063455a4bd1cfe0f14dd73a6c0bf8c4b3"
+    },
+    {
+      "source": "**Two-factor authentication setup is complete.**\n\nFinally, download the \"Backup Codes\" that can be used if two-factor authentication becomes unavailable.\n\n:::warning\n\nBackup codes are a last resort to log in to your account when one-time passwords are not available.\n\nIf you don't have these codes, you won't be able to log in to your account, so be sure to download and store them in a safe place.\n\nThese codes will not be displayed again.\n\n:::\n",
+      "semanticSha256": "80d635f8dc9b305b142514f76c6e9c34c6ae166a40f6882cc54fdab22ed0995d"
+    },
+    {
+      "source": "Before starting, install an app for generating one-time passwords for two-factor authentication on your smartphone. Here are some examples:\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n\n:::tip\n\nThere are also one-time password generation software available for PCs, but we recommend smartphone apps for portability.\n\n:::\n",
+      "semanticSha256": "86942984c9389fdb21e32e20b5ebe47036ff3e8a4d4d8687b53fb0aed8ea44a1"
+    },
+    {
+      "source": "Go to \"Settings\" → \"Security,\" and from within \"Two-factor authentication,\" find \"Authenticator App\" section and then tap on \"Register authenticator app.\"\n",
+      "semanticSha256": "483c8a150ae0f821848d83256195c0c77cffae0a7abf2ea92f06bccc5859106b"
+    },
+    {
+      "source": "A code for setting up two-factor authentication app will be generated. Set it up using one of the following methods.\n\n### If Setting Up the Authenticator App on a Smartphone (Recommended)\n\nOpen the two-factor authentication app on your smartphone, follow the app's instructions to register a new one-time password. Scan the QR code displayed on the screen during this process.\n\n### If Using a Two-Factor Authentication App on PC\n\nTap the \"Launch App\" button. If this button is not available, tapping on the QR code will launch the app.\n",
+      "semanticSha256": "6629041a5f0f2521a10bbb2a11da9a8729bb1dce79301b09922d6bd25764a32e"
+    },
+    {
+      "source": "Here is how to convert Misskey Web into a PWA application. This is the recommended way to use Misskey on your smartphone.\n\n## What is PWA?\n\nPWA stands for Progressive Web App, a technology that allows web pages to be treated like normal apps.\n\nIn this page, we'll explain how to set up PWA for each device OS. Please select your OS below to proceed!\n",
+      "semanticSha256": "1b372c49120efd67a87e9f24d18caff791c1c469a6187675feeb5117d522757a"
+    },
+    {
+      "source": "We recommend using Google Chrome to use PWA on Android.\n\nLet's take a look at how to set it up using Google Chrome.\n",
+      "semanticSha256": "e1f7b3aa717124caa4177f030124d1b4085d5da7d655398271ed628ade820517"
+    },
+    {
+      "source": "Access the Misskey server you want to install on your device, and log in.\n",
+      "semanticSha256": "e391ff7681eff912ca49b54b1c0258a093d2bdae4e228873e13d7abcbfe73186"
+    },
+    {
+      "source": "Tap the ︙ button in the upper right corner while any page on the Misskey server is open.\n",
+      "semanticSha256": "0e7a5a885e983d3eaf3c1548da006d81b06fed3d3c37d15f44fb581570260283"
+    },
+    {
+      "source": "Tap the \"Add to Home Screen\" or \"Install App\" item in the menu and follow the instructions in the dialog.\n",
+      "semanticSha256": "50b36a2252a68e3e874546d6b05e209cb654543eb45683cba11933e438974854"
+    },
+    {
+      "source": "After a few moments, the server icon or a Misskey icon will be added to the home screen.\n\nWhen launched from this icon, Misskey will start in app mode.\n",
+      "semanticSha256": "d1c1dc15738ec8843befe23ea313a7683401b37204d064a31a9f469e50ea2793"
+    },
+    {
+      "source": "Use Safari when using PWA on iOS or iPadOS.\n\nBefore starting, please make sure that the OS on your device is up-to-date. If it is not, please update your system by following the instructions [here](https://support.apple.com/en-us/ios/update).\n",
+      "semanticSha256": "fbb16c3e0a4b9568571f5ffd12bf3de0505fbb43338da0b57eaf0b76d98d794e"
+    },
+    {
+      "source": "Tap \"Share\" button in the menu bar while any page on the Misskey server is open.\n",
+      "semanticSha256": "a3c08b29ccb4a59fa2d997a749a6693c6e3ef064978ff1b58d5ec4a68ef4a66c"
+    },
+    {
+      "source": "Scroll down the list of options, then tap Add to Home Screen.\n\nMisskey server may ask for permission to send you notifications at this point. If so, follow the on-screen instruction and decide accept or deny it.\n\nIf you don’t see Add to Home Screen, the setting item may be hidden. To add it, scroll down to the bottom of the list, tap Edit Actions, then tap Add to Home Screen. See [Apple Support page](https://support.apple.com/guide/iphone/bookmark-favorite-webpages-iph42ab2f3a7/17.0/ios/17.0) for more information.\n",
+      "semanticSha256": "c918143736282d478ded62d736ffe05891a2145859f88405c800154da3b34797"
+    },
+    {
+      "source": "Manche Menschen möchten ihr Misskey-Konto löschen, weil sie es z. B. nicht mehr benötigen. Auf dieser Seite erklären wir,\n\n- Informationen über das Löschen\n- Was du beim Löschen beachten solltest\n- Wie du dein Konto löschen kannst\n\n::danger\n\nWir werden später noch genauer erläutern, wie die **Löschung deines Kontos** sich bei einer Neuanmeldung auswirken kann. Bitte sei sehr vorsichtig, wenn du den **Account endgültig löschen.** willst.\n\n:::\n\n ## Das Löschen eines Kontos hat folgende Auswirkungen:\n\n - Es kann sich nicht mehr in das Konto angemeldet werden.\n - Die Daten werden im Laufe der Zeit gelöscht\n - Es kann, nie wieder, die gleiche ID ausgewählt werden.\n\nNach dem Eingang der Löschung, kann keine Änderung mehr am Account durchgeführt werden.\n\n### **Es gibt keine Wiederherstellungsfunktion im Falle einer versehentlichen Löschung.** \n\n### Das Löschen von Daten ist ein sehr  zeitaufwändiger\n Vorgang, daher wird die Datenlöschung zeitnah durchgeführt, um die Systemlast schnell wieder freigeben zu können.\n\nBitte beachte, dass nicht alle Daten gleichzeitig mit der Löschung des Kontos gelöscht werden.\n\n### Dieselbe ID kann nicht mehr verwendet werden\n Aufgrund des Fediversums kann eine einmal erhaltene ID (der `@someone`-Teil von `@someone@misskey.example.com`) derzeit **nicht mehr verwendet werden**.\n\nBitte beachte, dass die gleiche ID nicht noch einmal auf dem gleichen Server verwenden werden kann.\n\n---------------\nWenn du mit diesen Bedinungen Einverstanden bist und das Konto trotzdem löschen möchtest, wähle bitte unten den Gerätetyp aus und lösche das Konto.\n",
+      "semanticSha256": "e1e15fc45e077634895d0fbe0be2c7dc8d1e233e8960113b26d02b9e3902e62c"
+    },
+    {
+      "source": "Öffne Misskey, tippe auf die Schaltfläche „≡“ unten rechts auf dem Bildschirm und dann auf „Einstellungen“ im angezeigten Menü.\n",
+      "semanticSha256": "9a0c6ef2d9b724884a2641a439e3a0f21f73dc9ca56d568d2723a2438b905823"
+    },
+    {
+      "source": "Suche in der Kategorie Einstellungen die Option \"Sicherheit\" und tippe darauf.\n",
+      "semanticSha256": "86c881a11f741c64134ece998761d60e6284fe759bdc9fa797fd578a2bc908c8"
+    },
+    {
+      "source": "Tippe auf „Konto schließen“, prüfe die Hinweise und tippe auf „Kontolöschung beantragen“.\n",
+      "semanticSha256": "27c0ef17e68a5f345d966a541b3dd151e0f48498c891763654fa6da47b8e93ed"
+    },
+    {
+      "source": "Gebe bei sicherheitsrelevanten Einstellungen das Passwort ein, mit dem du dich zur Bestätigung bei deinem Konto anmeldest.\n",
+      "semanticSha256": "186498e50aa1b86883617638ce5cf4a751fa73a8d51e5d52e5164e61eeeec800"
+    },
+    {
+      "source": "Wenn dieser Bildschirm erscheint, ist die Anfrage zum Löschen des Kontos abgeschlossen. Tippe „Okay“, um dich vom Misskey-Server abzumelden.\n",
+      "semanticSha256": "c094297da4f7cdb734ccc2bf8adb53cdacce02071e5c08442f62bc347533a12e"
+    },
+    {
+      "source": "Öffne die „Einstellungen“ und klicken auf „Sonstiges“, möglicherweise muss dafür runtergescrollt werden.\n",
+      "semanticSha256": "f4c634f206eea0fc419e1c38227baad675dffededb4e79f2982f69e0a775bf35"
+    },
+    {
+      "source": "Die Einrichtung der Zwei-Schritt-Verifizierung verringert das Risiko des Eindringens in das Konto und erhöht die Sicherheit. Erfahre hier, wie ein Einmal-Passwort(TOTP) eingerichtet werden kann.\n",
+      "semanticSha256": "010d4264d67bed0590c1112a714ba7608d050501e0f41a0cd71c9ab01b87548c"
+    },
+    {
+      "source": "Installiere vor Beginn des Vorgangs eine App, die ein Einmalpasswort für die zweistufige Verifizierung generiert. Beispiele sind unten aufgeführt:\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "3096b1eaa0a3256c7fba98bc5741a48adce73a3549a4311db9202afe70286e71"
+    },
+    {
+      "source": "Tippe unter „Authentifizierungs-Apps“ in „Zwei-Faktor-Authentifizierung“ auf „Einrichtung von Authentifizierungs-Apps starten“.\n",
+      "semanticSha256": "4a8bb3608e104c6c738e8e0cee85cc682fe48222c86fc4206ecca0e2ac9ac04b"
+    },
+    {
+      "source": "Zur Einrichtung der zweistufigen Verifizierungsanwendung wird ein Code generiert. Bitte verwende eine der folgenden Methoden, um sie einzurichten.\n\n### So richtest du die App für die Zwei-Schritt-Verifizierung auf deinem aktuellen Gerät ein.\n\nTippe auf die Schaltfläche „App starten“. Wenn diese Schaltfläche nicht verfügbar ist, tippen auf **QR-Code, um die App zu starten. **\n\n:::tip\n\nWenn es nicht startet, überprüfe, ob die App für die Zwei-Schritt-Verifizierung korrekt installiert ist.\n\n::::\n\n### So richten Sie eine App zur 2-Schritt-Verifizierung ein, die auf einem anderen Gerät installiert ist\n\nÖffne die 2-Schritt-Verifizierungs-App und folge den Anweisungen der App, um ein neues Einmalpasswort zu registrieren. Scanne dann den auf dem Bildschirm angezeigten QR-Code.\n",
+      "semanticSha256": "9489f130f71c0e7bbe0941118ee3f18918d8e109ff70261b891c101a761ca291"
+    },
+    {
+      "source": "Bei der anschließenden Einrichtung auf der Misskey-Seite gibt es einen Schritt, bei dem das von der App generierte Einmalpasswort eingegeben werden muss, um zu überprüfen, ob die Authentifizierungs-App korrekt eingerichtet wurde.\n\nBitte folge den Anweisungen der App und merke oder kopiere das Einmalpasswort.\n\n:::warning\n\nDas Einmalpasswort läuft sofort ab (ca. 30 Sekunden), diese werden hierbei alle 30Sek. neue Generiert.\n\n::::.\n",
+      "semanticSha256": "892f2f996c26583a988048c849d9d61ffaaf071a86d5650d3336893b048433f0"
+    },
+    {
+      "source": "Gebe das soeben verwendete Einmalpasswort ein und tippe auf Weiter.\n",
+      "semanticSha256": "f857bd04ac2ccd3f63d9486ed541e73f8b95087e84116b87148bee919428bdbf"
+    },
+    {
+      "source": "**Eine zweistufige Überprüfung wurde eingerichtet.**\n\nSchließlich wird auch ein „Back-up Code“ generiert, der verwendet werden kann, falls die Zwei-Schritt-Verifizierung nicht mehr verfügbar ist.\n\n:::warning\n\nDer Backup-Code ist eine Rettungsfunktion, mit dieser man sich in das Konto anmelden kann, wenn das Einmal-Passwort nicht mehr verfügbar ist.\n\nOhne dieses Back-up, kann im Verlustfall, nie wieder auf das Konto zugegriffen werden. Bewahre dein Backup-Code daher sicher und lasse dich von diesem Fakt nicht ableiten, keine 2-FA einzurichten.\n\nDieser Backup Code wird in Misskey nie wieder auftauchen!\n\n:::\n",
+      "semanticSha256": "181a92ba4dc15f6ddb0a6daf3cfc63ca58652731995a54e5c3d120a7018bcee2"
+    },
+    {
+      "source": "Bevor du loslegst, installiere eine App auf deinem Smartphone, um Einmalkennwörter für die Zwei-Faktor-Authentifizierung zu erstellen. Beispiele dafür sind:\n\nGoogle Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) | [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n\nFreeOTP:  [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) | [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395) \n\n:::tip\n\nEs gibt auch Software für den PC zur Erstellung von Einmalkennwörtern, aber wegen der Portabilität empfehlen wir eine Smartphone-App.\n\n:::\n",
+      "semanticSha256": "6171a0cec61427e52d0b271178315e3fe60d6f5eb96e47819b91e96ece378003"
+    },
+    {
+      "source": "„Gehe zu „Einstellungen” → „Sicherheit” und tippe auf „Authentifizierungs-App” in „Zwei-Faktor-Authentifizierung”. Wähle dann „Einrichtung der Authentifizierungs-App starten”.\n",
+      "semanticSha256": "b96f8b0951f33b2509e7afdcdf6953677a337a225f4b987055ba3df8ec6e5bfe"
+    },
+    {
+      "source": "Ein Code wird generiert, um die Zwei-Faktor-Authentifizierungs-App einzurichten. Verwende eine der folgenden Methoden, um die Einrichtung abzuschließen:\n\n### Einrichtung der Zwei-Faktor-Authentifizierungs-App auf dem Smartphone (empfohlen)\n\nÖffne die Zwei-Faktor-Authentifizierungs-App auf deinem Smartphone und folge den Anweisungen in der App, um ein neues Einmalkennwort zu erstellen. Scanne den auf dem Bildschirm angezeigten QR-Code.\n\n### Verwendung der Zwei-Faktor-Authentifizierungs-App auf dem PC\n\nTippe auf die Schaltfläche „App starten”. Falls diese Schaltfläche nicht vorhanden ist, tippe auf den QR-Code, um die App zu starten.\n",
+      "semanticSha256": "6e6599013a695bdda7afabd81919470f2e7b22ef7229187fba7c514685c82153"
+    },
+    {
+      "source": "Wie du Misskey Web zu einer PWA-App machen kannst; Dies ist die empfohlene Methode, um Misskey auf deinem Smartphone zu nutzen.\n\n## Was ist eine PWA?\n\nPWA steht für Progressive Web App und ermöglicht es, Webseiten wie Apps zu behandeln. Misskey unterstützt PWA standardmäßig.\n\nHier zeigen wir dir, wie du PWA je nach Betriebssystem deines Geräts einrichtest. Wähle dein Betriebssystem aus und folge den Anweisungen!\n",
+      "semanticSha256": "85a8e6bc172577cbde00123ad24e1c6895f422e2f8b2e00ee4a58b2df922c1e4"
+    },
+    {
+      "source": "Wenn du PWA auf einem Android-Gerät verwenden möchtest, empfehlen wir Google Chrome.\n\nHier erklären wir dir, wie du die Einstellungen mit Google Chrome vornimmst.\n",
+      "semanticSha256": "b16537ce5708b3078cdcd5cd422e6a1394cc5a15501e9bc38de1570c7ffa7fe8"
+    },
+    {
+      "source": "Rufe den Misskey-Server auf, den du als PWA auf deinem Gerät installieren möchtest, und melde dich an.\n",
+      "semanticSha256": "260e3003d430b05717b54e95740026ba490b4268ba82e6d85958352921fbc6f7"
+    },
+    {
+      "source": "Lass eine beliebige Seite des Misskey-Servers geöffnet und tippe auf die Schaltfläche „︙” oben rechts.\n",
+      "semanticSha256": "03e1e8c976b08cfaa9f0a978ed107b075a3bbad30e4bbae40aa6b799e6de906a"
+    },
+    {
+      "source": "Tippe im Menü auf „Zum Startbildschirm hinzufügen” oder „App installieren” und folge den Anweisungen im angezeigten Dialog.\n",
+      "semanticSha256": "7238c581351d8c72689949bf6210a7e53c7da61221eed4ef7652edefa784304a"
+    },
+    {
+      "source": "Nach kurzer Zeit wird ein Server- oder Misskey-Symbol auf deinem Startbildschirm hinzugefügt.\n\nWenn du dieses Symbol antippst, wird Misskey im App-Modus gestartet.\n",
+      "semanticSha256": "994781e1e5326d07f1ebd06d098e71452000a165a2d2ab6de903c9ed4599ecaf"
+    },
+    {
+      "source": "Wenn du PWA auf einem iOS- oder iPadOS-Gerät verwenden möchtest, nutze Safari\n\nBevor du beginnst, stelle sicher, dass das Betriebssystem auf deinem Gerät auf dem neuesten Stand ist. Falls nicht, aktualisiere es anhand dieser Anleitung: [hier](https://support.apple.com/ja-jp/ios/update).\n",
+      "semanticSha256": "0cdb29a6c8218243bb32e98e871d379842aa6aeff7bb6773fe1e76f207c9b46c"
+    },
+    {
+      "source": "Lass eine beliebige Seite des Misskey-Servers geöffnet und tippe auf die Schaltfläche „Teilen” in der Menüleiste.\n",
+      "semanticSha256": "96fae9079126e126bfa3f80084a13277563010529b72a9b125c3218b6c3f4333"
+    },
+    {
+      "source": "Scrolle in der Optionsliste nach unten und tippe auf „Zum Startbildschirm hinzufügen”.\n\nDu wirst möglicherweise um die Erlaubnis zur Benachrichtigung gebeten. Folge den Anweisungen auf dem Bildschirm und erlaube es bei Bedarf.\n\nFalls „Zum Startbildschirm hinzufügen” nicht angezeigt wird, könnte die Option ausgeblendet sein. Scrolle bis ganz nach unten in der Liste und füge die Option „Zum Startbildschirm hinzufügen” über „Aktionen bearbeiten” hinzu. Weitere Informationen findest du auf der [Apple-Supportseite](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios).\n",
+      "semanticSha256": "3a6d645c5f4f13a701a8d687ebbc1dc96d4cf4f9a088066feb2ca0bfaf4534d7"
+    },
+    {
+      "source": "如果您因不再需要使用 Misskey 账号而想删除账号，本页将介绍以下内容：\n\n- 删除账号时的注意事项\n- 删除账号的方法\n\n:::danger\n\n稍后会进一步说明：**删除账号会对日后重新使用 Misskey（重新注册）造成影响。**\n请务必慎重删除账号。\n\n:::\n\n## 删除账号时的注意事项\n删除账号后，将会发生以下情况：\n\n- 无法再登录该账号\n- 数据删除需要一段时间才会完成\n- 相同的 ID 将永远无法再次使用\n\n以下将逐项说明。\n\n### 无法再登录该账号\n一旦删除账号，就无法再次登录该账号。 **也没有“误删后恢复”等功能。** 请特别注意。\n\n### 数据删除需要一段时间才会完成\n删除数据是一项负载很高的操作。为避免影响其他用户的正常使用，系统会在一段时间内逐步删除数据。\n\n请注意，删除账号并不意味着所有数据会立即被删除。\n\n### 相同的 ID 将永远无法再次使用\n由于与联邦处理机制的兼容性限制，目前一旦取得过的 ID（`@someone@misskey.example.com` 中的 `@someone` 部分）**将永远无法再次使用。**\n\n因此，在同一台服务器上无法再次以相同的 ID 注册账号，**请务必留意。**\n\n---------------\n\n在充分理解以上所有内容后，若仍需删除账号，请从下方选择您所使用的设备类型，并按说明删除账号。\n",
+      "semanticSha256": "e216b462a2792438a4895e2b28519242b4ba6c5386fa979a50db368355506f56"
+    },
+    {
+      "source": "打开 Misskey，点按画面左下角的“≡”按钮，然后在弹出的菜单中点按“设置”。\n",
+      "semanticSha256": "2bbb03322814e504dff44ac7ece7f24c6e299a3003befd898ecf5788bb33d49f"
+    },
+    {
+      "source": "在设置分类中找到“其他”，并点按它。\n",
+      "semanticSha256": "e7f5773a90057092f59bc130444c85ae6d2aadf070f2bae2156dade15673538b"
+    },
+    {
+      "source": "点按并打开“永久注销账户”，确认注意事项后，点按“请求删除账户”。\n",
+      "semanticSha256": "cd7ee6b7621d4ecbd45fcdb3bf5d8dc5db7f28f9e087d88ce52aff7d13765ff4"
+    },
+    {
+      "source": "由于这是重要操作，系统会要求你输入用于登录该账号的密码以供确认。\n",
+      "semanticSha256": "88a3c19688f6d8a9a3bcc9d355e90f718718d0ae8b590c11fc830221d59382a7"
+    },
+    {
+      "source": "显示此画面即表示账号删除申请已完成。点按“知道了”后，将从 Misskey 服务器登出。\n",
+      "semanticSha256": "c049bbe8f9186e6b6e3da72a7d56d75915815ee1d03a02d27deeb1e8292708ae"
+    },
+    {
+      "source": "打开“设置”，稍微向下滚动后，点击“其他”。\n",
+      "semanticSha256": "02113dd69ed20b97927854c1190a791ae4f9f0c62810839c1496b1eaf85bc8ba"
+    },
+    {
+      "source": "点击并打开“永久注销账户”，确认注意事项后，点击“请求删除账户”。\n",
+      "semanticSha256": "393b6d03149b2906e43beaa9e4ab094802f60e5a5cdb4ad7170b16b92e4928bd"
+    },
+    {
+      "source": "显示此画面即表示账号删除申请已完成。点击“知道了”后，将从 Misskey 服务器登出。\n",
+      "semanticSha256": "886e7207a378e1a4040279bfe0574a5aaa30e554eecb99977725bb962b2ab39d"
+    },
+    {
+      "source": "启用两步验证后，可以降低账号被入侵的风险并提升安全性。以下将介绍一次性密码的设置方法。\n",
+      "semanticSha256": "a5b4c65ed450718ed7868a15294e8170f1bda8ea95a1495424d3520e77bf9c30"
+    },
+    {
+      "source": "开始操作前，请先安装用于生成两步验证一次性密码的应用。以下是一些示例：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n",
+      "semanticSha256": "036153568086ed46cade7844144a7a58bdbfd341120a03f5ef08bd84f89986cc"
+    },
+    {
+      "source": "在设置分类中找到“安全”，并点按它。\n",
+      "semanticSha256": "ef3d62233e6998eba5e57b4ac0eab05772ef6bcc4bbd7305282fb440911b8927"
+    },
+    {
+      "source": "在“双因素认证”中的“验证器”下，点按“开始设置验证器”。\n",
+      "semanticSha256": "700773ae78f90053827d0dfb974d3bd05abcdd89a2c6015f2caa089e3d6f948b"
+    },
+    {
+      "source": "由于这是与安全相关的设置，系统会要求您输入用于登录该账号的密码以供确认。\n",
+      "semanticSha256": "3c4ce13822b17f5234ba59a3cd94693975b9bec8e3e2b2adbeab7da40a389aa4"
+    },
+    {
+      "source": "系统将生成用于设置两步验证应用的代码。请使用以下其中一种方式进行设置。\n\n### 在当前设备上设置两步验证应用\n\n点按“启动应用”按钮。若未显示此按钮，**点按二维码即可启动应用。**\n\n:::tip\n\n若无法启动，请确认两步验证应用是否已正确安装。\n\n:::\n\n### 在另一台已安装两步验证应用的设备上进行设置\n\n打开两步验证应用，并按照应用的指示新建一次性密码。此时，请扫描画面上显示的二维码。\n",
+      "semanticSha256": "604801ea02dda1fa933d6eda8a16305831761d53db0670a19e9e1d14644d9ca9"
+    },
+    {
+      "source": "在接下来的 Misskey 设置步骤中，为了确认验证器是否已正确设置，系统会要求您输入由应用生成的一次性密码。\n\n请按照应用的指示，记住或先行复制一次性密码。\n\n:::warning\n\n一次性密码会很快失效（约 30 秒），请特别留意。\n\n:::\n",
+      "semanticSha256": "9e88e57fe869c6cba026e25e7d206f54bfe9b6d39a242a99343b8f82a84e6159"
+    },
+    {
+      "source": "输入刚才的一次性密码，然后点按“继续”。\n",
+      "semanticSha256": "cfc1559cfb79b9ee89c57487759c39e97843a20439fcef15c0c1d14eabee068b"
+    },
+    {
+      "source": "**两步验证已设置完成。**\n\n最后，系统还会生成在无法使用两步验证时可用的“备用代码”，请务必在结束前先下载。\n\n:::warning\n\n备用代码是在无法使用一次性密码时，用于登录账号的救援方式。\n\n如果没有这组代码，您将无法登录账号，因此请务必下载并妥善保存在安全的地方。\n\n这组代码此后将不会再次显示。\n\n:::\n",
+      "semanticSha256": "9327295e3645e35f32610b8d8c1c3f60d44ca2ce1529b659c5a5c21795295f9e"
+    },
+    {
+      "source": "开始操作前，请先在您的智能手机等设备上安装用于生成两步验证一次性密码的应用。以下是一些示例：\n\n- Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)\n- FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)\n\n:::tip\n\n虽然也有适用于电脑的一次性密码生成软件，但从便携性的角度考虑，建议使用智能手机上的应用。\n\n:::\n",
+      "semanticSha256": "b16b7d19960dc719a43c40a87cd115fabf6e45eb3bc8ef54cd9472f20d1f50d8"
+    },
+    {
+      "source": "依次进入“设置”→“安全”，在“双因素认证”中的“验证器”下，点按“开始设置验证器”。\n",
+      "semanticSha256": "04e927724e27d63621714635dc9e7c5ae1bff4f0fc95450195b5c5996eaaa9ff"
+    },
+    {
+      "source": "系统将生成用于设置两步验证应用的代码。请使用以下其中一种方式进行设置。\n\n### 使用手机上的两步验证应用（推荐）\n\n在您的智能手机上打开两步验证应用，并按照应用的指示新建一次性密码。此时，请扫描画面上显示的二维码。\n\n### 使用电脑上的两步验证应用\n\n点击“启动应用”按钮。若未显示此按钮，点击二维码即可启动应用。\n",
+      "semanticSha256": "b2cf1bcd082960d4220697f0cb6c1e327396eb0ba3797d9ba98a76df44c6e9f2"
+    },
+    {
+      "source": "输入刚才的一次性密码，然后点击“继续”。\n",
+      "semanticSha256": "65c24e35b9a4d37cb6cc6d37bb1c6030a84028af3613690c1df2b21789dff19e"
+    },
+    {
+      "source": "这里将介绍如何将 Misskey Web 安装为PWA应用。这是在只能手机上使用 Misskey 的推荐方式。\n\n## 什么是PWA？\n\nPWA 是 Progressive Web App 的缩写，是一种可以将网页像App应用一样使用的技术。Misskey 原生支持PWA。\n\n以下依照手机操作系统介绍 PWA 的使用方法。请从下方选择您所使用的操作系统并继续。\n",
+      "semanticSha256": "4d3c4df0bfd0086f43bc61cb1cc529ba46ff82f30e1116472dd548f53f544d9f"
+    },
+    {
+      "source": "在 Android 上使用 PWA 時，建议使用 Google Chrome。\n\n这里将说明使用 Google Chrome 进行设置的方法。\n",
+      "semanticSha256": "9b84c538096071b1fec7a523733706e560165e592335885d0f521dabb1823403"
+    },
+    {
+      "source": "请前往您想要以 PWA 形式安装到手机上的 Misskey 服务器，并先登入账号。\n",
+      "semanticSha256": "057e295e6d62930211230972858051d99deb4d011f23afe6caada0b731a93484"
+    },
+    {
+      "source": "处于 Misskey 服务器任意一页面的状态时，点右上角“︙”按钮。\n",
+      "semanticSha256": "04c6805cee853433b99f04e0343d29aedb46a1929ff0aaf87fa0ee9894f7529d"
+    },
+    {
+      "source": "在菜单中点“添加到主屏幕”或“安装应用”，并依照显示的对话框指示完成操作。\n",
+      "semanticSha256": "fb1b8f72034a693702d38907c8c80e2877dae12b1d057605436762d2df73d5b0"
+    },
+    {
+      "source": "稍等片刻后，主屏幕会新增服务器图标或 Misskey 图标。\n\n点此图标后，Misskey 会以App应用模式启动。\n",
+      "semanticSha256": "89142b798f7e5eb8d6066889be3bbf6d9a41afed74da00e6c5174427064b19a5"
+    },
+    {
+      "source": "在 iOS 或 iPadOS 上使用PWA时，请使用Safari。\n\n开始前，请先确认您手机上的操作系统是否为最新版本。\n如果不是，请参考[此页面](https://support.apple.com/ja-jp/ios/update)进行更新。\n",
+      "semanticSha256": "c8a14a13bbe5a5ec0e6ab282d22c0154532b53dc37a82eca703232d0019b7e7e"
+    },
+    {
+      "source": "处于 Misskey 服务器任意一页面的状态时，点菜单中的分享按钮。\n",
+      "semanticSha256": "079959fe3e74173d77d8c83f99e3a8c6276bedfc31769fd0b12096d6c68c11c9"
+    },
+    {
+      "source": "向下滚动选项列表，然后点击“添加到主屏幕”。\n\n之后，系统可能会请求发送通知的权限，请按照屏幕上的提示操作，并根据需要予以允许。\n\n如果没有显示“添加到主屏幕”，可能是该设置项被隐藏了。要显示该选项，请滚动到列表最底部，在“编辑操作”中添加“添加到主屏幕”。详情请见 [Apple 支持页面](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)。\n",
+      "semanticSha256": "8465e9f67af65a113aab222e5c093b561a6597230fd63aae46f80a2209043a32"
+    }
+  ]
+}

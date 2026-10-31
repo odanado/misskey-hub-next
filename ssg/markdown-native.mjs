@@ -1,4 +1,4 @@
-import { extractMdcIslands } from "./mdc-islands.mjs";
+import { extractComponentIslands } from "./component-islands.mjs";
 import Slugger from "github-slugger";
 import { transform } from "@ox-content/napi";
 import { fromHtml } from "hast-util-from-html";
@@ -8,11 +8,11 @@ import { isRelative } from "ufo";
 // Extract component/code islands before Rust parses the remaining Markdown.
 export function prepareNativeMarkdown(
 	entry,
-	{ mdcIslands = false, allowUnclosedContainers = false } = {},
+	{ componentIslands = false, allowUnclosedContainers = false } = {},
 ) {
 	const snippets = [];
-	const extracted = mdcIslands
-		? extractMdcIslands(entry.body, snippets, {
+	const extracted = componentIslands
+		? extractComponentIslands(entry.body, snippets, {
 				allowUnclosed: allowUnclosedContainers,
 			})
 		: null;
@@ -25,7 +25,9 @@ export function prepareNativeMarkdown(
 	for (let i = 0; i < lines.length; i++) {
 		const opening = /^ {0,3}(`{3,}|~{3,})[^\n]*\r?\n?$/.exec(lines[i]);
 		if (!opening) {
-			markdown += lines[i];
+			markdown += lines[i].replace(/^\t+(?=[-*+]\s)/, (tabs) =>
+				"    ".repeat(tabs.length),
+			);
 			continue;
 		}
 		let code = lines[i];
@@ -37,16 +39,25 @@ export function prepareNativeMarkdown(
 			if (closing.test(lines[i])) break;
 		}
 		const slot = snippets.push(code) - 1;
-		markdown += `<div data-mdc-slot="${slot}"></div>\n`;
+		markdown += `<div data-ox-slot="${slot}"></div>\n`;
 	}
+	markdown = markdown.replace(
+		/(https?)\\:\/\/localhost(?=[:/\s]|$)/g,
+		"$1&#58;//localhost",
+	);
+	markdown = markdown.replace(
+		/([\u0080-\uFFFF])([A-Za-z0-9.+_-]+)\\@([A-Za-z0-9.-]+)/g,
+		"$1$2&#xE000;$3",
+	);
+	markdown = markdown.replace(/<img\b/g, "<img data-ox-raw-image");
 	const codeIslands = snippets.length - componentSnippets;
 	if (/^:{2,}[^\n]*(?:\{|#)|^:{2}[^:\n]/m.test(markdown)) {
-		throw new Error(`MDC syntax outside supported MDC syntax: ${entry.source}`);
+		throw new Error(`Unsupported component syntax: ${entry.source}`);
 	}
 	return { markdown, snippets, componentSnippets, extracted, codeIslands };
 }
 
-// MDC compatibility bridge. Unsupported MDC must fail, never disappear.
+// Legacy authoring bridge. Unsupported component syntax must fail, never disappear.
 // Keep the existing Shiki/AiScript output for fenced code; Rust parses the rest.
 export async function nativeDocument(
 	entry,
@@ -55,7 +66,7 @@ export async function nativeDocument(
 		compileHast,
 		generateToc,
 		generatePath,
-		mdcIslands = false,
+		componentIslands = false,
 		allowUnclosedContainers = false,
 		prepared,
 		renderedHtml,
@@ -64,14 +75,15 @@ export async function nativeDocument(
 ) {
 	const { markdown, snippets, extracted, codeIslands } =
 		prepared ??
-		prepareNativeMarkdown(entry, { mdcIslands, allowUnclosedContainers });
+		prepareNativeMarkdown(entry, { componentIslands, allowUnclosedContainers });
 
 	const rendered =
 		renderedHtml === undefined
 			? transform(markdown, {
 					gfm: true,
-					...(mdcIslands ? { semanticFootnotes: true } : {}),
-					containers: { enabled: true },
+					emojiShortcodes: true,
+					...(componentIslands ? { semanticFootnotes: true } : {}),
+					containers: { enabled: !componentIslands },
 					toc: true,
 					linkTargetBlank: false,
 					autolinkTargetBlank: false,
@@ -87,9 +99,13 @@ export async function nativeDocument(
 	function adapt(node, parent) {
 		if (
 			node.type === "text" &&
-			["root", "p", "em", "strong", ...(mdcIslands ? ["li"] : [])].includes(
-				parent?.tagName ?? parent?.type,
-			)
+			[
+				"root",
+				"p",
+				"em",
+				"strong",
+				...(componentIslands ? ["li"] : []),
+			].includes(parent?.tagName ?? parent?.type)
 		) {
 			node.value = node.value.replace(/(?<=[\.\?\!])([A-Z(])/g, " $1");
 		}
@@ -135,8 +151,12 @@ export async function nativeDocument(
 				node.properties.rel = ["nofollow"];
 			}
 			if (node.tagName === "a") {
-				const href = node.properties.href ?? "";
-				if (mdcIslands && href.includes("#"))
+				const href = encodeURI(node.properties.href ?? "").replace(
+					/%25([a-fA-F0-9]{2})/g,
+					"%$1",
+				);
+				if (node.properties.href !== undefined) node.properties.href = href;
+				if (componentIslands && href.includes("#"))
 					node.properties.href = href.replace(
 						/#(.*)$/,
 						(_, hash) => "#" + encodeURI(decodeURI(hash)),
@@ -152,12 +172,15 @@ export async function nativeDocument(
 						}) + hash;
 				}
 			}
-			if (node.tagName === "img")
-				node.properties.alt = node.properties.alt?.replace(/[\[\]]/g, "");
+			if (node.tagName === "img") {
+				if (node.properties.dataOxRawImage === undefined)
+					node.properties.alt = node.properties.alt?.replace(/[\[\]]/g, "");
+				delete node.properties.dataOxRawImage;
+			}
 		}
 		for (const child of node.children ?? []) adapt(child, node);
 		if (
-			mdcIslands &&
+			componentIslands &&
 			node.children &&
 			!["a", "code", "pre"].includes(node.tagName)
 		)
@@ -166,7 +189,7 @@ export async function nativeDocument(
 				const result = [];
 				let cursor = 0;
 				for (const match of child.value.matchAll(
-					/(?<![\w@])([A-Za-z0-9][\w.+-]*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)/g,
+					/(?<![\w])([A-Za-z0-9][\w.+-]*@[A-Za-z0-9-]+(?:\.[A-Za-z][A-Za-z0-9-]*)+)/gu,
 				)) {
 					result.push(
 						{ type: "text", value: child.value.slice(cursor, match.index) },
@@ -184,8 +207,52 @@ export async function nativeDocument(
 					: [child];
 			});
 	}
+	function bindings(node) {
+		if (
+			node.children &&
+			!["pre", "code", "script", "style"].includes(node.tagName)
+		)
+			node.children = node.children.flatMap((child) => {
+				if (child.type !== "text" || !child.value.includes("{{"))
+					return [child];
+				const out = [];
+				let cursor = 0;
+				for (const match of child.value.matchAll(/\{\{([^}]+)\}\}/g)) {
+					out.push(
+						{ type: "text", value: child.value.slice(cursor, match.index) },
+						{
+							type: "element",
+							tagName: "binding",
+							properties: { value: match[1].trim() },
+							children: [],
+						},
+					);
+					cursor = match.index + match[0].length;
+				}
+				return cursor
+					? [...out, { type: "text", value: child.value.slice(cursor) }]
+					: [child];
+			});
+		node.children?.forEach(bindings);
+	}
+	bindings(tree);
+	function mergeLists(node) {
+		node.children?.forEach(mergeLists);
+		if (node.tagName === "li")
+			node.children = node.children
+				.filter((child) => child.type !== "text" || !/^\n+$/.test(child.value))
+				.reduce((out, child) => {
+					const previous = out.at(-1);
+					if (previous?.tagName === "ul" && child.tagName === "ul")
+						previous.children.push(...child.children);
+					else out.push(child);
+					return out;
+				}, []);
+	}
+	mergeLists(tree);
 	adapt(tree);
-	if (mdcIslands) {
+	restoreEscapedEmails(tree);
+	if (componentIslands) {
 		const element = (tagName, properties, children) => ({
 			type: "element",
 			tagName,
@@ -244,12 +311,12 @@ export async function nativeDocument(
 		}
 	function substitute(node) {
 		node.children = node.children?.flatMap((child) =>
-			child.tag === "span" && child.props.dataMdcInline !== undefined
-				? compiled[Number(child.props.dataMdcInline)].body.children
+			child.tag === "span" && child.props.dataOxInline !== undefined
+				? compiled[Number(child.props.dataOxInline)].body.children
 						.flatMap((part) => (part.tag === "p" ? part.children : [part]))
 						.map(substitute)
-				: child.tag === "div" && child.props.dataMdcSlot !== undefined
-					? compiled[Number(child.props.dataMdcSlot)].body.children
+				: child.tag === "div" && child.props.dataOxSlot !== undefined
+					? compiled[Number(child.props.dataOxSlot)].body.children
 							.filter((node) => node.tag !== "style")
 							.map(substitute)
 					: [substitute(child)],
@@ -258,7 +325,7 @@ export async function nativeDocument(
 	}
 	substitute(body);
 	body.children.push(...styles.values());
-	if (mdcIslands) {
+	if (componentIslands) {
 		const slugs = new Slugger();
 		const text = (n) => n.value ?? n.children?.map(text).join("") ?? "";
 		const walk = (n) => {
@@ -285,7 +352,7 @@ export async function nativeDocument(
 	const description =
 		entry.frontmatter.description ??
 		text(
-			mdcIslands
+			componentIslands
 				? headingChildren[0]?.tag === "p"
 					? headingChildren[0]
 					: {}
@@ -298,14 +365,13 @@ export async function nativeDocument(
 		title,
 		description,
 		body,
-		...(mdcIslands
+		...(componentIslands
 			? {
 					_parsing: {
 						engine: "ox",
 						codeIslands,
-						mdcIslands:
+						componentIslands:
 							(extracted?.containers ?? 0) + (extracted?.components ?? 0),
-						fullMdcFallback: false,
 					},
 				}
 			: {}),
@@ -314,4 +380,9 @@ export async function nativeDocument(
 		_type: "markdown",
 		_id: `content:${entry.source.replaceAll("/", ":")}`,
 	};
+}
+
+function restoreEscapedEmails(node) {
+	if (node.type === "text") node.value = node.value.replaceAll("\uE000", "@");
+	node.children?.forEach(restoreEscapedEmails);
 }

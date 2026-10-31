@@ -1,16 +1,14 @@
 // Composition from PR #2 by ubugeeei. Ox owns routes/Markdown/output;
 // Vue compiles the small auxiliary component registry and client islands.
-import { resolve, relative } from "node:path";
+import { resolve } from "node:path";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { createRequire } from "node:module";
 import { parse, compileStyle } from "@vue/compiler-sfc";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createOxContentCustomHostPlugin } from "@ox-content/vite-plugin";
 import { common } from "./plugins.mjs";
 import { root, outDir } from "./routes.mjs";
-const require = createRequire(import.meta.url);
 const styles = [
 	"layouts/docs.vue",
 	"pages/docs/[...slug].vue",
@@ -23,11 +21,7 @@ const styles = [
 	"components/content/MiWebEmbed.vue",
 	"components/content/ApiPermissions.vue",
 	"components/content/MkIndex.vue",
-	relative(
-		root,
-		require.resolve("@nuxt/content").replace(/[^/]+$/, "") +
-			"runtime/components/Prose/ProsePre.vue",
-	),
+	"ssg/prose/ProsePre.vue",
 ];
 const themeStyles = {
 	name: "ox-islands-theme-styles",
@@ -137,7 +131,8 @@ export default defineConfig({
 				search: false,
 				embeds: false,
 				highlight: false,
-				containers: true,
+				emojiShortcodes: true,
+				containers: false,
 				ssg: {
 					generateOgImage: false,
 					lastUpdated: false,

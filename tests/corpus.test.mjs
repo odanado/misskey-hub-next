@@ -1,28 +1,129 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { parseFrontmatter } from "@ox-content/napi";
-import { parseMdc, compileHast, generateToc, generatePath } from "../ssg/mdc.mjs";
-import { nativeDocument } from "../ssg/markdown-native.mjs";
-import { legacyMdcSources, parseLegacyDocument } from "../ssg/mdc-compatibility.mjs";
-import { semanticFootnotes } from "../ssg/semantic-footnotes.mjs";
+import { parseOx } from "../ssg/markdown-ox.mjs";
 
-// Compare text and element structure with the actual pre-migration parser.
-// Whitespace and hoisted highlighting styles are verified separately by VRT.
-function structure(node) {
+// Independent snapshots from PR #3's parser. They are test evidence only and
+// are never imported by the build. VRT covers whitespace and hoisted styles.
+export function structure(node) {
 	if (node.type === "text") return node.value.replace(/\s+/g, " ").trim();
 	if (node.tag === "style" || node.type === "comment") return null;
-	return { tag: node.tag ?? node.type, props: Object.fromEntries(Object.entries(node.props ?? {}).filter(([key]) => ["href", "src", "alt", "id", "style", "title"].includes(key)).sort(([a], [b]) => a.localeCompare(b))), children: (node.children ?? []).map(structure).filter(v => v !== null && v !== "") };
+	return {
+		tag: node.tag ?? node.type,
+		props: Object.fromEntries(
+			Object.entries(node.props ?? {})
+				.filter(([key]) =>
+					["href", "src", "alt", "id", "style", "title"].includes(key),
+				)
+				.sort(([a], [b]) => a.localeCompare(b)),
+		),
+		children: (node.children ?? [])
+			.map(structure)
+			.filter((v) => v !== null && v !== ""),
+	};
 }
-test("All Markdown preserves original MDC text, structure and link/image attributes", { timeout: 120000 }, async (t) => {
-	const sources = (await readdir("content", { recursive: true })).filter(p => p.endsWith(".md") && !p.split("/").some(s => s.startsWith(".")));
-	for (const source of legacyMdcSources) assert.ok(sources.includes(source), "Missing compatibility source: " + source);
-	for (const source of sources) {
-		const raw = await readFile("content/" + source, "utf8");
-		const entry = { source, body: parseFrontmatter(raw).content, frontmatter: {}, path: "/" + source };
-		const reference = await parseMdc(raw, source);
-		const migrated = legacyMdcSources.has(source) ? await parseLegacyDocument(entry) : await nativeDocument(entry, snippet => parseMdc(snippet, "snippet.md"), { compileHast, generateToc, generatePath, mdcIslands: true, allowUnclosedContainers: true, normalizeTree: semanticFootnotes });
-		assert.deepEqual(structure(migrated.body), structure(reference.body), source);
+const hash = (value) => createHash("sha256").update(value).digest("hex");
+test(
+	"Historical Markdown corpus retains PR #3 structure and attributes",
+	{ timeout: 120000 },
+	async (t) => {
+		const reference = JSON.parse(
+			await readFile(
+				new URL("./fixtures/corpus-pr3.json", import.meta.url),
+				"utf8",
+			),
+		);
+		let checked = 0,
+			changed = 0;
+		for (const [source, expected] of Object.entries(reference.sources)) {
+			let raw;
+			try {
+				raw = await readFile("content/" + source, "utf8");
+			} catch (error) {
+				if (error.code === "ENOENT") {
+					changed++;
+					continue;
+				}
+				throw error;
+			}
+			// Future editorial changes are not frozen to the migration snapshot.
+			if (hash(raw) !== expected.sourceSha256) {
+				changed++;
+				continue;
+			}
+			const { content, frontmatter } = parseFrontmatter(raw);
+			const parsed = await parseOx(content, source, frontmatter);
+			assert.equal(
+				hash(JSON.stringify(structure(parsed.body))),
+				expected.semanticSha256,
+				source,
+			);
+			assert.equal(
+				hash(
+					JSON.stringify(
+						stable({
+							title: parsed.title,
+							description: parsed.description,
+							path: parsed._path,
+							toc: parsed.body.toc,
+						}),
+					),
+				),
+				expected.metadataSha256,
+				source + " metadata",
+			);
+			assert.equal(
+				hash(JSON.stringify(stable(componentProps(parsed.body)))),
+				expected.componentPropsSha256,
+				source + " props",
+			);
+			checked++;
+		}
+		assert.ok(checked > 0);
+		t.diagnostic(
+			`${checked}/${reference.sourceCount} migration snapshots checked; ${changed} subsequently edited/deleted sources`,
+		);
+	},
+);
+test("All 201 inline YAML Markdown strings retain PR #3 output", async () => {
+	const reference = JSON.parse(
+		await readFile(
+			new URL("./fixtures/inline-pr3.json", import.meta.url),
+			"utf8",
+		),
+	);
+	for (const { source, semanticSha256 } of reference.samples) {
+		const parsed = await parseOx(source, "inline.md");
+		assert.equal(
+			hash(JSON.stringify(structure(parsed.body))),
+			semanticSha256,
+			source,
+		);
 	}
-	t.diagnostic(`${sources.length} Markdown sources checked; ${legacyMdcSources.size} explicit legacy parser exceptions`);
 });
+
+function stable(value) {
+	if (Array.isArray(value)) return value.map(stable);
+	if (value && typeof value === "object")
+		return Object.fromEntries(
+			Object.keys(value)
+				.sort()
+				.map((key) => [key, stable(value[key])]),
+		);
+	return value;
+}
+function componentProps(node, out = []) {
+	if (
+		node.type === "element" &&
+		(["tip", "warning", "danger", "g-details", "fukidashi"].includes(
+			node.tag,
+		) ||
+			node.tag?.includes("-")) &&
+		!node.tag?.startsWith("mk-schema-viewer")
+	)
+		out.push({ tag: node.tag, props: node.props });
+	node.children?.forEach((child) => componentProps(child, out));
+	return out;
+}

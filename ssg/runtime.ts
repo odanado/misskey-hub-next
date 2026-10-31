@@ -2,7 +2,7 @@ declare const __HUB_PUBLIC_CONFIG__: {
 	baseUrl: string;
 	serverListApiBaseUrl: string;
 };
-import MDC from "./FullMDC.vue";
+import MDC from "./MarkdownRenderer.vue";
 export { Translation as I18nT } from "vue-i18n";
 export { MDC };
 import appConfig from "../app.config";
@@ -31,7 +31,7 @@ export const runtimeConfig = {
 		...__HUB_PUBLIC_CONFIG__,
 		repositoryUrl: "https://github.com/misskey-dev/misskey-hub-next",
 		locales: [],
-		mdc: {
+		content: {
 			components: { prose: true, map: { code: "ProseCodeInline" } },
 			headings: {
 				anchorLinks: {

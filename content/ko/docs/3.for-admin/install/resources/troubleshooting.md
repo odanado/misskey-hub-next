@@ -16,7 +16,7 @@ MisskeyInstallBattle 참가자가 늘어났지만, 그에 따라 시간이 지�
 ……어라, 복사-붙여넣기만으로 할 수 있다면 완전 자동화가 가능하지 않을까?
 
 그래서 **쉘 스크립트로 거의 모든 것을 해주는 것을 만들어 보았습니다!**\
-[\*\*자세한 내용 및 사용법은 여기에서 확인하세요!]\*\*https://github.com/joinmisskey/bash-install#readme](https://github.com/joinmisskey/bash-install#readme)
+[\*\*자세한 내용 및 사용법은 여기에서 확인하세요!]\*\*[https://github.com/joinmisskey/bash-install#readme](https://github.com/joinmisskey/bash-install#readme)]([https://github.com/joinmisskey/bash-install#readme](https://github.com/joinmisskey/bash-install#readme))
 
 도메인 구매 및 Cloudflare 설정, 서버 확보는 여러분이 직접 준비해 주시기 바랍니다.
 

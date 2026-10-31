@@ -1,3 +1,4 @@
+import { contentComponents as custom } from "./component-names.mjs";
 import { find, html as htmlSchema } from "property-information";
 export const escape = (value: any) =>
 	String(value ?? "")
@@ -21,17 +22,6 @@ const voidTags = new Set([
 	"track",
 	"wbr",
 ]);
-const custom: Record<string, string> = {
-	tip: "Tip",
-	warning: "Warning",
-	danger: "Danger",
-	"g-details": "GDetails",
-	fukidashi: "Fukidashi",
-	"mfm-preview": "MfmPreview",
-	"mi-web-embed": "MiWebEmbed",
-	"api-permissions": "ApiPermissions",
-	"mk-index": "MkIndex",
-};
 function attributes(props: any) {
 	return Object.entries(props ?? {})
 		.filter(([key]) => !key.startsWith("__"))
