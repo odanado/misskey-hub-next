@@ -14,7 +14,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-const { locale } = useI18n();
+const { locale, t: $t } = useI18n();
 
 const props = withDefaults(defineProps<{
 	time: Date | string | number | null;
