@@ -1,0 +1,62 @@
+{
+  "startedAt": "2026-10-31T00:00:05.181Z",
+  "node": "v22.22.2",
+  "platform": "darwin-arm64",
+  "cpu": "Apple M1 Pro",
+  "sourceFingerprint": "d4620fb60f3fa705a16e563da9a1135e5f541243111331f6fa46a00342454698",
+  "sourceCommit": "618dae3",
+  "captureModuleSha256": "0f9499c06aff92ec6e1e3844119ec9c106ee909fe46460c139634c4f4b567a3a",
+  "historicalRunSha256": "0e47247b5a65ca0ae778cb15d3692a72f893ea4536126638713da5a402d2ff30",
+  "candidateTimingSha256": "5456bde74462a8bf87fd61e40223b04a016f93e16d6c1bedab71f3cf3c15c80a",
+  "candidateSsgMedianSeconds": 25.073330042000002,
+  "candidateClientManifestSha256": "4b541f1ebf8c994686923a84e7f7c900b95ca17ef4e44c6e683792e11352de39",
+  "artifactBefore": {
+    "baseline": {
+      "directory": ".pilot/full/baseline/public",
+      "files": 7668,
+      "bytes": 377422397,
+      "sha256": "4bd7a0af232fd369807849d90895275a1d132ec54137688c0940d8669a2120f1",
+      "verifiedPublicUrls": 1991
+    },
+    "ox-native-islands": {
+      "directory": ".pilot/full/ox-native-islands/public",
+      "files": 2781,
+      "bytes": 322419320,
+      "sha256": "7d699b9a1791efc3f7dd76cc1e1caf18e832bd84aafc3dff58ff5bbc1f1e5bbb",
+      "verifiedPublicUrls": 1991
+    }
+  },
+  "baselineSnapshots": 264,
+  "command": [
+    "/Users/odan/.local/share/mise/installs/node/22.22.2/bin/node",
+    "experiments/ssg/tooling/full-vrt.mjs",
+    "--modes=baseline,ox-native-islands",
+    "--workers=6",
+    "--benchmark-file=experiments/ssg/results/full/2026-10-30/compiler-timings.json",
+    "--output-dir=experiments/ssg/results/ox-native-islands/2026-10-31/full-vrt"
+  ],
+  "policy": "Reuse historical Nuxt full output and capture module, frozen clock, all 1991 URLs, macOS desktop/light only. Fresh reference captures per URL. Exact RGBA/dimensions with no masks, tolerances, retries, Vize, or implementation fixes. Images excluded from Git. SSG time is the previously recorded three-run median; this command measures VRT only. Candidate output was regenerated during the earlier Vue-pages investigation; current full artifact hashes are recorded here.",
+  "finishedAt": "2026-10-31T00:23:58.190Z",
+  "sourceUnchanged": true,
+  "baselineUnchanged": true,
+  "artifactUnchanged": true,
+  "artifactAfter": {
+    "baseline": {
+      "directory": ".pilot/full/baseline/public",
+      "files": 7668,
+      "bytes": 377422397,
+      "sha256": "4bd7a0af232fd369807849d90895275a1d132ec54137688c0940d8669a2120f1",
+      "verifiedPublicUrls": 1991
+    },
+    "ox-native-islands": {
+      "directory": ".pilot/full/ox-native-islands/public",
+      "files": 2781,
+      "bytes": 322419320,
+      "sha256": "7d699b9a1791efc3f7dd76cc1e1caf18e832bd84aafc3dff58ff5bbc1f1e5bbb",
+      "verifiedPublicUrls": 1991
+    }
+  },
+  "captureModuleUnchanged": true,
+  "exitCode": 0,
+  "logSha256": "7fd360a0aa3fc3e0361d0cfcc67f8d91c00fb8b6d2c078ef004a9f8a35199526"
+}

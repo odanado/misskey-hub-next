@@ -13,7 +13,7 @@ const outputDirectory = option('output-dir', 'experiments/ssg/results/full/2026-
 const artifacts = sample === '30' ? '30' : 'full';
 const workers = Number(option('workers', '6'));
 if (![1, 2, 4, 6, 8].includes(workers)) throw new Error('Use 1, 2, 4, 6, or 8 workers');
-const modes = [
+const defaultModes = [
 	'baseline',
 	'baseline-vize',
 	'ox-ported',
@@ -23,6 +23,14 @@ const modes = [
 	'astro-ox',
 	'astro-ox-vize',
 ];
+const modes = option('modes', defaultModes.join(',')).split(',');
+if (
+	modes[0] !== 'baseline' ||
+	modes.length < 2 ||
+	new Set(modes).size !== modes.length ||
+	modes.some((mode) => ![...defaultModes, 'ox-native-islands'].includes(mode))
+)
+	throw new Error('Select baseline first and one or more supported candidate modes');
 let pages =
 	sample === '30'
 		? JSON.parse(await readFile('experiments/ssg/results/30/baseline.json', 'utf8')).pages.map(
@@ -55,7 +63,9 @@ const rowFile = resolve(outputDirectory, 'vrt-rows.jsonl');
 const summaryFile = resolve(outputDirectory, 'vrt.json');
 const manifestFile = resolve(outputDirectory, 'vrt-run.json');
 const startedAt = new Date().toISOString();
-const benchmarkFile = resolve(outputDirectory, 'compiler-timings.json');
+// A new candidate can reuse the original reference artifacts and frozen clock
+// without rerunning any of the historical compiler variants.
+const benchmarkFile = resolve(option('benchmark-file', resolve(outputDirectory, 'compiler-timings.json')));
 const benchmark = sample === 'all' ? JSON.parse(await readFile(benchmarkFile, 'utf8')) : null;
 if (
 	benchmark &&
@@ -97,6 +107,7 @@ if (process.argv.includes('--resume')) {
 	if (
 		previous.scriptHash !== scriptHash ||
 		previous.benchmarkSha256 !== manifest.benchmarkSha256 ||
+		JSON.stringify(previous.modes) !== JSON.stringify(manifest.modes) ||
 		JSON.stringify(previous.pages) !== JSON.stringify(manifest.pages)
 	)
 		throw new Error('Cannot resume with changed capture code or URL scope');

@@ -29,3 +29,12 @@ node experiments/ssg/ox-native-islands/benchmark-full.mjs
 ```
 
 計測には起動・Vite・原稿処理・SSG・publicコピーを含む。全URLのHTMLとCSS/JS存在、本文ASTをクライアントへ送っていないことの検証はタイマー外で実行する。結果と制約は[レポート](../OX_ISLANDS_REPORT.md)にまとめる。
+
+## 全件VRT（macOS・PC・ライト）
+
+以前と同じ全件撮影処理で全1,991 URLを比較し、972件（48.82%）が合格した。Vizeは未測定。30ページ専用ビルドの合格と全件生成物での合格は分けて扱う。[詳細・内訳・再現方法](../ISLANDS_FULL_VRT_REPORT.md)。
+
+```sh
+node experiments/ssg/tooling/islands-full-vrt.mjs
+node experiments/ssg/tooling/summarize-islands-full-vrt.mjs
+```
