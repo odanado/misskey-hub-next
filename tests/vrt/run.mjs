@@ -93,7 +93,7 @@ const manifest = {
 	locale: "ja-JP",
 	timezone: "Asia/Tokyo",
 	policy:
-		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds (including deterministic shader phase); motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 90s.",
+		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 90s.",
 };
 const rows = [];
 if (process.argv.includes("--resume")) {
@@ -201,7 +201,8 @@ async function saveSamples(mode, entry, reference, candidate, comparison) {
 		return;
 	sampleCounts[key] = (sampleCounts[key] ?? 0) + 1;
 	const dir = resolve(
-		".vrt/samples",
+		outputDirectory,
+		"samples",
 		mode,
 		createHash("sha256").update(entry.path).digest("hex").slice(0, 12),
 	);

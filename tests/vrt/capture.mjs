@@ -92,6 +92,12 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		});
 		if (response?.status() !== 200)
 			throw new Error("HTTP " + response?.status());
+		if (clock)
+			await page.evaluate(() => {
+				const request = window.requestAnimationFrame.bind(window);
+				window.requestAnimationFrame = (callback) =>
+					request(() => callback(30_000));
+			});
 		await page.waitForSelector('html[data-site-ready="true"]', {
 			state: "attached",
 			timeout: 8000,
@@ -119,7 +125,12 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		// pausing time. Freezing the application clock too early races scrollspy.
 		// Use an absolute clock for deterministic WebGL shader timestamps as well.
 		await page.waitForTimeout(200);
-		if (clock) await page.clock.pauseAt(new Date(clockTime).getTime() + 30_000);
+		if (clock) {
+			await page.clock.pauseAt(new Date(clockTime).getTime() + 29_968);
+			// Run two frames with identical RAF timestamps. Pausing Date alone can
+			// retain a different last shader frame depending on navigation timing.
+			await page.clock.runFor(32);
+		}
 		await page.mouse.move(0, 0);
 		await page.evaluate(() => {
 			window.scrollTo({ top: 0, behavior: "instant" });

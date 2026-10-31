@@ -109,7 +109,13 @@ export async function prepareData(parseDocument) {
 	for (const [code, value] of originals)
 		messages.set(
 			code,
-			merge(merge(originals.get("ja"), originals.get("en")), value),
+			merge(
+				// Vue I18n implicitly tries ja before explicit en for ja-ks.
+				code === "ja-ks"
+					? merge(originals.get("en"), originals.get("ja"))
+					: merge(originals.get("ja"), originals.get("en")),
+				value,
+			),
 		);
 	const pageMeta = new Map();
 	for (const file of new Set(

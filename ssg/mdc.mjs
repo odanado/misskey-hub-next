@@ -36,7 +36,7 @@ const grammar = JSON.parse(
 		"utf8",
 	),
 );
-const highlighter = createShikiHighlighter({
+const highlighterOptions = {
 	bundledLangs: bundledLanguages,
 	bundledThemes,
 	engine: createWasmOnigEngine(() => import("shiki/wasm")),
@@ -49,7 +49,45 @@ const highlighter = createShikiHighlighter({
 			},
 		},
 	],
+};
+const defaultHighlighter = createShikiHighlighter(highlighterOptions);
+// Markdown/MDC register embedded Vue grammars. Isolate the legacy Vue grammar
+// so other documents' language-loading order cannot change its token colors.
+const vueHighlighter = createShikiHighlighter({
+	...highlighterOptions,
+	langs: [bundledLanguages.mdc],
 });
+const highlighter = async (code, lang, theme, options) => {
+	const rendered = await (lang === "vue" ? vueHighlighter : defaultHighlighter)(
+		code, lang, theme, options,
+	);
+	if (lang === "vue" && /<route\b/.test(code)) {
+		// Existing Nuxt output leaves custom route-block contents in the theme's
+		// plain foreground. Preserve that presentation without changing the code.
+		const foreground = (await Promise.all(Object.entries(theme).map(async ([variant, name]) => {
+			const imported = await bundledThemes[name]();
+			const data = imported.default ?? imported;
+			const color = data.fg ?? data.colors["editor.foreground"];
+			return `--shiki-${variant}:${color.startsWith("#") ? color.toUpperCase() : color}`;
+		}))).join(";");
+		const text = (node) => node.value ?? node.children?.map(text).join("") ?? "";
+		const lines = code.split("\n");
+		let inRoute = false;
+		const uncolored = new Set();
+		lines.forEach((line, index) => {
+			if (/^\s*<\/route>/.test(line)) inRoute = false;
+			if (inRoute) uncolored.add(index + 1);
+			if (/^\s*<route\b/.test(line)) inRoute = true;
+		});
+		for (const node of rendered.tree)
+			if (uncolored.has(node.properties?.line))
+				node.children = [{
+					type: "element", tagName: "span", properties: { style: foreground },
+					children: [{ type: "text", value: text(node) }],
+				}];
+	}
+	return rendered;
+};
 const parserOptions = {
 	remark: {
 		plugins: {

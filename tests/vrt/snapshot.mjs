@@ -3,7 +3,7 @@
 // document coordinates (including fixed elements) while bounding decode memory.
 export async function takeSnapshot(page) {
 	const height = await page.evaluate(() => document.documentElement.scrollHeight);
-	if (height <= 16000) return { bytes: await page.screenshot({ fullPage: true, animations: "allow", timeout: 10000 }) };
+	if (height <= 16000) return { bytes: await page.screenshot({ fullPage: true, animations: "allow", timeout: 30000 }) };
 	const session = await page.context().newCDPSession(page);
 	try {
 		const { cssContentSize } = await session.send("Page.getLayoutMetrics");

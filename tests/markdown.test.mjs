@@ -51,3 +51,20 @@ for (const source of [
 			reference.body.children.map(semantic),
 		);
 	});
+
+test("Vue highlight preserves the original MDC grammar order", async () => {
+ await parseMdc('```md\nExample Markdown\n```', "markdown.md");
+ const parsed = await parseMdc('```vue\n<template>\n<div :class="$style.red">Text</div>\n</template>\n```', "vue.md");
+ const tokens = [];
+ const visit = node => { if (node.tag === "span") tokens.push(node); node.children?.forEach(visit); };
+ visit(parsed.body);
+ assert.ok(tokens.some(node => node.children?.some(child => child.value === " :class") && node.props?.style?.includes("--shiki-default:#DF8E1D")));
+});
+
+test("Vue route examples retain the original plain foreground", async () => {
+ const parsed = await parseMdc('```vue\n<route lang="yaml">\nname: note\npath: /notes/:noteId\n</route>\n```', "route.md");
+ const spans = [];
+ const visit = node => { if (node.tag === "span") spans.push(node); node.children?.forEach(visit); };
+ visit(parsed.body);
+ assert.ok(spans.some(node => node.children?.some(child => child.value?.includes("name: note")) && node.props?.style?.includes("--shiki-default:#4C4F69")));
+});

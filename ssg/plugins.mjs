@@ -106,7 +106,7 @@ export function plugins() {
 						})
 						.join("\n");
 				if (id === "\0virtual:site-prose")
-					return readdirSync(resolve(mdc, "runtime/components/prose"))
+					return [...readdirSync(resolve(mdc, "runtime/components/prose")), "ProseCodeInline.vue"]
 						.filter(
 							(file) =>
 								file.endsWith(".vue") &&
