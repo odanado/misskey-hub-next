@@ -18,7 +18,7 @@ const viewport =
 const colorScheme = option("theme", "light");
 if (!["light", "dark"].includes(colorScheme)) throw Error("Invalid color scheme");
 const outputDirectory = option("output-dir", ".vrt/results");
-const workers = Number(option("workers", "2"));
+const workers = Number(option("workers", "1"));
 if (![1, 2, 4, 6, 8].includes(workers)) throw Error("Invalid worker count");
 const modes = ["baseline", "migrated"];
 const allPages = await loadPages();
@@ -102,7 +102,7 @@ const manifest = {
 	colorScheme,
 	renderer: "Chromium with SwiftShader WebGL fallback",
 	isolation:
-		"Fresh browser context per URL and compiler variant; no cookies, clock or storage carry over",
+		"Fresh browser context per URL and compiler variant; one capture at a time per browser; no cookies, clock or storage carry over",
 	locale: benchmark.intlLocale ?? "en-US",
 	timezone: "Asia/Tokyo",
 	policy:

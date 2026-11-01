@@ -94,7 +94,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
-    timeout-minutes: 45
+    timeout-minutes: 75
     strategy:
       fail-fast: false
       matrix:
@@ -122,7 +122,7 @@ jobs:
           JS
       - name: Compare every assigned URL with exact pixels
         run: >-
-          pnpm test:vrt --sample=all --workers=2 --shard=${{ matrix.shard }}/4
+          pnpm test:vrt --sample=all --workers=1 --shard=${{ matrix.shard }}/4
           --reference-metadata=.vrt/reference-build.json
           --reference-dir=.vrt/reference/.output/public
           --viewport=${{ matrix.viewport }} --theme=${{ matrix.theme }}
