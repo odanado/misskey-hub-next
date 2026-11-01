@@ -4,8 +4,6 @@ import { readdirSync } from "node:fs";
 import { createUnimport } from "unimport";
 import unocss from "unocss/vite";
 import svgLoader from "vite-svg-loader";
-import autoprefixer from "autoprefixer";
-import cssnano from "cssnano";
 import type { PluginOption } from "vite";
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
@@ -106,26 +104,14 @@ export function plugins(): PluginOption[] {
 						.filter(
 							(file) =>
 								file.endsWith(".vue") &&
-								!["ProseA.vue", "ProseImg.vue", "ProseTable.vue"].includes(
-									file,
-								),
+								!["ProseA.vue", "ProseImg.vue", "ProseTable.vue"].includes(file),
 						)
 						.map((file) => {
 							const name = file.slice(0, -4);
-							const path = [
-								"ProsePre",
-								"ProseCode",
-								"ProseCodeInline",
-							].includes(name)
+							const path = ["ProsePre", "ProseCode", "ProseCodeInline"].includes(name)
 								? resolve(content, "runtime/components/Prose", file)
 								: resolve(mdc, "runtime/components/prose", file);
-							return (
-								"export{default as " +
-								name +
-								"}from " +
-								JSON.stringify(path) +
-								";"
-							);
+							return "export{default as " + name + "}from " + JSON.stringify(path) + ";";
 						})
 						.join("\n");
 			},
@@ -140,19 +126,13 @@ export function plugins(): PluginOption[] {
 				let code = source
 					.replaceAll("import.meta.client", "(!import.meta.env.SSR)")
 					.replaceAll("import.meta.server", "import.meta.env.SSR")
-					.replace(
-						/((?:from|import)\s*['"][^'"]+\.svg)(['"])/g,
-						"$1?component$2",
-					);
+					.replace(/((?:from|import)\s*['"][^'"]+\.svg)(['"])/g, "$1?component$2");
 				if (id.endsWith(".vue")) {
 					const script = /<script\b[^>]*>([\s\S]*?)<\/script>/.exec(code);
 					if (!script) return code;
 					return code.replace(
 						script[0],
-						script[0].replace(
-							script[1],
-							(await imports.injectImports(script[1])).code,
-						),
+						script[0].replace(script[1], (await imports.injectImports(script[1])).code),
 					);
 				}
 				return (await imports.injectImports(code)).code;
@@ -184,7 +164,7 @@ export function plugins(): PluginOption[] {
 		}),
 	];
 }
-export const common = () => ({
+export const common = ({ ssrOnly = false }: { ssrOnly?: boolean } = {}) => ({
 	root,
 	define: {
 		__VUE_I18N_FULL_INSTALL__: true,
@@ -193,13 +173,16 @@ export const common = () => ({
 		__HUB_PUBLIC_CONFIG__: JSON.stringify({
 			baseUrl: process.env.SITE_BASE_URL ?? "https://misskey-hub.net",
 			serverListApiBaseUrl:
-				process.env.SERVER_LIST_API_BASE_URL ??
-				"https://instanceapp.misskey.page",
+				process.env.SERVER_LIST_API_BASE_URL ?? "https://instanceapp.misskey.page",
 		}),
 	},
 	publicDir: resolve(root, "public"),
 	css: {
-		postcss: { plugins: [autoprefixer(), cssnano({ preset: "default" })] },
+		postcss: {
+			plugins: ssrOnly
+				? []
+				: [require("autoprefixer")(), require("cssnano")({ preset: "default" })],
+		},
 	},
 	resolve: {
 		alias: aliases,

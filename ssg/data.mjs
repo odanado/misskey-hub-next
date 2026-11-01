@@ -5,35 +5,70 @@ import { loadPages } from "./routes.mjs";
 import { metadata, createNavigation, sourceOrder } from "../nuxt-compat/navigation.ts";
 import { parseMdc } from "../nuxt-compat/mdc.ts";
 import { localesConst } from "../assets/data/locales.ts";
-export async function prepareData(parseDocument) {
+export async function prepareData(parseDocument, preparedDocuments) {
 	const pages = await loadPages();
 
 	const start = performance.now();
 	const napi = await import("@ox-content/napi");
-	const manifest = new Map(
-		JSON.parse(napi.buildCollectionManifest({
-			srcDir: "content", extensions: ["md"],
-			collections: [{ name: "all", source: ["**/*.md"], include: ["body"] }],
-		})).collections.all.map((entry) => [entry.source, entry]),
-	);
+	const manifest = preparedDocuments
+		? undefined
+		: new Map(
+				JSON.parse(
+					napi.buildCollectionManifest({
+						srcDir: "content",
+						extensions: ["md"],
+						collections: [{ name: "all", source: ["**/*.md"], include: ["body"] }],
+					}),
+				).collections.all.map((entry) => [entry.source, entry]),
+			);
 
 	const contents = [],
 		configs = {},
 		inlineMarkdown = {};
 	let md = 0;
 	const files = (await readdir("content", { recursive: true })).filter(
-		(f) =>
-			/\.(md|ya?ml)$/.test(f) && !f.split("/").some((x) => x.startsWith(".")),
+		(f) => /\.(md|ya?ml)$/.test(f) && !f.split("/").some((x) => x.startsWith(".")),
 	);
+	// Worker documents may still be parsing. Prepare independent YAML and its
+	// inline Markdown now, retaining the original source order and object aliases.
+	const yamlItems = preparedDocuments
+		? new Map(
+				await Promise.all(
+					files
+						.filter((source) => !source.endsWith(".md"))
+						.map(async (source) => {
+							const fields = yaml.load(await readFile("content/" + source, "utf8")) ?? {};
+							const item = metadata(source, fields);
+							if (fields._TYPE_) Object.assign(item, fields);
+							return [source, item];
+						}),
+				),
+			)
+		: undefined;
+	if (yamlItems) for (const item of yamlItems.values()) if (!item._partial) await inline(item);
+	preparedDocuments = await preparedDocuments;
 	for (const source of files) {
-		const raw = await readFile("content/" + source, "utf8");
+		const raw =
+			(preparedDocuments && source.endsWith(".md")) || yamlItems?.has(source)
+				? undefined
+				: await readFile("content/" + source, "utf8");
 		let item;
 
 		if (source.endsWith(".md")) {
 			md++;
-			item = metadata(source, await parseDocument({
-				...manifest.get(source), body: napi.parseFrontmatter(raw).content,
-			}));
+			if (preparedDocuments && !preparedDocuments.has(source))
+				throw new Error("Missing prepared document: " + source);
+			item = metadata(
+				source,
+				preparedDocuments
+					? preparedDocuments.get(source)
+					: await parseDocument({
+							...manifest.get(source),
+							body: napi.parseFrontmatter(raw).content,
+						}),
+			);
+		} else if (yamlItems) {
+			item = yamlItems.get(source);
 		} else {
 			const fields = yaml.load(raw) ?? {};
 			item = metadata(source, fields);
@@ -47,21 +82,16 @@ export async function prepareData(parseDocument) {
 	// The original YAML guides and history timeline pass Markdown strings to MDC.
 	// Compile these strings explicitly; do not silently discard their content.
 	async function inline(value) {
-		if (
-			typeof value === "string" &&
-			value.includes("\n") &&
-			!inlineMarkdown[value]
-		)
+		if (typeof value === "string" && value.includes("\n") && !inlineMarkdown[value])
 			inlineMarkdown[value] = (await parseMdc(value, "inline.md")).body;
 		else if (Array.isArray(value)) for (const item of value) await inline(item);
 		else if (value && typeof value === "object")
 			for (const item of Object.values(value)) await inline(item);
 	}
 
-	for (const item of contents.filter(
-		(x) => x._extension !== "md" && !x._partial,
-	))
-		await inline(item);
+	if (!yamlItems)
+		for (const item of contents.filter((x) => x._extension !== "md" && !x._partial))
+			await inline(item);
 
 	const sorted = [...contents].sort(sourceOrder),
 		blog = contents
@@ -74,12 +104,7 @@ export async function prepareData(parseDocument) {
 		const sourceLocale = locale.code === "ja-ks" ? "ja" : locale.code;
 		messages.set(
 			locale.code,
-			yaml.load(
-				await readFile(
-					"locales/" + locale.files[0].replace(".json", ".yml"),
-					"utf8",
-				),
-			),
+			yaml.load(await readFile("locales/" + locale.files[0].replace(".json", ".yml"), "utf8")),
 		);
 		nav.set(
 			locale.code,
@@ -118,9 +143,7 @@ export async function prepareData(parseDocument) {
 			),
 		);
 	const pageMeta = new Map();
-	for (const file of new Set(
-		pages.filter((p) => p.pageFile).map((p) => p.pageFile),
-	)) {
+	for (const file of new Set(pages.filter((p) => p.pageFile).map((p) => p.pageFile))) {
 		const source = await readFile(file, "utf8");
 		const value = /definePageMeta\(\{([\s\S]*?)\}\)/.exec(source)?.[1] ?? "";
 		pageMeta.set(file, {
@@ -129,20 +152,17 @@ export async function prepareData(parseDocument) {
 		});
 	}
 
+	const visible = sorted.filter((x) => !x._partial && !x._draft);
+	const bySource = new Map(contents.map((item) => [item._file, item]));
 	for (const page of pages) {
 		const key =
 			page.kind === "blog"
 				? page.path.replace(/^\/ja\//, "/").replace(/\/$/, "")
 				: page.path.replace(/^\/ja-ks\//, "/ja/").replace(/\/$/, "");
 		const sourceLocale = page.locale === "ja-ks" ? "ja" : page.locale;
-		const original = page.source
-			? contents.find((x) => x._file === page.source)
-			: null;
-		const document = original
-			? { ...original }
-			: { title: page.path, description: "", _path: key };
-		if (original?._partial)
-			Object.assign(document, { _dir: configs[key], _file: undefined });
+		const original = page.source ? bySource.get(page.source) : null;
+		const document = original ? { ...original } : { title: page.path, description: "", _path: key };
+		if (original?._partial) Object.assign(document, { _dir: configs[key], _file: undefined });
 		let styles = "";
 		if (document.body?.children) {
 			styles = document.body.children
@@ -154,22 +174,19 @@ export async function prepareData(parseDocument) {
 				children: document.body.children.map((n) =>
 					n.tag === "style"
 						? {
-							type: "element",
-							tag: "span",
-							props: { hidden: true },
-							children: [],
-						}
+								type: "element",
+								tag: "span",
+								props: { hidden: true },
+								children: [],
+							}
 						: n,
 				),
 			};
 		}
-		const visible = sorted.filter((x) => !x._partial && !x._draft);
 		const index = visible.findIndex((x) => x._path === key),
 			related =
 				page.pageFile === "pages/contact.vue"
-					? contents.filter((x) =>
-						x._path.startsWith("/" + sourceLocale + "/contact-faq/"),
-					)
+					? contents.filter((x) => x._path.startsWith("/" + sourceLocale + "/contact-faq/"))
 					: page.pageFile === "pages/blog/index.vue"
 						? blog
 						: [];
@@ -189,27 +206,40 @@ export async function prepareData(parseDocument) {
 
 	console.log(
 		"[ssg] " +
-		JSON.stringify({
-			engine: "Ox Content",
-			sourceCount: files.length,
-			markdownSources: md,
-			renderedPages: out.length,
-			seconds: (performance.now() - start) / 1000,
-			markdownEngine: "Ox + MDC compatibility",
-			oxPages: contents.filter((x) => x._parsing?.engine === "ox").length,
-			mdcComponentIslands: contents.reduce(
-				(n, x) => n + (x._parsing?.mdcIslands ?? 0),
-				0,
-			),
-			codeIslands: contents.reduce(
-				(n, x) => n + (x._parsing?.codeIslands ?? 0),
-				0,
-			),
-			fullMdcFallbackPages: contents.filter(
-				(x) => x._parsing?.fullMdcFallback,
-			).length,
-			inlineMarkdownStrings: Object.keys(inlineMarkdown).length,
-		}),
+			JSON.stringify({
+				engine: "Ox Content",
+				sourceCount: files.length,
+				markdownSources: md,
+				renderedPages: out.length,
+				seconds: (performance.now() - start) / 1000,
+				markdownEngine: "Ox + MDC compatibility",
+				oxPages: contents.filter((x) => x._parsing?.engine === "ox").length,
+				mdcComponentIslands: contents.reduce((n, x) => n + (x._parsing?.mdcIslands ?? 0), 0),
+				codeIslands: contents.reduce((n, x) => n + (x._parsing?.codeIslands ?? 0), 0),
+				fullMdcFallbackPages: contents.filter((x) => x._parsing?.fullMdcFallback).length,
+				inlineMarkdownStrings: Object.keys(inlineMarkdown).length,
+			}),
 	);
 	return out;
+}
+
+export function withFallbackPage(pages) {
+	const base = pages.find((page) => page.path === "/ja/");
+	if (!base) throw new Error("Missing Japanese root page for the static 404");
+	pages.push({
+		...base,
+		path: "/404/",
+		source: undefined,
+		kind: "error",
+		pageFile: "error.vue",
+		pageMeta: { layout: "blank" },
+		document: {
+			title: base.messages._error.notFound,
+			description: base.messages._error.notFoundDesc,
+			_path: "/404",
+		},
+		related: [],
+		surround: [null, null],
+	});
+	return pages;
 }

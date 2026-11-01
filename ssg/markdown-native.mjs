@@ -19,8 +19,7 @@ export function prepareNativeMarkdown(
 	const componentSnippets = snippets.length;
 	// Respect the opening fence length: a four-backtick example may contain a
 	// literal triple-backtick AiScript fence, which must remain code text.
-	const lines =
-		(extracted?.markdown ?? entry.body).match(/[^\n]*\n|[^\n]+$/g) ?? [];
+	const lines = (extracted?.markdown ?? entry.body).match(/[^\n]*\n|[^\n]+$/g) ?? [];
 	let markdown = "";
 	for (let i = 0; i < lines.length; i++) {
 		const opening = /^ {0,3}(`{3,}|~{3,})[^\n]*\r?\n?$/.exec(lines[i]);
@@ -29,9 +28,7 @@ export function prepareNativeMarkdown(
 			continue;
 		}
 		let code = lines[i];
-		const closing = new RegExp(
-			`^ {0,3}${opening[1][0]}{${opening[1].length},}[ \\t]*\\r?\\n?$`,
-		);
+		const closing = new RegExp(`^ {0,3}${opening[1][0]}{${opening[1].length},}[ \\t]*\\r?\\n?$`);
 		while (++i < lines.length) {
 			code += lines[i];
 			if (closing.test(lines[i])) break;
@@ -59,12 +56,12 @@ export async function nativeDocument(
 		allowUnclosedContainers = false,
 		prepared,
 		renderedHtml,
+		parseHtml,
 		normalizeTree,
 	},
 ) {
 	const { markdown, snippets, extracted, codeIslands } =
-		prepared ??
-		prepareNativeMarkdown(entry, { mdcIslands, allowUnclosedContainers });
+		prepared ?? prepareNativeMarkdown(entry, { mdcIslands, allowUnclosedContainers });
 
 	const rendered =
 		renderedHtml === undefined
@@ -82,7 +79,7 @@ export async function nativeDocument(
 
 	const compiled = await Promise.all(snippets.map(compileCode));
 
-	const tree = fromHtml(rendered.html, { fragment: true });
+	const tree = parseHtml ? parseHtml() : fromHtml(rendered.html, { fragment: true });
 	normalizeTree?.(tree);
 	function adapt(node, parent) {
 		if (
@@ -96,21 +93,14 @@ export async function nativeDocument(
 		if (node.type === "element") {
 			const first = node.children?.[0];
 			const checkbox =
-				first?.tagName === "input"
-					? first
-					: first?.tagName === "p"
-						? first.children?.[0]
-						: null;
+				first?.tagName === "input" ? first : first?.tagName === "p" ? first.children?.[0] : null;
 			if (node.tagName === "li" && checkbox?.properties?.type === "checkbox") {
 				node.properties.className = [
 					...new Set([...(node.properties.className ?? []), "task-list-item"]),
 				];
 				if (parent?.tagName === "ul")
 					parent.properties.className = [
-						...new Set([
-							...(parent.properties.className ?? []),
-							"contains-task-list",
-						]),
+						...new Set([...(parent.properties.className ?? []), "contains-task-list"]),
 					];
 			}
 
@@ -119,13 +109,11 @@ export async function nativeDocument(
 				const type = classes
 					.find((c) => c.startsWith("ox-container--"))
 					?.slice("ox-container--".length);
-				if (!["tip", "warning"].includes(type))
-					throw new Error(`Unsupported container: ${type}`);
+				if (!["tip", "warning"].includes(type)) throw new Error(`Unsupported container: ${type}`);
 				node.tagName = type;
 				node.properties = {};
 				node.children = node.children.filter(
-					(child) =>
-						!child.properties?.className?.includes("ox-container-title"),
+					(child) => !child.properties?.className?.includes("ox-container-title"),
 				);
 			}
 			// Use the existing slugger, including its duplicate and numeric-heading rules.
@@ -152,15 +140,10 @@ export async function nativeDocument(
 						}) + hash;
 				}
 			}
-			if (node.tagName === "img")
-				node.properties.alt = node.properties.alt?.replace(/[\[\]]/g, "");
+			if (node.tagName === "img") node.properties.alt = node.properties.alt?.replace(/[\[\]]/g, "");
 		}
 		for (const child of node.children ?? []) adapt(child, node);
-		if (
-			mdcIslands &&
-			node.children &&
-			!["a", "code", "pre"].includes(node.tagName)
-		)
+		if (mdcIslands && node.children && !["a", "code", "pre"].includes(node.tagName))
 			node.children = node.children.flatMap((child) => {
 				if (child.type !== "text" || !child.value.includes("@")) return [child];
 				const result = [];
@@ -179,9 +162,7 @@ export async function nativeDocument(
 					);
 					cursor = match.index + match[0].length;
 				}
-				return cursor
-					? [...result, { type: "text", value: child.value.slice(cursor) }]
-					: [child];
+				return cursor ? [...result, { type: "text", value: child.value.slice(cursor) }] : [child];
 			});
 	}
 	adapt(tree);
@@ -200,9 +181,7 @@ export async function nativeDocument(
 			delete footnotes.properties.ariaLabel;
 			footnotes.properties.dataFootnotes = "";
 			footnotes.children.unshift(
-				element("h2", { className: ["sr-only"], id: "footnote-label" }, [
-					text("Footnotes"),
-				]),
+				element("h2", { className: ["sr-only"], id: "footnote-label" }, [text("Footnotes")]),
 			);
 		}
 		const visit = (node) => {
@@ -220,9 +199,7 @@ export async function nativeDocument(
 			}
 			if (node.tagName === "li" && props.id?.startsWith("user-content-fn-")) {
 				const back = node.children.find(
-					(c) =>
-						c.tagName === "a" &&
-						/^#(?:user-content-)?fnref-/.test(c.properties?.href ?? ""),
+					(c) => c.tagName === "a" && /^#(?:user-content-)?fnref-/.test(c.properties?.href ?? ""),
 				);
 				const paragraph = node.children.findLast((c) => c.tagName === "p");
 				if (back && paragraph) {
@@ -275,12 +252,8 @@ export async function nativeDocument(
 		walk(body);
 	}
 	const text = (node) => node.value ?? node.children?.map(text).join("") ?? "";
-	const title =
-		entry.frontmatter.title ??
-		text(body.children.find((c) => c.tag === "h1") ?? {});
-	const headingChildren = body.children.filter(
-		(c) => c.type === "element" && c.tag !== "hr",
-	);
+	const title = entry.frontmatter.title ?? text(body.children.find((c) => c.tag === "h1") ?? {});
+	const headingChildren = body.children.filter((c) => c.type === "element" && c.tag !== "hr");
 	if (headingChildren[0]?.tag === "h1") headingChildren.shift();
 	const description =
 		entry.frontmatter.description ??
@@ -303,8 +276,7 @@ export async function nativeDocument(
 					_parsing: {
 						engine: "ox",
 						codeIslands,
-						mdcIslands:
-							(extracted?.containers ?? 0) + (extracted?.components ?? 0),
+						mdcIslands: (extracted?.containers ?? 0) + (extracted?.components ?? 0),
 						fullMdcFallback: false,
 					},
 				}

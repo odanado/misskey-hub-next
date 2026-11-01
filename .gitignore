@@ -39,3 +39,4 @@ public/_redirects
 
 # VRT baselines, screenshots, temporary builds and local reports
 .vrt
+output/playwright/

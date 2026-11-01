@@ -1,40 +1,31 @@
 import { createServer } from "node:http";
+import { sendStaticResponse } from "./http.mjs";
+import { fixtureBrowserArgs, frameControlArgs, readPhysicalScreen } from "./frames.mjs";
 import { readFile, writeFile, appendFile, mkdir, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { createHash } from "node:crypto";
 import { chromium } from "@playwright/test";
-import { sourceFingerprint } from "./evidence.mjs";
+import { sourceFingerprint, outputFingerprint } from "./evidence.mjs";
 import { loadPages } from "../../ssg/routes.mjs";
-import {
-	capturePage,
-	compareCaptures,
-	createFixtureContext,
-} from "./capture.mjs";
+import { capturePage, compareCaptures, createFixtureContext } from "./capture.mjs";
 
 const option = (name, fallback) =>
-	process.argv
-		.find((arg) => arg.startsWith(`--${name}=`))
-		?.slice(name.length + 3) ?? fallback;
+	process.argv.find((arg) => arg.startsWith(`--${name}=`))?.slice(name.length + 3) ?? fallback;
 const sample = option("sample", "all");
 const viewport =
 	option("viewport", "desktop") === "mobile"
 		? { width: 390, height: 844 }
 		: { width: 1440, height: 900 };
 const colorScheme = option("theme", "light");
-if (!["light", "dark"].includes(colorScheme))
-	throw Error("Invalid color scheme");
+if (!["light", "dark"].includes(colorScheme)) throw Error("Invalid color scheme");
 const outputDirectory = option("output-dir", ".vrt/results");
-const workers = Number(option("workers", "6"));
+const workers = Number(option("workers", "1"));
 if (![1, 2, 4, 6, 8].includes(workers)) throw Error("Invalid worker count");
 const modes = ["baseline", "migrated"];
 const allPages = await loadPages();
 const selected =
-	sample === "30"
-		? JSON.parse(await readFile("tests/vrt/pages.json", "utf8"))
-		: null;
-let pages = selected
-	? allPages.filter((page) => selected.includes(page.path))
-	: allPages;
+	sample === "30" ? JSON.parse(await readFile("tests/vrt/pages.json", "utf8")) : null;
+let pages = selected ? allPages.filter((page) => selected.includes(page.path)) : allPages;
 const only = option("only", "").split(",").filter(Boolean);
 if (only.length) pages = pages.filter((page) => only.includes(page.path));
 // Exercise each kind of surface early without reducing the full URL scope.
@@ -56,52 +47,94 @@ const rank = (page) => {
 pages.sort((a, b) => rank(a) - rank(b));
 const limit = Number(option("limit", String(pages.length)));
 pages = pages.slice(0, limit);
+const scopeSize = pages.length;
+const shard = option("shard", "1/1");
+if (!/^\d+\/\d+$/.test(shard)) throw Error("Invalid shard; use 1/4 through 4/4");
+const [shardIndex, shardCount] = shard.split("/").map(Number);
+if (shardIndex < 1 || shardIndex > shardCount || shardCount > 16) throw Error("Invalid shard");
+pages = pages.filter((_, index) => index % shardCount === shardIndex - 1);
+if (!pages.length) throw Error("No VRT pages selected");
 await mkdir(outputDirectory, { recursive: true });
 const rowFile = resolve(outputDirectory, "vrt-rows.jsonl");
 const summaryFile = resolve(outputDirectory, "vrt.json");
 const manifestFile = resolve(outputDirectory, "vrt-run.json");
 const startedAt = new Date().toISOString();
 const sourceBefore = await sourceFingerprint();
-const benchmarkFile = resolve(".vrt/baseline-build.json");
+const benchmarkFile = resolve(option("reference-metadata", ".vrt/baseline-build.json"));
 const benchmark = JSON.parse(await readFile(benchmarkFile, "utf8"));
+if (benchmark.buildInputsSha256) {
+	const actual = createHash("sha256")
+		.update(await readFile(".vrt/build-inputs.json"))
+		.digest("hex");
+	if (actual !== benchmark.buildInputsSha256) throw Error("VRT build input checksum changed");
+}
+
+const referenceDirectory = resolve(
+	option(
+		"reference-dir",
+		resolve(benchmark.baselineDirectory ?? ".vrt/reference", ".output/public"),
+	),
+);
+const candidateDirectory = resolve(option("candidate-dir", ".output/public"));
 const scriptHash = createHash("sha256")
 	.update(await readFile(new URL(import.meta.url)))
 	.update(await readFile(new URL("./capture.mjs", import.meta.url)))
 	.update(await readFile(new URL("./snapshot.mjs", import.meta.url)))
+	.update(await readFile(new URL("./http.mjs", import.meta.url)))
+	.update(await readFile(new URL("./readiness.mjs", import.meta.url)))
+	.update(await readFile(new URL("./frames.mjs", import.meta.url)))
 	.digest("hex");
 const manifest = {
 	startedAt,
+	controlledFrames: process.env.VRT_CONTROLLED_FRAMES === "1",
+	captureSettings:
+		process.env.VRT_CONTROLLED_FRAMES === "1"
+			? "controlled-frames/native-screen"
+			: "automatic-frames/viewport-screen",
 	sourceFingerprint: sourceBefore,
 	sample,
 	pages: pages.map((page) => page.path),
 	modes,
 	workers,
+	shard,
+	scopeSize,
 	scriptHash,
-	baselineDirectory: benchmark.baselineDirectory,
+	baselineDirectory: referenceDirectory,
+	referenceCommit: benchmark.commit ?? benchmark.baselineCommit,
+	candidateDirectory,
+	referenceOutputFingerprint: await outputFingerprint(referenceDirectory),
+	candidateOutputFingerprint: await outputFingerprint(candidateDirectory),
 	clockTime: benchmark?.finishedAt ?? startedAt,
 	benchmarkFile: benchmark ? benchmarkFile : undefined,
+	referenceBuild: benchmark,
+	runnerNode: process.version,
 	benchmarkSha256: benchmark
 		? createHash("sha256")
-			.update(await readFile(benchmarkFile))
-			.digest("hex")
+				.update(await readFile(benchmarkFile))
+				.digest("hex")
 		: undefined,
 	viewport,
 	colorScheme,
 	renderer: "Chromium with SwiftShader WebGL fallback",
 	isolation:
-		"Fresh browser context per URL and compiler variant; no cookies, clock or storage carry over",
-	locale: "ja-JP",
+		"Fresh browser context per URL and compiler variant; one capture at a time per browser; no cookies, clock or storage carry over",
+	locale: benchmark.intlLocale ?? "en-US",
 	timezone: "Asia/Tokyo",
 	policy:
-		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 90s.",
+		"Exact decoded RGBA and dimensions, at least three identical frames spanning 500ms; up to 100 sampled comparisons 100ms apart, with screenshot generation excluded from the observation budget, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; CSS finite motion uses its final frame and infinite motion its initial frame. Those authored properties are retained as ordinary CSS before CSS animation is canceled, including scroll-linked and subsequently mounted elements. Every page uses 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 300s. Browser Intl fallback matches the build; video is decoded and paused at time zero; LCD subpixel text and partial raster are disabled; all compositor stages complete before drawing, software compositing and sRGB are fixed. After explicit font/image/video decode, initial local descendant fetch/import requests must complete and remain quiet for 500ms within a 60s readiness deadline. Blocked external requests do not control readiness. On the pinned Linux fixture, externally driven compositor frames order original JPEG decode and each full CDP clip; the physical screen is sampled before capture and stays constant.",
 };
 const rows = [];
 if (process.argv.includes("--resume")) {
 	const previous = JSON.parse(await readFile(manifestFile, "utf8"));
 	if (
 		previous.sourceFingerprint !== sourceBefore ||
+		previous.shard !== manifest.shard ||
+		previous.locale !== manifest.locale ||
 		previous.scriptHash !== scriptHash ||
+		previous.captureSettings !== manifest.captureSettings ||
 		previous.benchmarkSha256 !== manifest.benchmarkSha256 ||
+		previous.referenceOutputFingerprint !== manifest.referenceOutputFingerprint ||
+		previous.candidateOutputFingerprint !== manifest.candidateOutputFingerprint ||
 		JSON.stringify(previous.modes) !== JSON.stringify(manifest.modes) ||
 		JSON.stringify(previous.viewport) !== JSON.stringify(manifest.viewport) ||
 		previous.colorScheme !== manifest.colorScheme ||
@@ -163,9 +196,7 @@ async function saveSummary(finished = false) {
 			passRatePercent: (passed / pages.length) * 100,
 			comparable: pages.length - unavailable,
 			comparablePassRatePercent:
-				pages.length === unavailable
-					? null
-					: (passed / (pages.length - unavailable)) * 100,
+				pages.length === unavailable ? null : (passed / (pages.length - unavailable)) * 100,
 			counts,
 		};
 	});
@@ -177,9 +208,7 @@ async function saveSummary(finished = false) {
 				updatedAt: new Date().toISOString(),
 				finished,
 				processed: rows.length,
-				referenceUnavailable: rows.filter(
-					(row) => row.reference.status !== "captured",
-				).length,
+				referenceUnavailable: rows.filter((row) => row.reference.status !== "captured").length,
 				summary,
 			},
 			null,
@@ -193,12 +222,7 @@ async function saveSamples(mode, entry, reference, candidate, comparison) {
 	const referenceBytes = reference.bytes ?? reference.tiles?.[tile]?.bytes;
 	const candidateBytes = candidate.bytes ?? candidate.tiles?.[tile]?.bytes;
 	const key = mode + "/" + entry.kind;
-	if (
-		(sampleCounts[key] ?? 0) >= maxSamplesPerKind ||
-		!referenceBytes ||
-		!candidateBytes
-	)
-		return;
+	if ((sampleCounts[key] ?? 0) >= maxSamplesPerKind || !referenceBytes || !candidateBytes) return;
 	sampleCounts[key] = (sampleCounts[key] ?? 0) + 1;
 	const dir = resolve(
 		outputDirectory,
@@ -209,34 +233,34 @@ async function saveSamples(mode, entry, reference, candidate, comparison) {
 	await mkdir(dir, { recursive: true });
 	await writeFile(dir + "/baseline.png", referenceBytes);
 	await writeFile(dir + "/candidate.png", candidateBytes);
-	if (reference.tiles) await writeFile(dir + "/tile.json", JSON.stringify({ y: reference.tiles[tile].y, width: reference.width, pageHeight: reference.height }) + "\n");
+	if (reference.tiles)
+		await writeFile(
+			dir + "/tile.json",
+			JSON.stringify({
+				y: reference.tiles[tile].y,
+				width: reference.width,
+				pageHeight: reference.height,
+			}) + "\n",
+		);
 	return dir;
 }
 try {
 	for (const mode of modes) {
-		const root =
-			mode === "baseline"
-				? resolve(benchmark.baselineDirectory, ".output/public")
-				: resolve(".output/public");
+		const root = mode === "baseline" ? referenceDirectory : candidateDirectory;
 		await stat(root);
 		const server = createServer(async (req, res) => {
 			try {
 				let file = resolve(
 					root,
-					"." +
-					decodeURIComponent(new URL(req.url, "http://localhost").pathname),
+					"." + decodeURIComponent(new URL(req.url, "http://localhost").pathname),
 				);
-				if (file !== root && !file.startsWith(root + sep))
-					throw new Error("Invalid path");
-				if ((await stat(file)).isDirectory())
-					file = resolve(file, "index.html");
+				if (file !== root && !file.startsWith(root + sep)) throw new Error("Invalid path");
+				if ((await stat(file)).isDirectory()) file = resolve(file, "index.html");
 				const bytes = await readFile(file);
-				res.writeHead(200, {
+				sendStaticResponse(req, res, bytes, {
 					"Content-Type": mime[extname(file)] ?? "application/octet-stream",
-					"Cache-Control":
-						extname(file) === ".html" ? "no-cache" : "public,max-age=3600",
+					"Cache-Control": extname(file) === ".html" ? "no-cache" : "public,max-age=3600",
 				});
-				res.end(bytes);
 			} catch {
 				res.writeHead(404);
 				res.end("Not found");
@@ -246,8 +270,24 @@ try {
 		servers.push(server);
 		origins[mode] = `http://127.0.0.1:${server.address().port}`;
 	}
-	browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] });
+	manifest.browserArgs = [...fixtureBrowserArgs];
+	if (manifest.controlledFrames) {
+		if (process.platform !== "linux")
+			throw Error("Controlled frames require the pinned Linux headless shell");
+		manifest.browserArgs.push(...frameControlArgs);
+	}
+	browser = await chromium.launch({ args: manifest.browserArgs });
 	manifest.browserVersion = browser.version();
+	if (manifest.controlledFrames) manifest.screen = await readPhysicalScreen(browser);
+	manifest.rendererFingerprint = createHash("sha256")
+		.update(
+			JSON.stringify({
+				args: manifest.browserArgs,
+				screen: manifest.screen,
+				captureSettings: manifest.captureSettings,
+			}),
+		)
+		.digest("hex");
 	await writeFile(manifestFile, JSON.stringify(manifest, null, 2) + "\n");
 	console.log(
 		`[full-vrt] ${pages.length} URLs, ${modes.length} modes, ${workers} workers; ${remaining.length} URLs remaining`,
@@ -259,7 +299,9 @@ try {
 				const capture = async (mode) => {
 					const context = await createFixtureContext(browser, {
 						viewport,
+						screen: manifest.screen,
 						colorScheme,
+						locale: manifest.locale,
 					});
 					const page = await context.newPage();
 					let timer;
@@ -273,9 +315,9 @@ try {
 									() =>
 										accept({
 											status: "capture-error",
-											errors: ["Overall capture timeout: 90 seconds"],
+											errors: ["Overall capture timeout: 300 seconds"],
 										}),
-									90_000,
+									300_000,
 								);
 							}),
 						]);
@@ -287,10 +329,7 @@ try {
 				const reference = await capture("baseline");
 				const results = {
 					baseline: {
-						status:
-							reference.status === "captured"
-								? "passed"
-								: "reference-unavailable",
+						status: reference.status === "captured" ? "passed" : "reference-unavailable",
 						errors: reference.errors,
 					},
 				};
@@ -350,6 +389,11 @@ try {
 	);
 	if ((await sourceFingerprint()) !== sourceBefore)
 		throw Error("Build/capture sources changed during VRT");
+	if (
+		(await outputFingerprint(referenceDirectory)) !== manifest.referenceOutputFingerprint ||
+		(await outputFingerprint(candidateDirectory)) !== manifest.candidateOutputFingerprint
+	)
+		throw Error("Site output changed during VRT");
 	await saveSummary(true);
 	console.table(
 		JSON.parse(await readFile(summaryFile, "utf8")).summary.map(
@@ -362,9 +406,9 @@ try {
 			}),
 		),
 	);
+	if (rows.length !== pages.length || rows.some((row) => row.results.migrated.status !== "passed"))
+		process.exitCode = 1;
 } finally {
 	await browser?.close();
-	await Promise.all(
-		servers.map((server) => new Promise((accept) => server.close(accept))),
-	);
+	await Promise.all(servers.map((server) => new Promise((accept) => server.close(accept))));
 }
