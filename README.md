@@ -26,13 +26,13 @@ pnpm preview
 - `ssg/config.ts`：ViteとOx Contentの設定。プラグイン実装は`plugins/`から読み込みます。
 - `ssg/host.ts`：Oxが所有するルート・HTML出力の入口。
 - `ssg/routes.mjs` / `data.mjs`：原稿とVueページから公開URL、翻訳、ナビゲーション、ページデータを生成。
-- `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は既存MDC/Shikiと接続。旧記法の構造が異なる38ファイルは`mdc-compatibility.mjs`で明示して元MDCを使用（生成先は同じOx Host）。
+- `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は`nuxt-compat/`経由で既存MDC/Shikiと接続。
 - `ssg/theme.ts` / `html.ts`：ドキュメントの静的HTML。通常本文全体をVueのVNodeやクライアントモジュールにしません。
-- `ssg/registry.ts` / `runtime.ts` / `page.ts`：既存Vue部品、ページ、レイアウト、auto import、翻訳・非同期データ等の互換処理。
+- `nuxt-compat/`：Nuxt API、既存Vueページ・レイアウト・コンポーネント、Contentのパス規約・ナビゲーション、MDCの互換処理。[役割ごとの一覧](nuxt-compat/README.md)を参照してください。auto importは各実装ファイルを直接参照し、`#imports`の入口は再エクスポートのみです。
 - `ssg/client.ts`：islands、固定Vueページ、メニュー、表、スクロール位置などのクライアント処理。
 - `tests/vrt/`：masterとの画像比較とfull SSG計測。
 
-MDC/Shikiの設定は`ssg/mdc.mjs`、旧記法の互換対象は`ssg/mdc-compatibility.mjs`で管理します。
+MDC/Shikiの設定は`nuxt-compat/mdc.ts`、構造が異なる旧記法38ファイルの互換対象は`nuxt-compat/legacy-markdown.ts`で管理します。生成先は共通のOx Hostです。
 
 翻訳は既存辞書とVue I18nを使い、文中のリンク・スロット・特殊文字も維持します。
 

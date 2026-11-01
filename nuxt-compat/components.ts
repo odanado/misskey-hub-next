@@ -1,20 +1,17 @@
 import { defineAsyncComponent, defineComponent, h } from "vue";
 import * as original from "virtual:site-components";
 import * as prose from "virtual:site-prose";
-import {
-	ClientOnly,
-	NuxtLink,
-	I18nT,
-	ContentNavigation,
-	MDC,
-	useSiteContext,
-} from "./runtime";
+import { ClientOnly } from "./components/ClientOnly";
+import { NuxtLink } from "./components/NuxtLink";
+import { I18nT } from "./i18n";
+import { ContentNavigation } from "./components/ContentNavigation";
+import MDC from "./components/MDC.vue";
 import AppControls from "../app.vue";
 import MkMfm from "../components/mk/Mfm";
 import ProseA from "../components/content/ProseA.vue";
 import ProseImg from "../components/content/ProseImg.vue";
 import ProseTable from "../components/content/ProseTable.vue";
-import StaticContent from "./StaticContent.vue";
+import StaticContent from "./components/ContentRenderer.vue";
 import Default from "../layouts/default.vue";
 import Landing from "../layouts/landing.vue";
 import Tools from "../layouts/tools.vue";

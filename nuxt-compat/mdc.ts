@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import { createWasmOnigEngine } from "shiki/engine/oniguruma";
 import { bundledLanguages } from "shiki/langs";
 import { bundledThemes } from "shiki/themes";
+import type { ThemeRegistration } from "shiki";
 import remarkEmoji from "remark-emoji";
 import fixer from "../scripts/markdown-fixer/index.js";
 import { isRelative } from "ufo";
@@ -24,10 +25,8 @@ export const { compileHast } = await import(
 export const { generateToc } = await import(
 	resolve(dist, "runtime/parser/toc.js")
 );
-const contentDist = dirname(require.resolve("@nuxt/content"));
-export const { generatePath, default: pathMeta } = await import(
-	resolve(contentDist, "runtime/transformers/path-meta.js")
-);
+import { generatePath, pathMeta } from "./path-meta.ts";
+export { generatePath, pathMeta };
 const grammar = JSON.parse(
 	await readFile(
 		require.resolve(
@@ -57,7 +56,7 @@ const vueHighlighter = createShikiHighlighter({
 	...highlighterOptions,
 	langs: [bundledLanguages.mdc],
 });
-const highlighter = async (code, lang, theme, options) => {
+const highlighter = async (code: string, lang: string, theme: Record<string, keyof typeof bundledThemes>, options: any) => {
 	const rendered = await (lang === "vue" ? vueHighlighter : defaultHighlighter)(
 		code, lang, theme, options,
 	);
@@ -66,11 +65,11 @@ const highlighter = async (code, lang, theme, options) => {
 		// plain foreground. Preserve that presentation without changing the code.
 		const foreground = (await Promise.all(Object.entries(theme).map(async ([variant, name]) => {
 			const imported = await bundledThemes[name]();
-			const data = imported.default ?? imported;
+			const data = (imported.default ?? imported) as ThemeRegistration;
 			const color = data.fg ?? data.colors["editor.foreground"];
 			return `--shiki-${variant}:${color.startsWith("#") ? color.toUpperCase() : color}`;
 		}))).join(";");
-		const text = (node) => node.value ?? node.children?.map(text).join("") ?? "";
+		const text = (node: any): string => node.value ?? node.children?.map(text).join("") ?? "";
 		const lines = code.split("\n");
 		let inRoute = false;
 		const uncolored = new Set();
@@ -107,12 +106,12 @@ const parserOptions = {
 		},
 	},
 };
-export async function parseMdc(body, source) {
+export async function parseMdc(body: string, source: string) {
 	// A parser owns a heading slugger; do not carry duplicate-ID counters from
 	// the Japanese page into the English page (for example CW -> cw-1).
 	const parser = await createMarkdownParser(parserOptions);
 	const parsed = await parser(body);
-	function links(node) {
+	function links(node: any) {
 		if (node.tag === "a") {
 			const href = node.props.href ?? "";
 			const hash = href.match(/#.+$/)?.[0] ?? "";

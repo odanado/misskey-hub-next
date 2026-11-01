@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useSiteContext } from "./runtime";
+import { useSiteContext } from "../injection";
 const props = defineProps<{ value?: any }>();
 const context = useSiteContext();
 const html = computed(

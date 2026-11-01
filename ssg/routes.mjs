@@ -1,15 +1,8 @@
 import { readFile, readdir } from "node:fs/promises";
-import { createRequire } from "node:module";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import yaml from "js-yaml";
 import { localesConst } from "../assets/data/locales.ts";
-const require = createRequire(import.meta.url);
-const { default: pathMeta } = await import(
-	resolve(
-		dirname(require.resolve("@nuxt/content")),
-		"runtime/transformers/path-meta.js",
-	)
-);
+import { pathMeta } from "../nuxt-compat/path-meta.ts";
 export const root = resolve(import.meta.dirname, "..");
 export const outDir = resolve(root, ".output/public");
 export async function loadPages() {

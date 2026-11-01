@@ -1,4 +1,4 @@
-import { parseMdc } from "./mdc.mjs";
+import { parseMdc } from "./mdc.ts";
 
 // Legacy Markdown that differs structurally between MDC and Ox: release notes,
 // nested/escaped links, interpolation, adjacent Unicode emphasis, or unclosed HTML.
@@ -45,7 +45,7 @@ export const legacyMdcSources = new Set([
 	"tw/docs/5.releases.md"
 ]);
 
-export async function parseLegacyDocument(entry) {
+export async function parseLegacyDocument(entry: any) {
 	const parsed = await parseMdc(entry.body, entry.source);
 	return {
 		...parsed,

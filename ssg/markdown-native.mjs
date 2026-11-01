@@ -1,4 +1,4 @@
-import { extractMdcIslands } from "./mdc-islands.mjs";
+import { extractMdcIslands } from "../nuxt-compat/mdc-islands.ts";
 import Slugger from "github-slugger";
 import { transform } from "@ox-content/napi";
 import { fromHtml } from "hast-util-from-html";

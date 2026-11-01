@@ -1,6 +1,6 @@
 # Attribution
 
-`navigation.mjs` adapts the Nuxt Content v2 navigation builder. The applicable license follows.
+`navigation.ts` adapts the Nuxt Content v2 navigation builder. The applicable license follows.
 
 MIT License
 

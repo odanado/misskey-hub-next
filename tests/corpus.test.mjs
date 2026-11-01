@@ -2,9 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import { parseFrontmatter } from "@ox-content/napi";
-import { parseMdc, compileHast, generateToc, generatePath } from "../ssg/mdc.mjs";
+import { parseMdc, compileHast, generateToc, generatePath } from "../nuxt-compat/mdc.ts";
 import { nativeDocument } from "../ssg/markdown-native.mjs";
-import { legacyMdcSources, parseLegacyDocument } from "../ssg/mdc-compatibility.mjs";
+import { legacyMdcSources, parseLegacyDocument } from "../nuxt-compat/legacy-markdown.ts";
 import { semanticFootnotes } from "../ssg/semantic-footnotes.mjs";
 
 // Compare text and element structure with the actual pre-migration parser.

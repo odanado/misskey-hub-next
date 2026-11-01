@@ -14,9 +14,9 @@ import ProseA from "../components/content/ProseA.vue";
 import ExtIcon from "bi/box-arrow-up-right.svg?component";
 import AsideIcon from "bi/text-indent-left.svg?component";
 import TopIcon from "bi/chevron-up.svg?component";
-import { islandApp } from "./context";
+import { islandApp } from "../nuxt-compat/app";
 import { globals, islands, islandProps } from "./islands";
-import * as full from "./registry";
+import * as full from "../nuxt-compat/components";
 const components = {
 	...full.components,
 	...globals,

@@ -1,7 +1,7 @@
 // Preserve MDC components before extracting code: a quoted component prop may
 // itself contain multiline Markdown fences (MfmPreview is a real example).
 const fenceOpening = /^ {0,3}(`{3,}|~{3,})[^\n]*(?:\n|$)/;
-function fenceEnd(input, start, fence) {
+function fenceEnd(input: string, start: number, fence: string) {
 	const close = new RegExp(
 		`^ {0,3}${fence[0]}{${fence.length},}[ \\t]*\\r?$`,
 		"gm",
@@ -10,7 +10,7 @@ function fenceEnd(input, start, fence) {
 	const match = close.exec(input);
 	return match ? match.index + match[0].length : input.length;
 }
-function componentEnd(input, start, name) {
+function componentEnd(input: string, start: number, name: string) {
 	const tags = new RegExp(`</?${name}\\b`, "g");
 	tags.lastIndex = start;
 	let depth = 0,
@@ -34,8 +34,8 @@ function componentEnd(input, start, name) {
 	throw new Error("Missing closing component " + name);
 }
 export function extractMdcIslands(
-	input,
-	snippets,
+	input: string,
+	snippets: string[],
 	{ allowUnclosed = false } = {},
 ) {
 	let containers = 0,

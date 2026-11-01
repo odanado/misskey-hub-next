@@ -1,6 +1,7 @@
 import { defineComponent, h, Suspense, nextTick } from "vue";
-import { createContext, islandApp } from "./context";
-import { components, resolveComponent } from "./registry";
+import { createContext } from "./context";
+import { islandApp } from "./app";
+import { components, resolveComponent } from "./components";
 export async function createPage(payload: any) {
 	const context = createContext(payload),
 		Page = await resolveComponent("Page:" + payload.pageFile),

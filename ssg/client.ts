@@ -4,10 +4,11 @@ import "scroll-hint/css/scroll-hint.css";
 import "./client.css";
 import ScrollHint from "scroll-hint";
 import { nextTick, ref, watch } from "vue";
-import { createContext, islandApp } from "./context";
+import { createContext } from "../nuxt-compat/context";
+import { islandApp } from "../nuxt-compat/app";
 import { islands, globals, islandProps } from "./islands";
-import * as registry from "./registry";
-import { createPage } from "./page";
+import * as registry from "../nuxt-compat/components";
+import { createPage } from "../nuxt-compat/page";
 async function start() {
 	const payload = JSON.parse(
 		document.querySelector("#site-data")!.textContent!,

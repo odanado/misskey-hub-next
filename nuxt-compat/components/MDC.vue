@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MDCRenderer from "@nuxtjs/mdc/runtime/components/MDCRenderer.vue";
 import { computed } from "vue";
-import { useSiteContext } from "./runtime";
+import { useSiteContext } from "../injection";
 const props = defineProps<{ value: any; tag?: any }>();
 const context = useSiteContext();
 const body = computed(() =>

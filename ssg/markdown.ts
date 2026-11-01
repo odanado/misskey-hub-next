@@ -1,6 +1,6 @@
-import { legacyMdcSources, parseLegacyDocument } from "./mdc-compatibility.mjs";
+import { legacyMdcSources, parseLegacyDocument } from "../nuxt-compat/legacy-markdown.ts";
 import { prepareNativeMarkdown, nativeDocument } from "./markdown-native.mjs";
-import { compileHast, generateToc, generatePath, parseMdc } from "./mdc.mjs";
+import { compileHast, generateToc, generatePath, parseMdc } from "../nuxt-compat/mdc.ts";
 import { semanticFootnotes } from "./semantic-footnotes.mjs";
 import { resolve } from "node:path";
 import { root } from "./routes.mjs";

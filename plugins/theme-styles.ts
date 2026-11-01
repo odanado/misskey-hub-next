@@ -38,7 +38,7 @@ export const themeStyles = {
 	},
 	load(id: string) {
 		if (id === "\0virtual:ox-full-registry")
-			return `export * from ${JSON.stringify(resolve(root, "ssg/registry.ts"))};`;
+			return `export * from ${JSON.stringify(resolve(root, "nuxt-compat/components.ts"))};`;
 		if (
 			![
 				"\0virtual:ox-islands-styles",

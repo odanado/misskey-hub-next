@@ -9,7 +9,8 @@ import cssnano from "cssnano";
 import type { PluginOption } from "vite";
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
-const runtime = resolve(root, "ssg/runtime.ts");
+const compat = resolve(root, "nuxt-compat");
+const importsEntry = resolve(compat, "imports.ts");
 const mdc = dirname(require.resolve("@nuxtjs/mdc")),
 	content = dirname(require.resolve("@nuxt/content"));
 const names = [
@@ -39,50 +40,41 @@ const names = [
 	"shallowReactive",
 	"readonly",
 ];
-const composables = [
-	"useState",
-	"useRoute",
-	"useRouter",
-	"useRuntimeConfig",
-	"useI18n",
-	"useColorMode",
-	"useGLocalePath",
-	"useGSwitchLocalePath",
-	"useGAsyncData",
-	"queryContent",
-	"fetchContentNavigation",
-	"useHead",
-	"definePageMeta",
-	"createError",
-	"useScrollspy",
-	"useNuxtApp",
-	"useAppConfig",
-	"defineAppConfig",
-	"defineI18nRoute",
-	"onBeforeRouteLeave",
-	"navigateTo",
-	"useFetch",
-];
+const composables = {
+	config: ["useRuntimeConfig", "useAppConfig", "defineAppConfig"],
+	routing: ["useRoute", "useRouter", "onBeforeRouteLeave", "navigateTo"],
+	state: ["useState"],
+	i18n: ["useI18n", "useGLocalePath", "useGSwitchLocalePath", "defineI18nRoute"],
+	"color-mode": ["useColorMode"],
+	"async-data": ["useGAsyncData"],
+	content: ["queryContent", "fetchContentNavigation"],
+	head: ["useHead", "definePageMeta"],
+	app: ["useNuxtApp", "createError"],
+	fetch: ["useFetch"],
+};
 export const aliases = {
 	"@": root,
 	"~": root,
 	assets: resolve(root, "assets"),
-	"#imports": runtime,
+	"#imports": importsEntry,
 	bi: resolve(root, "node_modules/bootstrap-icons/icons"),
 };
 export function plugins(): PluginOption[] {
 	const imports = createUnimport({
-		imports: [...names, ...composables].map((name) => ({
-			name,
-			from: runtime,
-		})),
+		imports: [
+			...names.map((name) => ({ name, from: "vue" })),
+			...Object.entries(composables).flatMap(([module, names]) =>
+				names.map((name) => ({ name, from: resolve(compat, module + ".ts") })),
+			),
+			{ name: "useScrollspy", from: resolve(root, "composables/useScrollSpy.ts") },
+		],
 	});
 	return [
 		{
 			name: "site-vue-imports",
 			enforce: "pre",
 			resolveId(id) {
-				if (id === "#imports") return runtime;
+				if (id === "#imports") return importsEntry;
 				if (id === "#components" || id === "virtual:site-components")
 					return "\0virtual:site-components";
 				if (id === "virtual:site-prose") return "\0" + id;
@@ -141,7 +133,7 @@ export function plugins(): PluginOption[] {
 				if (
 					id.includes("?") ||
 					!/\.(vue|ts|js|mjs)$/.test(id) ||
-					id === runtime ||
+					id.startsWith(compat + "/") ||
 					(id.includes("/node_modules/") && !id.endsWith(".vue"))
 				)
 					return;
@@ -174,6 +166,7 @@ export function plugins(): PluginOption[] {
 					"layouts/**/*.vue",
 					"pages/**/*.vue",
 					"ssg/**/*.vue",
+					"nuxt-compat/**/*.vue",
 					"error.vue",
 				].map((path) => resolve(root, path)),
 			},

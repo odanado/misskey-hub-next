@@ -4,11 +4,11 @@ import { prepareData } from "./data.mjs";
 import { head, serialize } from "./head.mjs";
 import { root } from "./routes.mjs";
 import { createDocumentParser } from "./markdown";
-import { createContext } from "./context";
+import { createContext } from "../nuxt-compat/context";
 import { createDecorations } from "./decorations";
 import { renderBody, escape } from "./html";
 import { theme } from "./theme";
-import { createPage } from "./page";
+import { createPage } from "../nuxt-compat/page";
 import { renderToString } from "vue/server-renderer";
 const browserCopy = (value: any): any => {
 	if (Array.isArray(value)) return value.map(browserCopy);

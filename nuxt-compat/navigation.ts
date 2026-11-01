@@ -1,16 +1,16 @@
 // Port of Nuxt Content v2's MIT-licensed navigation builder. Operates on fresh
 // source metadata only; no Nuxt cache, generated page, or baseline snapshot.
-import { generatePath, pathMeta } from "./mdc.mjs";
+import { generatePath, pathMeta } from "./path-meta.ts";
 const collator = new Intl.Collator(undefined, {
 	numeric: true,
 	sensitivity: "base",
 });
-const title = (part) =>
+const title = (part: string) =>
 	part
 		.split(/[\s-]/)
 		.map((s) => s.charAt(0).toUpperCase() + s.slice(1))
 		.join(" ");
-const pick = (item) => ({
+const pick = (item: any) => ({
 	title: item.title,
 	...(item.date !== undefined ? { date: item.date } : {}),
 	...(item.description !== undefined ? { description: item.description } : {}),
@@ -18,8 +18,8 @@ const pick = (item) => ({
 		? item.navigation
 		: {}),
 });
-export function createNavigation(contents, configurations) {
-	const nav = [];
+export function createNavigation(contents: any[], configurations: Record<string, any>) {
+	const nav: any[] = [];
 	for (const content of [...contents].sort((a, b) =>
 		a._path.localeCompare(b._path),
 	)) {
@@ -68,7 +68,7 @@ export function createNavigation(contents, configurations) {
 		}
 		nodes.push(item);
 	}
-	function sort(nodes) {
+	function sort(nodes: any[]) {
 		nodes.forEach((n) => {
 			n._file = n._file.split(".").slice(0, -1).join(".");
 		});
@@ -82,10 +82,10 @@ export function createNavigation(contents, configurations) {
 	}
 	return sort(nav);
 }
-export function metadata(source, fields) {
+export function metadata(source: string, fields: Record<string, any>) {
 	return pathMeta.transform(
 		{ ...fields, _id: "content:" + source.replaceAll("/", ":") },
 		{ defaultLocale: "" },
 	);
 }
-export const sourceOrder = (a, b) => collator.compare(a._stem, b._stem);
+export const sourceOrder = (a: any, b: any) => collator.compare(a._stem, b._stem);

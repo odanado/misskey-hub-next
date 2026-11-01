@@ -2,8 +2,8 @@ import { readFile, readdir } from "node:fs/promises";
 import yaml from "js-yaml";
 import { performance } from "node:perf_hooks";
 import { loadPages } from "./routes.mjs";
-import { metadata, createNavigation, sourceOrder } from "./navigation.mjs";
-import { parseMdc } from "./mdc.mjs";
+import { metadata, createNavigation, sourceOrder } from "../nuxt-compat/navigation.ts";
+import { parseMdc } from "../nuxt-compat/mdc.ts";
 import { localesConst } from "../assets/data/locales.ts";
 export async function prepareData(parseDocument) {
 	const pages = await loadPages();

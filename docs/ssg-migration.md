@@ -7,7 +7,7 @@ forkの既定ブランチ`master`を親リポジトリの`ba74668080484d92da0d37
 `ox-native-islands`を本番のビルドへ移植した。Ox Content 3.4.3の公式Vite Plugin / Custom Hostがルート・Markdown・HTML出力を所有する。通常のMarkdown本文は静的HTMLにし、既存のVue部品・固定ページ・操作UIを補助的に使う。ViteがクライアントJS/CSSを生成し、`pnpm build` / `pnpm generate`の出力は`.output/public/`になる。
 
 - Markdown 1,440件、YAML 156件を処理し、公開2,003 URLを生成する。内訳はdocs 1,365、ブログ112、固定287、言語エントリー239。404フォールバックは別途生成する。
-- Markdown 1,402件はOxで解析する。元MDCと構造・属性が異なる旧記法38件は`ssg/mdc-compatibility.mjs`で明示し、既存MDCで解析する。生成処理は共通のOx Hostを使う。
+- Markdown 1,402件はOxで解析する。元MDCと構造・属性が異なる旧記法38件は`nuxt-compat/legacy-markdown.ts`で明示し、既存MDCで解析する。生成処理は共通のOx Hostを使う。
 - MDC部品、Shiki/AiScript、ナビゲーション、既存Vueページ・レイアウトを再利用する。`@nuxt/content` 2.13.4と`@nuxtjs/mdc` 0.9.5はProse・メタデータ等の互換ライブラリとして残る。依存経由でNuxtのpeer packageもインストールされるが、Nuxtアプリビルド・Nitroは起動しない。
 - 旧URL転送、public資産、公開API設定、Crowdin生成、既存ホスティングの出力先を維持する。404画面は既存の`error.vue`を再利用する。
 - スキーマUIは承認された省略方針を継続し、旧MDCのラッパーと後続本文の構造を保つ。
@@ -167,6 +167,23 @@ pnpm test:vrt --workers=6 --output-dir=.vrt/full-verified
 
 基準clone、生成物、完全なURL別JSONL、PNG、ログはGit管理外の`.vrt/`に保存する。差分画像は実行ディレクトリごとに分離し、長大ページの部分画像には`tile.json`で元座標を記録する。SSG・VRT結果の完全なローカル集約は`.vrt/production-summary.json`。
 
+## Nuxt互換レイヤーの分割（2026-11-01）
+
+`ssg/runtime.ts`などの互換処理を`nuxt-compat/`へ移し、ルーティング、状態、翻訳、非同期データ、設定、コンポーネント、Content/MDCなどの役割ごとにTypeScriptで分割した。auto importは各実装を直接参照し、明示的な`#imports`向けの入口には再エクスポートだけを置く。
+
+基準はPR #3の分割前コミット`28d76317`の生成物。今回の検証はリファクタリング前後の比較であり、上記のmainとの全件VRTの再計測ではない。
+
+| 確認 | 結果 |
+| --- | --- |
+| 既存テスト | 18件成功。Markdown全1,440件の構造比較を含む |
+| 分割したAPI・Viteプラグインの型チェック | 成功 |
+| full SSG | 公開2,003 URL・404・クライアントJS/CSSの生成成功 |
+| 代表30ページのVRT | PC・ライトで30/30一致。従来と同じRGBA完全一致、マスク・許容差なし |
+| 操作確認 | ツール入力、言語別URL、テーマ切り替え・保存が成功 |
+| HTMLの構造比較 | リダイレクトを含む3,005ファイルが一致。ビルドアセットURL、VueスコープID、Vue CSS変数のハッシュのみ正規化 |
+
+基準の生成物とVRTログは`.vrt/nuxt-compat-before/`、`.vrt/nuxt-compat-refactor/`に保存。画像・生成物はGit管理外。
+
 ## クレジット
 
-[ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)のOx Custom Host方式を基にした。派生実装の各コミットに`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与している。他方式の実験コード・Vize・画像・生成物はこのPRに含めない。
+[ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)のOx Custom Host方式を基にした。同PRの貢献を直接含むコミットには`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与する。他方式の実験コード・Vize・画像・生成物はこのPRに含めない。

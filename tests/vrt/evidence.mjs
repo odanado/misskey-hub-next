@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 const directories = [
 	"ssg",
 	"plugins",
+	"nuxt-compat",
 	"components",
 	"pages",
 	"layouts",

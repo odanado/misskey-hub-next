@@ -5,7 +5,7 @@ import {
 	compileHast,
 	generateToc,
 	generatePath,
-} from "../ssg/mdc.mjs";
+} from "../nuxt-compat/mdc.ts";
 import { nativeDocument } from "../ssg/markdown-native.mjs";
 const semantic = (node) =>
 	node.type === "text"

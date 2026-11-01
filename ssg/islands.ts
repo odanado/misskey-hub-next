@@ -5,7 +5,10 @@ import DocsAsideNav from "../components/docs/AsideNav.vue";
 import DocsTocLinks from "../components/docs/TocLinks.vue";
 import MfmPreview from "../components/content/MfmPreview.vue";
 import MiWebEmbed from "../components/content/MiWebEmbed.vue";
-import { ClientOnly, NuxtLink, I18nT, ContentNavigation } from "./runtime";
+import { ClientOnly } from "../nuxt-compat/components/ClientOnly";
+import { NuxtLink } from "../nuxt-compat/components/NuxtLink";
+import { I18nT } from "../nuxt-compat/i18n";
+import { ContentNavigation } from "../nuxt-compat/components/ContentNavigation";
 export const islands = {
 	GNav,
 	DocsAsideNav,
