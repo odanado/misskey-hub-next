@@ -107,9 +107,10 @@ jobs:
     needs: build-sites
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
+      image: mcr.microsoft.com/playwright:v1.64.1-noble@sha256:47b510dd9230bf0b9bfc9b20102241e577ea7a99334ab4c3ca19f19770e9b8ea
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+      VRT_CONTROLLED_FRAMES: "1"
     timeout-minutes: 75
     strategy:
       fail-fast: false
@@ -136,6 +137,8 @@ jobs:
           import { sourceFingerprint } from "./tests/vrt/evidence.mjs";
           assert.equal(await sourceFingerprint(), await readFile(".vrt/candidate-source-fingerprint.txt", "utf8"));
           JS
+      - name: Verify full tiled pixels and unchanged viewport metrics
+        run: node tests/vrt/frame-contract.mjs
       - name: Compare every assigned URL with exact pixels
         run: >-
           pnpm test:vrt --sample=all --workers=1 --shard=${{ matrix.shard }}/4
