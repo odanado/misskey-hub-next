@@ -21,20 +21,31 @@ jobs:
       # Auto-imported absolute paths participate in Vue's scope hashes. Build
       # both revisions at this same path, preserving only the frozen reference.
       - uses: actions/checkout@v4
-        with:
-          ref: 9aa603958ed8f1ffde66aa2052d530d3d584c66b
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "26.13.0"
           cache: pnpm
+      - name: Freeze live build inputs for both revisions
+        run: |
+          mkdir -p .vrt
+          cp tests/vrt/frozen-fetch.mjs .vrt/frozen-fetch.mjs
+          node tests/vrt/build-inputs.mjs .vrt/build-inputs.json
+      - uses: actions/checkout@v4
+        with:
+          ref: 9aa603958ed8f1ffde66aa2052d530d3d584c66b
+          clean: false
       - run: pnpm install --frozen-lockfile
       - name: Build the unmodified PR 3 reference
+        env:
+          NODE_OPTIONS: --import=${{ github.workspace }}/.vrt/frozen-fetch.mjs
+          VRT_BUILD_INPUTS: ${{ github.workspace }}/.vrt/build-inputs.json
         run: |
           node --input-type=module <<'JS'
           import assert from "node:assert/strict";
           import { execFileSync } from "node:child_process";
-          import { cp, mkdir, stat, writeFile } from "node:fs/promises";
+          import { cp, mkdir, stat, writeFile, readFile } from "node:fs/promises";
+          import { createHash } from "node:crypto";
           import { resolve } from "node:path";
           const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
           assert.equal(commit, "9aa603958ed8f1ffde66aa2052d530d3d584c66b");
@@ -50,7 +61,8 @@ jobs:
             commit, baselineDirectory: resolve(".vrt/reference"), sourceFingerprint: await sourceFingerprint(),
             node: process.version, intlLocale: Intl.DateTimeFormat().resolvedOptions().locale,
             publicUrls: pages.length, startedAt, finishedAt: new Date().toISOString(), seconds,
-            policy: "One unmodified full PNPM production build at the same checkout path as the candidate. Installation, output checks and freezing the reference are outside the timer."
+            buildInputsSha256: createHash("sha256").update(await readFile(".vrt/build-inputs.json")).digest("hex"),
+            policy: "One unmodified full PNPM production build at the same checkout path as the candidate. Both builds replay the same checksummed live HTTP response captured before timing. Installation, input capture, output checks and freezing the reference are outside the timer."
           };
           await mkdir(".vrt", { recursive: true });
           await writeFile(".vrt/reference-build.json", JSON.stringify(receipt, null, 2) + "\n");
@@ -63,6 +75,9 @@ jobs:
           clean: false
       - run: pnpm install --frozen-lockfile
       - name: Build and verify the optimized site
+        env:
+          NODE_OPTIONS: --import=${{ github.workspace }}/.vrt/frozen-fetch.mjs
+          VRT_BUILD_INPUTS: ${{ github.workspace }}/.vrt/build-inputs.json
         run: |
           pnpm build
           node ssg/verify.mjs
@@ -80,6 +95,7 @@ jobs:
             .output/public/
             .vrt/reference/.output/public/
             .vrt/reference-build.json
+            .vrt/build-inputs.json
             .vrt/output-parity.json
             .vrt/candidate-source-fingerprint.txt
             assets/data/i18n-members.ts

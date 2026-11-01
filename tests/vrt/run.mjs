@@ -61,6 +61,13 @@ const startedAt = new Date().toISOString();
 const sourceBefore = await sourceFingerprint();
 const benchmarkFile = resolve(option("reference-metadata", ".vrt/baseline-build.json"));
 const benchmark = JSON.parse(await readFile(benchmarkFile, "utf8"));
+if (benchmark.buildInputsSha256) {
+	const actual = createHash("sha256")
+		.update(await readFile(".vrt/build-inputs.json"))
+		.digest("hex");
+	if (actual !== benchmark.buildInputsSha256) throw Error("VRT build input checksum changed");
+}
+
 const referenceDirectory = resolve(
 	option(
 		"reference-dir",
