@@ -7,6 +7,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      build_only:
+        description: "Build and measure SSG without deploying"
+        type: boolean
+        default: false
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -40,11 +45,44 @@ jobs:
         run: pnpm install
 
       - name: Build website
-        run: pnpm generate
+        run: |
+          /usr/bin/time -p -o "$RUNNER_TEMP/ssg-time.txt" pnpm generate
+          cat "$RUNNER_TEMP/ssg-time.txt"
         env:
           NODE_ENV: production
           CROWDIN_INTG_API: ${{ secrets.CROWDIN_INTG_API }}
           SERVER_LIST_API_BASE_URL: ${{ secrets.SERVER_LIST_API_BASE_URL }}
+
+      - name: Verify full SSG and report timing
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_only }}
+        run: |
+          node --experimental-strip-types --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { readFile, stat, appendFile } from 'node:fs/promises';
+          import { cpus } from 'node:os';
+          import { loadPages } from './ssg/routes.mjs';
+          const pages = await loadPages();
+          for (const page of pages) {
+            assert.ok((await stat('.output/public' + page.path + 'index.html')).size > 0, page.path);
+          }
+          assert.ok((await stat('.output/public/404.html')).size > 0);
+          const manifest = JSON.parse(await readFile('.output/public/.vite/manifest.json', 'utf8'));
+          assert.ok(!Object.keys(manifest).some(key => key.endsWith('.md')));
+          const timing = await readFile(process.env.RUNNER_TEMP + '/ssg-time.txt', 'utf8');
+          const seconds = Number(timing.match(/^real\s+([\d.]+)/m)[1]);
+          const result = {
+            commit: process.env.GITHUB_SHA,
+            publicUrls: pages.length,
+            fallback404: true,
+            seconds,
+            node: process.version,
+            cpu: cpus()[0].model,
+            cpuCount: cpus().length,
+          };
+          console.log('[ssg-actions] ' + JSON.stringify(result));
+          await appendFile(process.env.GITHUB_STEP_SUMMARY,
+            `## Full SSG (single run)\n\n| Item | Result |\n| --- | --- |\n| SSG | ${seconds}s |\n| Public URLs | ${pages.length} + 404 |\n| Node | ${process.version} |\n| CPU | ${result.cpu} (${result.cpuCount} vCPU) |\n`);
+          JS
 
       # - name: Upload with ftp
       #   uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -62,6 +100,7 @@ jobs:
 
   # Deploy job
   deploy:
+    if: ${{ github.event_name != 'workflow_dispatch' || !inputs.build_only }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

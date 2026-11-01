@@ -1,3 +1,28 @@
 {
-    "trailingSlash": true
+	"framework": null,
+	"buildCommand": "pnpm build",
+	"outputDirectory": ".output/public",
+	"trailingSlash": true,
+	"redirects": [
+		{
+			"source": "/zh-CN/:path*",
+			"destination": "/cn/:path*",
+			"permanent": false
+		},
+		{
+			"source": "/zh-cn/:path*",
+			"destination": "/cn/:path*",
+			"permanent": false
+		},
+		{
+			"source": "/zh-TW/:path*",
+			"destination": "/tw/:path*",
+			"permanent": false
+		},
+		{
+			"source": "/zh-tw/:path*",
+			"destination": "/tw/:path*",
+			"permanent": false
+		}
+	]
 }

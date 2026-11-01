@@ -1,4 +1,4 @@
-import type { Component } from "#app/compat/capi";
+import type { Component } from "vue";
 import GHIcon from "bi/github.svg";
 
 export type NavSection = {
