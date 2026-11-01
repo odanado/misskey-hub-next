@@ -31,6 +31,11 @@ jobs:
         run: |
           pnpm build
           node ssg/verify.mjs
+          node --input-type=module <<'JS'
+          import { writeFile } from "node:fs/promises";
+          import { sourceFingerprint } from "./tests/vrt/evidence.mjs";
+          await writeFile(".vrt/candidate-source-fingerprint.txt", await sourceFingerprint());
+          JS
       - uses: actions/upload-artifact@v4
         with:
           name: vrt-sites
@@ -38,6 +43,8 @@ jobs:
             .output/public/
             .vrt/reference/.output/public/
             .vrt/reference-build.json
+            .vrt/candidate-source-fingerprint.txt
+            assets/data/i18n-members.ts
           include-hidden-files: true
           compression-level: 1
           retention-days: 7
@@ -45,6 +52,10 @@ jobs:
   all-pages:
     needs: build-sites
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -59,11 +70,18 @@ jobs:
         with:
           node-version: "26.13.0"
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile --ignore-scripts
       - uses: actions/download-artifact@v4
         with:
           name: vrt-sites
-      - run: pnpm exec playwright install --with-deps chromium
+      - name: Verify capture sources match the built site
+        run: |
+          node --input-type=module <<'JS'
+          import assert from "node:assert/strict";
+          import { readFile } from "node:fs/promises";
+          import { sourceFingerprint } from "./tests/vrt/evidence.mjs";
+          assert.equal(await sourceFingerprint(), await readFile(".vrt/candidate-source-fingerprint.txt", "utf8"));
+          JS
       - name: Compare every assigned URL with exact pixels
         run: >-
           pnpm test:vrt --sample=all --workers=2 --shard=${{ matrix.shard }}/4
