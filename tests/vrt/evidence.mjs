@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 const directories = [
 	"ssg",
+	"plugins",
 	"components",
 	"pages",
 	"layouts",

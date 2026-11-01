@@ -22,6 +22,8 @@ pnpm preview
 
 ## 構成
 
+- `plugins/`：auto import・コンポーネント登録・CSS抽出などのViteプラグインと共通設定。
+- `ssg/config.ts`：ViteとOx Contentの設定。プラグイン実装は`plugins/`から読み込みます。
 - `ssg/host.ts`：Oxが所有するルート・HTML出力の入口。
 - `ssg/routes.mjs` / `data.mjs`：原稿とVueページから公開URL、翻訳、ナビゲーション、ページデータを生成。
 - `ssg/markdown.ts` / `markdown-native.mjs`：通常MarkdownをOxでHTML化し、MDC部品・コードの断片は既存MDC/Shikiと接続。旧記法の構造が異なる38ファイルは`mdc-compatibility.mjs`で明示して元MDCを使用（生成先は同じOx Host）。

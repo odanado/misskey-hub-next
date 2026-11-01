@@ -8,7 +8,7 @@ import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
-const runtime = resolve(import.meta.dirname, "runtime.ts");
+const runtime = resolve(root, "ssg/runtime.ts");
 const mdc = dirname(require.resolve("@nuxtjs/mdc")),
 	content = dirname(require.resolve("@nuxt/content"));
 const names = [
