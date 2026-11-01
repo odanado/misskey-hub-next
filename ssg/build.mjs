@@ -1,6 +1,11 @@
 import { copyFile, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
+const started = performance.now(),
+	stages = { node: process.version };
+const mark = (name) => {
+	stages[name] = performance.now() - started;
+};
 try {
 	process.loadEnvFile(resolve(root, ".env"));
 } catch (error) {
@@ -11,30 +16,33 @@ process.env.NODE_ENV = "production";
 process.env.ROLLDOWN_WORKER_THREADS ??= "4";
 process.env.RAYON_NUM_THREADS ??= "4";
 process.env.MISSKEY_SSG_PARALLEL = "1";
-const { build, createServer } = await import("vite");
 process.env.TZ ??= "Asia/Tokyo";
-// Crowdin data and legacy redirects remain part of the production build.
-const loader = await createServer({
-	configFile: false,
-	root,
-	server: { middlewareMode: true, watch: null },
-	appType: "custom",
-});
+// Prepare the original Crowdin data while Vite loads. Native TypeScript loading
+// avoids starting a separate Vite dev server for these two build-only scripts.
+const vite = import("vite");
+void vite.catch(() => {});
+const { fetchCrowdinMembers } = await import("../scripts/fetch-crowdin.ts");
+await fetchCrowdinMembers();
+mark("crowdinReady");
+const { createBuildPipeline } = await import("./build/pipeline.mjs");
+const pipeline = createBuildPipeline(root);
+mark("pipelineStarted");
 try {
-	const { fetchCrowdinMembers } = await loader.ssrLoadModule("/scripts/fetch-crowdin.ts");
-	await fetchCrowdinMembers();
+	const { build } = await vite;
+	mark("viteReady");
 	await build({ root, configFile: resolve(root, "vite.config.mts") });
-	const { generateOldHubRedirects } = await loader.ssrLoadModule(
-		"/scripts/get-old-hub-redirects.ts",
-	);
+	mark("siteBuilt");
+	const { generateOldHubRedirects } = await import("../scripts/get-old-hub-redirects.ts");
+	mark("redirectsLoaded");
 	await generateOldHubRedirects();
+	mark("redirectsWritten");
 	await copyFile(
 		resolve(root, ".output/public/404/index.html"),
 		resolve(root, ".output/public/404.html"),
 	);
 	await rm(resolve(root, ".output/public/404"), { recursive: true });
+	mark("complete");
 } finally {
-	await loader.close();
+	await pipeline.dispose();
 }
-
-// All build workers and the compatibility loader are closed before returning.
+if (process.env.MISSKEY_SSG_PROFILE === "1") console.log("[ssg-build] " + JSON.stringify(stages));

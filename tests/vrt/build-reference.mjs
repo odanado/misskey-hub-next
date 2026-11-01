@@ -45,6 +45,7 @@ const receipt = {
 	baselineDirectory: directory,
 	sourceFingerprint: await sourceFingerprint(),
 	node: process.version,
+	intlLocale: Intl.DateTimeFormat().resolvedOptions().locale,
 	publicUrls: pages.length,
 	startedAt,
 	finishedAt: new Date().toISOString(),

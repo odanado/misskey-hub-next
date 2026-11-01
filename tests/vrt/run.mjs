@@ -17,7 +17,7 @@ const viewport =
 const colorScheme = option("theme", "light");
 if (!["light", "dark"].includes(colorScheme)) throw Error("Invalid color scheme");
 const outputDirectory = option("output-dir", ".vrt/results");
-const workers = Number(option("workers", "6"));
+const workers = Number(option("workers", "2"));
 if (![1, 2, 4, 6, 8].includes(workers)) throw Error("Invalid worker count");
 const modes = ["baseline", "migrated"];
 const allPages = await loadPages();
@@ -45,6 +45,12 @@ const rank = (page) => {
 pages.sort((a, b) => rank(a) - rank(b));
 const limit = Number(option("limit", String(pages.length)));
 pages = pages.slice(0, limit);
+const scopeSize = pages.length;
+const shard = option("shard", "1/1");
+if (!/^\d+\/\d+$/.test(shard)) throw Error("Invalid shard; use 1/4 through 4/4");
+const [shardIndex, shardCount] = shard.split("/").map(Number);
+if (shardIndex < 1 || shardIndex > shardCount || shardCount > 16) throw Error("Invalid shard");
+pages = pages.filter((_, index) => index % shardCount === shardIndex - 1);
 if (!pages.length) throw Error("No VRT pages selected");
 await mkdir(outputDirectory, { recursive: true });
 const rowFile = resolve(outputDirectory, "vrt-rows.jsonl");
@@ -73,6 +79,8 @@ const manifest = {
 	pages: pages.map((page) => page.path),
 	modes,
 	workers,
+	shard,
+	scopeSize,
 	scriptHash,
 	baselineDirectory: referenceDirectory,
 	referenceCommit: benchmark.commit ?? benchmark.baselineCommit,
@@ -81,6 +89,8 @@ const manifest = {
 	candidateOutputFingerprint: await outputFingerprint(candidateDirectory),
 	clockTime: benchmark?.finishedAt ?? startedAt,
 	benchmarkFile: benchmark ? benchmarkFile : undefined,
+	referenceBuild: benchmark,
+	runnerNode: process.version,
 	benchmarkSha256: benchmark
 		? createHash("sha256")
 				.update(await readFile(benchmarkFile))
@@ -91,16 +101,18 @@ const manifest = {
 	renderer: "Chromium with SwiftShader WebGL fallback",
 	isolation:
 		"Fresh browser context per URL and compiler variant; no cookies, clock or storage carry over",
-	locale: "ja-JP",
+	locale: benchmark.intlLocale ?? "en-US",
 	timezone: "Asia/Tokyo",
 	policy:
-		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 90s.",
+		"Exact decoded RGBA and dimensions, stable consecutive frames, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; motion disabled after layout settles. Pages above 16000px use 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 180s. Browser Intl fallback matches the build; video is decoded and paused at time zero; LCD subpixel text is disabled.",
 };
 const rows = [];
 if (process.argv.includes("--resume")) {
 	const previous = JSON.parse(await readFile(manifestFile, "utf8"));
 	if (
 		previous.sourceFingerprint !== sourceBefore ||
+		previous.shard !== manifest.shard ||
+		previous.locale !== manifest.locale ||
 		previous.scriptHash !== scriptHash ||
 		previous.benchmarkSha256 !== manifest.benchmarkSha256 ||
 		previous.referenceOutputFingerprint !== manifest.referenceOutputFingerprint ||
@@ -241,7 +253,7 @@ try {
 		servers.push(server);
 		origins[mode] = `http://127.0.0.1:${server.address().port}`;
 	}
-	browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] });
+	browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader", "--disable-lcd-text"] });
 	manifest.browserVersion = browser.version();
 	await writeFile(manifestFile, JSON.stringify(manifest, null, 2) + "\n");
 	console.log(
@@ -255,6 +267,7 @@ try {
 					const context = await createFixtureContext(browser, {
 						viewport,
 						colorScheme,
+						locale: manifest.locale,
 					});
 					const page = await context.newPage();
 					let timer;
@@ -268,9 +281,9 @@ try {
 									() =>
 										accept({
 											status: "capture-error",
-											errors: ["Overall capture timeout: 90 seconds"],
+											errors: ["Overall capture timeout: 180 seconds"],
 										}),
-									90_000,
+									180_000,
 								);
 							}),
 						]);

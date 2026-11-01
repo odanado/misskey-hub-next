@@ -5,13 +5,24 @@ import { takeSnapshot } from "./snapshot.mjs";
 // encoded bytes differ; metadata/compression differences still use strict RGBA.
 export function compareCaptures(reference, candidate) {
 	if (reference.tiles || candidate.tiles) {
-		const size = (capture) => capture.tiles ? [capture.width, capture.height] : (() => { const png = PNG.sync.read(capture.bytes); return [png.width, png.height]; })();
-		const a = size(reference), b = size(candidate);
-		if (a[0] !== b[0] || a[1] !== b[1]) return { equal: false, reason: "dimensions", reference: a, candidate: b };
-		if (reference.tiles.length !== candidate.tiles.length) throw Error("Inconsistent tile coverage");
-		let differentPixels = 0, differentTile;
-		for (let i = 0;i < reference.tiles.length;i++) {
-			const left = reference.tiles[i], right = candidate.tiles[i];
+		const size = (capture) =>
+			capture.tiles
+				? [capture.width, capture.height]
+				: (() => {
+						const png = PNG.sync.read(capture.bytes);
+						return [png.width, png.height];
+					})();
+		const a = size(reference),
+			b = size(candidate);
+		if (a[0] !== b[0] || a[1] !== b[1])
+			return { equal: false, reason: "dimensions", reference: a, candidate: b };
+		if (reference.tiles.length !== candidate.tiles.length)
+			throw Error("Inconsistent tile coverage");
+		let differentPixels = 0,
+			differentTile;
+		for (let i = 0; i < reference.tiles.length; i++) {
+			const left = reference.tiles[i],
+				right = candidate.tiles[i];
 			if (left.y !== right.y) throw Error("Inconsistent tile coordinates");
 			if (left.bytes.equals(right.bytes)) continue;
 			const compared = comparePixels(PNG.sync.read(left.bytes), PNG.sync.read(right.bytes));
@@ -19,30 +30,31 @@ export function compareCaptures(reference, candidate) {
 			differentPixels += compared.differentPixels;
 			if (!compared.equal && differentTile === undefined) differentTile = i;
 		}
-		return { equal: differentPixels === 0, differentPixels, totalPixels: a[0] * a[1], differentTile, ...(differentPixels ? { reason: "pixels" } : {}) };
+		return {
+			equal: differentPixels === 0,
+			differentPixels,
+			totalPixels: a[0] * a[1],
+			differentTile,
+			...(differentPixels ? { reason: "pixels" } : {}),
+		};
 	}
-	if (reference.bytes.equals(candidate.bytes))
-		return { equal: true, differentPixels: 0 };
+	if (reference.bytes.equals(candidate.bytes)) return { equal: true, differentPixels: 0 };
 	reference.png ??= PNG.sync.read(reference.bytes);
 	candidate.png ??= PNG.sync.read(candidate.bytes);
 	return comparePixels(reference.png, candidate.png);
 }
 
 export function comparePixels(reference, candidate) {
-	if (
-		reference.width !== candidate.width ||
-		reference.height !== candidate.height
-	)
+	if (reference.width !== candidate.width || reference.height !== candidate.height)
 		return {
 			equal: false,
 			reason: "dimensions",
 			reference: [reference.width, reference.height],
 			candidate: [candidate.width, candidate.height],
 		};
-	if (reference.data.equals(candidate.data))
-		return { equal: true, differentPixels: 0 };
+	if (reference.data.equals(candidate.data)) return { equal: true, differentPixels: 0 };
 	let differentPixels = 0;
-	for (let i = 0;i < reference.data.length;i += 4) {
+	for (let i = 0; i < reference.data.length; i += 4) {
 		if (
 			reference.data[i] !== candidate.data[i] ||
 			reference.data[i + 1] !== candidate.data[i + 1] ||
@@ -64,8 +76,7 @@ export async function capturePage(page, url, { clockTime } = {}) {
 	const errors = [];
 	const pendingLocalRequests = new Set();
 	page.on("request", (request) => {
-		if (new URL(request.url()).hostname === "127.0.0.1")
-			pendingLocalRequests.add(request);
+		if (new URL(request.url()).hostname === "127.0.0.1") pendingLocalRequests.add(request);
 	});
 	page.on("requestfinished", (request) => pendingLocalRequests.delete(request));
 	page.on("requestfailed", (request) => pendingLocalRequests.delete(request));
@@ -77,26 +88,20 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		if (/hydration/i.test(message.text())) report(message.text());
 	});
 	page.on("response", (response) => {
-		if (
-			new URL(response.url()).hostname === "127.0.0.1" &&
-			response.status() >= 400
-		)
+		if (new URL(response.url()).hostname === "127.0.0.1" && response.status() >= 400)
 			report(`${response.status()} ${response.url()}`);
 	});
 	try {
-		if (clock)
-			await page.clock.install({ time: new Date(clockTime ?? Date.now()) });
+		if (clock) await page.clock.install({ time: new Date(clockTime ?? Date.now()) });
 		const response = await page.goto(url, {
 			waitUntil: "load",
 			timeout: 20_000,
 		});
-		if (response?.status() !== 200)
-			throw new Error("HTTP " + response?.status());
+		if (response?.status() !== 200) throw new Error("HTTP " + response?.status());
 		if (clock)
 			await page.evaluate(() => {
 				const request = window.requestAnimationFrame.bind(window);
-				window.requestAnimationFrame = (callback) =>
-					request(() => callback(30_000));
+				window.requestAnimationFrame = (callback) => request(() => callback(30_000));
 			});
 		await page.waitForSelector('html[data-site-ready="true"]', {
 			state: "attached",
@@ -104,8 +109,7 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		});
 		// A client-only tool can request its chunk after the root mounts.
 		const requestDeadline = Date.now() + 5000;
-		while (pendingLocalRequests.size && Date.now() < requestDeadline)
-			await page.waitForTimeout(50);
+		while (pendingLocalRequests.size && Date.now() < requestDeadline) await page.waitForTimeout(50);
 		await page.evaluate(async () => {
 			document.querySelectorAll("img").forEach((img) => {
 				img.loading = "eager";
@@ -119,6 +123,31 @@ export async function capturePage(page, url, { clockTime } = {}) {
 							new URL(img.src, location.href).hostname === location.hostname,
 					)
 					.map((img) => img.decode()),
+			);
+		});
+		// Compare decoded video pixels at the same authored frame, without masks.
+		await page.evaluate(async () => {
+			await Promise.all(
+				[...document.querySelectorAll("video")].map(async (video) => {
+					video.pause();
+					if (video.readyState < 2) {
+						await new Promise((resolve, reject) => {
+							if (video.error) return reject(new Error("Video failed: " + video.currentSrc));
+							video.addEventListener("loadeddata", resolve, { once: true });
+							video.addEventListener(
+								"error",
+								() => reject(new Error("Video failed: " + video.currentSrc)),
+								{ once: true },
+							);
+						});
+					}
+					if (video.currentTime !== 0) {
+						await new Promise((resolve) => {
+							video.addEventListener("seeked", resolve, { once: true });
+							video.currentTime = 0;
+						});
+					}
+				}),
 			);
 		});
 		// Let layout/IntersectionObserver callbacks update the docs TOC before
@@ -142,13 +171,13 @@ export async function capturePage(page, url, { clockTime } = {}) {
 				} else {
 					try {
 						animation.finish();
-					} catch { }
+					} catch {}
 				}
 			}
 			for (const animation of animations) {
 				try {
 					animation.commitStyles();
-				} catch { }
+				} catch {}
 			}
 		});
 		await page.addStyleTag({
@@ -188,16 +217,14 @@ export async function capturePage(page, url, { clockTime } = {}) {
 export async function createFixtureContext(browser, options = {}) {
 	const context = await browser.newContext({
 		viewport: options.viewport ?? { width: 1440, height: 900 },
-		locale: "ja-JP",
+		locale: options.locale ?? "en-US",
 		timezoneId: "Asia/Tokyo",
 		colorScheme: options.colorScheme ?? "light",
 		reducedMotion: "reduce",
 		serviceWorkers: "block",
 	});
 	await context.route("**/*", (route) =>
-		new URL(route.request().url()).hostname === "127.0.0.1"
-			? route.continue()
-			: route.abort(),
+		new URL(route.request().url()).hostname === "127.0.0.1" ? route.continue() : route.abort(),
 	);
 	await context.addInitScript((colorScheme) => {
 		if (window !== window.top) return;

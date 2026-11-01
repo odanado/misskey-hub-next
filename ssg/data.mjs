@@ -29,9 +29,27 @@ export async function prepareData(parseDocument, preparedDocuments) {
 	const files = (await readdir("content", { recursive: true })).filter(
 		(f) => /\.(md|ya?ml)$/.test(f) && !f.split("/").some((x) => x.startsWith(".")),
 	);
+	// Worker documents may still be parsing. Prepare independent YAML and its
+	// inline Markdown now, retaining the original source order and object aliases.
+	const yamlItems = preparedDocuments
+		? new Map(
+				await Promise.all(
+					files
+						.filter((source) => !source.endsWith(".md"))
+						.map(async (source) => {
+							const fields = yaml.load(await readFile("content/" + source, "utf8")) ?? {};
+							const item = metadata(source, fields);
+							if (fields._TYPE_) Object.assign(item, fields);
+							return [source, item];
+						}),
+				),
+			)
+		: undefined;
+	if (yamlItems) for (const item of yamlItems.values()) if (!item._partial) await inline(item);
+	preparedDocuments = await preparedDocuments;
 	for (const source of files) {
 		const raw =
-			preparedDocuments && source.endsWith(".md")
+			(preparedDocuments && source.endsWith(".md")) || yamlItems?.has(source)
 				? undefined
 				: await readFile("content/" + source, "utf8");
 		let item;
@@ -49,6 +67,8 @@ export async function prepareData(parseDocument, preparedDocuments) {
 							body: napi.parseFrontmatter(raw).content,
 						}),
 			);
+		} else if (yamlItems) {
+			item = yamlItems.get(source);
 		} else {
 			const fields = yaml.load(raw) ?? {};
 			item = metadata(source, fields);
@@ -69,8 +89,9 @@ export async function prepareData(parseDocument, preparedDocuments) {
 			for (const item of Object.values(value)) await inline(item);
 	}
 
-	for (const item of contents.filter((x) => x._extension !== "md" && !x._partial))
-		await inline(item);
+	if (!yamlItems)
+		for (const item of contents.filter((x) => x._extension !== "md" && !x._partial))
+			await inline(item);
 
 	const sorted = [...contents].sort(sourceOrder),
 		blog = contents

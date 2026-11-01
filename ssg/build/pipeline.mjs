@@ -6,6 +6,9 @@ import { resolve } from "node:path";
 import { resolvePageAssets } from "../page-assets.mjs";
 import { createBuildFetch } from "./fetch-cache.mjs";
 
+// Vite bundles its config into a separate module. Share the CLI's early
+// pipeline by root so config loading can overlap preparation without duplication.
+const activePipelines = (globalThis[Symbol.for("misskey-hub.ssg.build-pipelines")] ??= new Map());
 const observed = (promise) => (void promise.catch(() => {}), promise);
 const deferred = () => {
 	let resolve, reject;
@@ -19,11 +22,25 @@ const deferred = () => {
 };
 
 export function createBuildPipeline(root) {
+	const existing = activePipelines.get(root);
+	if (existing) return existing;
 	const started = performance.now(),
 		marks = { node: process.version };
 	const fetchJson = createBuildFetch();
-	const cores = availableParallelism(),
-		count = Math.min(8, Math.max(1, cores - 4));
+	const cores = availableParallelism();
+	const workerCount = (name, fallback) => {
+		const value = Number(process.env[name] ?? fallback);
+		if (!Number.isInteger(value) || value < 1 || value > cores)
+			throw new Error(name + " must be an integer between 1 and " + cores);
+		return value;
+	};
+	const count = workerCount("MISSKEY_SSG_RENDER_WORKERS", Math.min(8, Math.max(1, cores - 4)));
+	const markdownCount = workerCount(
+		"MISSKEY_SSG_MARKDOWN_WORKERS",
+		Math.min(4, Math.max(1, Math.floor(cores / 2))),
+	);
+	marks.renderWorkers = count;
+	marks.markdownWorkers = markdownCount;
 	const channels = Array.from({ length: count }, () => new MessageChannel());
 	const workers = [],
 		pending = new Map(),
@@ -147,7 +164,7 @@ export function createBuildPipeline(root) {
 		{
 			workerData: {
 				root,
-				count: Math.min(4, Math.max(1, Math.floor(cores / 2))),
+				count: markdownCount,
 				ports: channels.map((channel) => channel.port1),
 			},
 			transferList: channels.map((channel) => channel.port1),
@@ -164,7 +181,7 @@ export function createBuildPipeline(root) {
 			return true;
 		},
 	);
-	return {
+	const pipeline = {
 		copyPublic: () => copied.promise,
 		host: {
 			async routes() {
@@ -208,14 +225,20 @@ export function createBuildPipeline(root) {
 		},
 		dispose() {
 			return (disposal ??= (async () => {
-				await Promise.allSettled(workers.map((worker) => worker.terminate()));
-				channels.forEach(({ port1, port2 }) => {
-					port1.close();
-					port2.close();
-				});
-				await rm(outDir, { recursive: true, force: true });
-				await rm(outputCache, { recursive: true, force: true });
+				try {
+					await Promise.allSettled(workers.map((worker) => worker.terminate()));
+					channels.forEach(({ port1, port2 }) => {
+						port1.close();
+						port2.close();
+					});
+					await rm(outDir, { recursive: true, force: true });
+					await rm(outputCache, { recursive: true, force: true });
+				} finally {
+					if (activePipelines.get(root) === pipeline) activePipelines.delete(root);
+				}
 			})());
 		},
 	};
+	activePipelines.set(root, pipeline);
+	return pipeline;
 }

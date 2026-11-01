@@ -14,38 +14,86 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  all-pages:
+  build-sites:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    strategy:
-      fail-fast: false
-      matrix:
-        viewport: [desktop, mobile]
-        theme: [light, dark]
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22.22.3"
+          node-version: "26.13.0"
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Build the unmodified PR 3 reference
         run: node tests/vrt/build-reference.mjs 9aa603958ed8f1ffde66aa2052d530d3d584c66b
-      - name: Build the optimized site
-        run: pnpm build
+      - name: Build and verify the optimized site
+        run: |
+          pnpm build
+          node ssg/verify.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vrt-sites
+          path: |
+            .output/public/
+            .vrt/reference/.output/public/
+            .vrt/reference-build.json
+          include-hidden-files: true
+          compression-level: 1
+          retention-days: 7
+
+  all-pages:
+    needs: build-sites
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [desktop, mobile]
+        theme: [light, dark]
+        shard: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "26.13.0"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: vrt-sites
       - run: pnpm exec playwright install --with-deps chromium
-      - name: Compare every URL with exact pixels
+      - name: Compare every assigned URL with exact pixels
         run: >-
-          pnpm test:vrt --sample=all --workers=6
+          pnpm test:vrt --sample=all --workers=2 --shard=${{ matrix.shard }}/4
           --reference-metadata=.vrt/reference-build.json
+          --reference-dir=.vrt/reference/.output/public
           --viewport=${{ matrix.viewport }} --theme=${{ matrix.theme }}
-          --output-dir=output/playwright/${{ matrix.viewport }}-${{ matrix.theme }}
+          --output-dir=output/playwright/${{ matrix.viewport }}-${{ matrix.theme }}-${{ matrix.shard }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: vrt-${{ matrix.viewport }}-${{ matrix.theme }}
-          path: |
-            output/playwright/
-            .vrt/reference-build.json
+          name: vrt-${{ matrix.viewport }}-${{ matrix.theme }}-${{ matrix.shard }}
+          path: output/playwright/
           retention-days: 7
+
+  coverage:
+    if: ${{ always() && needs.build-sites.result == 'success' }}
+    needs: [build-sites, all-pages]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "26.13.0"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: vrt-*-*-*
+          path: .vrt/combined
+          merge-multiple: true
+      - name: Require all URLs to pass in all four conditions
+        run: node tests/vrt/check-results.mjs .vrt/combined 9aa603958ed8f1ffde66aa2052d530d3d584c66b

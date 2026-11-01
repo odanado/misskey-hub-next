@@ -104,10 +104,17 @@ try {
 	tasks.forEach((task, index) =>
 		task.worker.postMessage({ type: "documents", snippets: compiled, entries: groups[index] }),
 	);
-	const documents = new Map((await Promise.all(tasks.map((task) => task.documents))).flat());
+	const documents = observed(
+		Promise.all(tasks.map((task) => task.documents)).then((rows) => new Map(rows.flat())),
+	);
+	const prepared = observed(
+		import("../data.mjs").then(async ({ prepareData, withFallbackPage }) =>
+			withFallbackPage(await prepareData(undefined, documents)),
+		),
+	);
+	await documents;
 	timings.documents = performance.now() - started;
-	const { prepareData, withFallbackPage } = await import("../data.mjs");
-	const pages = preparePayloads(withFallbackPage(await prepareData(undefined, documents)));
+	const pages = preparePayloads(await prepared);
 	const lanes = assignLanes(pages, workerData.ports.length);
 	for (let index = 0; index < lanes.length; index++) {
 		const port = workerData.ports[index];

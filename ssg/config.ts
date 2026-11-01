@@ -9,8 +9,8 @@ import { themeStyles } from "../plugins/theme-styles";
 import { createBuildPipeline } from "./build/pipeline.mjs";
 import { cacheComponents } from "./build/cache-components.mjs";
 import { root, outDir } from "./routes.mjs";
-const base = common();
 const rendererBuild = process.env.MISSKEY_SSG_RENDERER_BUILD === "1";
+const base = common({ ssrOnly: rendererBuild });
 const pipeline =
 	process.env.MISSKEY_SSG_PARALLEL === "1" && !rendererBuild
 		? createBuildPipeline(root)
