@@ -150,6 +150,9 @@ export async function capturePage(page, url, { clockTime } = {}) {
 				}),
 			);
 		});
+		// Root hydration does not await descendant async fetch/import callbacks.
+		// The offline fixture has no polling endpoints; wait for all initial work.
+		await page.waitForLoadState("networkidle", { timeout: 15000 });
 		// Let layout/IntersectionObserver callbacks update the docs TOC before
 		// pausing time. Freezing the application clock too early races scrollspy.
 		// Use an absolute clock for deterministic WebGL shader timestamps as well.
@@ -185,16 +188,24 @@ export async function capturePage(page, url, { clockTime } = {}) {
 			};
 		const started = Date.now();
 		let previous = await takeSnapshot(page);
+		let stableSince = Date.now(),
+			stableFrames = 0;
 		let stable = false;
 		do {
+			await page.waitForTimeout(100);
 			const current = await takeSnapshot(page);
-			stable = compareCaptures(previous, current).equal;
+			if (compareCaptures(previous, current).equal) stableFrames++;
+			else {
+				stableSince = Date.now();
+				stableFrames = 0;
+			}
+			stable = stableFrames >= 2 && Date.now() - stableSince >= 500;
 			previous = current;
-		} while (!stable && Date.now() - started < 5000);
+		} while (!stable && Date.now() - started < 10000);
 		if (!stable)
 			return {
 				status: "unstable",
-				errors: ["No two consecutive identical frames within 5 seconds"],
+				errors: ["No three identical frames spanning 500ms within 10 seconds"],
 			};
 		return {
 			status: errors.length ? "runtime-error" : "captured",
