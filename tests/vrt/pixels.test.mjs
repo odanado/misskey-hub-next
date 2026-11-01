@@ -65,7 +65,7 @@ test("Slow captures with a changing pixel remain unstable", async () => {
 		},
 	);
 	assert.equal(result.stable, false);
-	assert.equal(calls, 3);
+	assert.ok(calls <= 101);
 });
 test("Fast identical frames must span the minimum stable interval", async () => {
 	let time = 0,
@@ -85,4 +85,23 @@ test("Fast identical frames must span the minimum stable interval", async () => 
 	assert.equal(result.stable, true);
 	assert.ok(time >= 500);
 	assert.ok(calls >= 3);
+});
+
+test("Slow captures may settle after an initial repaint", async () => {
+	let time = 0,
+		calls = 0;
+	const result = await captureStableFrames(
+		async () => {
+			time += 15000;
+			return capture(++calls > 1);
+		},
+		{
+			now: () => time,
+			wait: async (ms) => {
+				time += ms;
+			},
+		},
+	);
+	assert.equal(result.stable, true);
+	assert.ok(calls >= 4);
 });

@@ -104,7 +104,7 @@ const manifest = {
 	locale: benchmark.intlLocale ?? "en-US",
 	timezone: "Asia/Tokyo",
 	policy:
-		"Exact decoded RGBA and dimensions, at least three identical frames spanning 500ms; a 10s instability window starts after the initial capture and always permits the required minimum comparisons, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; CSS finite motion uses its final frame and infinite motion its initial frame. Those authored properties are retained as ordinary CSS before CSS animation is canceled, including scroll-linked and subsequently mounted elements. Every page uses 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 180s. Browser Intl fallback matches the build; video is decoded and paused at time zero; LCD subpixel text and partial raster are disabled; all compositor stages complete before drawing, software compositing and sRGB are fixed. Initial descendant requests reach network idle before CSS state is frozen.",
+		"Exact decoded RGBA and dimensions, at least three identical frames spanning 500ms; up to 100 sampled comparisons 100ms apart, with screenshot generation excluded from the observation budget, no masks/tolerance. Offline external network; empty emoji cache; seeded client randomness; frozen MFM/static clocks at absolute reference clock +30 seconds, RAF timestamps fixed to 30000ms and two final frames advanced for deterministic shader phase; CSS finite motion uses its final frame and infinite motion its initial frame. Those authored properties are retained as ordinary CSS before CSS animation is canceled, including scroll-linked and subsequently mounted elements. Every page uses 4096px CDP clips at unchanged document coordinates; all pixels compared, no scrolling or masks. Capture deadline 300s. Browser Intl fallback matches the build; video is decoded and paused at time zero; LCD subpixel text and partial raster are disabled; all compositor stages complete before drawing, software compositing and sRGB are fixed. Initial descendant requests reach network idle before CSS state is frozen.",
 };
 const rows = [];
 if (process.argv.includes("--resume")) {
@@ -290,9 +290,9 @@ try {
 									() =>
 										accept({
 											status: "capture-error",
-											errors: ["Overall capture timeout: 180 seconds"],
+											errors: ["Overall capture timeout: 300 seconds"],
 										}),
-									180_000,
+									300_000,
 								);
 							}),
 						]);
