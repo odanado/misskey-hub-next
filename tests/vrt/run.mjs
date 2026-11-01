@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { sendStaticResponse } from "./http.mjs";
 import { readFile, writeFile, appendFile, mkdir, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { createHash } from "node:crypto";
@@ -71,6 +72,7 @@ const scriptHash = createHash("sha256")
 	.update(await readFile(new URL(import.meta.url)))
 	.update(await readFile(new URL("./capture.mjs", import.meta.url)))
 	.update(await readFile(new URL("./snapshot.mjs", import.meta.url)))
+	.update(await readFile(new URL("./http.mjs", import.meta.url)))
 	.digest("hex");
 const manifest = {
 	startedAt,
@@ -239,11 +241,10 @@ try {
 				if (file !== root && !file.startsWith(root + sep)) throw new Error("Invalid path");
 				if ((await stat(file)).isDirectory()) file = resolve(file, "index.html");
 				const bytes = await readFile(file);
-				res.writeHead(200, {
+				sendStaticResponse(req, res, bytes, {
 					"Content-Type": mime[extname(file)] ?? "application/octet-stream",
 					"Cache-Control": extname(file) === ".html" ? "no-cache" : "public,max-age=3600",
 				});
-				res.end(bytes);
 			} catch {
 				res.writeHead(404);
 				res.end("Not found");
