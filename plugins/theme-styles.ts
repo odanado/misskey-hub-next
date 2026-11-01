@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { parse, compileStyle } from "@vue/compiler-sfc";
+import type { Plugin } from "vite";
 import { root } from "../ssg/routes.mjs";
 const require = createRequire(import.meta.url);
 const styles = [
@@ -106,4 +107,4 @@ export const themeStyles = {
 		)
 			return { code, moduleSideEffects: "no-treeshake" as const };
 	},
-};
+} satisfies Plugin;

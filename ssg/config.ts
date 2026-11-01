@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createOxContentCustomHostPlugin } from "@ox-content/vite-plugin";
-import { common } from "../plugins/index.mjs";
+import { common } from "../plugins/index";
 import { themeStyles } from "../plugins/theme-styles";
 import { root, outDir } from "./routes.mjs";
 const base = common();

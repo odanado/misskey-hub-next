@@ -6,6 +6,7 @@ import unocss from "unocss/vite";
 import svgLoader from "vite-svg-loader";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
+import type { PluginOption } from "vite";
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
 const runtime = resolve(root, "ssg/runtime.ts");
@@ -69,7 +70,7 @@ export const aliases = {
 	"#imports": runtime,
 	bi: resolve(root, "node_modules/bootstrap-icons/icons"),
 };
-export function plugins() {
+export function plugins(): PluginOption[] {
 	const imports = createUnimport({
 		imports: [...names, ...composables].map((name) => ({
 			name,
@@ -88,7 +89,10 @@ export function plugins() {
 			},
 			load(id) {
 				if (id === "\0virtual:site-components")
-					return readdirSync(resolve(root, "components"), { recursive: true })
+					return readdirSync(resolve(root, "components"), {
+						recursive: true,
+						encoding: "utf8",
+					})
 						.filter((f) => f.endsWith(".vue"))
 						.map((file) => {
 							const name = file
