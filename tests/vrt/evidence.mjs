@@ -40,3 +40,16 @@ export async function sourceFingerprint() {
 			.update(await readFile(file));
 	return hash.digest("hex");
 }
+
+export async function outputFingerprint(directory) {
+	const hash = createHash("sha256");
+	for (const file of (await readdir(directory, { recursive: true })).sort()) {
+		const path = directory + "/" + file;
+		if (!(await stat(path)).isFile()) continue;
+		hash
+			.update(file)
+			.update("\0")
+			.update(await readFile(path));
+	}
+	return hash.digest("hex");
+}

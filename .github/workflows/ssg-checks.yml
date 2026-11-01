@@ -1,0 +1,37 @@
+name: SSG checks
+
+on:
+  pull_request:
+  push:
+    branches: ["perf/**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ssg-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["22.22.3", "26.13.0"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - name: Generate the complete site
+        run: /usr/bin/time -p pnpm build
+        env:
+          NODE_ENV: production
+      - name: Verify every published page, fallback and public asset
+        run: node --experimental-strip-types ssg/verify.mjs

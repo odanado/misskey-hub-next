@@ -1,0 +1,51 @@
+name: SSG visual regression
+
+on:
+  pull_request:
+  push:
+    branches: ["perf/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ssg-vrt-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  all-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [desktop, mobile]
+        theme: [light, dark]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.3"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build the unmodified PR 3 reference
+        run: node tests/vrt/build-reference.mjs 9aa603958ed8f1ffde66aa2052d530d3d584c66b
+      - name: Build the optimized site
+        run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Compare every URL with exact pixels
+        run: >-
+          pnpm test:vrt --sample=all --workers=6
+          --reference-metadata=.vrt/reference-build.json
+          --viewport=${{ matrix.viewport }} --theme=${{ matrix.theme }}
+          --output-dir=output/playwright/${{ matrix.viewport }}-${{ matrix.theme }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vrt-${{ matrix.viewport }}-${{ matrix.theme }}
+          path: |
+            output/playwright/
+            .vrt/reference-build.json
+          retention-days: 7

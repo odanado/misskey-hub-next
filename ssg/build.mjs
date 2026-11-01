@@ -1,4 +1,3 @@
-import { build, createServer } from "vite";
 import { copyFile, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
@@ -8,6 +7,11 @@ try {
 	if (error.code !== "ENOENT") throw error;
 }
 process.env.NODE_ENV = "production";
+// Bound native pools while Markdown and renderer preparation share the CPU.
+process.env.ROLLDOWN_WORKER_THREADS ??= "4";
+process.env.RAYON_NUM_THREADS ??= "4";
+process.env.MISSKEY_SSG_PARALLEL = "1";
+const { build, createServer } = await import("vite");
 process.env.TZ ??= "Asia/Tokyo";
 // Crowdin data and legacy redirects remain part of the production build.
 const loader = await createServer({
@@ -17,9 +21,7 @@ const loader = await createServer({
 	appType: "custom",
 });
 try {
-	const { fetchCrowdinMembers } = await loader.ssrLoadModule(
-		"/scripts/fetch-crowdin.ts",
-	);
+	const { fetchCrowdinMembers } = await loader.ssrLoadModule("/scripts/fetch-crowdin.ts");
 	await fetchCrowdinMembers();
 	await build({ root, configFile: resolve(root, "vite.config.mts") });
 	const { generateOldHubRedirects } = await loader.ssrLoadModule(
@@ -35,5 +37,4 @@ try {
 	await loader.close();
 }
 
-// Vue auxiliary components may own timers; all awaited build writes are complete.
-process.exit(0);
+// All build workers and the compatibility loader are closed before returning.

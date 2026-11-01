@@ -9,14 +9,14 @@
 		"test:vrt": "node --experimental-strip-types tests/vrt/run.mjs",
 		"test:vrt:baseline": "node --experimental-strip-types tests/vrt/build-main.mjs",
 		"benchmark": "node --experimental-strip-types tests/vrt/measure.mjs",
-		"test": "node --test tests/markdown.test.mjs tests/corpus.test.mjs tests/vrt/pixels.test.mjs"
+		"test": "node --test tests/markdown.test.mjs tests/corpus.test.mjs tests/vrt/pixels.test.mjs tests/ssg-pipeline.test.mjs"
 	},
 	"devDependencies": {
 		"@google/model-viewer": "^4.1.0",
 		"@nuxt/content": "2.13.4",
 		"@nuxtjs/mdc": "0.9.5",
-		"@ox-content/napi": "3.4.3",
-		"@ox-content/vite-plugin": "3.4.3",
+		"@ox-content/napi": "3.7.3",
+		"@ox-content/vite-plugin": "3.7.3",
 		"@playwright/test": "1.58.2",
 		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^24.10.4",
