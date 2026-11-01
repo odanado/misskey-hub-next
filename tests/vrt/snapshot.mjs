@@ -1,12 +1,8 @@
-// Capture every CSS pixel without scrolling. Very long release histories exceed
+// Capture every CSS pixel through the same CDP path without scrolling or
+// per-screenshot DOM changes. Very long release histories exceed
 // 130,000px; a single decoded PNG can occupy >700MB. CDP clips preserve the same
 // document coordinates (including fixed elements) while bounding decode memory.
 export async function takeSnapshot(page) {
-	const height = await page.evaluate(() => document.documentElement.scrollHeight);
-	if (height <= 16000)
-		return {
-			bytes: await page.screenshot({ fullPage: true, animations: "allow", timeout: 30000 }),
-		};
 	const session = await page.context().newCDPSession(page);
 	try {
 		const { cssContentSize } = await session.send("Page.getLayoutMetrics");

@@ -71,6 +71,29 @@ export function comparePixels(reference, candidate) {
 	};
 }
 
+export async function captureStableFrames(capture, { wait, now = () => performance.now() }) {
+	let previous = await capture();
+	const started = now();
+	let stableSince = started,
+		stableFrames = 0,
+		comparisons = 0;
+	do {
+		await wait(100);
+		const current = await capture();
+		comparisons++;
+		if (compareCaptures(previous, current).equal) stableFrames++;
+		else {
+			stableSince = now();
+			stableFrames = 0;
+		}
+		previous = current;
+		if (stableFrames >= 2 && now() - stableSince >= 500) return { stable: true, capture: current };
+		// Huge tiled captures can individually exceed the stability window. Always
+		// obtain the three frames needed for a valid decision before timing out.
+	} while (comparisons < 2 || now() - started < 10000);
+	return { stable: false, capture: previous };
+}
+
 export async function capturePage(page, url, { clockTime } = {}) {
 	const clock = /\/features\/mfm\//.test(url) || !/\/(docs|blog)\//.test(url);
 	const errors = [];
@@ -157,10 +180,34 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		// pausing time. Freezing the application clock too early races scrollspy.
 		// Use an absolute clock for deterministic WebGL shader timestamps as well.
 		await page.waitForTimeout(200);
-		// Use one authored final CSS frame for current and subsequently mounted
-		// elements. Inline commitStyles snapshots can be discarded by Vue updates.
+		// Sample finite motion at its end and infinite motion at its initial frame for
+		// current and subsequently mounted elements, retaining every visible element.
+		const infiniteFrames = await page.evaluate(() => {
+			const names = new Map();
+			for (const animation of document.getAnimations()) {
+				if (!animation.animationName || animation.effect?.getTiming().iterations !== Infinity)
+					continue;
+				const frame = animation.effect.getKeyframes()[0];
+				const properties = Object.entries(frame).filter(
+					([key]) => !["offset", "computedOffset", "easing", "composite"].includes(key),
+				);
+				const declarations = properties
+					.map(
+						([key, value]) =>
+							`${key.replace(/[A-Z]/g, (letter) => "-" + letter.toLowerCase())}:${value};`,
+					)
+					.join("");
+				names.set(
+					animation.animationName,
+					`@keyframes ${CSS.escape(animation.animationName)} { from {${declarations}} to {${declarations}} }`,
+				);
+			}
+			return [...names.values()].join("\n");
+		});
 		await page.addStyleTag({
 			content: `
+      ${infiniteFrames}
+      input, textarea, [contenteditable] { caret-color: transparent !important; }
       *, *::before, *::after {
         animation-timeline: auto !important;
         animation-duration: 0.001s !important;
@@ -180,32 +227,66 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		}
 		await page.mouse.move(0, 0);
 		await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+		// Preserve the chosen authored frame as ordinary CSS, then cancel CSS
+		// animation so opacity/transform layers cannot retain animated surfaces.
+		const motionRules = await page.evaluate(() => {
+			const rules = [];
+			const metadata = new Set(["offset", "computedOffset", "easing", "composite"]);
+			for (const animation of document.getAnimations()) {
+				if (!animation.animationName || !animation.effect?.target) continue;
+				const effect = animation.effect,
+					target = effect.target;
+				const properties = new Set(
+					effect
+						.getKeyframes()
+						.flatMap((frame) => Object.keys(frame).filter((key) => !metadata.has(key))),
+				);
+				const computed = getComputedStyle(target, effect.pseudoElement ?? null);
+				const declaration = document.createElement("div").style;
+				for (const key of properties) {
+					const property = key.startsWith("--")
+						? key
+						: key.replace(/[A-Z]/g, (letter) => "-" + letter.toLowerCase());
+					declaration.setProperty(property, computed.getPropertyValue(property), "important");
+				}
+				const parts = [];
+				for (let node = target; node; node = node.parentElement) {
+					const siblings = node.parentElement
+						? [...node.parentElement.children].filter(
+								(sibling) =>
+									sibling.localName === node.localName &&
+									sibling.namespaceURI === node.namespaceURI,
+							)
+						: [node];
+					parts.unshift(`${CSS.escape(node.localName)}:nth-of-type(${siblings.indexOf(node) + 1})`);
+				}
+				rules.push(`${parts.join(" > ")}${effect.pseudoElement ?? ""} { ${declaration.cssText} }`);
+			}
+			return rules.join("\n");
+		});
+		await page.addStyleTag({
+			content: `*, *::before, *::after { animation: none !important; transition: none !important; }\n${motionRules}`,
+		});
+
+		await page.evaluate(async () => {
+			await document.fonts.ready;
+		});
+
 		if (errors.length)
 			return {
 				status: "runtime-error",
 				errors,
 				finalPath: new URL(page.url()).pathname,
 			};
-		const started = Date.now();
-		let previous = await takeSnapshot(page);
-		let stableSince = Date.now(),
-			stableFrames = 0;
-		let stable = false;
-		do {
-			await page.waitForTimeout(100);
-			const current = await takeSnapshot(page);
-			if (compareCaptures(previous, current).equal) stableFrames++;
-			else {
-				stableSince = Date.now();
-				stableFrames = 0;
-			}
-			stable = stableFrames >= 2 && Date.now() - stableSince >= 500;
-			previous = current;
-		} while (!stable && Date.now() - started < 10000);
+		const { stable, capture: previous } = await captureStableFrames(() => takeSnapshot(page), {
+			wait: (ms) => page.waitForTimeout(ms),
+		});
 		if (!stable)
 			return {
 				status: "unstable",
-				errors: ["No three identical frames spanning 500ms within 10 seconds"],
+				errors: [
+					"Frames did not stabilize after at least three captures and a 500ms stable interval",
+				],
 			};
 		return {
 			status: errors.length ? "runtime-error" : "captured",
