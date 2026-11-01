@@ -1,5 +1,6 @@
 import { PNG } from "pngjs";
 import { takeSnapshot } from "./snapshot.mjs";
+import { waitForLocalIdle } from "./readiness.mjs";
 
 // Identical PNG bytes necessarily contain identical pixels. Decode only when
 // encoded bytes differ; metadata/compression differences still use strict RGBA.
@@ -97,11 +98,18 @@ export async function capturePage(page, url, { clockTime } = {}) {
 	const clock = /\/features\/mfm\//.test(url) || !/\/(docs|blog)\//.test(url);
 	const errors = [];
 	const pendingLocalRequests = new Set();
+	let lastLocalActivity = performance.now();
 	page.on("request", (request) => {
-		if (new URL(request.url()).hostname === "127.0.0.1") pendingLocalRequests.add(request);
+		if (new URL(request.url()).hostname === "127.0.0.1") {
+			pendingLocalRequests.add(request);
+			lastLocalActivity = performance.now();
+		}
 	});
-	page.on("requestfinished", (request) => pendingLocalRequests.delete(request));
-	page.on("requestfailed", (request) => pendingLocalRequests.delete(request));
+	const finishRequest = (request) => {
+		if (pendingLocalRequests.delete(request)) lastLocalActivity = performance.now();
+	};
+	page.on("requestfinished", finishRequest);
+	page.on("requestfailed", finishRequest);
 	const report = (message) => {
 		if (errors.length < 20) errors.push(String(message).slice(0, 1000));
 	};
@@ -174,7 +182,11 @@ export async function capturePage(page, url, { clockTime } = {}) {
 		});
 		// Root hydration does not await descendant async fetch/import callbacks.
 		// The offline fixture has no polling endpoints; wait for all initial work.
-		await page.waitForLoadState("networkidle", { timeout: 60000 });
+		await waitForLocalIdle({
+			pending: () => pendingLocalRequests.size,
+			lastActivity: () => lastLocalActivity,
+			wait: (ms) => page.waitForTimeout(ms),
+		});
 		// Let layout/IntersectionObserver callbacks update the docs TOC before
 		// pausing time. Freezing the application clock too early races scrollspy.
 		// Use an absolute clock for deterministic WebGL shader timestamps as well.
