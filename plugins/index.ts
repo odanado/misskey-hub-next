@@ -7,6 +7,7 @@ import svgLoader from "vite-svg-loader";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import type { PluginOption } from "vite";
+import { componentRegistry } from "./component-registry";
 const require = createRequire(import.meta.url);
 export const root = resolve(import.meta.dirname, "..");
 const compat = resolve(root, "nuxt-compat");
@@ -81,26 +82,7 @@ export function plugins(): PluginOption[] {
 			},
 			load(id) {
 				if (id === "\0virtual:site-components")
-					return readdirSync(resolve(root, "components"), {
-						recursive: true,
-						encoding: "utf8",
-					})
-						.filter((f) => f.endsWith(".vue"))
-						.map((file) => {
-							const name = file
-								.replace(/(?:\.(?:client|server))?\.vue$/, "")
-								.split(/[\/\-]/)
-								.map((part) => part[0].toUpperCase() + part.slice(1))
-								.join("");
-							return (
-								"export{default as " +
-								name +
-								"}from " +
-								JSON.stringify(resolve(root, "components", file)) +
-								";"
-							);
-						})
-						.join("\n");
+					return componentRegistry(root);
 				if (id === "\0virtual:site-prose")
 					return [...readdirSync(resolve(mdc, "runtime/components/prose")), "ProseCodeInline.vue"]
 						.filter(

@@ -22,11 +22,17 @@ const aliases = Object.fromEntries(
 		.filter(([name]) => name.startsWith("Content"))
 		.map(([name, value]) => [name.slice(7), value]),
 );
+const lazyAliases = Object.fromEntries(
+	Object.entries(aliases).map(([name, component]) => [
+		"Lazy" + name, defineAsyncComponent(() => Promise.resolve(component)),
+	]),
+);
 export const components = {
 	AppControls,
 	...original,
 	...prose,
 	...aliases,
+	...lazyAliases,
 	MkMfm,
 	MDC,
 	ProseA,

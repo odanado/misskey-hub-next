@@ -184,6 +184,14 @@ pnpm test:vrt --workers=6 --output-dir=.vrt/full-verified
 
 基準の生成物とVRTログは`.vrt/nuxt-compat-before/`、`.vrt/nuxt-compat-refactor/`に保存。画像・生成物はGit管理外。
 
+## トップページのLazyコンポーネント修正（2026-11-02）
+
+Nuxtの`Lazy`接頭辞の登録が抜けていたため、デスクトップ版トップページの`LazyIndexHeroMi3d`と`LazyIndexHeroParticles`が空のHTMLタグになっていた。通常名・`Lazy`名の登録を生成し、この2コンポーネントは動的importに分離した。`.client.vue`のマウント後の読み込みと`.global.vue`の名前も処理する。未使用の遅延ハイドレーション接頭辞は、追加時にビルドエラーで検出する。対応範囲とNuxt公式仕様へのリンクは`nuxt-compat/README.md`に記載。
+
+19テスト（全1,440 Markdownの構造比較とLazy/SSR/client-onlyの回帰テストを含む）、追加ファイルの型チェック、公開2,003 URLと404のfull SSGが成功した。修正前のPR #3生成物に対する代表30ページのPC・ライトVRTは30/30完全一致。トップページはこの30ページに含まれないため別途ブラウザーで確認し、2つのcanvas、3Dモデル、背景パーティクルの描画を確認した。Nuxt/masterとの全件VRTの再計測ではない。
+
+今回のVRTと修正前生成物は`.vrt/lazy-components-vrt/`、`.vrt/lazy-components-before/`に保存。画像・生成物はGit管理外。
+
 ## クレジット
 
 [ubugeeei氏のPR #2](https://github.com/odanado/misskey-hub-next/pull/2)のOx Custom Host方式を基にした。同PRの貢献を直接含むコミットには`Co-authored-by: ubugeeei <ubuge1122@gmail.com>`を付与する。他方式の実験コード・Vize・画像・生成物はこのPRに含めない。
