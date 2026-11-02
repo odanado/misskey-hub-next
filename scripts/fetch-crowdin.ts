@@ -40,7 +40,7 @@ function fallback(sourceFilePath: string, tsOut: string[]) {
 
 //@ts-ignore
 export async function fetchCrowdinMembers() {
-    const sourceFilePath = path.resolve(__dirname, '../assets/data/i18n-members.ts');
+    const sourceFilePath = path.resolve(import.meta.dirname, '../assets/data/i18n-members.ts');
     const tsOut = [
         '/** This file is auto-generated */',
         'import type { LocaleCodes } from \'@/assets/data/locales\';',

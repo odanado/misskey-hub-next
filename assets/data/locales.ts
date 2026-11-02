@@ -1,4 +1,4 @@
-import type { LocaleObject } from '@nuxtjs/i18n';
+export type LocaleObject = { code: string; language: string; name: string; files: readonly string[] };
 
 export const localesConst = [
 	{ files: [ 'ja-JP.json' ], code: 'ja', language: 'ja-JP', name: '日本語' },

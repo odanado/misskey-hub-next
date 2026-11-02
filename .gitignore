@@ -36,3 +36,6 @@ app/spa-loading-template.html
 # CF Pages Redirect
 public/_redirects
 .favorites.json
+
+# VRT baselines, screenshots, temporary builds and local reports
+.vrt

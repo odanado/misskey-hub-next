@@ -1,6 +1,6 @@
 <template>
 	<div class="min-h-screen text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-900">
-        <NuxtIsland name="GNoScript" />
+        <GNoScript />
         <MkAnimBg
             class="fixed z-0 top-0 left-0 w-screen h-screen transition-opacity duration-[2s]"
             :class="isCanvasLoaded ? 'opacity-100' : 'opacity-0'"
@@ -42,7 +42,7 @@ import { locales } from '@/assets/data/locales';
 import { getGhIssueUrl } from './assets/js/misc/get-issue-url';
 import ExtIco from 'bi/box-arrow-up-right.svg';
 
-const error = useError();
+const error = ref({ statusCode: 404 });
 const colorMode = useColorMode();
 const runtimeConfig = useRuntimeConfig();
 
@@ -56,7 +56,7 @@ const isCanvasLoaded = ref<boolean>(false);
 const scrollPos = useState('miHub_global_scrollPos', () => 0);
 scrollPos.value = 0;
 
-const handleError = () => clearError({ redirect: localePath('/') });
+const handleError = () => { location.href = localePath('/'); };
 
 /** 
  * 中国大陸で Google Fonts を使う裏技
@@ -72,14 +72,13 @@ const cnHead = (locale.value === 'cn') ? [
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Capriola&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap' },
 ];
 
-const { data: issueReportLink } = await useAsyncData(`issueReportLink_${locale.value}`, () => getGhIssueUrl({
-    lang: locale.value,
-    repoUrl: runtimeConfig.public.repositoryUrl,
-    additionalInfo: {
-        'Raw Error': (typeof error.value === 'string') ? error.value : JSON.stringify(error.value),
-    },
-}), {
-    server: false,
+const issueReportLink = ref<string | null>(null);
+onMounted(async () => {
+    issueReportLink.value = await getGhIssueUrl({
+        lang: locale.value,
+        repoUrl: runtimeConfig.public.repositoryUrl,
+        additionalInfo: { 'Raw Error': JSON.stringify(error.value) },
+    });
 });
 
 useHead({

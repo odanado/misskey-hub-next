@@ -1,5 +1,5 @@
 import type { NavItem } from '@nuxt/content';
-import type { LocaleObject } from '@nuxtjs/i18n';
+import type { LocaleObject } from '../../data/locales';
 import { parseURL } from 'ufo';
 
 /**

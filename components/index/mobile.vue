@@ -540,8 +540,8 @@ clientLoadedWatchStop = watch(() => props.clientLoaded, () => {
 	}
 
 	async function initClientScripts() {
-		const instanceRes = await fetch(`${runtimeConfig.public.serverListApiBaseUrl}/_hub/instances20.json`);
-		instances.value = await instanceRes.json();
+		const instanceResult = await fetch(`${runtimeConfig.public.serverListApiBaseUrl}/_hub/instances20.json`).then(response => response.ok ? response.json() : null).catch(() => null);
+		if (instanceResult) instances.value = instanceResult;
 
 		swiperInstance = new Swiper('.swiper', {
 			modules: [Navigation, EffectCoverflow],

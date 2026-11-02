@@ -10,4 +10,4 @@ async function init() {
     }
 }
 
-init();
+void init().catch(error => console.warn('Emoji provider unavailable:', error));
